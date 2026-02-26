@@ -1,0 +1,33 @@
+{
+  "runAt": "2026-02-26T19:26:46.251Z",
+  "runDir": "eval-results\\2026-02-26_19-23-06",
+  "results": [
+    {
+      "id": "EVAL_006",
+      "name": "YouTube: open a Minecraft video",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "The agent successfully navigated to YouTube, searched for \"Minecraft\", opened a video, saved a valid screenshot showing the video playing, and correctly reported its title.",
+        "usedScreenshot": true
+      },
+      "elapsedMs": 170241,
+      "tokens": {
+        "inputTokens": 63283,
+        "outputTokens": 723,
+        "totalTokens": 65771,
+        "byModel": {
+          "antigravity-gemini-3.1-pro": {
+            "inputTokens": 63283,
+            "outputTokens": 723
+          }
+        }
+      },
+      "output": "I have completed the browser automation tasks using the `agent-browser` skill.\n\nHere is a summary of the steps taken:\n1. Checked for an active Chrome debugging port (found `9222` open) and established a connection.\n2. Navigated to `https://www.youtube.com`.\n3. Searched for \"Minecraft\" and waited for the results to load.\n4. Identified and clicked the first regular video result in the search.\n5. Successfully loaded the video page and saved a screenshot as requested to `eval-minecraft.png`.\n\n**Video Report:**\n- **Title:** \"I Joined HACKER FAMILY in MInecraft..\"\n- **URL:** https://www.youtube.com/watch?v=rksi1I_OAWM\n- **Status:** The video has successfully loaded and is actively playing (currently starting with a pre-roll ad).\n\nThe requested screenshot (`eval-minecraft.png`) has been saved in the current working directory.\r\n"
+    }
+  ]
+}
