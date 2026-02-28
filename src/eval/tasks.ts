@@ -79,6 +79,12 @@ export interface EvalTask {
      * Example: "eval-screenshot.png"
      */
     screenshotPath?: string;
+    /**
+     * Optional human baseline step count for this task.
+     * Used by the judge engine to compute an overhead ratio comparison.
+     * Set in eval-config.json as a placeholder; populate with real data later.
+     */
+    humanBaselineSteps?: number;
 }
 
 // ─── Loading from JSON ───────────────────────────────────────────────────────
@@ -95,6 +101,11 @@ export interface EvalConfig {
     llmJudge?: boolean;
     screenshotPath?: string;
     model?: string; // Optional per-task override
+    /**
+     * Human baseline steps placeholder. Populate to enable overhead ratio
+     * comparisons in efficiency analysis. Leave undefined to skip.
+     */
+    humanBaselineSteps?: number;
   }>;
 }
 
@@ -118,6 +129,7 @@ export async function loadEvalConfig(): Promise<{ defaultModel: string; tasks: E
     scorer: parseScorer(t.scorer),
     llmJudge: t.llmJudge,
     screenshotPath: t.screenshotPath,
+    humanBaselineSteps: t.humanBaselineSteps,
   }));
 
   loadedTasks = tasks;

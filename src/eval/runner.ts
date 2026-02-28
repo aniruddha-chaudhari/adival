@@ -8,6 +8,9 @@
 import type { EvalTask } from "./tasks";
 import { getSessionTokensSince, type TokenUsage } from "./opencode-tokens";
 import { judgeTask, type JudgeResult } from "./judge";
+import { extractTelemetry, type TelemetryResult } from "./telemetry";
+import type { TaskAnalysis } from "./judge/rubrics";
+import type { JudgeDebug } from "./judge/engine";
 
 export interface TaskRunResult {
   taskId: string;
@@ -25,6 +28,14 @@ export interface TaskRunResult {
   tokens: TokenUsage | null;
   judge: JudgeResult | null;
   error?: string;
+
+  // ── Phase 2: per-task analysis ─────────────────────────────────────────────
+  /** Rubric-mapped analysis from the judge (efficiency/error/safety/thrashing) */
+  analysis?: TaskAnalysis | null;
+  /** Debug payload for diagnosing judge parse failures */
+  judgeDebug?: JudgeDebug | null;
+  /** Heuristic telemetry extracted directly from agent stdout */
+  telemetry?: TelemetryResult | null;
 }
 
 const PASS_THRESHOLD = 80;
@@ -60,6 +71,9 @@ export async function runTask(
       elapsedMs: elapsed,
       tokens: null,
       judge: null,
+      analysis: null,
+      judgeDebug: null,
+      telemetry: null,
       error,
     };
   }
@@ -72,7 +86,10 @@ export async function runTask(
   // ── 3. Token usage ────────────────────────────────────────────────────────
   const tokens = await getSessionTokensSince(start).catch(() => null);
 
-  // ── 4. LLM judge (optional) ───────────────────────────────────────────────
+  // ── 4. Telemetry extraction (heuristic, no subprocess) ────────────────────
+  const telemetry = extractTelemetry(output);
+
+  // ── 5. LLM judge (optional) ───────────────────────────────────────────────
   let judge: JudgeResult | null = null;
   let judgeScore: number | null = null;
 
@@ -83,16 +100,19 @@ export async function runTask(
       output,
       task.screenshotPath,
       runDir,
+      {
+        humanBaselineSteps: task.humanBaselineSteps,
+      },
     ).catch((e) => ({
       verdict: "FAIL" as const,
-      score: 0, // judge
+      score: 0,
       reason: `Judge error: ${e instanceof Error ? e.message : String(e)}`,
       usedScreenshot: false,
     }));
     judgeScore = judge.score;
   }
 
-  // ── 5. Final score = average of both (or just keyword if no judge) ────────
+  // ── 6. Final score = average of both (or just keyword if no judge) ────────
   const score =
     judgeScore !== null
       ? Math.round((keywordScore + judgeScore) / 2)
@@ -116,6 +136,9 @@ export async function runTask(
     elapsedMs: elapsed,
     tokens,
     judge,
+    analysis: judge?.analysis ?? null,
+    judgeDebug: judge?.judgeDebug ?? null,
+    telemetry,
   };
 }
 

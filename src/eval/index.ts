@@ -58,10 +58,9 @@ export {
 
 // ── Runner ─────────────────────────────────────────────────────────────────
 export {
-    TaskRunner,
-    MockAgent,
-    runEvaluation,
-    runSingleTask,
+    runTask,
+    runAllTasks,
+    type TaskRunResult,
 } from "./runner";
 
 // ── Tasks ──────────────────────────────────────────────────────────────────

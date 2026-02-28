@@ -17,6 +17,7 @@ import { mkdirSync, existsSync, renameSync } from "fs";
 import { join } from "path";
 import { getAllTasks, getTaskById } from "./src/eval/tasks";
 import { runTask, runAllTasks, type TaskRunResult } from "./src/eval/runner";
+import { aggregateRun, type TaskResultForAggregation } from "./src/eval/aggregates";
 
 // ─── Main script ──────────────────────────────────────────────────────────────
 
@@ -155,6 +156,7 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
         runAt: new Date().toISOString(),
         runDir,
         results: results.map((r) => ({
+            // ── Existing fields (unchanged) ──────────────────────────────────
             id: r.taskId,
             name: r.taskName,
             status: r.status,
@@ -176,7 +178,34 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
             } : null,
             output: r.output,  // Full output stored directly in JSON
             error: r.error,
+
+            // ── New Phase 2 analysis fields (backward-compatible addition) ───
+            analysis: r.analysis ? {
+                efficiency: r.analysis.efficiency,
+                error: r.analysis.error,
+                safety: r.analysis.safety,
+                thrashing: r.analysis.thrashing,
+            } : null,
+            judgeDebug: r.judgeDebug ? {
+                parseStrategy: r.judgeDebug.parseStrategy,
+                parseErrors: r.judgeDebug.parseErrors,
+                exitCode: r.judgeDebug.exitCode,
+                providerError: r.judgeDebug.providerError,
+                // rawJudgeText and rawLines are omitted from summary for size;
+                // they are available in memory for debugging if needed.
+            } : null,
+            telemetry: r.telemetry ? {
+                observedCommands: r.telemetry.observedCommands,
+                redundantCommandCount: r.telemetry.redundantCommandCount,
+                thrashRatio: r.telemetry.thrashRatio,
+                inferredErrorCategory: r.telemetry.inferredErrorCategory,
+                timeoutDetected: r.telemetry.timeoutDetected,
+                errorDetected: r.telemetry.errorDetected,
+            } : null,
         })),
+
+        // ── Run-level analysis (Phase 3) ──────────────────────────────────────
+        analysis: aggregateRun(results as TaskResultForAggregation[]),
     };
 
     const summaryPath = join(runDir, "summary.json");
@@ -187,10 +216,6 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
 
     // Move any screenshots from cwd into the run directory
     for (const r of results) {
-        // Assume screenshotPath is part of the task, but since we have results, check if judge used screenshot
-        // For now, since tasks are not in results, but we can infer from judge.usedScreenshot and taskId
-        // Actually, let's add a screenshotPath to results or move based on known files
-        // For simplicity, move known screenshot files if they exist
         const possibleShots = ["eval-minecraft.png", "eval-form-result.png", "eval-screenshot.png"];
         for (const shot of possibleShots) {
             const src = join(process.cwd(), shot);
@@ -202,5 +227,5 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
     }
 
     console.log(`\nResults saved to ${runDir}/`);
-    console.log(`  summary.json (with full outputs)`);
+    console.log(`  summary.json (with full outputs + analysis)`);
 }
