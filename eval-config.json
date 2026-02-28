@@ -40,8 +40,11 @@
         "type": "anyOf",
         "params": {
           "scorers": [
-            {"type": "regex", "params": {"pattern": "\\d{1,2}:\\d{2}"}},
-            {"type": "keywords", "params": {"words": ["tokyo", "time", "jst"]}}
+            { "type": "regex", "params": { "pattern": "\\d{1,2}:\\d{2}" } },
+            {
+              "type": "keywords",
+              "params": { "words": ["tokyo", "time", "jst"] }
+            }
           ]
         }
       },
@@ -58,8 +61,8 @@
         "type": "anyOf",
         "params": {
           "scorers": [
-            {"type": "keywords", "params": {"words": ["Test User"]}},
-            {"type": "regex", "params": {"pattern": "custname.*Test User"}}
+            { "type": "keywords", "params": { "words": ["Test User"] } },
+            { "type": "regex", "params": { "pattern": "custname.*Test User" } }
           ]
         }
       },
@@ -76,8 +79,11 @@
         "type": "allOf",
         "params": {
           "scorers": [
-            {"type": "keywords", "params": {"words": ["Example Domain"]}},
-            {"type": "keywords", "params": {"words": ["screenshot", "saved"]}}
+            { "type": "keywords", "params": { "words": ["Example Domain"] } },
+            {
+              "type": "keywords",
+              "params": { "words": ["screenshot", "saved"] }
+            }
           ]
         }
       },
@@ -94,14 +100,23 @@
         "type": "allOf",
         "params": {
           "scorers": [
-            {"type": "keywords", "params": {"words": ["minecraft"]}},
-            {"type": "anyOf", "params": {
-              "scorers": [
-                {"type": "keywords", "params": {"words": ["title", "video"]}},
-                {"type": "regex", "params": {"pattern": "watch\\?v="}},
-                {"type": "keywords", "params": {"words": ["playing", "loaded"]}}
-              ]
-            }}
+            { "type": "keywords", "params": { "words": ["minecraft"] } },
+            {
+              "type": "anyOf",
+              "params": {
+                "scorers": [
+                  {
+                    "type": "keywords",
+                    "params": { "words": ["title", "video"] }
+                  },
+                  { "type": "regex", "params": { "pattern": "watch\\?v=" } },
+                  {
+                    "type": "keywords",
+                    "params": { "words": ["playing", "loaded"] }
+                  }
+                ]
+              }
+            }
           ]
         }
       },
