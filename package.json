@@ -1,12 +1,10 @@
 {
-  "name": "hono-server",
+  "name": "adival",
   "version": "1.0.0",
-  "description": "A Hono server with TypeScript for function execution",
-  "main": "src/index.ts",
+  "description": "Evaluation framework and apps",
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
-    "start": "bun run src/index.ts",
-    "build": "bun build src/index.ts --outdir ./dist --target bun",
+    "dev:app": "bun run --cwd apps/vite-react dev",
+    "eval": "bun run eval/run-eval.ts",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
