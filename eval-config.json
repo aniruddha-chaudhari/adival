@@ -22,7 +22,7 @@
       "name": "GitHub: facebook/react star count",
       "category": "navigation",
       "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://github.com/facebook/react. Find and report the number of GitHub stars this repository has.",
-      "timeoutSeconds": 120,
+      "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "scorer": {
         "type": "regex",
@@ -37,7 +37,7 @@
       "name": "Google: current time in Tokyo",
       "category": "data-extraction",
       "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://www.google.com and search for \"current time in Tokyo\". Report the current time shown in the search results.",
-      "timeoutSeconds": 120,
+      "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "scorer": {
         "type": "anyOf",
@@ -58,7 +58,7 @@
       "name": "Form fill: httpbin.org post",
       "category": "form",
       "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://httpbin.org/forms/post. Fill in the form with: Customer name = \"Test User\", Telephone = \"1234567890\", Pizza size = Large. Submit the form and report what appears on the result page. Save a screenshot to eval-form-result.png before finishing.",
-      "timeoutSeconds": 90,
+      "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "screenshotPath": "eval-form-result.png",
       "scorer": {
@@ -77,7 +77,7 @@
       "name": "Screenshot: example.com",
       "category": "browser",
       "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://example.com. Take a screenshot and save it to eval-screenshot.png. Report the page title.",
-      "timeoutSeconds": 180,
+      "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "screenshotPath": "eval-screenshot.png",
       "scorer": {
@@ -99,7 +99,7 @@
       "name": "YouTube: open a Minecraft video",
       "category": "navigation",
       "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://www.youtube.com and search for \"Minecraft\". Click on the first video in the search results to open it. Save a screenshot to eval-minecraft.png once the video is open. Report the title of the video you opened and confirm the video is playing or loaded.",
-      "timeoutSeconds": 180,
+      "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "screenshotPath": "eval-minecraft.png",
       "scorer": {

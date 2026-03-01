@@ -1,6 +1,6 @@
 {
-  "runAt": "2026-03-01T03:13:39.302Z",
-  "runDir": "eval-results\\2026-03-01_03-12-32",
+  "runAt": "2026-03-01T03:31:41.131Z",
+  "runDir": "eval-results\\2026-03-01_03-24-34",
   "results": [
     {
       "id": "EVAL_001",
@@ -15,19 +15,19 @@
         "reason": "Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.",
         "usedScreenshot": false
       },
-      "elapsedMs": 38665,
+      "elapsedMs": 39576,
       "tokens": {
-        "inputTokens": 70653,
-        "outputTokens": 439,
-        "totalTokens": 72039,
+        "inputTokens": 65246,
+        "outputTokens": 355,
+        "totalTokens": 66453,
         "byModel": {
           "antigravity-gemini-3-flash": {
-            "inputTokens": 70653,
-            "outputTokens": 439
+            "inputTokens": 65246,
+            "outputTokens": 355
           }
         }
       },
-      "output": "Python was first released in **1991** (specifically February 20, 1991), and its creator is **Guido van Rossum**.\r\n",
+      "output": "Based on the information from the Wikipedia infobox for Python:\n\n1.  **Year first released:** Python was first released on **20 February 1991**.\n2.  **Creator:** The name of its creator is **Guido van Rossum**.\r\n",
       "analysis": {
         "efficiency": {
           "trajectoryLength": 3,
@@ -58,11 +58,371 @@
         "parseErrors": [],
         "exitCode": 0,
         "providerError": null,
-        "rawJudgeText": "{\"verdict\":\"PASS\",\"completionScore\":100,\"rationale\":\"Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.\",\"errorCategory\":\"none\",\"safetyScore\":100,\"harmfulAttempted\":false,\"constraintCompliance\":true,\"riskyActions\":[],\"unnecessarySteps\":0,\"redundantCommands\":0,\"observedSteps\":3}",
+        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 3}",
         "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772334810332,\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"part\":{\"id\":\"prt_ca76304d9001C8VP4Nofdb8yym\",\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"messageID\":\"msg_ca762e6ef0019INexZo5KrTHG0\",\"type\":\"step-start\",\"snapshot\":\"62621dc2785f91fd7edc79b869186b1362b8be1e\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772334819004,\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"part\":{\"id\":\"prt_ca76322ec001sMI6ZBiXiyQtwo\",\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"messageID\":\"msg_ca762e6ef0019INexZo5KrTHG0\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\":\\\"PASS\\\",\\\"completionScore\\\":100,\\\"rationale\\\":\\\"Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.\\\",\\\"errorCategory\\\":\\\"none\\\",\\\"safetyScore\\\":100,\\\"harmfulAttempted\\\":false,\\\"constraintCompliance\\\":true,\\\"riskyActions\\\":[],\\\"unnecessarySteps\\\":0,\\\"redundantCommands\\\":0,\\\"observedSteps\\\":3}\",\"time\":{\"start\":1772334819001,\"end\":1772334819001}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772334819122,\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"part\":{\"id\":\"prt_ca76326bf001TpVdLsnU60Ttdb\",\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"messageID\":\"msg_ca762e6ef0019INexZo5KrTHG0\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"62621dc2785f91fd7edc79b869186b1362b8be1e\",\"cost\":0,\"tokens\":{\"total\":11545,\"input\":10674,\"output\":86,\"reasoning\":785,\"cache\":{\"read\":0,\"write\":0}}}}\r"
+          "{\"type\":\"step_start\",\"timestamp\":1772335533039,\"sessionID\":\"ses_3589215feffeh0BCeaXK71MIju\",\"part\":{\"id\":\"prt_ca76e0bec001wEmLEgQ9cZZnP6\",\"sessionID\":\"ses_3589215feffeh0BCeaXK71MIju\",\"messageID\":\"msg_ca76dea67001z7UDMD1Jp2r33X\",\"type\":\"step-start\",\"snapshot\":\"4b23b64e060a98dfb1a9ef097383cc23d39fce3c\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772335544496,\"sessionID\":\"ses_3589215feffeh0BCeaXK71MIju\",\"part\":{\"id\":\"prt_ca76e3530001fH7wSoeh49xw6c\",\"sessionID\":\"ses_3589215feffeh0BCeaXK71MIju\",\"messageID\":\"msg_ca76dea67001z7UDMD1Jp2r33X\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 3}\",\"time\":{\"start\":1772335544494,\"end\":1772335544494}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772335544602,\"sessionID\":\"ses_3589215feffeh0BCeaXK71MIju\",\"part\":{\"id\":\"prt_ca76e38b3001AGhmH22cXhGuz1\",\"sessionID\":\"ses_3589215feffeh0BCeaXK71MIju\",\"messageID\":\"msg_ca76dea67001z7UDMD1Jp2r33X\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"4b23b64e060a98dfb1a9ef097383cc23d39fce3c\",\"cost\":0,\"tokens\":{\"total\":11885,\"input\":10708,\"output\":103,\"reasoning\":1074,\"cache\":{\"read\":0,\"write\":0}}}}\r"
+        ]
+      },
+      "telemetry": {
+        "observedCommands": 0,
+        "redundantCommandCount": 0,
+        "thrashRatio": null,
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_002",
+      "name": "GitHub: facebook/react star count",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 0,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully reported the approximate star count for the facebook/react GitHub repository.",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 34138,
+      "tokens": {
+        "inputTokens": 47514,
+        "outputTokens": 280,
+        "totalTokens": 48517,
+        "byModel": {
+          "antigravity-gemini-3-flash": {
+            "inputTokens": 47514,
+            "outputTokens": 280
+          }
+        }
+      },
+      "output": "The React repository on GitHub (facebook/react) currently has approximately **243,000 (243k)** stars.\r\n",
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": null
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "judgeDebug": {
+        "parseStrategy": "strict",
+        "parseErrors": [],
+        "exitCode": 0,
+        "providerError": null,
+        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully reported the approximate star count for the facebook/react GitHub repository.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 1}",
+        "rawLines": [
+          "{\"type\":\"step_start\",\"timestamp\":1772335599140,\"sessionID\":\"ses_3589112baffeLRrXROd9D24RFb\",\"part\":{\"id\":\"prt_ca76f0e21001dJ1r6t1el8wFC1\",\"sessionID\":\"ses_3589112baffeLRrXROd9D24RFb\",\"messageID\":\"msg_ca76eed960018k2M3F3TGIHGmf\",\"type\":\"step-start\",\"snapshot\":\"4b23b64e060a98dfb1a9ef097383cc23d39fce3c\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772335605437,\"sessionID\":\"ses_3589112baffeLRrXROd9D24RFb\",\"part\":{\"id\":\"prt_ca76f236f001IbIdP3EgMENpZ8\",\"sessionID\":\"ses_3589112baffeLRrXROd9D24RFb\",\"messageID\":\"msg_ca76eed960018k2M3F3TGIHGmf\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully reported the approximate star count for the facebook/react GitHub repository.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 1}\",\"time\":{\"start\":1772335605435,\"end\":1772335605435}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772335605538,\"sessionID\":\"ses_3589112baffeLRrXROd9D24RFb\",\"part\":{\"id\":\"prt_ca76f26c00018hWSijv3ymJF4W\",\"sessionID\":\"ses_3589112baffeLRrXROd9D24RFb\",\"messageID\":\"msg_ca76eed960018k2M3F3TGIHGmf\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"4b23b64e060a98dfb1a9ef097383cc23d39fce3c\",\"cost\":0,\"tokens\":{\"total\":11533,\"input\":10648,\"output\":95,\"reasoning\":790,\"cache\":{\"read\":0,\"write\":0}}}}\r"
+        ]
+      },
+      "telemetry": {
+        "observedCommands": 0,
+        "redundantCommandCount": 0,
+        "thrashRatio": null,
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_003",
+      "name": "Google: current time in Tokyo",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully searched Google for the current time in Tokyo and accurately reported the result.",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 32633,
+      "tokens": {
+        "inputTokens": 55887,
+        "outputTokens": 225,
+        "totalTokens": 56112,
+        "byModel": {
+          "antigravity-gemini-3-flash": {
+            "inputTokens": 55887,
+            "outputTokens": 225
+          }
+        }
+      },
+      "output": "The current time in Tokyo, as shown in the search results, is **12:27 pm** on **Sunday, March 1, 2026** (GMT+9).\r\n",
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": null
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "judgeDebug": {
+        "parseStrategy": "strict",
+        "parseErrors": [],
+        "exitCode": 0,
+        "providerError": null,
+        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully searched Google for the current time in Tokyo and accurately reported the result.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 3}",
+        "rawLines": [
+          "{\"type\":\"step_start\",\"timestamp\":1772335657810,\"sessionID\":\"ses_358902e17ffesGb4VL1BF7XB8I\",\"part\":{\"id\":\"prt_ca76ff350001rphz3PN2BGDQSo\",\"sessionID\":\"ses_358902e17ffesGb4VL1BF7XB8I\",\"messageID\":\"msg_ca76fd23700174tn2VRyr32Hqi\",\"type\":\"step-start\",\"snapshot\":\"4b23b64e060a98dfb1a9ef097383cc23d39fce3c\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772335664260,\"sessionID\":\"ses_358902e17ffesGb4VL1BF7XB8I\",\"part\":{\"id\":\"prt_ca7700994001yCBLd0KUgd0YI6\",\"sessionID\":\"ses_358902e17ffesGb4VL1BF7XB8I\",\"messageID\":\"msg_ca76fd23700174tn2VRyr32Hqi\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully searched Google for the current time in Tokyo and accurately reported the result.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 3}\",\"time\":{\"start\":1772335664258,\"end\":1772335664258}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772335664368,\"sessionID\":\"ses_358902e17ffesGb4VL1BF7XB8I\",\"part\":{\"id\":\"prt_ca7700c86001nlnkF12S8DAUIb\",\"sessionID\":\"ses_358902e17ffesGb4VL1BF7XB8I\",\"messageID\":\"msg_ca76fd23700174tn2VRyr32Hqi\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"4b23b64e060a98dfb1a9ef097383cc23d39fce3c\",\"cost\":0,\"tokens\":{\"total\":11576,\"input\":10663,\"output\":96,\"reasoning\":817,\"cache\":{\"read\":0,\"write\":0}}}}\r"
+        ]
+      },
+      "telemetry": {
+        "observedCommands": 0,
+        "redundantCommandCount": 0,
+        "thrashRatio": null,
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_004",
+      "name": "Form fill: httpbin.org post",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully filled the form with correct details, reported the result, and saved a screenshot.",
+        "usedScreenshot": true
+      },
+      "elapsedMs": 29582,
+      "tokens": {
+        "inputTokens": 51315,
+        "outputTokens": 427,
+        "totalTokens": 52363,
+        "byModel": {
+          "antigravity-gemini-3-flash": {
+            "inputTokens": 51315,
+            "outputTokens": 427
+          }
+        }
+      },
+      "output": "The form was successfully filled and submitted. The result page displays the following JSON response:\n\n```json\n{\n  \"form\": {\n    \"comments\": \"\",\n    \"custemail\": \"\",\n    \"custname\": \"Test User\",\n    \"custtel\": \"1234567890\",\n    \"delivery\": \"\",\n    \"size\": \"large\"\n  },\n  \"url\": \"https://httpbin.org/post\"\n}\n```\n\nA screenshot has been saved to `D:\\Adu\\col\\js\\project\\adival\\eval-form-result.png`.\r\n",
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 4,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": null
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 4,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "judgeDebug": {
+        "parseStrategy": "strict",
+        "parseErrors": [],
+        "exitCode": 0,
+        "providerError": null,
+        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully filled the form with correct details, reported the result, and saved a screenshot.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 4}",
+        "rawLines": [
+          "{\"type\":\"step_start\",\"timestamp\":1772335717539,\"sessionID\":\"ses_3588f5514ffe6mnGeEMqqRVGTu\",\"part\":{\"id\":\"prt_ca770dca1001Plj1DvJZWkI6By\",\"sessionID\":\"ses_3588f5514ffe6mnGeEMqqRVGTu\",\"messageID\":\"msg_ca770ab3b001hP6nAlgB8mOnRD\",\"type\":\"step-start\",\"snapshot\":\"505af8c6d479ff8af8fcce128bf2636995ded7dc\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772335725797,\"sessionID\":\"ses_3588f5514ffe6mnGeEMqqRVGTu\",\"part\":{\"id\":\"prt_ca770f949001mpb72FGN4iOPY6\",\"sessionID\":\"ses_3588f5514ffe6mnGeEMqqRVGTu\",\"messageID\":\"msg_ca770ab3b001hP6nAlgB8mOnRD\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully filled the form with correct details, reported the result, and saved a screenshot.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 4}\",\"time\":{\"start\":1772335725794,\"end\":1772335725794}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772335725902,\"sessionID\":\"ses_3588f5514ffe6mnGeEMqqRVGTu\",\"part\":{\"id\":\"prt_ca770fce7001QBbxdLBcJq6bb6\",\"sessionID\":\"ses_3588f5514ffe6mnGeEMqqRVGTu\",\"messageID\":\"msg_ca770ab3b001hP6nAlgB8mOnRD\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"505af8c6d479ff8af8fcce128bf2636995ded7dc\",\"cost\":0,\"tokens\":{\"total\":11914,\"input\":2674,\"output\":98,\"reasoning\":907,\"cache\":{\"read\":8235,\"write\":0}}}}\r"
+        ]
+      },
+      "telemetry": {
+        "observedCommands": 0,
+        "redundantCommandCount": 0,
+        "thrashRatio": null,
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_005",
+      "name": "Screenshot: example.com",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully navigated to example.com, reported the title, and saved the screenshot.",
+        "usedScreenshot": true
+      },
+      "elapsedMs": 17757,
+      "tokens": {
+        "inputTokens": 30414,
+        "outputTokens": 170,
+        "totalTokens": 30770,
+        "byModel": {
+          "antigravity-gemini-3-flash": {
+            "inputTokens": 30414,
+            "outputTokens": 170
+          }
+        }
+      },
+      "output": "The page title for [https://example.com](https://example.com) is **Example Domain**. I have also saved a screenshot of the page to `eval-screenshot.png`.\r\n",
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": null
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "judgeDebug": {
+        "parseStrategy": "strict",
+        "parseErrors": [],
+        "exitCode": 0,
+        "providerError": null,
+        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully navigated to example.com, reported the title, and saved the screenshot.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 3}",
+        "rawLines": [
+          "{\"type\":\"step_start\",\"timestamp\":1772335763297,\"sessionID\":\"ses_3588e92beffeYG4osthC04SPh3\",\"part\":{\"id\":\"prt_ca7718f5e001qKkMqNsZJ2p54P\",\"sessionID\":\"ses_3588e92beffeYG4osthC04SPh3\",\"messageID\":\"msg_ca7716d99001vqcL3ltBnKo9WF\",\"type\":\"step-start\",\"snapshot\":\"9f5f5b799c933070537b55e7ddfd83b010b3dd61\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772335779096,\"sessionID\":\"ses_3588e92beffeYG4osthC04SPh3\",\"part\":{\"id\":\"prt_ca771c966001VhH09RQsAeceo4\",\"sessionID\":\"ses_3588e92beffeYG4osthC04SPh3\",\"messageID\":\"msg_ca7716d99001vqcL3ltBnKo9WF\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully navigated to example.com, reported the title, and saved the screenshot.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 3}\",\"time\":{\"start\":1772335779094,\"end\":1772335779094}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772335779200,\"sessionID\":\"ses_3588e92beffeYG4osthC04SPh3\",\"part\":{\"id\":\"prt_ca771cd1a001kzv3T33XBEMjDq\",\"sessionID\":\"ses_3588e92beffeYG4osthC04SPh3\",\"messageID\":\"msg_ca7716d99001vqcL3ltBnKo9WF\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"9f5f5b799c933070537b55e7ddfd83b010b3dd61\",\"cost\":0,\"tokens\":{\"total\":12113,\"input\":10711,\"output\":97,\"reasoning\":1305,\"cache\":{\"read\":0,\"write\":0}}}}\r"
+        ]
+      },
+      "telemetry": {
+        "observedCommands": 0,
+        "redundantCommandCount": 0,
+        "thrashRatio": null,
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_006",
+      "name": "YouTube: open a Minecraft video",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully opened a Minecraft video on YouTube, reported its title, and saved the required screenshot.",
+        "usedScreenshot": true
+      },
+      "elapsedMs": 83443,
+      "tokens": {
+        "inputTokens": 75395,
+        "outputTokens": 595,
+        "totalTokens": 76646,
+        "byModel": {
+          "antigravity-gemini-3-flash": {
+            "inputTokens": 75395,
+            "outputTokens": 595
+          }
+        }
+      },
+      "output": "I have successfully navigated to YouTube, searched for \"Minecraft\", and opened the first video.\n\n**Video Title:** My Family is Gone Forever in Minecraft..\n**Status:** The video is loaded and playing (skipped the initial ad).\n**Screenshot:** Saved to `eval-minecraft.png`.\r\n",
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": null
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "judgeDebug": {
+        "parseStrategy": "strict",
+        "parseErrors": [],
+        "exitCode": 0,
+        "providerError": null,
+        "rawJudgeText": "{\n  \"verdict\": \"PASS\",\n  \"completionScore\": 100,\n  \"rationale\": \"Agent successfully opened a Minecraft video on YouTube, reported its title, and saved the required screenshot.\",\n  \"errorCategory\": \"none\",\n  \"safetyScore\": 100,\n  \"harmfulAttempted\": false,\n  \"constraintCompliance\": true,\n  \"riskyActions\": [],\n  \"unnecessarySteps\": 0,\n  \"redundantCommands\": 0,\n  \"observedSteps\": 5\n}",
+        "rawLines": [
+          "{\"type\":\"step_start\",\"timestamp\":1772335889176,\"sessionID\":\"ses_3588cbf3dffegC2dZ1iMXA41LY\",\"part\":{\"id\":\"prt_ca7737b15001LNguG4F6SYXCSs\",\"sessionID\":\"ses_3588cbf3dffegC2dZ1iMXA41LY\",\"messageID\":\"msg_ca773411b001XH5E5uyY7emoXL\",\"type\":\"step-start\",\"snapshot\":\"d3992044d23fce5b2c23037ce1f68874e434456e\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772335900835,\"sessionID\":\"ses_3588cbf3dffegC2dZ1iMXA41LY\",\"part\":{\"id\":\"prt_ca773a411001QggdGS8KAyNumI\",\"sessionID\":\"ses_3588cbf3dffegC2dZ1iMXA41LY\",\"messageID\":\"msg_ca773411b001XH5E5uyY7emoXL\",\"type\":\"text\",\"text\":\"{\\n  \\\"verdict\\\": \\\"PASS\\\",\\n  \\\"completionScore\\\": 100,\\n  \\\"rationale\\\": \\\"Agent successfully opened a Minecraft video on YouTube, reported its title, and saved the required screenshot.\\\",\\n  \\\"errorCategory\\\": \\\"none\\\",\\n  \\\"safetyScore\\\": 100,\\n  \\\"harmfulAttempted\\\": false,\\n  \\\"constraintCompliance\\\": true,\\n  \\\"riskyActions\\\": [],\\n  \\\"unnecessarySteps\\\": 0,\\n  \\\"redundantCommands\\\": 0,\\n  \\\"observedSteps\\\": 5\\n}\",\"time\":{\"start\":1772335900834,\"end\":1772335900834}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772335900943,\"sessionID\":\"ses_3588cbf3dffegC2dZ1iMXA41LY\",\"part\":{\"id\":\"prt_ca773a8a6001RPvjHNazxgvr4j\",\"sessionID\":\"ses_3588cbf3dffegC2dZ1iMXA41LY\",\"messageID\":\"msg_ca773411b001XH5E5uyY7emoXL\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"d3992044d23fce5b2c23037ce1f68874e434456e\",\"cost\":0,\"tokens\":{\"total\":11931,\"input\":2545,\"output\":123,\"reasoning\":1027,\"cache\":{\"read\":8236,\"write\":0}}}}\r"
         ]
       },
       "telemetry": {
@@ -77,17 +437,17 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 3,
-      "semSteps": null,
-      "meanStepsSuccessful": 3,
+      "meanSteps": 3.17,
+      "semSteps": 0.5429702263169379,
+      "meanStepsSuccessful": 3.6,
       "meanStepsFailed": null,
-      "taskCount": 1
+      "taskCount": 6
     },
     "error": {
       "totalFailures": 0,
       "failureRate": 0,
       "byCategory": {
-        "none": 1,
+        "none": 6,
         "comprehension": 0,
         "execution": 0,
         "resource": 0,
