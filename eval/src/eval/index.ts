@@ -11,87 +11,83 @@
 
 // ── Types ──────────────────────────────────────────────────────────────────
 export type {
-    TaskDefinition,
-    TaskCategory,
-    InitialState,
-    Cookie,
-    SuccessCriteria,
-    DOMCheck,
-    SubGoal,
-    SubGoalVerification,
-    TaskLimits,
-    BrowserState,
-    AgentAction,
-    ActionType,
-    ExecutionMetrics,
-    SubGoalResult,
-    VerificationResult,
-    TaskResult,
-    EvalSuite,
-    EvalRun,
-    EvalSummary,
-    FailureMode,
-    FailureModeType,
-    EvalConfig,
-    AgentInterface,
-    AgentTask,
-    AgentResponse,
+  TaskDefinition,
+  TaskCategory,
+  InitialState,
+  Cookie,
+  SuccessCriteria,
+  DOMCheck,
+  SubGoal,
+  SubGoalVerification,
+  TaskLimits,
+  BrowserState,
+  AgentAction,
+  ActionType,
+  ExecutionMetrics,
+  SubGoalResult,
+  VerificationResult,
+  TaskResult,
+  EvalSuite,
+  EvalRun,
+  EvalSummary,
+  FailureMode,
+  FailureModeType,
+  EvalConfig,
+  AgentInterface,
+  AgentTask,
+  AgentResponse,
 } from "./types";
 
 // ── Verification ───────────────────────────────────────────────────────────
 export {
-    verifyTaskCompletion,
-    registerCustomVerification,
-    runCustomVerification,
-    calculatePartialScore,
-    categorizeFailure,
+  verifyTaskCompletion,
+  registerCustomVerification,
+  runCustomVerification,
+  calculatePartialScore,
+  categorizeFailure,
 } from "./verification";
 
 // ── Metrics ────────────────────────────────────────────────────────────────
 export {
-    MetricsCollector,
-    aggregateResults,
-    formatSummary,
-    formatTaskResult,
-    exportResultsJSON,
+  MetricsCollector,
+  aggregateResults,
+  formatSummary,
+  formatTaskResult,
+  exportResultsJSON,
 } from "./metrics";
 
 // ── Runner ─────────────────────────────────────────────────────────────────
-export {
-    runTask,
-    runAllTasks,
-    type TaskRunResult,
-} from "./runner";
+export { runTask, runAllTasks, type TaskRunResult } from "./runner";
 
 // ── Tasks ──────────────────────────────────────────────────────────────────
 export {
-    flightSearchTask,
-    productSearchTask,
-    formFillingTask,
-    dataExtractionTask,
-    multiStepNavigationTask,
-    sampleEvalSuite,
-    registerTask,
-    getTask,
-    getAllTasks,
-    getTasksByCategory,
+  flightSearchTask,
+  productSearchTask,
+  formFillingTask,
+  dataExtractionTask,
+  multiStepNavigationTask,
+  sampleEvalSuite,
+  registerTask,
+  getTask,
+  getAllTasks,
+  getTasksByCategory,
 } from "./tasks/index";
 
 // ── OpenCode Runner ────────────────────────────────────────────────────────
 export {
-    opencodeRun,
-    opencodeRunWithTiming,
-    opencodeRunMultiModel,
-    opencodeRunWithTokens,
+  opencodeRun,
+  opencodeRunWithTiming,
+  opencodeRunMultiModel,
+  opencodeRunWithTokens,
 } from "./opencode-run";
 
 // ── Token Usage ────────────────────────────────────────────────────────────
 export {
-    listSessions,
-    getLatestSessionId,
-    exportSession,
-    getSessionTokens,
-    getLatestSessionTokens,
-    getSessionTokensSince,
-    type TokenUsage,
+  listSessions,
+  getLatestSessionId,
+  exportSession,
+  getSessionTokens,
+  getLatestSessionTokens,
+  getSessionTokensSince,
+  type TokenUsage,
 } from "./opencode-tokens";

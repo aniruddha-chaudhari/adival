@@ -17,7 +17,7 @@ const doc = new Document({
   ],
 });
 
-Packer.toBuffer(doc).then((buffer) => {
+Packer.toBuffer(doc).then(buffer => {
   fs.writeFileSync(filePath, buffer);
   console.log(`Document saved to: ${filePath}`);
 });

@@ -6,6 +6,7 @@
  */
 
 import type { EvalTask } from "./tasks";
+import { DEFAULT_MODEL } from "./tasks";
 import { getSessionTokensSince, type TokenUsage } from "./opencode-tokens";
 import { judgeTask, type JudgeResult } from "./judge";
 import { extractTelemetry, type TelemetryResult } from "./telemetry";
@@ -15,6 +16,8 @@ import type { JudgeDebug } from "./judge/engine";
 export interface TaskRunResult {
   taskId: string;
   taskName: string;
+  /** Model used to run this task */
+  model: string;
   status: "pass" | "partial" | "fail" | "error" | "timeout";
   /** Keyword/regex score 0–100 */
   keywordScore: number;
@@ -44,10 +47,7 @@ const PARTIAL_THRESHOLD = 30;
 /**
  * Run a single task: spawn opencode, capture full output, score it.
  */
-export async function runTask(
-  task: EvalTask,
-  runDir?: string,
-): Promise<TaskRunResult> {
+export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunResult> {
   const timeoutMs = (task.timeoutSeconds ?? 120) * 1000;
   const start = Date.now();
 
@@ -63,6 +63,7 @@ export async function runTask(
     return {
       taskId: task.id,
       taskName: task.name,
+      model: task.model || "DEFAULT_MODEL",
       status: error.includes("timeout") ? "timeout" : "error",
       keywordScore: 0,
       judgeScore: null,
@@ -94,16 +95,9 @@ export async function runTask(
   let judgeScore: number | null = null;
 
   if (task.llmJudge) {
-    judge = await judgeTask(
-      task.name,
-      task.prompt,
-      output,
-      task.screenshotPath,
-      runDir,
-      {
-        humanBaselineSteps: task.humanBaselineSteps,
-      },
-    ).catch((e) => ({
+    judge = await judgeTask(task.name, task.prompt, output, task.screenshotPath, runDir, {
+      humanBaselineSteps: task.humanBaselineSteps,
+    }).catch(e => ({
       verdict: "FAIL" as const,
       score: 0,
       reason: `Judge error: ${e instanceof Error ? e.message : String(e)}`,
@@ -113,21 +107,14 @@ export async function runTask(
   }
 
   // ── 6. Final score = average of both (or just keyword if no judge) ────────
-  const score =
-    judgeScore !== null
-      ? Math.round((keywordScore + judgeScore) / 2)
-      : keywordScore;
+  const score = judgeScore !== null ? Math.round((keywordScore + judgeScore) / 2) : keywordScore;
 
-  const status =
-    score >= PASS_THRESHOLD
-      ? "pass"
-      : score >= PARTIAL_THRESHOLD
-        ? "partial"
-        : "fail";
+  const status = score >= PASS_THRESHOLD ? "pass" : score >= PARTIAL_THRESHOLD ? "partial" : "fail";
 
   return {
     taskId: task.id,
     taskName: task.name,
+    model: task.model || "DEFAULT_MODEL",
     status,
     keywordScore,
     judgeScore,
@@ -148,7 +135,7 @@ export async function runTask(
 export async function runAllTasks(
   tasks: EvalTask[],
   runDir?: string,
-  onResult?: (result: TaskRunResult) => void,
+  onResult?: (result: TaskRunResult) => void
 ): Promise<TaskRunResult[]> {
   const results: TaskRunResult[] = [];
   for (const task of tasks) {
@@ -164,12 +151,12 @@ export async function runAllTasks(
 async function runOpencode(
   prompt: string,
   model: string | undefined,
-  timeoutMs: number,
+  timeoutMs: number
 ): Promise<string> {
   const args = ["run", prompt];
   if (model) args.push("--model", model);
   // Default model if none specified
-  if (!model) args.push("--model", "google/antigravity-gemini-3.1-pro");
+  if (!model) args.push("--model", "DEFAULT_MODEL");
 
   const proc = Bun.spawn(["opencode", ...args], {
     cwd: process.cwd(),
@@ -192,20 +179,16 @@ async function runOpencode(
 
   if (exitCode !== 0) {
     // Include stderr in the error message for diagnostics
-    const detail = stderr.trim()
-      ? `stderr: ${stderr.trim().slice(0, 300)}`
-      : stdout.slice(0, 200);
+    const detail = stderr.trim() ? `stderr: ${stderr.trim().slice(0, 300)}` : stdout.slice(0, 200);
     throw new Error(`opencode exited with code ${exitCode}: ${detail}`);
   }
 
   // Detect silent failures: model errors exit with code 0 but produce no output
   if (!stdout.trim()) {
     const stderrSnippet = stderr.trim().slice(0, 400);
-    const hint = stderrSnippet
-      ? ` (stderr: ${stderrSnippet})`
-      : " (no stderr output either)";
+    const hint = stderrSnippet ? ` (stderr: ${stderrSnippet})` : " (no stderr output either)";
     throw new Error(
-      `opencode returned empty output — possible model or configuration error${hint}`,
+      `opencode returned empty output — possible model or configuration error${hint}`
     );
   }
 
@@ -217,14 +200,11 @@ async function collectOutput(proc: ReturnType<typeof Bun.spawn>) {
     if (!s || typeof s !== "object") return "";
     return new Response(s as ReadableStream).text();
   };
-  const [stdout, stderr] = await Promise.all([
-    readStream(proc.stdout),
-    readStream(proc.stderr),
-  ]);
+  const [stdout, stderr] = await Promise.all([readStream(proc.stdout), readStream(proc.stderr)]);
   const exitCode = await proc.exited;
   return { stdout, stderr, exitCode };
 }
 
 function timeout(ms: number): Promise<"TIMEOUT"> {
-  return new Promise((resolve) => setTimeout(() => resolve("TIMEOUT"), ms));
+  return new Promise(resolve => setTimeout(() => resolve("TIMEOUT"), ms));
 }

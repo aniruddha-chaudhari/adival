@@ -10,23 +10,14 @@ const os = require("os");
 // --- Helper to find Chrome path using environment variables ---
 function findChromePath() {
   const possiblePaths = [
-    path.join(
-      process.env.LOCALAPPDATA,
-      "Google\\Chrome\\Application\\chrome.exe",
-    ),
-    path.join(
-      process.env.PROGRAMFILES,
-      "Google\\Chrome\\Application\\chrome.exe",
-    ),
+    path.join(process.env.LOCALAPPDATA, "Google\\Chrome\\Application\\chrome.exe"),
+    path.join(process.env.PROGRAMFILES, "Google\\Chrome\\Application\\chrome.exe"),
   ];
 
   // Add PROGRAMFILES(X86) if it exists
   if (process.env["PROGRAMFILES(X86)"]) {
     possiblePaths.push(
-      path.join(
-        process.env["PROGRAMFILES(X86)"],
-        "Google\\Chrome\\Application\\chrome.exe",
-      ),
+      path.join(process.env["PROGRAMFILES(X86)"], "Google\\Chrome\\Application\\chrome.exe")
     );
   }
 
@@ -51,11 +42,11 @@ const crawlConfig = {
 };
 
 function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function isDebugPortOpen() {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const socket = createConnection({
       port: crawlConfig.debugPort,
       host: crawlConfig.cdpAddress,
@@ -83,7 +74,7 @@ async function waitForDebugPort() {
     await sleep(500);
   }
   throw new Error(
-    `Chrome failed to open debug port within ${crawlConfig.connectionTimeoutMs / 1000}s`,
+    `Chrome failed to open debug port within ${crawlConfig.connectionTimeoutMs / 1000}s`
   );
 }
 
@@ -110,7 +101,7 @@ async function launchChrome(options = {}) {
   (await waitForDebugPort(),
     await Promise.race([
       new Promise((_, reject) => {
-        chromeProcess.once("error", (err) => {
+        chromeProcess.once("error", err => {
           reject(new Error(`Failed to launch Chrome: ${err.message}`));
         });
       }),
@@ -125,10 +116,7 @@ async function launchChrome(options = {}) {
     console.log("launchChrome finished successfully.");
     process.exit(0);
   } catch (err) {
-    console.error(
-      "launchChrome failed:",
-      err && err.message ? err.message : err,
-    );
+    console.error("launchChrome failed:", err && err.message ? err.message : err);
     process.exit(1);
   }
 })();

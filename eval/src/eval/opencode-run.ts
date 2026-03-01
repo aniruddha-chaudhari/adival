@@ -51,7 +51,7 @@ export async function opencodeRun(options: RunOptions): Promise<string> {
   if (options.agent) args.push("--agent", options.agent);
 
   const proc = Bun.spawn([OPENCODE, ...args], {
-    cwd: process.cwd(),  // Use current working directory to pick up opencode.json
+    cwd: process.cwd(), // Use current working directory to pick up opencode.json
     stdout: "pipe",
     stderr: "pipe",
     stdin: "inherit",
@@ -120,7 +120,6 @@ export async function opencodeRunWithTokens(
   return { output, elapsedMs, tokens };
 }
 
-
 // CLI: parse args and run
 async function main() {
   const argv = process.argv.slice(2);
@@ -135,10 +134,8 @@ async function main() {
     else if (arg === "--quiet" || arg === "-q") options.quiet = true;
     else if (arg === "--model" || arg === "-m") {
       const modelName = argv[++i];
-      options.model =
-        DEFAULT_MODELS[modelName as keyof typeof DEFAULT_MODELS] || modelName;
-    }
-    else if (arg === "--agent") options.agent = argv[++i];
+      options.model = DEFAULT_MODELS[modelName as keyof typeof DEFAULT_MODELS] || modelName;
+    } else if (arg === "--agent") options.agent = argv[++i];
     else if (arg === "--models") {
       // Support --models flash pro or --models "model1" "model2"
       while (i + 1 < argv.length) {
@@ -147,8 +144,7 @@ async function main() {
         const modelName = argv[++i];
         if (!modelName) break;
         // Map shorthand names to full model IDs
-        const fullModelId =
-          DEFAULT_MODELS[modelName as keyof typeof DEFAULT_MODELS] || modelName;
+        const fullModelId = DEFAULT_MODELS[modelName as keyof typeof DEFAULT_MODELS] || modelName;
         models.push(fullModelId);
       }
     }
@@ -200,7 +196,7 @@ Default model shortcuts:
 
 // Only run main() if this file is executed directly (not imported)
 if (import.meta.main) {
-  main().catch((err) => {
+  main().catch(err => {
     console.error(err);
     process.exit(1);
   });

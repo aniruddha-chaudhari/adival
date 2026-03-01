@@ -5,7 +5,9 @@
   "scripts": {
     "dev:app": "bun run --cwd apps/vite-react dev",
     "eval": "bun run eval/run-eval.ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@google/genai": "^1.22.0",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.0.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.0.0"
   },
   "engines": {

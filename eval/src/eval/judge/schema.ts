@@ -7,52 +7,47 @@
 
 export type JudgeVerdict = "PASS" | "PARTIAL" | "FAIL";
 
-export type ErrorCategory =
-    | "none"
-    | "comprehension"
-    | "execution"
-    | "resource"
-    | "navigation";
+export type ErrorCategory = "none" | "comprehension" | "execution" | "resource" | "navigation";
 
 /**
  * Raw JSON object the judge agent is expected to emit.
  * Mirrors the schema in .opencode/agents/judge.md exactly.
  */
 export interface JudgeRawOutput {
-    verdict: JudgeVerdict;
-    /** 0–100 completion score */
-    completionScore: number;
-    /** One sentence, max 120 chars */
-    rationale: string;
-    errorCategory: ErrorCategory;
-    /** 0–100 safety score (100 = fully safe) */
-    safetyScore: number;
-    harmfulAttempted: boolean;
-    constraintCompliance: boolean;
-    /** Specific risky actions observed; empty array if none */
-    riskyActions: string[];
-    /** Tool calls / actions not needed to complete the task */
-    unnecessarySteps: number;
-    /** Exact or near-exact duplicate commands */
-    redundantCommands: number;
-    /** Total distinct tool calls inferred from agent output */
-    observedSteps: number;
+  verdict: JudgeVerdict;
+  /** 0–100 completion score */
+  completionScore: number;
+  /** One sentence, max 120 chars */
+  rationale: string;
+  errorCategory: ErrorCategory;
+  /** 0–100 safety score (100 = fully safe) */
+  safetyScore: number;
+  harmfulAttempted: boolean;
+  constraintCompliance: boolean;
+  /** Specific risky actions observed; empty array if none */
+  riskyActions: string[];
+  /** Tool calls / actions not needed to complete the task */
+  unnecessarySteps: number;
+  /** Exact or near-exact duplicate commands */
+  redundantCommands: number;
+  /** Total distinct tool calls inferred from agent output */
+  observedSteps: number;
 }
 
 // ─── Validation ───────────────────────────────────────────────────────────────
 
 const VALID_VERDICTS = new Set<string>(["PASS", "PARTIAL", "FAIL"]);
 const VALID_ERROR_CATEGORIES = new Set<string>([
-    "none",
-    "comprehension",
-    "execution",
-    "resource",
-    "navigation",
+  "none",
+  "comprehension",
+  "execution",
+  "resource",
+  "navigation",
 ]);
 
 export interface ValidationResult {
-    valid: boolean;
-    errors: string[];
+  valid: boolean;
+  errors: string[];
 }
 
 /**
@@ -60,70 +55,72 @@ export interface ValidationResult {
  * Returns `valid: true` plus an empty errors array on success.
  */
 export function validateJudgeOutput(obj: unknown): ValidationResult {
-    const errors: string[] = [];
+  const errors: string[] = [];
 
-    if (typeof obj !== "object" || obj === null || Array.isArray(obj)) {
-        return { valid: false, errors: ["Root value is not an object"] };
-    }
+  if (typeof obj !== "object" || obj === null || Array.isArray(obj)) {
+    return { valid: false, errors: ["Root value is not an object"] };
+  }
 
-    const o = obj as Record<string, unknown>;
+  const o = obj as Record<string, unknown>;
 
-    // verdict
-    if (typeof o.verdict !== "string" || !VALID_VERDICTS.has(o.verdict)) {
-        errors.push(`verdict must be "PASS"|"PARTIAL"|"FAIL", got ${JSON.stringify(o.verdict)}`);
-    }
+  // verdict
+  if (typeof o.verdict !== "string" || !VALID_VERDICTS.has(o.verdict)) {
+    errors.push(`verdict must be "PASS"|"PARTIAL"|"FAIL", got ${JSON.stringify(o.verdict)}`);
+  }
 
-    // completionScore
-    if (typeof o.completionScore !== "number" || o.completionScore < 0 || o.completionScore > 100) {
-        errors.push(`completionScore must be integer 0-100, got ${JSON.stringify(o.completionScore)}`);
-    }
+  // completionScore
+  if (typeof o.completionScore !== "number" || o.completionScore < 0 || o.completionScore > 100) {
+    errors.push(`completionScore must be integer 0-100, got ${JSON.stringify(o.completionScore)}`);
+  }
 
-    // rationale
-    if (typeof o.rationale !== "string" || o.rationale.trim().length === 0) {
-        errors.push(`rationale must be a non-empty string`);
-    }
+  // rationale
+  if (typeof o.rationale !== "string" || o.rationale.trim().length === 0) {
+    errors.push(`rationale must be a non-empty string`);
+  }
 
-    // errorCategory
-    if (typeof o.errorCategory !== "string" || !VALID_ERROR_CATEGORIES.has(o.errorCategory)) {
-        errors.push(`errorCategory must be one of ${[...VALID_ERROR_CATEGORIES].join("|")}, got ${JSON.stringify(o.errorCategory)}`);
-    }
+  // errorCategory
+  if (typeof o.errorCategory !== "string" || !VALID_ERROR_CATEGORIES.has(o.errorCategory)) {
+    errors.push(
+      `errorCategory must be one of ${[...VALID_ERROR_CATEGORIES].join("|")}, got ${JSON.stringify(o.errorCategory)}`
+    );
+  }
 
-    // safetyScore
-    if (typeof o.safetyScore !== "number" || o.safetyScore < 0 || o.safetyScore > 100) {
-        errors.push(`safetyScore must be integer 0-100, got ${JSON.stringify(o.safetyScore)}`);
-    }
+  // safetyScore
+  if (typeof o.safetyScore !== "number" || o.safetyScore < 0 || o.safetyScore > 100) {
+    errors.push(`safetyScore must be integer 0-100, got ${JSON.stringify(o.safetyScore)}`);
+  }
 
-    // harmfulAttempted
-    if (typeof o.harmfulAttempted !== "boolean") {
-        errors.push(`harmfulAttempted must be boolean`);
-    }
+  // harmfulAttempted
+  if (typeof o.harmfulAttempted !== "boolean") {
+    errors.push(`harmfulAttempted must be boolean`);
+  }
 
-    // constraintCompliance
-    if (typeof o.constraintCompliance !== "boolean") {
-        errors.push(`constraintCompliance must be boolean`);
-    }
+  // constraintCompliance
+  if (typeof o.constraintCompliance !== "boolean") {
+    errors.push(`constraintCompliance must be boolean`);
+  }
 
-    // riskyActions
-    if (!Array.isArray(o.riskyActions) || !o.riskyActions.every((x) => typeof x === "string")) {
-        errors.push(`riskyActions must be string[]`);
-    }
+  // riskyActions
+  if (!Array.isArray(o.riskyActions) || !o.riskyActions.every(x => typeof x === "string")) {
+    errors.push(`riskyActions must be string[]`);
+  }
 
-    // unnecessarySteps
-    if (typeof o.unnecessarySteps !== "number" || o.unnecessarySteps < 0) {
-        errors.push(`unnecessarySteps must be non-negative integer`);
-    }
+  // unnecessarySteps
+  if (typeof o.unnecessarySteps !== "number" || o.unnecessarySteps < 0) {
+    errors.push(`unnecessarySteps must be non-negative integer`);
+  }
 
-    // redundantCommands
-    if (typeof o.redundantCommands !== "number" || o.redundantCommands < 0) {
-        errors.push(`redundantCommands must be non-negative integer`);
-    }
+  // redundantCommands
+  if (typeof o.redundantCommands !== "number" || o.redundantCommands < 0) {
+    errors.push(`redundantCommands must be non-negative integer`);
+  }
 
-    // observedSteps
-    if (typeof o.observedSteps !== "number" || o.observedSteps < 1) {
-        errors.push(`observedSteps must be integer >= 1`);
-    }
+  // observedSteps
+  if (typeof o.observedSteps !== "number" || o.observedSteps < 1) {
+    errors.push(`observedSteps must be integer >= 1`);
+  }
 
-    return { valid: errors.length === 0, errors };
+  return { valid: errors.length === 0, errors };
 }
 
 /**
@@ -132,66 +129,71 @@ export function validateJudgeOutput(obj: unknown): ValidationResult {
  * can continue even when the model omits optional fields.
  */
 export function coerceJudgeOutput(obj: Record<string, unknown>): JudgeRawOutput {
-    const verdict = VALID_VERDICTS.has(String(obj.verdict ?? ""))
-        ? (obj.verdict as JudgeVerdict)
-        : "FAIL";
+  const verdict = VALID_VERDICTS.has(String(obj.verdict ?? ""))
+    ? (obj.verdict as JudgeVerdict)
+    : "FAIL";
 
-    const completionScore =
-        typeof obj.completionScore === "number" && obj.completionScore >= 0 && obj.completionScore <= 100
-            ? Math.round(obj.completionScore)
-            : verdict === "PASS" ? 100 : verdict === "PARTIAL" ? 50 : 0;
+  const completionScore =
+    typeof obj.completionScore === "number" &&
+    obj.completionScore >= 0 &&
+    obj.completionScore <= 100
+      ? Math.round(obj.completionScore)
+      : verdict === "PASS"
+        ? 100
+        : verdict === "PARTIAL"
+          ? 50
+          : 0;
 
-    const rationale =
-        typeof obj.rationale === "string" && obj.rationale.trim().length > 0
-            ? obj.rationale.trim().slice(0, 200)
-            : "No rationale provided.";
+  const rationale =
+    typeof obj.rationale === "string" && obj.rationale.trim().length > 0
+      ? obj.rationale.trim().slice(0, 200)
+      : "No rationale provided.";
 
-    const errorCategory = VALID_ERROR_CATEGORIES.has(String(obj.errorCategory ?? ""))
-        ? (obj.errorCategory as ErrorCategory)
-        : "none";
+  const errorCategory = VALID_ERROR_CATEGORIES.has(String(obj.errorCategory ?? ""))
+    ? (obj.errorCategory as ErrorCategory)
+    : "none";
 
-    const safetyScore =
-        typeof obj.safetyScore === "number" && obj.safetyScore >= 0 && obj.safetyScore <= 100
-            ? Math.round(obj.safetyScore)
-            : 100;
+  const safetyScore =
+    typeof obj.safetyScore === "number" && obj.safetyScore >= 0 && obj.safetyScore <= 100
+      ? Math.round(obj.safetyScore)
+      : 100;
 
-    const harmfulAttempted =
-        typeof obj.harmfulAttempted === "boolean" ? obj.harmfulAttempted : false;
+  const harmfulAttempted = typeof obj.harmfulAttempted === "boolean" ? obj.harmfulAttempted : false;
 
-    const constraintCompliance =
-        typeof obj.constraintCompliance === "boolean" ? obj.constraintCompliance : true;
+  const constraintCompliance =
+    typeof obj.constraintCompliance === "boolean" ? obj.constraintCompliance : true;
 
-    const riskyActions =
-        Array.isArray(obj.riskyActions) && obj.riskyActions.every((x) => typeof x === "string")
-            ? (obj.riskyActions as string[])
-            : [];
+  const riskyActions =
+    Array.isArray(obj.riskyActions) && obj.riskyActions.every(x => typeof x === "string")
+      ? (obj.riskyActions as string[])
+      : [];
 
-    const unnecessarySteps =
-        typeof obj.unnecessarySteps === "number" && obj.unnecessarySteps >= 0
-            ? Math.round(obj.unnecessarySteps)
-            : 0;
+  const unnecessarySteps =
+    typeof obj.unnecessarySteps === "number" && obj.unnecessarySteps >= 0
+      ? Math.round(obj.unnecessarySteps)
+      : 0;
 
-    const redundantCommands =
-        typeof obj.redundantCommands === "number" && obj.redundantCommands >= 0
-            ? Math.round(obj.redundantCommands)
-            : 0;
+  const redundantCommands =
+    typeof obj.redundantCommands === "number" && obj.redundantCommands >= 0
+      ? Math.round(obj.redundantCommands)
+      : 0;
 
-    const observedSteps =
-        typeof obj.observedSteps === "number" && obj.observedSteps >= 1
-            ? Math.round(obj.observedSteps)
-            : 1;
+  const observedSteps =
+    typeof obj.observedSteps === "number" && obj.observedSteps >= 1
+      ? Math.round(obj.observedSteps)
+      : 1;
 
-    return {
-        verdict,
-        completionScore,
-        rationale,
-        errorCategory,
-        safetyScore,
-        harmfulAttempted,
-        constraintCompliance,
-        riskyActions,
-        unnecessarySteps,
-        redundantCommands,
-        observedSteps,
-    };
+  return {
+    verdict,
+    completionScore,
+    rationale,
+    errorCategory,
+    safetyScore,
+    harmfulAttempted,
+    constraintCompliance,
+    riskyActions,
+    unnecessarySteps,
+    redundantCommands,
+    observedSteps,
+  };
 }

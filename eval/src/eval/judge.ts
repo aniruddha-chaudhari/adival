@@ -28,30 +28,30 @@ export type JudgeVerdict = "PASS" | "PARTIAL" | "FAIL";
  * New optional fields are added at the bottom.
  */
 export interface JudgeResult {
-    verdict: JudgeVerdict;
-    /** 0–100: PASS=100, PARTIAL=50, FAIL=0 (backward-compat coarse score) */
-    score: number;
-    reason: string;
-    usedScreenshot: boolean;
+  verdict: JudgeVerdict;
+  /** 0–100: PASS=100, PARTIAL=50, FAIL=0 (backward-compat coarse score) */
+  score: number;
+  reason: string;
+  usedScreenshot: boolean;
 
-    // ── New fields (Phase 2) ───────────────────────────────────────────────────
-    /** Fine-grained completion score 0–100 (judge self-reported) */
-    completionScore?: number;
-    /** Per-task analysis blocks: efficiency, error, safety, thrashing */
-    analysis?: TaskAnalysis;
-    /** Debug payload for diagnosing judge failures */
-    judgeDebug?: JudgeDebug;
+  // ── New fields (Phase 2) ───────────────────────────────────────────────────
+  /** Fine-grained completion score 0–100 (judge self-reported) */
+  completionScore?: number;
+  /** Per-task analysis blocks: efficiency, error, safety, thrashing */
+  analysis?: TaskAnalysis;
+  /** Debug payload for diagnosing judge failures */
+  judgeDebug?: JudgeDebug;
 }
 
 // ─── Options ──────────────────────────────────────────────────────────────────
 
 export interface JudgeOptions {
-    /** Model to use for the judge agent (omit to use opencode default) */
-    model?: string;
-    /** Timeout in milliseconds for the judge call (default 90 000) */
-    timeoutMs?: number;
-    /** Human baseline steps for this task, used in efficiency comparison */
-    humanBaselineSteps?: number;
+  /** Model to use for the judge agent (omit to use opencode default) */
+  model?: string;
+  /** Timeout in milliseconds for the judge call (default 90 000) */
+  timeoutMs?: number;
+  /** Human baseline steps for this task, used in efficiency comparison */
+  humanBaselineSteps?: number;
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -67,33 +67,33 @@ export interface JudgeOptions {
  * @param options           Judge options (model, timeout, human baseline)
  */
 export async function judgeTask(
-    taskName: string,
-    taskInstruction: string,
-    agentOutput: string,
-    screenshotPath?: string,
-    runDir?: string,
-    options: JudgeOptions = {},
+  taskName: string,
+  taskInstruction: string,
+  agentOutput: string,
+  screenshotPath?: string,
+  runDir?: string,
+  options: JudgeOptions = {}
 ): Promise<JudgeResult> {
-    const engineResult: JudgeEngineResult = await judgeTaskWithEngine(
-        taskName,
-        taskInstruction,
-        agentOutput,
-        screenshotPath,
-        runDir,
-        {
-            model: options.model,
-            timeoutMs: options.timeoutMs,
-            humanBaselineSteps: options.humanBaselineSteps,
-        },
-    );
+  const engineResult: JudgeEngineResult = await judgeTaskWithEngine(
+    taskName,
+    taskInstruction,
+    agentOutput,
+    screenshotPath,
+    runDir,
+    {
+      model: options.model,
+      timeoutMs: options.timeoutMs,
+      humanBaselineSteps: options.humanBaselineSteps,
+    }
+  );
 
-    return {
-        verdict: engineResult.verdict,
-        score: engineResult.score,
-        reason: engineResult.reason,
-        usedScreenshot: engineResult.usedScreenshot,
-        completionScore: engineResult.completionScore,
-        analysis: engineResult.analysis,
-        judgeDebug: engineResult.judgeDebug,
-    };
+  return {
+    verdict: engineResult.verdict,
+    score: engineResult.score,
+    reason: engineResult.reason,
+    usedScreenshot: engineResult.usedScreenshot,
+    completionScore: engineResult.completionScore,
+    analysis: engineResult.analysis,
+    judgeDebug: engineResult.judgeDebug,
+  };
 }

@@ -190,9 +190,7 @@ function parseExport(data: SessionExport): Omit<TokenUsage, "sessionId"> {
   const sessionCreated = data.info.time?.created ?? earliestCreated;
   const sessionUpdated = data.info.time?.updated ?? latestCompleted;
   const durationMs =
-    sessionCreated != null && sessionUpdated != null
-      ? sessionUpdated - sessionCreated
-      : null;
+    sessionCreated != null && sessionUpdated != null ? sessionUpdated - sessionCreated : null;
 
   return {
     inputTokens,
@@ -251,7 +249,7 @@ export async function getLatestSessionTokens(): Promise<TokenUsage | null> {
 export async function getSessionTokensSince(sinceMs: number): Promise<TokenUsage | null> {
   const sessions = await listSessions();
 
-  const target = sessions.find((s) => {
+  const target = sessions.find(s => {
     const created = getSessionCreatedMs(s);
     return created !== null && created >= sinceMs;
   });
@@ -269,9 +267,7 @@ export async function getSessionTokensSince(sinceMs: number): Promise<TokenUsage
 
 if (import.meta.main) {
   const sessionId = process.argv[2];
-  const result = sessionId
-    ? await getSessionTokens(sessionId)
-    : await getLatestSessionTokens();
+  const result = sessionId ? await getSessionTokens(sessionId) : await getLatestSessionTokens();
 
   if (!result) {
     console.error("Could not retrieve token usage.");

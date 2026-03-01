@@ -71,7 +71,7 @@ export interface ProviderResult {
  */
 export async function runJudgeAgent(
   prompt: string,
-  options: ProviderOptions = {},
+  options: ProviderOptions = {}
 ): Promise<ProviderResult> {
   const { model, timeoutMs = 90_000 } = options;
 
@@ -101,7 +101,7 @@ export async function runJudgeAgent(
   } catch (err) {
     cleanupTmp(tmpFile);
     throw new Error(
-      `Failed to spawn opencode: ${err instanceof Error ? err.message : String(err)}`,
+      `Failed to spawn opencode: ${err instanceof Error ? err.message : String(err)}`
     );
   }
 
@@ -125,22 +125,24 @@ export async function runJudgeAgent(
   const { stdout, exitCode } = result;
 
   // Parse JSONL events and extract assistant text
-  const rawLines = stdout.split("\n").filter((l) => l.trim().length > 0);
+  const rawLines = stdout.split("\n").filter(l => l.trim().length > 0);
   const assistantText = extractAssistantText(rawLines);
 
   // Debug logging for empty assistant text
   if (!assistantText) {
-    const errorEvents = rawLines.filter((l) => {
+    const errorEvents = rawLines.filter(l => {
       try {
         const ev = JSON.parse(l);
         return ev.type === "error";
-      } catch { return false; }
+      } catch {
+        return false;
+      }
     });
     console.warn(
       `[judge-provider] Empty assistant text. ` +
-      `exitCode=${exitCode}, rawLines=${rawLines.length}, ` +
-      `stdout=${stdout.length} bytes` +
-      (errorEvents.length ? `, errors: ${errorEvents.join(" | ")}` : "")
+        `exitCode=${exitCode}, rawLines=${rawLines.length}, ` +
+        `stdout=${stdout.length} bytes` +
+        (errorEvents.length ? `, errors: ${errorEvents.join(" | ")}` : "")
     );
   }
 
@@ -225,16 +227,13 @@ async function collectOutput(proc: ReturnType<typeof Bun.spawn>) {
     if (!s || typeof s !== "object") return "";
     return new Response(s as ReadableStream).text();
   };
-  const [stdout] = await Promise.all([
-    readStream(proc.stdout),
-    readStream(proc.stderr),
-  ]);
+  const [stdout] = await Promise.all([readStream(proc.stdout), readStream(proc.stderr)]);
   const exitCode = await proc.exited;
   return { stdout, exitCode };
 }
 
 function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function cleanupTmp(path: string): void {
