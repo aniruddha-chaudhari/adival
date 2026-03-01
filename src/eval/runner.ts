@@ -184,11 +184,28 @@ async function runOpencode(
     throw new Error(`timeout after ${timeoutMs / 1000}s`);
   }
 
-  const { stdout, exitCode } = result as { stdout: string; exitCode: number };
+  const { stdout, stderr, exitCode } = result as {
+    stdout: string;
+    stderr: string;
+    exitCode: number;
+  };
 
   if (exitCode !== 0) {
+    // Include stderr in the error message for diagnostics
+    const detail = stderr.trim()
+      ? `stderr: ${stderr.trim().slice(0, 300)}`
+      : stdout.slice(0, 200);
+    throw new Error(`opencode exited with code ${exitCode}: ${detail}`);
+  }
+
+  // Detect silent failures: model errors exit with code 0 but produce no output
+  if (!stdout.trim()) {
+    const stderrSnippet = stderr.trim().slice(0, 400);
+    const hint = stderrSnippet
+      ? ` (stderr: ${stderrSnippet})`
+      : " (no stderr output either)";
     throw new Error(
-      `opencode exited with code ${exitCode}: ${stdout.slice(0, 200)}`,
+      `opencode returned empty output — possible model or configuration error${hint}`,
     );
   }
 
@@ -200,12 +217,12 @@ async function collectOutput(proc: ReturnType<typeof Bun.spawn>) {
     if (!s || typeof s !== "object") return "";
     return new Response(s as ReadableStream).text();
   };
-  const [stdout] = await Promise.all([
+  const [stdout, stderr] = await Promise.all([
     readStream(proc.stdout),
     readStream(proc.stderr),
   ]);
   const exitCode = await proc.exited;
-  return { stdout, exitCode };
+  return { stdout, stderr, exitCode };
 }
 
 function timeout(ms: number): Promise<"TIMEOUT"> {

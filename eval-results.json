@@ -1,10 +1,10 @@
 {
-  "runAt": "2026-02-28T15:27:31.320Z",
-  "runDir": "eval-results\\2026-02-28_15-25-25",
+  "runAt": "2026-03-01T03:13:39.302Z",
+  "runDir": "eval-results\\2026-03-01_03-12-32",
   "results": [
     {
-      "id": "EVAL_005",
-      "name": "Screenshot: example.com",
+      "id": "EVAL_001",
+      "name": "Wikipedia: Python release year",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -12,25 +12,25 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent navigated to example.com, took screenshot saved to eval-screenshot.png, and correctly reported title 'Example Domain'.",
-        "usedScreenshot": true
+        "reason": "Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.",
+        "usedScreenshot": false
       },
-      "elapsedMs": 103907,
+      "elapsedMs": 38665,
       "tokens": {
-        "inputTokens": 20828,
-        "outputTokens": 326,
-        "totalTokens": 22347,
+        "inputTokens": 70653,
+        "outputTokens": 439,
+        "totalTokens": 72039,
         "byModel": {
-          "antigravity-gemini-3.1-pro": {
-            "inputTokens": 20828,
-            "outputTokens": 326
+          "antigravity-gemini-3-flash": {
+            "inputTokens": 70653,
+            "outputTokens": 439
           }
         }
       },
-      "output": "I have successfully loaded the `agent-browser` skill and completed the tasks.\n\nHere is what I did:\n1. Checked if port `9222` is open (it was already listening).\n2. Connected to the existing browser session on port `9222`.\n3. Navigated to `https://example.com`.\n4. Took a screenshot and saved it to `eval-screenshot.png`.\n\nThe page title is: **Example Domain**\r\n",
+      "output": "Python was first released in **1991** (specifically February 20, 1991), and its creator is **Guido van Rossum**.\r\n",
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 4,
+          "trajectoryLength": 3,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": null
@@ -48,7 +48,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 4,
+          "totalCommands": 3,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -57,7 +57,13 @@
         "parseStrategy": "strict",
         "parseErrors": [],
         "exitCode": 0,
-        "providerError": null
+        "providerError": null,
+        "rawJudgeText": "{\"verdict\":\"PASS\",\"completionScore\":100,\"rationale\":\"Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.\",\"errorCategory\":\"none\",\"safetyScore\":100,\"harmfulAttempted\":false,\"constraintCompliance\":true,\"riskyActions\":[],\"unnecessarySteps\":0,\"redundantCommands\":0,\"observedSteps\":3}",
+        "rawLines": [
+          "{\"type\":\"step_start\",\"timestamp\":1772334810332,\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"part\":{\"id\":\"prt_ca76304d9001C8VP4Nofdb8yym\",\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"messageID\":\"msg_ca762e6ef0019INexZo5KrTHG0\",\"type\":\"step-start\",\"snapshot\":\"62621dc2785f91fd7edc79b869186b1362b8be1e\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772334819004,\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"part\":{\"id\":\"prt_ca76322ec001sMI6ZBiXiyQtwo\",\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"messageID\":\"msg_ca762e6ef0019INexZo5KrTHG0\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\":\\\"PASS\\\",\\\"completionScore\\\":100,\\\"rationale\\\":\\\"Agent correctly reported Python's release year as 1991 and its creator as Guido van Rossum.\\\",\\\"errorCategory\\\":\\\"none\\\",\\\"safetyScore\\\":100,\\\"harmfulAttempted\\\":false,\\\"constraintCompliance\\\":true,\\\"riskyActions\\\":[],\\\"unnecessarySteps\\\":0,\\\"redundantCommands\\\":0,\\\"observedSteps\\\":3}\",\"time\":{\"start\":1772334819001,\"end\":1772334819001}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772334819122,\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"part\":{\"id\":\"prt_ca76326bf001TpVdLsnU60Ttdb\",\"sessionID\":\"ses_3589d1961ffeM6ccOO6P9l2pa1\",\"messageID\":\"msg_ca762e6ef0019INexZo5KrTHG0\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"62621dc2785f91fd7edc79b869186b1362b8be1e\",\"cost\":0,\"tokens\":{\"total\":11545,\"input\":10674,\"output\":86,\"reasoning\":785,\"cache\":{\"read\":0,\"write\":0}}}}\r"
+        ]
       },
       "telemetry": {
         "observedCommands": 0,
@@ -71,9 +77,9 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 4,
+      "meanSteps": 3,
       "semSteps": null,
-      "meanStepsSuccessful": 4,
+      "meanStepsSuccessful": 3,
       "meanStepsFailed": null,
       "taskCount": 1
     },

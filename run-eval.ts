@@ -114,6 +114,20 @@ function printResult(r: TaskRunResult, verbose: boolean) {
         const shot = r.judge.usedScreenshot ? " [+screenshot]" : "";
         console.log(`       Judge: ${r.judge.verdict}${shot} — ${r.judge.reason}`);
     }
+    // Log judge parse failures with debug info
+    if (r.judgeDebug && r.judgeDebug.parseStrategy === "default") {
+        console.log(`       Judge parse FAILED (strategy: ${r.judgeDebug.parseStrategy})`);
+        for (const err of r.judgeDebug.parseErrors) {
+            console.log(`         ${err}`);
+        }
+        if (r.judgeDebug.rawJudgeText) {
+            const preview = r.judgeDebug.rawJudgeText.slice(0, 300);
+            console.log(`       Raw judge text (${r.judgeDebug.rawJudgeText.length} chars): ${preview}`);
+        }
+        if (r.judgeDebug.providerError) {
+            console.log(`       Provider error: ${r.judgeDebug.providerError}`);
+        }
+    }
     if (r.error) {
         console.log(`       Error: ${r.error}`);
     }
@@ -191,8 +205,9 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
                 parseErrors: r.judgeDebug.parseErrors,
                 exitCode: r.judgeDebug.exitCode,
                 providerError: r.judgeDebug.providerError,
-                // rawJudgeText and rawLines are omitted from summary for size;
-                // they are available in memory for debugging if needed.
+                // Include raw judge text and lines for diagnosing failures
+                rawJudgeText: r.judgeDebug.rawJudgeText || null,
+                rawLines: r.judgeDebug.rawLines || null,
             } : null,
             telemetry: r.telemetry ? {
                 observedCommands: r.telemetry.observedCommands,
@@ -224,6 +239,38 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
                 try { renameSync(src, dst); } catch { /* ignore */ }
             }
         }
+    }
+
+    // Write judge debug log for any tasks where the judge failed to parse
+    const judgeFailures = results.filter(
+        (r) => r.judgeDebug && r.judgeDebug.parseStrategy === "default"
+    );
+    if (judgeFailures.length > 0) {
+        const debugLog = judgeFailures.map((r) => {
+            const d = r.judgeDebug!;
+            return [
+                `${"=".repeat(60)}`,
+                `TASK: ${r.taskId} — ${r.taskName}`,
+                `Parse strategy: ${d.parseStrategy}`,
+                `Exit code: ${d.exitCode}`,
+                `Provider error: ${d.providerError ?? "none"}`,
+                `Parse errors:`,
+                ...d.parseErrors.map((e) => `  - ${e}`),
+                ``,
+                `--- Raw judge text (${d.rawJudgeText?.length ?? 0} chars) ---`,
+                d.rawJudgeText || "(empty)",
+                `--- End raw judge text ---`,
+                ``,
+                `--- Raw JSONL lines (${d.rawLines?.length ?? 0}) ---`,
+                ...(d.rawLines ?? []).map((l, i) => `  [${i}] ${l}`),
+                `--- End raw JSONL lines ---`,
+                ``,
+            ].join("\n");
+        }).join("\n");
+
+        const debugPath = join(runDir, "judge-debug.log");
+        await Bun.write(debugPath, debugLog);
+        console.log(`  judge-debug.log (${judgeFailures.length} failed judge parse(s))`);
     }
 
     console.log(`\nResults saved to ${runDir}/`);

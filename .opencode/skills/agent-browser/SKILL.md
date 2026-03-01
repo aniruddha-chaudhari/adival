@@ -13,7 +13,7 @@ Before starting any new browser automation tasks/work/session, you MUST:
 1. **Start the CDP browser** by running:
 
    ```bash
-   node F:\Aniruddha\code\college\mcpserver\src\launch-chrome-standalone.cjs
+   node templates/launch-chrome-standalone.cjs
    ```
 
 2. **Connect to the browser** on port 9222:
@@ -355,11 +355,12 @@ For detailed patterns and best practices, see:
 
 Executable workflow scripts for common patterns:
 
-| Template                                                                 | Description                         |
-| ------------------------------------------------------------------------ | ----------------------------------- |
-| [templates/form-automation.sh](templates/form-automation.sh)             | Form filling with validation        |
-| [templates/authenticated-session.sh](templates/authenticated-session.sh) | Login once, reuse state             |
-| [templates/capture-workflow.sh](templates/capture-workflow.sh)           | Content extraction with screenshots |
+| Template                                                                         | Description                                     |
+| -------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [templates/form-automation.sh](templates/form-automation.sh)                     | Form filling with validation                    |
+| [templates/authenticated-session.sh](templates/authenticated-session.sh)         | Login once, reuse state                         |
+| [templates/capture-workflow.sh](templates/capture-workflow.sh)                   | Content extraction with screenshots             |
+| [templates/launch-chrome-standalone.cjs](templates/launch-chrome-standalone.cjs) | Launch Chrome standalone with debugging support |
 
 Usage:
 
