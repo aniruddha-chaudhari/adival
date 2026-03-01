@@ -7,17 +7,23 @@
  *   bun run-eval.ts --list        # list available tasks
  *
  * Results are saved to:
- *   eval-results/<YYYY-MM-DD_HH-MM-SS>/
+ *   eval/eval-results/<YYYY-MM-DD_HH-MM-SS>/
  *     summary.json      — scores, tokens, judge verdicts for all tasks
  *     <TASK_ID>.txt     — full raw output for each task
  *     *.png             — screenshots moved here from cwd
  */
 
 import { mkdirSync, existsSync, renameSync } from "fs";
-import { join } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import { getAllTasks, getTaskById } from "./src/eval/tasks";
 import { runTask, runAllTasks, type TaskRunResult } from "./src/eval/runner";
 import { aggregateRun, type TaskResultForAggregation } from "./src/eval/aggregates";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const projectRoot = join(__dirname, "..");
+const evalRoot = join(projectRoot, "eval");
+const resultsRoot = join(evalRoot, "eval-results");
 
 // ─── Main script ──────────────────────────────────────────────────────────────
 
@@ -46,7 +52,7 @@ import { aggregateRun, type TaskResultForAggregation } from "./src/eval/aggregat
             .replace("T", "_")
             .replace(/:/g, "-")
             .slice(0, 19); // YYYY-MM-DD_HH-MM-SS
-        const dir = join("eval-results", ts);
+        const dir = join(resultsRoot, ts);
         mkdirSync(dir, { recursive: true });
         return dir;
     }
@@ -226,8 +232,9 @@ async function saveResults(results: TaskRunResult[], runDir: string) {
     const summaryPath = join(runDir, "summary.json");
     await Bun.write(summaryPath, JSON.stringify(summary, null, 2));
 
-    // Also write to root eval-results.json for backwards compat
-    await Bun.write("eval-results.json", JSON.stringify(summary, null, 2));
+    // Store the latest run summary under eval/eval-results.json
+    const globalSummaryPath = join(evalRoot, "eval-results.json");
+    await Bun.write(globalSummaryPath, JSON.stringify(summary, null, 2));
 
     // Move any screenshots from cwd into the run directory
     for (const r of results) {

@@ -1,8 +1,8 @@
 .env
 node_modules
 
-evals
-eval-results
+eval/eval-results
+eval/eval-result.json
 unpacked
 test-unpacked
 

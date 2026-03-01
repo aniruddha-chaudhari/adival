@@ -2,6 +2,9 @@
  * Eval Task Definitions — Loaded from eval-config.json
  */
 
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+
 // ─── Scorer helpers ──────────────────────────────────────────────────────────
 
 /** Score 100 if ALL keywords appear in output (case-insensitive), else 0. */
@@ -115,7 +118,9 @@ let loadedDefaultModel: string | null = null;
 export async function loadEvalConfig(): Promise<{ defaultModel: string; tasks: EvalTask[] }> {
   if (loadedTasks && loadedDefaultModel) return { defaultModel: loadedDefaultModel, tasks: loadedTasks };
 
-  const configPath = "eval-config.json";
+  // Resolve config path relative to this file (eval/src/eval/ -> eval/)
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const configPath = join(__dirname, "..", "..", "eval-config.json");
   const configText = await Bun.file(configPath).text();
   const config: EvalConfig = JSON.parse(configText);
 
