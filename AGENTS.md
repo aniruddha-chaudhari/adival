@@ -17,4 +17,4 @@ If port is open, reuse the existing browser instance instead of starting a new o
 
 this project is configured with bun and uv.
 instead of `npm` --> Use `bun` for node packages and to run js,ts script files. eg. bun run test.ts
-Instead of `pip` --> Use `uv` for python packages. use uv --help to know the commands
+Instead of `pip` --> Use `uv` for python packages. use `uv add <package>` to install packages directly (no venv setup needed, uv handles it automatically).

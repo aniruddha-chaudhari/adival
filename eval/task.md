@@ -165,3 +165,62 @@ Score = (Model_Performance - Baseline) / (Human_Performance - Baseline)
 - 100% = human expert level
 - 200% = 2× human performance
 ```
+
+---
+
+## 📋 Future Implementation Notes
+
+### Statistical Significance Testing (TODO)
+**Currently Skipped**: Visualization system is ready but statistical significance testing needs implementation.
+
+**Implementation Plan**:
+- Use **Mann-Whitney U test** for pairwise model comparisons (non-parametric, robust)
+- Display significance stars on charts:
+  - `***` for p < 0.001
+  - `**` for p < 0.01
+  - `*` for p < 0.05
+  - `ns` for p ≥ 0.05
+- Compare each model against:
+  - Baseline model (best performer)
+  - Or all pairwise comparisons (if needed for paper)
+- Add significance annotations to bar charts and heatmaps
+
+**Recommended Approach**:
+```python
+from scipy import stats
+
+# Mann-Whitney U test
+stat, p_value = stats.mannwhitneyu(model_a_results, model_b_results, alternative='two-sided')
+
+# Bonferroni correction for multiple comparisons
+bonferroni_alpha = 0.05 / num_comparisons
+```
+
+**Reference**: See [scipy.stats.mannwhitneyu](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html)
+
+---
+
+### Task Difficulty Measurement (TODO)
+**Currently Skipped**: Difficulty-based breakdown visualization not yet implemented.
+
+**Implementation Plan** (Performance-Based Approach - Recommended):
+- After aggregating all model results, compute per-task success rate
+- Categorize tasks based on aggregate success rate across all models:
+  - **Easy**: ≥80% of models succeed
+  - **Medium**: 40-80% of models succeed
+  - **Hard**: <40% of models succeed
+
+**Alternative Approach** (Intrinsic Complexity):
+- Manual tagging of tasks at eval definition
+- Or use metrics like:
+  - Number of required steps (5+ steps = harder)
+  - Number of page interactions needed
+  - Dynamic content complexity
+
+**Integration with Visualizations**:
+- Create grouped bar charts: success rate broken down by (model, difficulty)
+- Box plots showing step efficiency by difficulty level
+- Heatmap with difficulty as secondary dimension
+- Separate tables for easy/medium/hard tasks in paper appendix
+
+**Note**: Difficulty measurement is intrinsically relative—same task may be "hard" for one model class and "easy" for another. The performance-based approach captures this relativity.
