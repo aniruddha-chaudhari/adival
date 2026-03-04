@@ -47,7 +47,6 @@ You've already created an eval system for browsing tasks. This is smart! For hyb
 
 ## 3. Human Evaluation - Here's How It's Done:
 
-Since you're doing team evaluation (your experts), here's the standard process:
 Method: Pairwise Comparison + Trace Review
 For each task:
 
@@ -80,13 +79,6 @@ Task Evaluation Template:
 ```
 
 4. Why Human Evaluation Costs Money (For Commercial Crowdsourcing)
-   You asked a smart question! Here's why:
-
-- Crowdsourced evaluation (Mechanical Turk, Upwork, etc.) costs money
-- YOUR CASE (team evaluation): No budget needed!
-  - Your experts do it internally
-  - Just requires time from your team
-  - Better quality since you understand the domain
 
 ---
 
@@ -94,9 +86,9 @@ Recommended Plan for Your Eval:
 Task Composition (50-70 total):
 | Category | Existing Tasks | Custom Tasks | Total |
 |----------|---|---|---|
-| Web Scraping Large Scale | 5-10 (WebArena) | 10-15 | 20 |
+| Web Scraping Large Scale | 5-10 (WebArena) | 10-15 | 20 | new - paper
 | File Management | 5-10 (OSWorld) | 10-15 | 20 |
-| Software Testing | 0-5 | 10-15 | 10-20 |
+| Software Testing (SWE Bench)| 0-5 | 10-15 | 10-20 |
 | System Admin | 5-10 (OSWorld/Terminal-Bench) | 5-10 | 10-20 |
 | Cyber Security | tweet
 | TOTAL | ~20-35 | ~35-55 | 50-70 |
@@ -106,8 +98,6 @@ Models to Compare:
 - Open-source: Llama 3.1, Mistral, etc.
 - Agents: BrowserUse, Stagehand, etc.
   Evaluation Metrics (track for each task):
-
-- Different Methodologies to compare, skills vs mcp, repl environment, memory, specialised tools, create specialised tools, create spcialised prompts, context management, top manager with all agents and context and memory access, understand whats problem with it and other subagents and change tools, prompts, context, memory according to it
 
 1. Success Rate (binary: pass/fail)
 2. Task Completion Time (seconds)
@@ -120,24 +110,3 @@ Models to Compare:
 8. Review: Your team reviews execution logs + screenshots
 9. Score: Pass/fail + notes on failure modes
 10. Analysis: Aggregate results by category
-
----
-
-memory
-https://x.com/rohanpaul_ai/status/2028184543040270769?s=20
-https://x.com/GenAI_is_real/status/2028177671931486458?s=20
-https://x.com/omarsar0/status/2027784003017748550?s=20
-https://x.com/forloopcodes/status/2027745057483460757?s=20
-https://x.com/iamBarronRoth/status/2027501689176232187?s=20
-https://x.com/simulated_land/status/2028173666484367800?s=20
-https://x.com/rohanpaul_ai/status/2028184543040270769?s=20
-
-security
-https://x.com/0xTib3rius/status/2024656766441836697?s=20
-
-scraping
-https://x.com/GithubProjects/status/2027906735248494804?s=20
-https://x.com/skydotcs/status/2027793056494457317?s=20
-
-security
-https://x.com/levelsio/status/2028299071903941056?s=20
