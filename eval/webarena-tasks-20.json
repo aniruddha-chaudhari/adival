@@ -1,0 +1,788 @@
+[
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 0,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What is the top-{{n}} best-selling product in {{year}}",
+    "instantiation_dict": {
+      "n": 1,
+      "year": 2022
+    },
+    "intent": "What is the top-1 best-selling product in 2022",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "exact_match": "Quest Lumaflex\u2122 Band"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Quest Lumaflex\u2122 Band"
+    },
+    "intent_template_id": 279,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 1,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What is the top-{{n}} best-selling brand in {{period}}",
+    "instantiation_dict": {
+      "n": 1,
+      "period": "Quarter 1 2022"
+    },
+    "intent": "What is the top-1 best-selling brand in Quarter 1 2022",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "exact_match": "Sprite"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Sprite"
+    },
+    "intent_template_id": 279,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 2,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What is the top-{{n}} best-selling product type in {{period}}",
+    "instantiation_dict": {
+      "n": 1,
+      "period": "Quarter 1 2022"
+    },
+    "intent": "What is the top-1 best-selling product type in Quarter 1 2022",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "exact_match": "Yoga ball"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Yoga ball"
+    },
+    "intent_template_id": 279,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 5,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What is the top-{{n}} best-selling product type in {{period}}",
+    "instantiation_dict": {
+      "n": 1,
+      "period": "Jan 2023"
+    },
+    "intent": "What is the top-1 best-selling product type in Jan 2023",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "exact_match": "Duffle"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Duffle"
+    },
+    "intent_template_id": 279,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "map"
+    ],
+    "task_id": 7,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Tell me the full address of all {{airport_type}} that are within a driving distance of {{radius}} to {{start}}",
+    "instantiation_dict": {
+      "airport_type": "international airports",
+      "start": "Carnegie Mellon University",
+      "radius": "50 km"
+    },
+    "intent": "Tell me the full address of all international airports that are within a driving distance of 50 km to Carnegie Mellon University",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "exact_match": "Pittsburgh International Airport, Southern Beltway, Findlay Township, Allegheny County, 15231, United States"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Pittsburgh International Airport People Movers, Airport Boulevard, Findlay Township, Allegheny County, Pennsylvania, 15231, United States"
+    },
+    "intent_template_id": 79,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "map"
+    ],
+    "task_id": 8,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Tell me the full address of all {{airport_type}} that are within a driving distance of {{radius}} to {{start}}",
+    "instantiation_dict": {
+      "airport_type": "international airports",
+      "start": "Carnegie Mellon University",
+      "radius": "5 km"
+    },
+    "intent": "Tell me the full address of all international airports that are within a driving distance of 5 km to Carnegie Mellon University",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "fuzzy_match": [
+          "There is no airport within 5 km of Carnegie Mellon University"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "There is no airport within 5 km of Carnegie Mellon University"
+    },
+    "intent_template_id": 79,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 11,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "Tell me the the number of reviews that our store received by far that mention term \"{{term}}\"",
+    "instantiation_dict": {
+      "term": "disappointed"
+    },
+    "intent": "Tell me the the number of reviews that our store received by far that mention term \"disappointed\"",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "6"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "6"
+    },
+    "intent_template_id": 288,
+    "difficulty": "easy"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 3,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What are the top-{{n}} best-selling product in {{year}}",
+    "instantiation_dict": {
+      "n": 2,
+      "year": 2022
+    },
+    "intent": "What are the top-2 best-selling product in 2022",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "Quest Lumaflex\u2122 Band",
+          "Sprite Stasis Ball 65 cm"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Quest Lumaflex\u2122 Band, Sprite Stasis Ball 65 cm"
+    },
+    "intent_template_id": 279,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 4,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What are the top-{{n}} best-selling product in {{period}}",
+    "instantiation_dict": {
+      "n": 3,
+      "period": "Jan 2023"
+    },
+    "intent": "What are the top-3 best-selling product in Jan 2023",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "Impulse Duffle",
+          "Overnight Duffle",
+          "Hawkeye Yoga Short-32-Blue"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Impulse Duffle, Overnight Duffle, Hawkeye Yoga Short-32-Blue"
+    },
+    "intent_template_id": 279,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 6,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What are the top-{{n}} best-selling product in {{year}}",
+    "instantiation_dict": {
+      "n": 5,
+      "year": 2023
+    },
+    "intent": "What are the top-5 best-selling product in 2023",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "Sprite Yoga Strap 6 foot",
+          "Overnight Duffle",
+          "Ida Workout Parachute Pant-29-Purple",
+          "Hawkeye Yoga Short-32-Blue",
+          "Sprite Stasis Ball 65 cm"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Sprite Yoga Strap 6 foot, Overnight Duffle, Ida Workout Parachute Pant-29-Purple, Hawkeye Yoga Short-32-Blue, Sprite Stasis Ball 65 cm"
+    },
+    "intent_template_id": 279,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "map"
+    ],
+    "task_id": 9,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Tell me the full address of all {{airport_type}} that are within a driving distance of {{radius}} to {{start}}",
+    "instantiation_dict": {
+      "airport_type": "international airports",
+      "start": "Carnegie Art Museum",
+      "radius": "30 km"
+    },
+    "intent": "Tell me the full address of all international airports that are within a driving distance of 30 km to Carnegie Art Museum",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "Pittsburgh International Airport, Southern Beltway, Findlay Township, Allegheny County, 15231, United States"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Pittsburgh International Airport People Movers, Airport Boulevard, Findlay Township, Allegheny County, Pennsylvania, 15231, United States"
+    },
+    "intent_template_id": 79,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "map"
+    ],
+    "task_id": 10,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Tell me the full address of all {{airport_type}} that are within a driving distance of {{radius}} to {{start}}",
+    "instantiation_dict": {
+      "airport_type": "US international airports",
+      "start": "Niagara Falls",
+      "radius": "60 km"
+    },
+    "intent": "Tell me the full address of all US international airports that are within a driving distance of 60 km to Niagara Falls",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States",
+          "Buffalo-Niagara International Airport, Holtz Drive, Town of Cheektowaga, Erie County, New York, 14225, United States"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States Buffalo-Niagara International Airport, South Youngs Road, Town of Cheektowaga, Erie County, New York, 14221, United States"
+    },
+    "intent_template_id": 79,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 12,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "Tell me the the number of reviews that our store received by far that mention term \"{{term}}\"",
+    "instantiation_dict": {
+      "term": "satisfied"
+    },
+    "intent": "Tell me the the number of reviews that our store received by far that mention term \"satisfied\"",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "2"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "2"
+    },
+    "intent_template_id": 288,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "shopping_admin"
+    ],
+    "task_id": 13,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "Tell me the the number of reviews that our store received by far that mention term \"{{term}}\"",
+    "instantiation_dict": {
+      "term": "decent"
+    },
+    "intent": "Tell me the the number of reviews that our store received by far that mention term \"decent\"",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "string_match"
+      ],
+      "reference_answers": {
+        "must_include": [
+          "2"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "2"
+    },
+    "intent_template_id": 288,
+    "difficulty": "medium"
+  },
+  {
+    "sites": [
+      "gitlab"
+    ],
+    "task_id": 804,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__",
+    "geolocation": null,
+    "intent_template": "Assign the issue regarding {{issue}} to {{account}}.",
+    "instantiation_dict": {
+      "issue": "flash alerts",
+      "account": "myself and primer"
+    },
+    "intent": "Assign the issue regarding flash alerts to myself and primer.",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "program_html"
+      ],
+      "reference_answers": null,
+      "reference_url": "",
+      "program_html": [
+        {
+          "url": "__GITLAB__/dashboard/issues?scope=all&state=opened&assignee_username=byteblaze",
+          "locator": "",
+          "required_contents": {
+            "must_include": [
+              "Add documentation on using Flash alerts in dialog components",
+              "Clarify usage of flash alert"
+            ]
+          }
+        },
+        {
+          "url": "__GITLAB__/dashboard/issues?scope=all&state=opened&assignee_username=primer",
+          "locator": "",
+          "required_contents": {
+            "must_include": [
+              "Add documentation on using Flash alerts in dialog components",
+              "Clarify usage of flash alert"
+            ]
+          }
+        }
+      ]
+    },
+    "intent_template_id": 999,
+    "difficulty": "hard"
+  },
+  {
+    "sites": [
+      "gitlab"
+    ],
+    "task_id": 805,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__/a11yproject/a11yproject.com",
+    "geolocation": null,
+    "intent_template": "Submit a merge request for {{source_branch}} to be merged into {{target_branch}} branch, assign {{reviewer}} as the reviewer",
+    "instantiation_dict": {
+      "source_branch": "the branch that implements the support of template strings",
+      "target_branch": "master",
+      "reviewer": "myself and Roshan"
+    },
+    "intent": "Submit a merge request for the branch that implements the support of template strings to be merged into master branch, assign myself and Roshan as the reviewer",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "url_match",
+        "program_html"
+      ],
+      "reference_answers": null,
+      "reference_url": "__GITLAB__/a11yproject/a11yproject.com/-/merge_requests",
+      "program_html": [
+        {
+          "url": "last",
+          "locator": "document.querySelectorAll(\".detail-page-description > a.gl-font-monospace\")[0].outerText",
+          "required_contents": {
+            "exact_match": "feature/replace-gulp"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelectorAll(\".detail-page-description > a.gl-font-monospace\")[1].outerText",
+          "required_contents": {
+            "exact_match": "main"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('.block.reviewer').outerText",
+          "required_contents": {
+            "must_include": [
+              "Byte Blaze",
+              "Roshan Jossy"
+            ]
+          }
+        }
+      ],
+      "url_note": "GOLD in PRED"
+    },
+    "intent_template_id": 335,
+    "difficulty": "hard"
+  },
+  {
+    "sites": [
+      "gitlab"
+    ],
+    "task_id": 806,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__",
+    "geolocation": null,
+    "intent_template": "Submit a merge request for {{source_branch}} branch to be merged into {{target_branch}} branch, assign {{reviewer}} as the reviewer",
+    "instantiation_dict": {
+      "source_branch": "a11yproject.com/redesign",
+      "target_branch": "markdown-figure-block",
+      "reviewer": "myself"
+    },
+    "intent": "Submit a merge request for a11yproject.com/redesign branch to be merged into markdown-figure-block branch, assign myself as the reviewer",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "url_match",
+        "program_html"
+      ],
+      "reference_answers": null,
+      "reference_url": "__GITLAB__/a11yproject/a11yproject.com/-/merge_requests",
+      "program_html": [
+        {
+          "url": "last",
+          "locator": "document.querySelectorAll(\".detail-page-description > a.gl-font-monospace\")[0].outerText",
+          "required_contents": {
+            "exact_match": "redesign"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelectorAll(\".detail-page-description > a.gl-font-monospace\")[1].outerText",
+          "required_contents": {
+            "exact_match": "feature/markdown-figure-block"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('.block.reviewer').outerText",
+          "required_contents": {
+            "must_include": [
+              "Byte Blaze"
+            ]
+          }
+        }
+      ],
+      "url_note": "GOLD in PRED"
+    },
+    "intent_template_id": 335,
+    "difficulty": "hard"
+  },
+  {
+    "sites": [
+      "gitlab"
+    ],
+    "task_id": 807,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__/primer/design",
+    "geolocation": null,
+    "intent_template": "Submit a merge request for {{source_branch}} branch to be merged into {{target_branch}} branch, assign {{reviewer}} as the reviewer",
+    "instantiation_dict": {
+      "source_branch": "build time debug",
+      "target_branch": "main",
+      "reviewer": "myself"
+    },
+    "intent": "Submit a merge request for build time debug branch to be merged into main branch, assign myself as the reviewer",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "url_match",
+        "program_html"
+      ],
+      "reference_answers": null,
+      "reference_url": "__GITLAB__/primer/design/-/merge_requests",
+      "program_html": [
+        {
+          "url": "last",
+          "locator": "document.querySelectorAll(\".detail-page-description > a.gl-font-monospace\")[1].outerText",
+          "required_contents": {
+            "exact_match": "main"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelectorAll(\".detail-page-description > a.gl-font-monospace\")[0].outerText",
+          "required_contents": {
+            "exact_match": "debug-build-time"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('.block.reviewer').outerText",
+          "required_contents": {
+            "must_include": [
+              "Byte Blaze"
+            ]
+          }
+        }
+      ],
+      "url_note": "GOLD in PRED"
+    },
+    "intent_template_id": 335,
+    "difficulty": "hard"
+  },
+  {
+    "sites": [
+      "gitlab"
+    ],
+    "task_id": 808,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__",
+    "geolocation": null,
+    "intent_template": "Create an issue in {{repo}} repo with title \"{{issue}}\". Assign the issue to {{account}}. Set due date to be {{due}}",
+    "instantiation_dict": {
+      "repo": "cloud-to-butt",
+      "issue": "Let's keep the project alive",
+      "account": "myself",
+      "due": "the end of Q1 2033"
+    },
+    "intent": "Create an issue in cloud-to-butt repo with title \"Let's keep the project alive\". Assign the issue to myself. Set due date to be the end of Q1 2033",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "url_match",
+        "program_html"
+      ],
+      "reference_answers": null,
+      "reference_url": "__GITLAB__/byteblaze/cloud-to-butt/-/issues",
+      "program_html": [
+        {
+          "url": "last",
+          "locator": "document.querySelector('[data-qa-selector=\"title_content\"]').outerText",
+          "required_contents": {
+            "exact_match": "Let's keep the project alive"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('[data-testid=\"sidebar-due-date\"').outerText",
+          "required_contents": {
+            "must_include": [
+              "Mar 31, 2033"
+            ]
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('.block.assignee').outerText",
+          "required_contents": {
+            "must_include": [
+              "Byte Blaze"
+            ]
+          }
+        }
+      ],
+      "url_note": "GOLD in PRED"
+    },
+    "intent_template_id": 327,
+    "difficulty": "hard"
+  },
+  {
+    "sites": [
+      "gitlab"
+    ],
+    "task_id": 809,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__",
+    "geolocation": null,
+    "intent_template": "Create an issue in {{repo}} repo with title \"{{issue}}\". Assign the issue to {{account}}. Set due date to be {{due}}",
+    "instantiation_dict": {
+      "repo": "a11yproject",
+      "issue": "404 for many URLs",
+      "account": "myself",
+      "due": "2030-1-3"
+    },
+    "intent": "Create an issue in a11yproject repo with title \"404 for many URLs\". Assign the issue to myself. Set due date to be 2030-1-3",
+    "require_reset": false,
+    "eval": {
+      "eval_types": [
+        "url_match",
+        "program_html"
+      ],
+      "reference_answers": null,
+      "reference_url": "__GITLAB__/a11yproject/a11yproject.com/-/issues",
+      "program_html": [
+        {
+          "url": "last",
+          "locator": "document.querySelector('[data-qa-selector=\"title_content\"]').outerText",
+          "required_contents": {
+            "exact_match": "404 for many URLs"
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('[data-testid=\"sidebar-due-date\"').outerText",
+          "required_contents": {
+            "must_include": [
+              "Jan 3, 2030"
+            ]
+          }
+        },
+        {
+          "url": "last",
+          "locator": "document.querySelector('.block.assignee').outerText",
+          "required_contents": {
+            "must_include": [
+              "Byte Blaze"
+            ]
+          }
+        }
+      ],
+      "url_note": "GOLD in PRED"
+    },
+    "intent_template_id": 327,
+    "difficulty": "hard"
+  }
+]
