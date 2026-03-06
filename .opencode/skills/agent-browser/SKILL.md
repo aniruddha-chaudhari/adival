@@ -13,7 +13,7 @@ Before starting any new browser automation tasks/work/session, you MUST:
 1. **Start the CDP browser** by running:
 
    ```bash
-   node templates/launch-chrome-standalone.cjs
+   node .opencode/skills/agent-browser/templates/launch-chrome-standalone.cjs
    ```
 
 2. **Connect to the browser** on port 9222:

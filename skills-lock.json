@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "pinchtab": {
+      "source": "pinchtab/pinchtab",
+      "sourceType": "github",
+      "computedHash": "3f5601390e05455ca66c369b4d10ff1d6a18f6b2dad9aea414a95f8360e52ea8"
+    },
+    "radar": {
+      "source": "asteroidai/radar",
+      "sourceType": "github",
+      "computedHash": "d702183f82207606996a5ffaba63ad20427ab8bf2f7578d9ebf23f1a25545220"
+    }
+  }
+}
