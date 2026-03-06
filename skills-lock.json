@@ -30,6 +30,11 @@
       "source": "asteroidai/radar",
       "sourceType": "github",
       "computedHash": "d702183f82207606996a5ffaba63ad20427ab8bf2f7578d9ebf23f1a25545220"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "e513e29a52533c4dd0aff72964c80d2d43c6fe9619ecb8766aabcd117e2b1acd"
     }
   }
 }
