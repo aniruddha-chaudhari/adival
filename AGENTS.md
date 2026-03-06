@@ -16,5 +16,20 @@ If port is open, reuse the existing browser instance instead of starting a new o
 ### Package manager
 
 this project is configured with bun and uv.
-instead of `npm` --> Use `bun` for node packages and to run js,ts script files. eg. bun run test.ts
 Instead of `pip` --> Use `uv` for python packages. use `uv add <package>` to install packages directly (no venv setup needed, uv handles it automatically).
+
+### Memory System
+
+The agent has a progressive memory system:
+
+**Layer 1 (FS Memory):**
+You have access to local file memory via the `memory_read`, `memory_write`, and `memory_list` MCP tools.
+Additionally, you have a `journal_append` tool.
+**CRITICAL RULE**: EVERY session, you MUST append an entry to the monthly journal using the `journal_append` tool.
+When to write:
+- At each significant milestone (bug fixed, feature done, refactor complete)
+- At each a-ha moment or pivotal decision
+- When the user signals end of session ("good night", "we're done", "I'm off")
+
+**Layer 2 (Supermemory MCP):**
+You have access to persistent remote memory via `memory` (save/forget) and `recall` (search) tools. Use these for cross-session semantic search and facts.
