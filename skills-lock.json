@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "12-principles-of-animation": {
+      "source": "raphaelsalaja/userinterface-wiki",
+      "sourceType": "github",
+      "computedHash": "028c3bad9e7417460e0d2094fc0c1b9d601e56317d38c4f5d124666b06a9405b"
+    },
     "doc-coauthoring": {
       "source": "anthropics/skills",
       "sourceType": "github",
@@ -11,10 +16,105 @@
       "sourceType": "github",
       "computedHash": "150be87ff7b18f273ad07da303adb1cf2ca21cc3e76db7a2cf0373405178a278"
     },
+    "firecrawl": {
+      "source": "firecrawl/cli",
+      "sourceType": "github",
+      "computedHash": "554067f03657e7755a8d36468dbf7dd9345418369a094638bfa27f8f776e28f1"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
+    },
+    "gws-calendar": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "c308861ff2bacc081d4f49a2ef0ae72c2db8b39542c9e82eed672468d2277ae8"
+    },
+    "gws-calendar-agenda": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "414fa0bad4de55d05a6d053f4df5c5ecde3a518667d1c316c9f5b5460f73c9ff"
+    },
+    "gws-calendar-insert": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "9750722d404931bf5cfe25924c9baacd517db2b9d64055c2f1f838f268ace7cc"
+    },
+    "gws-classroom": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "7ab6a191f00982e14744517cf1e41a14835616e63dd5aad735b39a64bdcfc703"
+    },
+    "gws-docs": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "a13be5337f947f001deb498015c264038282248fce1e2004dddd4c7f0c4ad8db"
+    },
+    "gws-docs-write": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "97f9c54cae3fa278db745834154b2abe107f2bd6d4ba6243575747c669cc8ff5"
+    },
+    "gws-drive": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "89f7ee87afd19349bde20024586bdc1b1a2de29309b441539938ecc98c58d91f"
+    },
+    "gws-drive-upload": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "76949dd5079c3160c04ac825a4f7c0082f3a1f17fc59fbb7e3a80c6f2c2ea0df"
+    },
+    "gws-forms": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "863840abfa7df080b98df9b8615644bf37628070ec806f9fd88114d2f7eb06a3"
+    },
+    "gws-gmail": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "77767fbf10c574e5f4834b6523d948ecd5a67469d353d573d15b2cffd52e5c01"
+    },
+    "gws-gmail-send": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "3f45790b7f06ffa6cf17f2026f8ca451e74f5430b7070a1a9729b12b4843d011"
+    },
+    "gws-gmail-triage": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "9786e231ba3c33ffaff78ebe754d52272ac4554c2bcb9d0fd656dc38f887bfbd"
+    },
+    "gws-meet": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "092ef32543558456e08baf0c74477e94b678381c4a75487b29e083e3586e6bc9"
+    },
+    "gws-sheets": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "f8cf4693b01f9058646ea6778f986e354a1290e07b3304e3f878329222b6d34c"
+    },
+    "gws-sheets-append": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "80c213ced452cfb5311c5d3bced09c9241ee210e67c13a194d63469aea83467c"
+    },
+    "gws-sheets-read": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "e23477534f0451812519edc128f1d1a0bf1f5af88c97117e6d5abe1b0ae48601"
+    },
+    "gws-slides": {
+      "source": "googleworkspace/cli",
+      "sourceType": "github",
+      "computedHash": "f495873c91fa640cfe185f4887550062f425ba674c4ecfad4563e023055bf5b7"
+    },
+    "interface-design": {
+      "source": "Dammyjay93/interface-design",
+      "sourceType": "github",
+      "computedHash": "4d5fe1dacfebc0c1b3837b061405150ed2e4971c096543afc46c23161c5a4f7a"
     },
     "pinchtab": {
       "source": "pinchtab/pinchtab",
