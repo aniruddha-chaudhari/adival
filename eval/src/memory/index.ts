@@ -15,6 +15,16 @@ export {
 } from "./qmd";
 export type { QmdResult, QmdStatusResult } from "./qmd";
 
+// Condensation pipeline
+export { condenseSession, updateAgentMd, endOfSessionHook } from "./condense";
+export { runCondensationPipeline } from "./pipeline";
+export type { PipelineResult } from "./pipeline";
+export { runPromotion } from "./promote";
+export type { PromotionCandidate } from "./promote";
+export { compressJournalMonth, getJournalMonths } from "./compress-journal";
+export { rebuildAgentMd, agentMdSize } from "./agent-md-writer";
+export { llmSummarize } from "./llm";
+
 import { FSMemory } from "./fs-memory";
 import { qmdDeepSearch, formatQmdResults } from "./qmd";
 

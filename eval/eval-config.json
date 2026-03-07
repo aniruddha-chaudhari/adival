@@ -1,6 +1,6 @@
 {
   "$schema": "./eval-config.schema.json",
-  "defaultModel": "google/antigravity-gemini-3-flash",
+  "defaultModel": "opencode/minimax-m2.5-free",
   "tasks": [
     {
       "id": "EVAL_001",
@@ -12,7 +12,11 @@
       "scorer": {
         "type": "keywords",
         "params": {
-          "words": ["1991", "Guido", "Rossum"]
+          "words": [
+            "1991",
+            "Guido",
+            "Rossum"
+          ]
         }
       },
       "llmJudge": true
@@ -43,10 +47,21 @@
         "type": "anyOf",
         "params": {
           "scorers": [
-            { "type": "regex", "params": { "pattern": "\\d{1,2}:\\d{2}" } },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "\\d{1,2}:\\d{2}"
+              }
+            },
             {
               "type": "keywords",
-              "params": { "words": ["tokyo", "time", "jst"] }
+              "params": {
+                "words": [
+                  "tokyo",
+                  "time",
+                  "jst"
+                ]
+              }
             }
           ]
         }
@@ -65,8 +80,20 @@
         "type": "anyOf",
         "params": {
           "scorers": [
-            { "type": "keywords", "params": { "words": ["Test User"] } },
-            { "type": "regex", "params": { "pattern": "custname.*Test User" } }
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "Test User"
+                ]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "custname.*Test User"
+              }
+            }
           ]
         }
       },
@@ -84,10 +111,22 @@
         "type": "allOf",
         "params": {
           "scorers": [
-            { "type": "keywords", "params": { "words": ["Example Domain"] } },
             {
               "type": "keywords",
-              "params": { "words": ["screenshot", "saved"] }
+              "params": {
+                "words": [
+                  "Example Domain"
+                ]
+              }
+            },
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "screenshot",
+                  "saved"
+                ]
+              }
             }
           ]
         }
@@ -106,23 +145,62 @@
         "type": "allOf",
         "params": {
           "scorers": [
-            { "type": "keywords", "params": { "words": ["minecraft"] } },
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "minecraft"
+                ]
+              }
+            },
             {
               "type": "anyOf",
               "params": {
                 "scorers": [
                   {
                     "type": "keywords",
-                    "params": { "words": ["title", "video"] }
+                    "params": {
+                      "words": [
+                        "title",
+                        "video"
+                      ]
+                    }
                   },
-                  { "type": "regex", "params": { "pattern": "watch\\?v=" } },
+                  {
+                    "type": "regex",
+                    "params": {
+                      "pattern": "watch\\?v="
+                    }
+                  },
                   {
                     "type": "keywords",
-                    "params": { "words": ["playing", "loaded"] }
+                    "params": {
+                      "words": [
+                        "playing",
+                        "loaded"
+                      ]
+                    }
                   }
                 ]
               }
             }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_007",
+      "name": "Memory: test fs-memory skill",
+      "category": "data-extraction",
+      "prompt": "You are testing the fs-memory system. Use the 'mem' CLI tool to do exactly this: 1. Write the string 'EVAL_TEST_SUCCESS_2026' to a new file 'memory/eval-test.md' using 'mem write'. 2. Read it back using 'mem read' to verify. 3. Delete the file using standard bash rm. 4. Append a journal entry using 'mem journal' saying that the memory test completed successfully. Do everything you were just asked and report the exact string you read back.",
+      "timeoutSeconds": 180,
+      "humanBaselineSteps": null,
+      "scorer": {
+        "type": "keywords",
+        "params": {
+          "words": [
+            "EVAL_TEST_SUCCESS_2026"
           ]
         }
       },

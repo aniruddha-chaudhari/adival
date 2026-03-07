@@ -56,7 +56,9 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
   let error: string | undefined;
 
   try {
-    output = await runOpencode(task.prompt, task.model, timeoutMs);
+    // Force the agent to run its end-of-session memory procedures
+    const forcedPrompt = task.prompt + "\n\nWhen finished, the user signals 'wrap up' so you MUST run your end-of-session memory protocol (mem journal) as instructed in AGENTS.md.";
+    output = await runOpencode(forcedPrompt, task.model, timeoutMs);
   } catch (err) {
     error = err instanceof Error ? err.message : String(err);
     const elapsed = Date.now() - start;

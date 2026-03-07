@@ -1,0 +1,121 @@
+#!/usr/bin/env bun
+/**
+ * mem — File-system memory CLI
+ *
+ * Used by the fs-memory skill. The agent calls these commands directly via bash.
+ *
+ * Usage:
+ *   mem read <path>
+ *   mem write <path> <content>         # overwrites
+ *   mem append <path> <content>        # appends
+ *   mem list [subdir]
+ *   mem journal <projectDir> <context> <summary>
+ *   mem condense                       # run full condensation pipeline
+ *   mem status                         # show AGENT.md size
+ */
+
+import { FSMemory } from "./eval/src/memory/fs-memory";
+
+const fs = new FSMemory();
+const [, , cmd, ...rest] = process.argv;
+
+function usage() {
+    console.error(`mem <command> [args]
+
+Commands:
+  read <path>                       Read a memory file (relative to memory/)
+  write <path> <content>            Write to a memory file (overwrite)
+  append <path> <content>           Append to a memory file
+  list [subdir]                     List files in memory subdirectory
+  journal <projectDir> <context> <summary>
+                                    Append entry to monthly journal (REQUIRED each session)
+  condense                          Run the condensation pipeline
+  status                            Show current AGENT.md character count
+`);
+    process.exit(1);
+}
+
+switch (cmd) {
+
+    case "read": {
+        const [path] = rest;
+        if (!path) { console.error("mem read <path>"); process.exit(1); }
+        console.log(fs.readFile(path));
+        break;
+    }
+
+    case "write": {
+        const [path, ...contentParts] = rest;
+        const content = contentParts.join(" ");
+        if (!path || !content) { console.error("mem write <path> <content>"); process.exit(1); }
+        fs.writeFile(path, content, "write");
+        console.log(`Written to memory/${path}`);
+        break;
+    }
+
+    case "append": {
+        const [path, ...contentParts] = rest;
+        const content = contentParts.join(" ");
+        if (!path || !content) { console.error("mem append <path> <content>"); process.exit(1); }
+        fs.writeFile(path, content, "append");
+        console.log(`Appended to memory/${path}`);
+        break;
+    }
+
+    case "list": {
+        const [subdir = ""] = rest;
+        const files = fs.listFiles(subdir);
+        if (files.length === 0) {
+            console.log(`(empty — memory/${subdir || "root"})`);
+        } else {
+            console.log(files.join("\n"));
+        }
+        break;
+    }
+
+    case "journal": {
+        const [projectDir, context, ...summaryParts] = rest;
+        const summary = summaryParts.join(" ");
+        if (!projectDir || !context || !summary) {
+            console.error("mem journal <projectDir> <context> <summary>");
+            process.exit(1);
+        }
+        fs.appendJournal(projectDir, context, summary);
+        const now = new Date();
+        const month = now.toISOString().slice(0, 7);
+        console.log(`Journal entry written → memory/journals/${month}.journal.md`);
+        break;
+    }
+
+    case "condense": {
+        const { runCondensationPipeline } = await import("./eval/src/memory/pipeline");
+        const result = await runCondensationPipeline(fs, { verbose: true, skipQmd: true });
+        console.log(`\nDone in ${result.durationMs}ms`);
+        console.log(`  Compressed : ${result.entriesCompressed} entries`);
+        console.log(`  Archived   : ${result.entriesArchived} entries`);
+        console.log(`  Promoted   : ${result.promotedFacts} facts`);
+        console.log(`  AGENT.md   : ${result.agentMdChars} chars`);
+        if (result.errors.length) {
+            console.log(`  Errors     : ${result.errors.join("; ")}`);
+        }
+        break;
+    }
+
+    case "status": {
+        const { agentMdSize } = await import("./eval/src/memory/agent-md-writer");
+        const size = agentMdSize(fs);
+        const agentContent = fs.readFile("AGENT.md");
+        if (agentContent.startsWith("[File not found")) {
+            console.log("AGENT.md: not created yet (run: mem condense)");
+        } else {
+            console.log(`AGENT.md: ${size} chars`);
+            console.log("\n--- AGENT.md preview ---");
+            console.log(agentContent.slice(0, 500));
+            if (size > 500) console.log(`\n... (${size - 500} more chars)`);
+        }
+        break;
+    }
+
+    default:
+        usage();
+}

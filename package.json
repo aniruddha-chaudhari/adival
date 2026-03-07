@@ -7,7 +7,10 @@
     "eval": "bun run eval/run-eval.ts",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "memory:condense": "bun run eval/src/memory/pipeline.ts",
+    "memory:condense:verbose": "bun run eval/src/memory/pipeline.ts --verbose",
+    "memory:status": "bun -e \"import { FSMemory, agentMdSize } from './eval/src/memory/index.ts'; const fs = new FSMemory(); console.log('AGENT.md:', agentMdSize(fs), 'chars');\""
   },
   "dependencies": {
     "@google/genai": "^1.22.0",

@@ -1,28 +1,69 @@
 import { FSMemory } from "./fs-memory";
-import { join } from "path";
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { llmSummarize } from "./llm";
 
-/** Extract key information from a daily/monthly journal using basic text heuristics */
-export function condenseSession(fs: FSMemory, dateStr: string): string {
-    // In a real implementation this might call an LLM to summarize the file.
-    // For now we do a simple string extraction of the headers.
-    const file = join("journals", `${dateStr}.journal.md`);
-    const content = fs.readFile(file);
+/**
+ * Session condensation — called at end of each session.
+ * Replaces the stub that only extracted headers.
+ *
+ * This module is now a thin wrapper that:
+ *  1. Reads the current month's journal
+ *  2. Calls the LLM to summarize recent entries (today's)
+ *  3. Delegates to the full pipeline for age-compression and AGENT.md rebuild
+ *
+ * For full pipeline execution (scheduled/manual), use pipeline.ts instead.
+ */
 
-    if (content.startsWith("[File not found")) {
-        return "";
+/** Extract key information from a daily/monthly journal using the LLM */
+export async function condenseSession(fs: FSMemory, dateStr: string): Promise<string> {
+    const month = dateStr.slice(0, 7);
+    const journalPath = `journals/${month}.journal.md`;
+    const content = fs.readFile(journalPath);
+
+    if (content.startsWith("[File not found")) return "";
+
+    // Extract only entries from the specified date
+    const chunks = content.split(/(?=^## \d{4}-\d{2}-\d{2})/m).filter(c => c.trim());
+    const dayChunks = chunks.filter(c => c.startsWith(`## ${dateStr}`));
+
+    if (dayChunks.length === 0) return "";
+
+    const raw = dayChunks.join("\n\n");
+
+    const prompt = `Summarize these journal entries from ${dateStr}. 
+Produce a concise bullet list (4-8 bullets) of what was done, decisions made, and what to remember next session.
+Be specific — include project names, file names, key technical choices.
+
+Journal entries:
+${raw}
+
+Bullets:`;
+
+    try {
+        return await llmSummarize(prompt);
+    } catch {
+        // Fallback: return cleaned text if LLM fails
+        return raw
+            .split("\n")
+            .filter(l => l.trim().length > 0)
+            .join("\n");
     }
-
-    const lines = content.split("\n");
-    const extracted = lines.filter(line => line.startsWith("## ") || line.trim().length > 0);
-
-    return extracted.join("\n");
 }
 
-/** Update the AGENT.md active context file with the latest profile and recent journal entries */
-export function updateAgentMd(fs: FSMemory): void {
-    const profile = fs.readFile("profile.md");
-    const agentContent = `# Active Memory — Agent\n\n${profile}\n\n## Recent Context (Auto-Condensed)\n[Memory context loaded...]`;
+/**
+ * Called at end of session to update AGENT.md with latest profile + recent context.
+ * This is the lightweight version — for full compression run pipeline.ts.
+ */
+export async function updateAgentMd(fs: FSMemory): Promise<void> {
+    const { rebuildAgentMd } = await import("./agent-md-writer");
+    await rebuildAgentMd(fs);
+}
 
-    fs.writeFile("AGENT.md", agentContent, "write");
+/**
+ * End-of-session hook: condense today's entries and update AGENT.md.
+ * Designed to be called quickly at session end without the full pipeline cost.
+ */
+export async function endOfSessionHook(fs: FSMemory): Promise<void> {
+    const today = new Date().toISOString().slice(0, 10);
+    await condenseSession(fs, today);
+    await updateAgentMd(fs);
 }

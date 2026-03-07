@@ -14,10 +14,10 @@ import { getSessionTokensSince, type TokenUsage } from "./opencode-tokens";
 
 const OPENCODE = "opencode";
 
-// Default models to use (Antigravity Gemini 3)
+// Default models
 const DEFAULT_MODELS = {
-  flash: "google/antigravity-gemini-3-flash",
-  pro: "google/antigravity-gemini-3.1-pro",
+  flash: "opencode/minimax-m2.5-free",
+  pro: "opencode/minimax-m2.5-free",
 };
 
 interface RunOptions {
