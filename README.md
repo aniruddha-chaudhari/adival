@@ -36,3 +36,114 @@ Any loose docx scripts now sit under `.opencode/skills/docx/refrences/`. Update 
 - `bun run src/index.ts` / `bun run --hot src/index.ts` continues to launch the Bun server described in `package.json`.
 - `tsconfig.json` now includes both `src/**/*` and `eval/src/**/*` so editors and tooling can resolve the moved eval helpers.
 - `.gitignore` keeps `eval/eval-results/` and `eval/eval-result.json` out of version control.
+
+## QMD Setup (local search engine for agents)
+
+QMD is an on-device hybrid search engine used by the agents in this repo to search markdown notes, memory, and docs. It requires **Node.js >= 22** and **Bun >= 1.0**.
+
+### 1. Install
+
+```bash
+bun install -g @tobilu/qmd
+```
+
+**Windows only** — the installed binary is a bash script that won't run on Windows/PowerShell. Create a `.cmd` shim to fix this:
+
+```powershell
+# Run once after installing
+$binDir = (bun pm bin -g)
+$nodeModules = Split-Path $binDir -Parent | Join-Path -ChildPath "node_modules"
+$qmdJs = "$nodeModules\@tobilu\qmd\dist\qmd.js"
+
+# Create the wrapper
+Set-Content "$binDir\qmd.cmd" "@echo off`r`nnode `"$qmdJs`" %*"
+
+# Rename the broken bash shim so the .cmd takes priority
+Rename-Item "$binDir\qmd.exe" "qmd-bun.exe"
+```
+
+Then verify: `qmd --version`
+
+### 2. Add collections
+
+The `memory/` folder in this repo is already structured for QMD. Register the sub-folders as collections:
+
+```bash
+qmd collection add ./memory/memory   --name memory
+qmd collection add ./memory/sessions --name sessions
+qmd collection add ./memory/topics   --name topics
+```
+
+Add context descriptions so agents understand what each collection contains:
+
+```bash
+qmd context add qmd://memory/   "Agent memory: user profile, decisions, session summaries"
+qmd context add qmd://sessions/ "Parsed agent session transcripts and conversations"
+qmd context add qmd://topics/   "Topic-specific research and reference notes"
+```
+
+### 3. Index and embed
+
+```bash
+qmd update        # index all markdown files
+qmd embed         # generate vector embeddings (downloads ~2GB of models on first run)
+```
+
+### 4. Verify
+
+```bash
+qmd status        # shows collections, file counts, GPU/CPU info
+qmd search "memory"
+```
+
+### MCP server (for OpenCode / Claude)
+
+Use OpenCode with a **local MCP process** for QMD. This is the tested configuration in this repo and avoids schema/tool-loading issues.
+
+`opencode.json` should use this shape:
+
+```json
+{
+  "mcp": {
+	 "qmd": {
+		"type": "local",
+		"command": ["node", "C:\\Users\\<YourUser>\\node_modules\\@tobilu\\qmd\\dist\\qmd.js", "mcp"],
+		"enabled": true,
+		"timeout": 60000
+	 }
+  }
+}
+```
+
+Why `timeout: 60000`? The first model-backed requests can take longer than 5s; a higher timeout prevents false MCP timeouts.
+
+### Quick validation checklist
+
+```powershell
+opencode mcp list
+opencode run "use qmd_search to find 'attack on titan' in memory and tell me what you find"
+```
+
+Expected:
+- `opencode mcp list` shows `qmd connected`
+- `qmd_search` returns results from `memory/memory/*.md`
+
+### Known pitfalls and fixes
+
+1. `Invalid input mcp.qmd`
+	- Cause: unsupported config shape (for example `"type": "url"`)
+	- Fix: use `"type": "local"` + `"command": [...]`
+
+2. `qmd: command not found` inside OpenCode/bash
+	- Cause: on Windows, `qmd` is a `.cmd` shim and may not exist in bash PATH
+	- Fix: use MCP tools (`qmd_search`, `qmd_get`, `qmd_status`) via OpenCode; for shell use PowerShell
+
+3. `MCP error -32001: Request timed out`
+	- Cause: model cold start / short timeout
+	- Fix: set `timeout` to `60000` in `opencode.json`
+
+4. Search returns no result after writing a note
+	- Cause: index not refreshed
+	- Fix: run `qmd update`
+
+See `qmdreadme.md` for a complete operator guide.

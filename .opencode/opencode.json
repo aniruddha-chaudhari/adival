@@ -13,6 +13,12 @@
     }
   },
   "mcp": {
+    "qmd": {
+      "type": "local",
+      "command": ["node", "C:\\Users\\Aniruddha Chaudhari\\node_modules\\@tobilu\\qmd\\dist\\qmd.js", "mcp"],
+      "enabled": true,
+      "timeout": 60000
+    },
     "use-chrome": {
       "type": "local",
       "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
