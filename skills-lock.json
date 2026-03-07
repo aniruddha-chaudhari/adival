@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "028c3bad9e7417460e0d2094fc0c1b9d601e56317d38c4f5d124666b06a9405b"
     },
+    "dialectic": {
+      "source": "KyleAMathews/hegelian-dialectic-skill",
+      "sourceType": "github",
+      "computedHash": "f14c229c9a23b3c696022045c54035e081bcd831a8b54e8a1eca3feeb9c66ff9"
+    },
     "doc-coauthoring": {
       "source": "anthropics/skills",
       "sourceType": "github",
