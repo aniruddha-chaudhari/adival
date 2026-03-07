@@ -8,3 +8,6 @@ test-unpacked
 
 # Adding .opencode/.gitignore to the ignore list
 .opencode/.gitignore
+
+manager/*
+workbox/*
