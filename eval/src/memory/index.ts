@@ -1,4 +1,4 @@
-export { FSMemory } from "./fs-memory";
+export { FSMemory } from "./fs/fs-memory";
 export { MEMORY_TOOLS, executeMemoryTool } from "./tools";
 export {
     qmdSearch,
@@ -12,21 +12,21 @@ export {
     qmdCollectionAdd,
     qmdContextAdd,
     formatQmdResults,
-} from "./qmd";
-export type { QmdResult, QmdStatusResult } from "./qmd";
+} from "./qmd/qmd";
+export type { QmdResult, QmdStatusResult } from "./qmd/qmd";
 
 // Condensation pipeline
-export { condenseSession, updateAgentMd, endOfSessionHook } from "./condense";
-export { runCondensationPipeline } from "./pipeline";
-export type { PipelineResult } from "./pipeline";
-export { runPromotion } from "./promote";
-export type { PromotionCandidate } from "./promote";
-export { compressJournalMonth, getJournalMonths } from "./compress-journal";
-export { rebuildAgentMd, agentMdSize } from "./agent-md-writer";
-export { llmSummarize } from "./llm";
+export { condenseSession, updateAgentMd, endOfSessionHook } from "./fs/condense";
+export { runCondensationPipeline } from "./fs/pipeline";
+export type { PipelineResult } from "./fs/pipeline";
+export { runPromotion } from "./fs/promote";
+export type { PromotionCandidate } from "./fs/promote";
+export { compressJournalMonth, getJournalMonths } from "./fs/compress-journal";
+export { rebuildAgentMd, agentMdSize } from "./fs/agent-md-writer";
+export { llmSummarize } from "./fs/llm";
 
-import { FSMemory } from "./fs-memory";
-import { qmdDeepSearch, formatQmdResults } from "./qmd";
+import { FSMemory } from "./fs/fs-memory";
+import { qmdDeepSearch, formatQmdResults } from "./qmd/qmd";
 
 /** Build system prompt context from FS memory layer.
  *  Supermemory context is handled by its MCP tools automatically. */

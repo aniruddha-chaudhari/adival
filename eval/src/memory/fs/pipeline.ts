@@ -77,7 +77,7 @@ ${raw}`;
  */
 async function reindexQmd(fs: FSMemory): Promise<void> {
     try {
-        const { qmdUpdate } = await import("./qmd");
+        const { qmdUpdate } = await import("../qmd/qmd");
         qmdUpdate();
     } catch {
         // QMD not available — skip silently

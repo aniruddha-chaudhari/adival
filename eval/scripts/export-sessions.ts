@@ -13,12 +13,12 @@
 import { resolve, basename } from "path";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, statSync } from "fs";
 import { homedir } from "os";
-import { qmdUpdate, qmdEmbed } from "../src/memory/qmd";
+import { qmdUpdate, qmdEmbed } from "../src/memory/qmd/qmd";
 
 const PROJECT_ROOT = resolve(import.meta.dir, "../..");
 const SESSIONS_DIR = resolve(homedir(), ".claude", "projects");
-const EXPORT_DIR   = resolve(PROJECT_ROOT, "memory", "sessions");
-const MARKER_FILE  = resolve(EXPORT_DIR, ".last-export");
+const EXPORT_DIR = resolve(PROJECT_ROOT, "memory", "sessions");
+const MARKER_FILE = resolve(EXPORT_DIR, ".last-export");
 
 // ── Ensure export directory ───────────────────────────────────────────────────
 mkdirSync(EXPORT_DIR, { recursive: true });

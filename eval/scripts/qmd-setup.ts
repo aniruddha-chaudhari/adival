@@ -16,7 +16,7 @@ import {
     qmdUpdate,
     qmdEmbed,
     qmdStatus,
-} from "../src/memory/qmd";
+} from "../src/memory/qmd/qmd";
 
 const PROJECT_ROOT = resolve(import.meta.dir, "../..");
 const MEMORY_DIR = resolve(PROJECT_ROOT, "memory");

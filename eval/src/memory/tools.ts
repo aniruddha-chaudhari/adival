@@ -1,4 +1,4 @@
-import { FSMemory } from "./fs-memory";
+dimport { FSMemory } from "./fs/fs-memory";
 import {
     qmdSearch,
     qmdVectorSearch,
@@ -6,7 +6,7 @@ import {
     qmdGet,
     qmdStatus,
     formatQmdResults,
-} from "./qmd";
+} from "./qmd/qmd";
 
 /** Tool schemas (MCP format equivalents for the agent) */
 export const MEMORY_TOOLS = [

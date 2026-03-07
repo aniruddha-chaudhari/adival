@@ -1,5 +1,5 @@
 import { expect, test, describe, beforeAll, afterAll } from "bun:test";
-import { FSMemory } from "./fs-memory";
+import { FSMemory } from "./fs/fs-memory";
 import { executeMemoryTool } from "./tools";
 import { rmSync, existsSync, readFileSync } from "fs";
 import { join } from "path";
