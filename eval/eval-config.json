@@ -1,12 +1,12 @@
 {
   "$schema": "./eval-config.schema.json",
-  "defaultModel": "google/antigravity-gemini-3-flash",
+  "defaultModel": "opencode/minimax-m2.5-free",
   "tasks": [
     {
       "id": "EVAL_001",
       "name": "Wikipedia: Python release year",
       "category": "data-extraction",
-      "prompt": "Load the agent-browser skill and connect to port 9222. Then immediately navigate to https://en.wikipedia.org/wiki/Python_(programming_language). Read the infobox and report: (1) the year Python was first released, (2) the name of its creator.",
+      "prompt": "Load the agent-browser skill and connect to port 9222. Then immediately navigate to https://en.wikipedia.org/wiki/Python_(programming_language). Read the infobox and report: (1) the year Python was first released, (2) the name of its creator. Store the steps you take in QMD memory for later reference.",
       "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "scorer": {
@@ -21,7 +21,7 @@
       "id": "EVAL_002",
       "name": "GitHub: facebook/react star count",
       "category": "navigation",
-      "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://github.com/facebook/react. Find and report the number of GitHub stars this repository has.",
+      "prompt": "Load the agent-browser skill and connect to port 9222. Navigate to https://github.com/facebook/react. Find and report the number of GitHub stars this repository has. Store the steps you take in QMD memory for later reference.",
       "timeoutSeconds": 300,
       "humanBaselineSteps": null,
       "scorer": {

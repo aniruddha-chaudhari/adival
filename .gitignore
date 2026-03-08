@@ -5,6 +5,7 @@ eval/eval-results
 eval/eval-result.json
 unpacked
 test-unpacked
+eval/nul
 
 # Adding .opencode/.gitignore to the ignore list
 .opencode/.gitignore
