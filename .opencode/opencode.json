@@ -33,6 +33,11 @@
       "type": "local",
       "command": ["npx", "@tontoko/fast-playwright-mcp"],
       "enabled": false
+    },
+    "supermemory": {
+      "type": "remote",
+      "url": "https://mcp.supermemory.ai/mcp",
+      "enabled": true
     }
   }
 }

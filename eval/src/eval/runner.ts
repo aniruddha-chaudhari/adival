@@ -97,6 +97,7 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
   if (task.llmJudge) {
     judge = await judgeTask(task.name, task.prompt, output, task.screenshotPath, runDir, {
       humanBaselineSteps: task.humanBaselineSteps,
+      model: task.model || DEFAULT_MODEL,
     }).catch(e => ({
       verdict: "FAIL" as const,
       score: 0,
