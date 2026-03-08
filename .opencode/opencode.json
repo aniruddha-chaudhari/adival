@@ -1,5 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "tools": {
+    "chat-with-session": false,
+    "read-frontmatter": false
+  },
+  "agent": {
+    "chat-manager": {
+      "tools": {
+        "chat-with-session": true,
+        "read-frontmatter": true
+      }
+    }
+  },
   "mcp": {
     "use-chrome": {
       "type": "local",
