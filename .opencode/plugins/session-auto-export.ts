@@ -7,6 +7,7 @@ const JSON_OUTPUT_DIR = "manager/messages";
 const CHAT_OUTPUT_DIR = "manager/chats";
 const TOOL_TEXT_LIMIT = 400;
 const HELPER_TITLE_PREFIX = "__meta_summary__:";
+const DEFAULT_FORK_TITLE_PATTERN = /\(fork\s*#\d+\)/i;
 
 type SummaryData = {
   description: string;
@@ -190,6 +191,10 @@ function isHelperSessionTitle(title: unknown): boolean {
   return typeof title === "string" && title.startsWith(HELPER_TITLE_PREFIX);
 }
 
+function isDefaultForkSessionTitle(title: unknown): boolean {
+  return typeof title === "string" && DEFAULT_FORK_TITLE_PATTERN.test(title);
+}
+
 function appendYamlList(lines: string[], key: string, values: string[]): void {
   if (values.length === 0) {
     lines.push(`${key}: []`);
@@ -298,7 +303,7 @@ async function fetchSession(client: any, sessionID: string, directory: string): 
     return getSessionInfo(result);
   } catch {
     const result = await client.session.get({
-      path: { sessionID },
+      path: { id: sessionID },
       query: { directory },
     });
     return getSessionInfo(result);
@@ -315,7 +320,7 @@ async function updateSessionTitle(
     await client.session.update({ sessionID, directory, title });
   } catch {
     await client.session.update({
-      path: { sessionID },
+      path: { id: sessionID },
       query: { directory },
       body: { title },
     });
@@ -328,7 +333,7 @@ async function forkSession(client: any, sessionID: string, directory: string): P
   } catch {
     return getSessionInfo(
       await client.session.fork({
-        path: { sessionID },
+        path: { id: sessionID },
         query: { directory },
       })
     );
@@ -340,7 +345,7 @@ async function deleteSession(client: any, sessionID: string, directory: string):
     await client.session.delete({ sessionID, directory });
   } catch {
     await client.session.delete({
-      path: { sessionID },
+      path: { id: sessionID },
       query: { directory },
     });
   }
@@ -371,7 +376,7 @@ async function promptSessionForSummary(
     if (fromPrompt) return fromPrompt;
   } catch {
     const result = await client.session.prompt({
-      path: { sessionID },
+      path: { id: sessionID },
       query: { directory },
       body: {
         parts: [{ type: "text", text: prompt }],
@@ -395,7 +400,7 @@ async function promptSessionForSummary(
   } catch {
     try {
       const messages = await client.session.messages({
-        path: { sessionID },
+        path: { id: sessionID },
         query: { directory, limit: 10 },
       });
       const list = getSessionInfo(messages);
@@ -501,7 +506,9 @@ export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
       if (!isSessionInfoEvent && !isSessionIdleEvent) return;
 
       const sessionID =
-        (isSessionInfoEvent ? event.properties?.info?.id : event.properties?.sessionID) || "";
+        (isSessionInfoEvent
+          ? event.properties?.info?.id || (event.properties as any)?.sessionID
+          : event.properties?.sessionID) || "";
       if (!sessionID) return;
 
       const previous = inFlightBySession.get(sessionID) || Promise.resolve();
@@ -509,13 +516,25 @@ export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
         .catch(() => undefined)
         .then(async () => {
           try {
-            const session = isSessionInfoEvent
+            let session = isSessionInfoEvent
               ? event.properties?.info
               : await fetchSession(client as any, sessionID, directory);
+
+            if (!session || !session.directory || !session.title) {
+              const hydrated = await fetchSession(client as any, sessionID, directory);
+              if (hydrated) {
+                session = { ...hydrated, ...session };
+              }
+            }
+
             if (!session) return;
 
-            if (ignoredSessionIDs.has(session.id) || isHelperSessionTitle(session.title)) {
-              if (session.id && isHelperSessionTitle(session.title)) {
+            const isIgnoredHelper = ignoredSessionIDs.has(session.id);
+            const isHelperTitle = isHelperSessionTitle(session.title);
+            const isDefaultForkTitle = isDefaultForkSessionTitle(session.title);
+
+            if (isIgnoredHelper || isHelperTitle || isDefaultForkTitle) {
+              if (session.id && isIgnoredHelper) {
                 try {
                   await deleteSession(client as any, session.id, directory);
                 } catch {
@@ -586,3 +605,5 @@ export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
     },
   };
 };
+
+export default SessionAutoExport;
