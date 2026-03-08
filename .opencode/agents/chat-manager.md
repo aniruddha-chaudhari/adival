@@ -58,7 +58,7 @@ Stop reading as soon as you have enough information. Do not read entire files un
 
 ### Step 4 — Chat with a session (only if needed)
 
-If reading the transcript is not enough and the session could directly answer a specific question, use the `chat-with-session` tool:
+If reading the transcript is not enough or the session's agent could directly answer a specific question quickly, use the `chat-with-session` tool:
 
 ```json
 {
@@ -71,7 +71,7 @@ Only use `chat-with-session` when:
 
 - The front matter strongly suggests the session has relevant knowledge
 - You have a specific targeted question
-- Reading the transcript did not fully answer the question, you have read with offset too many times, and its better to ask directly
+- Reading the transcript did not fully answer the question, you have already read with offset too many times, and its better to ask directly
 
 ## Output
 
