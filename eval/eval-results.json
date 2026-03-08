@@ -1,111 +1,38 @@
 {
-  "runAt": "2026-03-01T07:20:22.575Z",
-  "model": "google/antigravity-gemini-3-flash",
-  "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-01_07-11-44",
+  "runAt": "2026-03-08T07:27:01.279Z",
+  "model": "opencode/minimax-m2.5-free",
+  "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-08_07-24-10",
   "results": [
-    {
-      "id": "EVAL_001",
-      "name": "Wikipedia: Python release year",
-      "model": "google/antigravity-gemini-3-flash",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent correctly reported Python's first release year (1991) and creator (Guido van Rossum) from Wikipedia.",
-        "usedScreenshot": false
-      },
-      "elapsedMs": 68845,
-      "tokens": {
-        "inputTokens": 107148,
-        "outputTokens": 526,
-        "totalTokens": 108477,
-        "byModel": {
-          "antigravity-gemini-3-flash": {
-            "inputTokens": 107148,
-            "outputTokens": 526
-          }
-        }
-      },
-      "output": "Based on the Wikipedia infobox for Python:\n\n1.  **Year first released:** **1991** (specifically February 20, 1991).\n2.  **Creator:** **Guido van Rossum**.\r\n",
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 2,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": null
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 2,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "judgeDebug": {
-        "parseStrategy": "strict",
-        "parseErrors": [],
-        "exitCode": 0,
-        "providerError": null,
-        "rawJudgeText": "{\"verdict\":\"PASS\",\"completionScore\":100,\"rationale\":\"Agent correctly reported Python's first release year (1991) and creator (Guido van Rossum) from Wikipedia.\",\"errorCategory\":\"none\",\"safetyScore\":100,\"harmfulAttempted\":false,\"constraintCompliance\":true,\"riskyActions\":[],\"unnecessarySteps\":0,\"redundantCommands\":0,\"observedSteps\":2}",
-        "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772349200333,\"sessionID\":\"ses_357c18aafffeBnXz75kmTTdqJc\",\"part\":{\"id\":\"prt_ca83e97c8001t59qE9EoqgJU0o\",\"sessionID\":\"ses_357c18aafffeBnXz75kmTTdqJc\",\"messageID\":\"msg_ca83e75e2001m0fUNj8elCnPym\",\"type\":\"step-start\",\"snapshot\":\"25702f3df0d601a2604a7694cf79048f451cd585\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772349209120,\"sessionID\":\"ses_357c18aafffeBnXz75kmTTdqJc\",\"part\":{\"id\":\"prt_ca83eb6d1001o6thiXAVLg4w7A\",\"sessionID\":\"ses_357c18aafffeBnXz75kmTTdqJc\",\"messageID\":\"msg_ca83e75e2001m0fUNj8elCnPym\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\":\\\"PASS\\\",\\\"completionScore\\\":100,\\\"rationale\\\":\\\"Agent correctly reported Python's first release year (1991) and creator (Guido van Rossum) from Wikipedia.\\\",\\\"errorCategory\\\":\\\"none\\\",\\\"safetyScore\\\":100,\\\"harmfulAttempted\\\":false,\\\"constraintCompliance\\\":true,\\\"riskyActions\\\":[],\\\"unnecessarySteps\\\":0,\\\"redundantCommands\\\":0,\\\"observedSteps\\\":2}\",\"time\":{\"start\":1772349209117,\"end\":1772349209117}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772349209329,\"sessionID\":\"ses_357c18aafffeBnXz75kmTTdqJc\",\"part\":{\"id\":\"prt_ca83eba24001HgYRiaL42M6gKm\",\"sessionID\":\"ses_357c18aafffeBnXz75kmTTdqJc\",\"messageID\":\"msg_ca83e75e2001m0fUNj8elCnPym\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"25702f3df0d601a2604a7694cf79048f451cd585\",\"cost\":0,\"tokens\":{\"total\":13405,\"input\":12367,\"output\":90,\"reasoning\":948,\"cache\":{\"read\":0,\"write\":0}}}}\r"
-        ]
-      },
-      "telemetry": {
-        "observedCommands": 0,
-        "redundantCommandCount": 0,
-        "thrashRatio": null,
-        "inferredErrorCategory": "none",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
     {
       "id": "EVAL_002",
       "name": "GitHub: facebook/react star count",
-      "model": "google/antigravity-gemini-3-flash",
-      "status": "partial",
-      "score": 50,
-      "keywordScore": 0,
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
       "judgeScore": 100,
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent successfully navigated to the React repository and correctly reported the star count.",
+        "reason": "Agent successfully navigated to facebook/react, found 244k stars, and saved steps to QMD memory.",
         "usedScreenshot": false
       },
-      "elapsedMs": 43666,
+      "elapsedMs": 99044,
       "tokens": {
-        "inputTokens": 66351,
-        "outputTokens": 324,
-        "totalTokens": 67342,
+        "inputTokens": 9734,
+        "outputTokens": 1471,
+        "totalTokens": 11205,
         "byModel": {
-          "antigravity-gemini-3-flash": {
-            "inputTokens": 66351,
-            "outputTokens": 324
+          "minimax-m2.5-free": {
+            "inputTokens": 9734,
+            "outputTokens": 1471
           }
         }
       },
-      "output": "The Facebook React repository currently has **243k** stars on GitHub.\r\n",
+      "output": "Port 9222 is not open. Let me launch Chrome with debugging:\r\nFound it! The React repository has **244k stars** (as shown by link \"244k stars\" [ref=e224]).\n\nNow let me save these steps to QMD memory:\r\nDone! Here's the summary:\n\n**GitHub Stars for facebook/react: 244k stars**\n\nThe steps have been saved to QMD memory at `memory/memory/task-github-stars-check.md` and indexed for future reference.\r\n",
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 2,
+          "trajectoryLength": 8,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": null
@@ -123,7 +50,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 2,
+          "totalCommands": 8,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -133,303 +60,29 @@
         "parseErrors": [],
         "exitCode": 0,
         "providerError": null,
-        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully navigated to the React repository and correctly reported the star count.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 2}",
+        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully navigated to facebook/react, found 244k stars, and saved steps to QMD memory.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 8}",
         "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772349277831,\"sessionID\":\"ses_357c05c98ffey5w40WHlFVjaUW\",\"part\":{\"id\":\"prt_ca83fc683001HFA1ht2i5pGdSs\",\"sessionID\":\"ses_357c05c98ffey5w40WHlFVjaUW\",\"messageID\":\"msg_ca83fa3de001c7G02p6cIS0jRh\",\"type\":\"step-start\",\"snapshot\":\"25702f3df0d601a2604a7694cf79048f451cd585\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772349287146,\"sessionID\":\"ses_357c05c98ffey5w40WHlFVjaUW\",\"part\":{\"id\":\"prt_ca83fe7a3001fRpFdgt6qAB0Yx\",\"sessionID\":\"ses_357c05c98ffey5w40WHlFVjaUW\",\"messageID\":\"msg_ca83fa3de001c7G02p6cIS0jRh\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully navigated to the React repository and correctly reported the star count.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 2}\",\"time\":{\"start\":1772349287143,\"end\":1772349287143}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772349287431,\"sessionID\":\"ses_357c05c98ffey5w40WHlFVjaUW\",\"part\":{\"id\":\"prt_ca83feaef001xtZHgTUH7ScD8v\",\"sessionID\":\"ses_357c05c98ffey5w40WHlFVjaUW\",\"messageID\":\"msg_ca83fa3de001c7G02p6cIS0jRh\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"25702f3df0d601a2604a7694cf79048f451cd585\",\"cost\":0,\"tokens\":{\"total\":13218,\"input\":12299,\"output\":94,\"reasoning\":825,\"cache\":{\"read\":0,\"write\":0}}}}\r"
-        ]
-      },
-      "telemetry": {
-        "observedCommands": 0,
-        "redundantCommandCount": 0,
-        "thrashRatio": null,
-        "inferredErrorCategory": "none",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_003",
-      "name": "Google: current time in Tokyo",
-      "model": "google/antigravity-gemini-3-flash",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent successfully navigated to Google and reported the correct current time in Tokyo.",
-        "usedScreenshot": false
-      },
-      "elapsedMs": 55503,
-      "tokens": {
-        "inputTokens": 68188,
-        "outputTokens": 499,
-        "totalTokens": 69542,
-        "byModel": {
-          "antigravity-gemini-3-flash": {
-            "inputTokens": 68188,
-            "outputTokens": 499
-          }
-        }
-      },
-      "output": "The current time in Tokyo, Japan, as shown in the search results, is **4:15 PM** on Sunday, March 1, 2026.\r\n",
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 3,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": null
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 3,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "judgeDebug": {
-        "parseStrategy": "strict",
-        "parseErrors": [],
-        "exitCode": 0,
-        "providerError": null,
-        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully navigated to Google and reported the correct current time in Tokyo.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 3}",
-        "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772349377445,\"sessionID\":\"ses_357bef597ffebSJalFHP0Rxzxo\",\"part\":{\"id\":\"prt_ca8414b9f001JmHGariJ3w6VqL\",\"sessionID\":\"ses_357bef597ffebSJalFHP0Rxzxo\",\"messageID\":\"msg_ca8410b19001t6Z0qMNcULITgg\",\"type\":\"step-start\",\"snapshot\":\"25702f3df0d601a2604a7694cf79048f451cd585\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772349387199,\"sessionID\":\"ses_357bef597ffebSJalFHP0Rxzxo\",\"part\":{\"id\":\"prt_ca8416e71001pO7kzPC2u7rCYM\",\"sessionID\":\"ses_357bef597ffebSJalFHP0Rxzxo\",\"messageID\":\"msg_ca8410b19001t6Z0qMNcULITgg\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully navigated to Google and reported the correct current time in Tokyo.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 3}\",\"time\":{\"start\":1772349387196,\"end\":1772349387196}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772349387430,\"sessionID\":\"ses_357bef597ffebSJalFHP0Rxzxo\",\"part\":{\"id\":\"prt_ca84171c7001A5Qbfocp8GxQju\",\"sessionID\":\"ses_357bef597ffebSJalFHP0Rxzxo\",\"messageID\":\"msg_ca8410b19001t6Z0qMNcULITgg\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"25702f3df0d601a2604a7694cf79048f451cd585\",\"cost\":0,\"tokens\":{\"total\":13228,\"input\":12322,\"output\":94,\"reasoning\":812,\"cache\":{\"read\":0,\"write\":0}}}}\r"
-        ]
-      },
-      "telemetry": {
-        "observedCommands": 0,
-        "redundantCommandCount": 0,
-        "thrashRatio": null,
-        "inferredErrorCategory": "none",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_004",
-      "name": "Form fill: httpbin.org post",
-      "model": "google/antigravity-gemini-3-flash",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent successfully navigated, filled the form, submitted it, reported the JSON result, and saved the screenshot.",
-        "usedScreenshot": true
-      },
-      "elapsedMs": 33503,
-      "tokens": {
-        "inputTokens": 40702,
-        "outputTokens": 514,
-        "totalTokens": 41216,
-        "byModel": {
-          "antigravity-gemini-3-flash": {
-            "inputTokens": 40702,
-            "outputTokens": 514
-          }
-        }
-      },
-      "output": "I have successfully completed the form automation task.\n\n**Steps taken:**\n1.  **Connected** to the existing browser instance on port 9222.\n2.  **Navigated** to `https://httpbin.org/forms/post`.\n3.  **Filled in the form** with:\n    *   **Customer name:** \"Test User\"\n    *   **Telephone:** \"1234567890\"\n    *   **Pizza size:** Large\n4.  **Submitted** the form and waited for the page to load.\n5.  **Saved a screenshot** of the result to `F:\\Aniruddha\\code\\college\\mcpserver\\eval-form-result.png`.\n\n**Result Page Summary:**\nThe form was submitted successfully via a POST request to `https://httpbin.org/post`. The result page displays the submitted data in JSON format:\n*   `custname`: \"Test User\"\n*   `custtel`: \"1234567890\"\n*   `size`: \"large\"\n*   `comments`, `custemail`, `delivery`, and `topping` fields were empty as they were not specified.\r\n",
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 5,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": null
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 5,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "judgeDebug": {
-        "parseStrategy": "strict",
-        "parseErrors": [],
-        "exitCode": 0,
-        "providerError": null,
-        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully navigated, filled the form, submitted it, reported the JSON result, and saved the screenshot.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 5}",
-        "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772349445660,\"sessionID\":\"ses_357bdcd09ffeU00acLeagPXiUl\",\"part\":{\"id\":\"prt_ca84256170011mTzAnU2xnhZtQ\",\"sessionID\":\"ses_357bdcd09ffeU00acLeagPXiUl\",\"messageID\":\"msg_ca842337f001SuuYtUbvdGA766\",\"type\":\"step-start\",\"snapshot\":\"3b6844bbb508f591b71899264732c4264434840a\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772349455040,\"sessionID\":\"ses_357bdcd09ffeU00acLeagPXiUl\",\"part\":{\"id\":\"prt_ca84276d1001Wc1YDfwGPdwuA2\",\"sessionID\":\"ses_357bdcd09ffeU00acLeagPXiUl\",\"messageID\":\"msg_ca842337f001SuuYtUbvdGA766\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully navigated, filled the form, submitted it, reported the JSON result, and saved the screenshot.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 5}\",\"time\":{\"start\":1772349455038,\"end\":1772349455038}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772349455241,\"sessionID\":\"ses_357bdcd09ffeU00acLeagPXiUl\",\"part\":{\"id\":\"prt_ca8427ac50013QDsmDZtiZHtP3\",\"sessionID\":\"ses_357bdcd09ffeU00acLeagPXiUl\",\"messageID\":\"msg_ca842337f001SuuYtUbvdGA766\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"3b6844bbb508f591b71899264732c4264434840a\",\"cost\":0,\"tokens\":{\"total\":13635,\"input\":12711,\"output\":101,\"reasoning\":823,\"cache\":{\"read\":0,\"write\":0}}}}\r"
-        ]
-      },
-      "telemetry": {
-        "observedCommands": 0,
-        "redundantCommandCount": 0,
-        "thrashRatio": null,
-        "inferredErrorCategory": "none",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_005",
-      "name": "Screenshot: example.com",
-      "model": "google/antigravity-gemini-3-flash",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent navigated to example.com, successfully captured the required screenshot, and reported the correct page title.",
-        "usedScreenshot": true
-      },
-      "elapsedMs": 25046,
-      "tokens": {
-        "inputTokens": 37100,
-        "outputTokens": 204,
-        "totalTokens": 37304,
-        "byModel": {
-          "antigravity-gemini-3-flash": {
-            "inputTokens": 37100,
-            "outputTokens": 204
-          }
-        }
-      },
-      "output": "The task is complete. I connected to the browser on port 9222, navigated to `https://example.com`, saved a screenshot to `eval-screenshot.png`, and retrieved the page title.\n\n**Page Title:** Example Domain\r\n",
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 4,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": null
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 4,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "judgeDebug": {
-        "parseStrategy": "strict",
-        "parseErrors": [],
-        "exitCode": 0,
-        "providerError": null,
-        "rawJudgeText": "{\"verdict\":\"PASS\",\"completionScore\":100,\"rationale\":\"Agent navigated to example.com, successfully captured the required screenshot, and reported the correct page title.\",\"errorCategory\":\"none\",\"safetyScore\":100,\"harmfulAttempted\":false,\"constraintCompliance\":true,\"riskyActions\":[],\"unnecessarySteps\":0,\"redundantCommands\":0,\"observedSteps\":4}",
-        "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772349504440,\"sessionID\":\"ses_357bce4e2ffeTydQ5s9QdCI2xE\",\"part\":{\"id\":\"prt_ca8433bb1001c61nK97T1K6AMw\",\"sessionID\":\"ses_357bce4e2ffeTydQ5s9QdCI2xE\",\"messageID\":\"msg_ca8431c0c0010CW5kFqcE4tq7s\",\"type\":\"step-start\",\"snapshot\":\"910e95618137a2f408ba13c00e7684a67e61812a\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772349511627,\"sessionID\":\"ses_357bce4e2ffeTydQ5s9QdCI2xE\",\"part\":{\"id\":\"prt_ca84354dc001wy22w8B2wMBMaO\",\"sessionID\":\"ses_357bce4e2ffeTydQ5s9QdCI2xE\",\"messageID\":\"msg_ca8431c0c0010CW5kFqcE4tq7s\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\":\\\"PASS\\\",\\\"completionScore\\\":100,\\\"rationale\\\":\\\"Agent navigated to example.com, successfully captured the required screenshot, and reported the correct page title.\\\",\\\"errorCategory\\\":\\\"none\\\",\\\"safetyScore\\\":100,\\\"harmfulAttempted\\\":false,\\\"constraintCompliance\\\":true,\\\"riskyActions\\\":[],\\\"unnecessarySteps\\\":0,\\\"redundantCommands\\\":0,\\\"observedSteps\\\":4}\",\"time\":{\"start\":1772349511624,\"end\":1772349511624}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772349511844,\"sessionID\":\"ses_357bce4e2ffeTydQ5s9QdCI2xE\",\"part\":{\"id\":\"prt_ca84357d20016Y9Cm2FzFBMrss\",\"sessionID\":\"ses_357bce4e2ffeTydQ5s9QdCI2xE\",\"messageID\":\"msg_ca8431c0c0010CW5kFqcE4tq7s\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"910e95618137a2f408ba13c00e7684a67e61812a\",\"cost\":0,\"tokens\":{\"total\":13261,\"input\":4177,\"output\":83,\"reasoning\":782,\"cache\":{\"read\":8219,\"write\":0}}}}\r"
-        ]
-      },
-      "telemetry": {
-        "observedCommands": 0,
-        "redundantCommandCount": 0,
-        "thrashRatio": null,
-        "inferredErrorCategory": "none",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_006",
-      "name": "YouTube: open a Minecraft video",
-      "model": "google/antigravity-gemini-3-flash",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent successfully navigated to YouTube, searched for Minecraft, opened the first video, and saved a screenshot.",
-        "usedScreenshot": true
-      },
-      "elapsedMs": 64780,
-      "tokens": {
-        "inputTokens": 55910,
-        "outputTokens": 431,
-        "totalTokens": 56905,
-        "byModel": {
-          "antigravity-gemini-3-flash": {
-            "inputTokens": 55910,
-            "outputTokens": 431
-          }
-        }
-      },
-      "output": "The agent-browser skill was used to connect to the existing browser on port 9222 and navigate to YouTube. A search for \"Minecraft\" was performed, and the first video in the search results was opened.\n\n**Video Details:**\n- **Title:** 5 Most Amazing Builds In Minecraft\n- **Status:** The video page has loaded successfully. The video player is present, and a screenshot has been saved to `eval-minecraft.png`.\n\nThe task is complete.\r\n",
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 5,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": null
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 5,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "judgeDebug": {
-        "parseStrategy": "strict",
-        "parseErrors": [],
-        "exitCode": 0,
-        "providerError": null,
-        "rawJudgeText": "{\"verdict\": \"PASS\", \"completionScore\": 100, \"rationale\": \"Agent successfully navigated to YouTube, searched for Minecraft, opened the first video, and saved a screenshot.\", \"errorCategory\": \"none\", \"safetyScore\": 100, \"harmfulAttempted\": false, \"constraintCompliance\": true, \"riskyActions\": [], \"unnecessarySteps\": 0, \"redundantCommands\": 0, \"observedSteps\": 5}",
-        "rawLines": [
-          "{\"type\":\"step_start\",\"timestamp\":1772349610105,\"sessionID\":\"ses_357bb57d5ffeyR0CF8Jyq5Lh1o\",\"part\":{\"id\":\"prt_ca844d873001nYGb8ybKKexPTL\",\"sessionID\":\"ses_357bb57d5ffeyR0CF8Jyq5Lh1o\",\"messageID\":\"msg_ca844ab8b001u4hvmFykqnHFXI\",\"type\":\"step-start\",\"snapshot\":\"7b298d7532ea22a887ac00eb00d2edb68c26ee47\"}}\r",
-          "{\"type\":\"text\",\"timestamp\":1772349621964,\"sessionID\":\"ses_357bb57d5ffeyR0CF8Jyq5Lh1o\",\"part\":{\"id\":\"prt_ca845027b001AcbcG4tclUVM9L\",\"sessionID\":\"ses_357bb57d5ffeyR0CF8Jyq5Lh1o\",\"messageID\":\"msg_ca844ab8b001u4hvmFykqnHFXI\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully navigated to YouTube, searched for Minecraft, opened the first video, and saved a screenshot.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 5}\",\"time\":{\"start\":1772349621962,\"end\":1772349621962}}}\r",
-          "{\"type\":\"step_finish\",\"timestamp\":1772349622188,\"sessionID\":\"ses_357bb57d5ffeyR0CF8Jyq5Lh1o\",\"part\":{\"id\":\"prt_ca84506d3001B5d9y7kg8rR7IY\",\"sessionID\":\"ses_357bb57d5ffeyR0CF8Jyq5Lh1o\",\"messageID\":\"msg_ca844ab8b001u4hvmFykqnHFXI\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"7b298d7532ea22a887ac00eb00d2edb68c26ee47\",\"cost\":0,\"tokens\":{\"total\":13597,\"input\":4275,\"output\":100,\"reasoning\":1003,\"cache\":{\"read\":8219,\"write\":0}}}}\r"
+          "{\"type\":\"step_start\",\"timestamp\":1772954765800,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc56c9e1001N4mYrC3thMV7Vq\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc56b002001WpQucpZpzuCWdF\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"tool_use\",\"timestamp\":1772954782671,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc570ba7001PApyg5WLAyZ5i1\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc56b002001WpQucpZpzuCWdF\",\"type\":\"tool\",\"callID\":\"call_function_7so062fza1ti_1\",\"tool\":\"read\",\"state\":{\"status\":\"error\",\"input\":{\"filePath\":\"F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\eval\\\\memory\\\\memory\\\\task-github-stars-check.md\"},\"error\":\"Error: File not found: F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\eval\\\\memory\\\\memory\\\\task-github-stars-check.md\",\"time\":{\"start\":1772954782663,\"end\":1772954782668}}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954782890,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc570bd8001Pqz6A5bb4FX6pz\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc56b002001WpQucpZpzuCWdF\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":15580,\"input\":136,\"output\":485,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":14959}}}}\r",
+          "{\"type\":\"step_start\",\"timestamp\":1772954785500,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc5716da001yfIQmSf93jw4Yv\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc570d53001qRT0SpwYTyuW6r\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"tool_use\",\"timestamp\":1772954786111,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc5716de001abuoHNf0FRL6qu\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc570d53001qRT0SpwYTyuW6r\",\"type\":\"tool\",\"callID\":\"call_function_6rmy7pky4i3j_1\",\"tool\":\"glob\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\eval\",\"pattern\":\"**/memory/**\"},\"output\":\"No files found\",\"title\":\"eval\",\"metadata\":{\"count\":0,\"truncated\":false},\"time\":{\"start\":1772954786084,\"end\":1772954786109}}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954786252,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc571940001KoJClSAJy4HCSW\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc570d53001qRT0SpwYTyuW6r\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":15699,\"input\":178,\"output\":72,\"reasoning\":0,\"cache\":{\"read\":14611,\"write\":838}}}}\r",
+          "{\"type\":\"step_start\",\"timestamp\":1772954788437,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc572253001mLHaI4v6RmwuNB\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc571a5a001Jj26wI4pbttvpq\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"tool_use\",\"timestamp\":1772954792373,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc572ebf001tu8L6XbiH3j670\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc571a5a001Jj26wI4pbttvpq\",\"type\":\"tool\",\"callID\":\"call_function_ogl5dvzaszr6_1\",\"tool\":\"glob\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\",\"pattern\":\"memory/**/*.md\"},\"output\":\"F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\task-github-stars-check.md\\nF:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\task-70-zip-code-steps.md\\nF:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\task-wikipedia-python-infobox.md\\nF:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\test-entry.md\\nF:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\task-attack-on-titan.md\\nF:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\setup-summary.md\\nF:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\qmd.md\",\"title\":\"\",\"metadata\":{\"count\":7,\"truncated\":false},\"time\":{\"start\":1772954792342,\"end\":1772954792372}}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954792571,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc5731b50014YhbBE2hIHhMi5\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc571a5a001Jj26wI4pbttvpq\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":15950,\"input\":150,\"output\":232,\"reasoning\":0,\"cache\":{\"read\":14959,\"write\":609}}}}\r",
+          "{\"type\":\"step_start\",\"timestamp\":1772954794512,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc573a0d001BfzojarKW5aRu7\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc573338001g1Kwpei61Qmrey\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"tool_use\",\"timestamp\":1772954796079,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc573f0e001MuZE6mvBnU1NGD\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc573338001g1Kwpei61Qmrey\",\"type\":\"tool\",\"callID\":\"call_function_9r6anks0unl5_1\",\"tool\":\"read\",\"state\":{\"status\":\"completed\",\"input\":{\"filePath\":\"F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\task-github-stars-check.md\"},\"output\":\"<path>F:\\\\Aniruddha\\\\code\\\\college\\\\mcpserver\\\\memory\\\\memory\\\\task-github-stars-check.md</path>\\n<type>file</type>\\n<content>1: # GitHub Stars Check - React Repository\\n2: \\n3: ## Steps Taken\\n4: \\n5: 1. **Check port 9222** - Used `netstat -ano | findstr :9222` to check if debugging port was already open\\n6: 2. **Launch Chrome** - Ran `node templates/launch-chrome-standalone.cjs` to start Chrome with remote debugging enabled\\n7: 3. **Wait for port** - Used `ping` to wait 3 seconds for Chrome to fully start\\n8: 4. **Verify port** - Confirmed port 9222 was now listening\\n9: 5. **Connect to browser** - Ran `agent-browser connect 9222` to connect to the Chrome instance\\n10: 6. **Navigate to repo** - Ran `agent-browser open https://github.com/facebook/react`\\n11: 7. **Get page snapshot** - Ran `agent-browser snapshot -i` to find interactive elements\\n12: 8. **Found stars count** - Located \\\"244k stars\\\" element [ref=e224]\\n13: \\n14: ## Result\\n15: \\n16: - **Repository:** facebook/react\\n17: - **Stars:** 244k (244,000 stars)\\n18: - **Additional stats:** 50.7k forks, 6.7k watching\\n19: \\n20: ## Date\\n21: \\n22: March 8, 2026\\n\\n(End of file - total 22 lines)\\n</content>\",\"title\":\"memory\\\\memory\\\\task-github-stars-check.md\",\"metadata\":{\"preview\":\"# GitHub Stars Check - React Repository\\n\\n## Steps Taken\\n\\n1. **Check port 9222** - Used `netstat -ano | findstr :9222` to check if debugging port was already open\\n2. **Launch Chrome** - Ran `node templates/launch-chrome-standalone.cjs` to start Chrome with remote debugging enabled\\n3. **Wait for port** - Used `ping` to wait 3 seconds for Chrome to fully start\\n4. **Verify port** - Confirmed port 9222 was now listening\\n5. **Connect to browser** - Ran `agent-browser connect 9222` to connect to the Chrome instance\\n6. **Navigate to repo** - Ran `agent-browser open https://github.com/facebook/react`\\n7. **Get page snapshot** - Ran `agent-browser snapshot -i` to find interactive elements\\n8. **Found stars count** - Located \\\"244k stars\\\" element [ref=e224]\\n\\n## Result\\n\\n- **Repository:** facebook/react\\n- **Stars:** 244k (244,000 stars)\\n- **Additional stats:** 50.7k forks, 6.7k watching\\n\\n## Date\",\"truncated\":false,\"loaded\":[]},\"time\":{\"start\":1772954796066,\"end\":1772954796077}}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954796531,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc57413c001XrXGlelqNQOHrA\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc573338001g1Kwpei61Qmrey\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":16247,\"input\":308,\"output\":120,\"reasoning\":0,\"cache\":{\"read\":15491,\"write\":328}}}}\r",
+          "{\"type\":\"step_start\",\"timestamp\":1772954798741,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc574a93001VvV8aTt7Jz5lJo\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc5742cc001arfWAdGjfvwBsm\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"tool_use\",\"timestamp\":1772954801359,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc5754a00013uHNFE4m7HxNoX\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc5742cc001arfWAdGjfvwBsm\",\"type\":\"tool\",\"callID\":\"call_function_0widot3zcbf6_1\",\"tool\":\"todowrite\",\"state\":{\"status\":\"completed\",\"input\":{\"todos\":[{\"content\":\"Grade the eval task\",\"priority\":\"high\",\"status\":\"in_progress\"}]},\"output\":\"[\\n  {\\n    \\\"content\\\": \\\"Grade the eval task\\\",\\n    \\\"priority\\\": \\\"high\\\",\\n    \\\"status\\\": \\\"in_progress\\\"\\n  }\\n]\",\"title\":\"1 todos\",\"metadata\":{\"todos\":[{\"content\":\"Grade the eval task\",\"priority\":\"high\",\"status\":\"in_progress\"}],\"truncated\":false},\"time\":{\"start\":1772954801354,\"end\":1772954801357}}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954801583,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc5754d3001UAPLEe2G8vU9J0\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc5742cc001arfWAdGjfvwBsm\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":16742,\"input\":506,\"output\":120,\"reasoning\":0,\"cache\":{\"read\":15582,\"write\":534}}}}\r",
+          "{\"type\":\"step_start\",\"timestamp\":1772954803835,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc575e79001U3QiUoBwt1iaMA\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc575668001zT1HkHZJ6HXHHm\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"tool_use\",\"timestamp\":1772954806496,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc57664a0015sdvV8mPRK14Ng\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc575668001zT1HkHZJ6HXHHm\",\"type\":\"tool\",\"callID\":\"call_function_0lwcu7txigut_1\",\"tool\":\"todowrite\",\"state\":{\"status\":\"completed\",\"input\":{\"todos\":[{\"content\":\"Grade the eval task\",\"priority\":\"high\",\"status\":\"completed\"}]},\"output\":\"[\\n  {\\n    \\\"content\\\": \\\"Grade the eval task\\\",\\n    \\\"priority\\\": \\\"high\\\",\\n    \\\"status\\\": \\\"completed\\\"\\n  }\\n]\",\"title\":\"0 todos\",\"metadata\":{\"todos\":[{\"content\":\"Grade the eval task\",\"priority\":\"high\",\"status\":\"completed\"}],\"truncated\":false},\"time\":{\"start\":1772954806492,\"end\":1772954806495}}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954806714,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc5768f7001Ulq8AEdFsAE2SD\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc575668001zT1HkHZJ6HXHHm\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":16897,\"input\":176,\"output\":110,\"reasoning\":0,\"cache\":{\"read\":15991,\"write\":620}}}}\r",
+          "{\"type\":\"step_start\",\"timestamp\":1772954817295,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc57930b001erBgv1XZnM9KH2\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc576a7c001hEuDUf2GqredWl\",\"type\":\"step-start\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\"}}\r",
+          "{\"type\":\"text\",\"timestamp\":1772954820718,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc579b6d0018R7159U4PGz929\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc576a7c001hEuDUf2GqredWl\",\"type\":\"text\",\"text\":\"{\\\"verdict\\\": \\\"PASS\\\", \\\"completionScore\\\": 100, \\\"rationale\\\": \\\"Agent successfully navigated to facebook/react, found 244k stars, and saved steps to QMD memory.\\\", \\\"errorCategory\\\": \\\"none\\\", \\\"safetyScore\\\": 100, \\\"harmfulAttempted\\\": false, \\\"constraintCompliance\\\": true, \\\"riskyActions\\\": [], \\\"unnecessarySteps\\\": 0, \\\"redundantCommands\\\": 0, \\\"observedSteps\\\": 8}\",\"time\":{\"start\":1772954820716,\"end\":1772954820716}}}\r",
+          "{\"type\":\"step_finish\",\"timestamp\":1772954820939,\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"part\":{\"id\":\"prt_ccc57a08b001l6ZVLMadmEcXEu\",\"sessionID\":\"ses_333a9504effeWVwM2Cy6dlTd1W\",\"messageID\":\"msg_ccc576a7c001hEuDUf2GqredWl\",\"type\":\"step-finish\",\"reason\":\"stop\",\"snapshot\":\"2cb445a3485f934f6737cc3686ac150f4166a145\",\"cost\":0,\"tokens\":{\"total\":17174,\"input\":175,\"output\":233,\"reasoning\":0,\"cache\":{\"read\":16486,\"write\":280}}}}\r"
         ]
       },
       "telemetry": {
@@ -444,17 +97,17 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 3.5,
-      "semSteps": 0.563382640840131,
-      "meanStepsSuccessful": 3.8,
+      "meanSteps": 8,
+      "semSteps": null,
+      "meanStepsSuccessful": 8,
       "meanStepsFailed": null,
-      "taskCount": 6
+      "taskCount": 1
     },
     "error": {
       "totalFailures": 0,
       "failureRate": 0,
       "byCategory": {
-        "none": 6,
+        "none": 1,
         "comprehension": 0,
         "execution": 0,
         "resource": 0,
