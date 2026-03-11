@@ -175,3 +175,30 @@ export function extractTelemetry(agentOutput: string): TelemetryResult {
     extractedCommands: allCommands,
   };
 }
+
+/**
+ * Count tool calls from structured JSONL events in agent output.
+ *
+ * Counts events where `type === "tool_use"` in the JSONL stream.
+ * This is the deterministic replacement for heuristic command counting.
+ *
+ * @param rawOutput  Full raw JSONL stdout from the agent run
+ * @returns Number of tool_use events found
+ */
+export function countToolCalls(rawOutput: string): number {
+  const lines = rawOutput.split("\n");
+  let count = 0;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    try {
+      const event = JSON.parse(trimmed);
+      if (event && typeof event === "object" && event.type === "tool_use") {
+        count++;
+      }
+    } catch {
+      // Skip non-JSON lines
+    }
+  }
+  return count;
+}

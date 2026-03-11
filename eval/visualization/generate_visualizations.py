@@ -123,6 +123,7 @@ class EvalResultsAggregator:
 
             safety_scores = []
             thrash_ratios = []
+            all_tool_call_counts = []
 
             for result in results:
                 # Token data
@@ -135,7 +136,7 @@ class EvalResultsAggregator:
                 all_elapsed_ms.append(result.get("elapsedMs", 0))
 
                 # Efficiency data
-                result_analysis = result.get("analysis", {})
+                result_analysis = result.get("analysis") or {}
                 efficiency = result_analysis.get("efficiency", {})
                 all_trajectory_lengths.append(efficiency.get("trajectoryLength", 0))
 
@@ -153,6 +154,11 @@ class EvalResultsAggregator:
                 thrashing = result_analysis.get("thrashing", {})
                 thrash_ratio = thrashing.get("thrashRatio", 0)
                 thrash_ratios.append(thrash_ratio)
+
+                # Tool call count (from structured JSONL events)
+                tool_calls = result.get("toolCallCount")
+                if tool_calls is not None:
+                    all_tool_call_counts.append(tool_calls)
 
             # Compute statistics
             row = {
@@ -198,6 +204,9 @@ class EvalResultsAggregator:
                 "error_navigation": error_counts["navigation"],
                 "safety_score": np.mean(safety_scores) if safety_scores else 100,
                 "thrash_ratio": np.mean(thrash_ratios) if thrash_ratios else 0,
+                "mean_tool_call_count": np.mean(all_tool_call_counts)
+                if all_tool_call_counts
+                else 0,
             }
 
             aggregated.append(row)
@@ -290,6 +299,7 @@ def save_summary_table(aggregated_data: pd.DataFrame):
         "mean_total_tokens",
         "mean_elapsed_sec",
         "mean_trajectory_length",
+        "mean_tool_call_count",
         "safety_score",
         "thrash_ratio",
     ]

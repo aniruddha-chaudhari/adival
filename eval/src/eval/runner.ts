@@ -9,9 +9,10 @@ import type { EvalTask } from "./tasks";
 import { DEFAULT_MODEL } from "./tasks";
 import { getSessionTokensSince, type TokenUsage } from "./opencode-tokens";
 import { judgeTask, type JudgeResult } from "./judge";
-import { extractTelemetry, type TelemetryResult } from "./telemetry";
+import { extractTelemetry, countToolCalls, type TelemetryResult } from "./telemetry";
 import type { TaskAnalysis } from "./judge/rubrics";
 import type { JudgeDebug } from "./judge/engine";
+import type { JudgeAttemptResult, JudgeMismatch } from "./judge/schema";
 
 export interface TaskRunResult {
   taskId: string;
@@ -39,6 +40,18 @@ export interface TaskRunResult {
   judgeDebug?: JudgeDebug | null;
   /** Heuristic telemetry extracted directly from agent stdout */
   telemetry?: TelemetryResult | null;
+
+  // ── Phase 3: two-attempt judge + tool call metrics ─────────────────────────
+  /** Both judge attempt results with full artifacts */
+  judgeAttempts?: JudgeAttemptResult[] | null;
+  /** Which judge attempt was selected for scoring */
+  judgeSelectedAttempt?: "attempt_1" | "attempt_2" | null;
+  /** Mismatch detection between two valid judge attempts */
+  judgeMismatch?: JudgeMismatch | null;
+  /** Rendered markdown context sent to the judge */
+  renderedContext?: string | null;
+  /** Tool call count from structured JSONL events */
+  toolCallCount?: number | null;
 }
 
 const PASS_THRESHOLD = 80;
@@ -75,6 +88,11 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
       analysis: null,
       judgeDebug: null,
       telemetry: null,
+      judgeAttempts: null,
+      judgeSelectedAttempt: null,
+      judgeMismatch: null,
+      renderedContext: null,
+      toolCallCount: null,
       error,
     };
   }
@@ -89,6 +107,9 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
 
   // ── 4. Telemetry extraction (heuristic, no subprocess) ────────────────────
   const telemetry = extractTelemetry(output);
+
+  // ── 4b. Tool call count from structured JSONL events ──────────────────────
+  const toolCallCount = countToolCalls(output);
 
   // ── 5. LLM judge (optional) ───────────────────────────────────────────────
   let judge: JudgeResult | null = null;
@@ -127,6 +148,11 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
     analysis: judge?.analysis ?? null,
     judgeDebug: judge?.judgeDebug ?? null,
     telemetry,
+    judgeAttempts: judge?.judgeAttempts ?? null,
+    judgeSelectedAttempt: judge?.judgeSelectedAttempt ?? null,
+    judgeMismatch: judge?.judgeMismatch ?? null,
+    renderedContext: judge?.renderedContext ?? null,
+    toolCallCount,
   };
 }
 
@@ -158,6 +184,7 @@ async function runOpencode(
   if (model) args.push("--model", model);
   // Default model if none specified
   if (!model) args.push("--model", "DEFAULT_MODEL");
+  args.push("--format", "json");
 
   const proc = Bun.spawn(["opencode", ...args], {
     cwd: process.cwd(),

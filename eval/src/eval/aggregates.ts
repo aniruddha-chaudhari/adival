@@ -79,11 +79,23 @@ export interface ThrashingAggregates {
   thrashingTaskCount: number;
 }
 
+export interface TimeAggregates {
+  /** Mean elapsed time across all tasks (ms) */
+  meanElapsedMs: number | null;
+  /** Mean elapsed time for passed tasks only (ms) */
+  meanElapsedMsPassed: number | null;
+  /** Median elapsed time across all tasks (ms) */
+  medianElapsedMs: number | null;
+  /** Interquartile range: Q3 - Q1 (ms) */
+  iqrElapsedMs: number | null;
+}
+
 export interface RunAnalysis {
   efficiency: EfficiencyAggregates;
   error: ErrorAggregates;
   safety: SafetyAggregates;
   thrashing: ThrashingAggregates;
+  time: TimeAggregates;
 }
 
 // ─── Aggregation functions ────────────────────────────────────────────────────
@@ -94,6 +106,7 @@ export function aggregateRun(results: TaskResultForAggregation[]): RunAnalysis {
     error: aggregateErrors(results),
     safety: aggregateSafety(results),
     thrashing: aggregateThrashing(results),
+    time: aggregateTime(results),
   };
 }
 
@@ -186,18 +199,13 @@ function aggregateSafety(results: TaskResultForAggregation[]): SafetyAggregates 
 }
 
 function aggregateThrashing(results: TaskResultForAggregation[]): ThrashingAggregates {
-  // Use telemetry thrash data (direct measurement) when available,
-  // otherwise fall back to judge's thrashing findings
+  // Use judge-derived thrashing data as source of truth
   const thrashRatios: number[] = [];
   let totalRedundant = 0;
   let thrashingTasks = 0;
 
   for (const r of results) {
-    if (r.telemetry?.thrashRatio != null) {
-      thrashRatios.push(r.telemetry.thrashRatio);
-      totalRedundant += r.telemetry.redundantCommandCount;
-      if (r.telemetry.thrashRatio >= 0.25) thrashingTasks++;
-    } else if (r.analysis?.thrashing != null) {
+    if (r.analysis?.thrashing != null) {
       if (r.analysis.thrashing.thrashRatio !== null) {
         thrashRatios.push(r.analysis.thrashing.thrashRatio);
       }
@@ -210,6 +218,39 @@ function aggregateThrashing(results: TaskResultForAggregation[]): ThrashingAggre
     meanThrashRatio: thrashRatios.length > 0 ? avg(thrashRatios) : null,
     totalRedundantCommands: totalRedundant,
     thrashingTaskCount: thrashingTasks,
+  };
+}
+
+function aggregateTime(results: TaskResultForAggregation[]): TimeAggregates {
+  const allTimes = results.map(r => r.elapsedMs).filter(t => t > 0);
+  const passedTimes = results
+    .filter(r => r.status === "pass")
+    .map(r => r.elapsedMs)
+    .filter(t => t > 0);
+
+  if (allTimes.length === 0) {
+    return {
+      meanElapsedMs: null,
+      meanElapsedMsPassed: null,
+      medianElapsedMs: null,
+      iqrElapsedMs: null,
+    };
+  }
+
+  const sorted = [...allTimes].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  const median = sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+
+  const q1Idx = Math.floor(sorted.length * 0.25);
+  const q3Idx = Math.floor(sorted.length * 0.75);
+  const q1 = sorted[q1Idx];
+  const q3 = sorted[q3Idx];
+
+  return {
+    meanElapsedMs: round2(avg(allTimes)),
+    meanElapsedMsPassed: passedTimes.length > 0 ? round2(avg(passedTimes)) : null,
+    medianElapsedMs: round2(median),
+    iqrElapsedMs: round2(q3 - q1),
   };
 }
 

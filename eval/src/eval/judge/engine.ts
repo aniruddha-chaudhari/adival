@@ -2,11 +2,13 @@
  * Judge Engine
  *
  * Orchestrates the full judge pipeline:
- *   1. Build grading prompt (task + agent output + optional screenshot hint)
- *   2. Call the judge agent via the OpenCode agent provider
- *   3. Parse the JSONL response → structured JSON verdict
- *   4. Apply rubrics → efficiency / error / safety / thrashing analysis blocks
- *   5. Normalize → final JudgeEngineResult with backward-compatible fields
+ *   1. Render agent output to clean markdown
+ *   2. Build grading prompt (task + rendered output + optional screenshot hint)
+ *   3. Call the judge agent TWICE for consistency validation
+ *   4. Select the best valid attempt, detect mismatches
+ *   5. Parse the JSONL response → structured JSON verdict
+ *   6. Apply rubrics → efficiency / error / safety / thrashing analysis blocks
+ *   7. Normalize → final JudgeEngineResult with backward-compatible fields
  *
  * The engine never throws. On any failure it returns a FAIL result with
  * full debug information so the failure is diagnosable.
@@ -18,7 +20,13 @@ import { join } from "path";
 import { runJudgeAgent, type ProviderOptions } from "./providers/opencode-agent-provider";
 import { parseJudgeOutput, type ParseResult } from "./parsers";
 import { applyRubrics, type TaskAnalysis } from "./rubrics";
-import type { JudgeRawOutput } from "./schema";
+import { renderAgentOutput } from "./render";
+import {
+  type JudgeRawOutput,
+  type JudgeAttemptResult,
+  type JudgeMismatch,
+  MISMATCH_FIELDS,
+} from "./schema";
 
 // ─── Public types ─────────────────────────────────────────────────────────────
 
@@ -43,6 +51,16 @@ export interface JudgeEngineResult {
   analysis: TaskAnalysis;
   /** Debug information for diagnosing judge failures */
   judgeDebug: JudgeDebug;
+
+  // ── Two-attempt fields ─────────────────────────────────────────────────────
+  /** Both judge attempts with full artifacts */
+  judgeAttempts: JudgeAttemptResult[];
+  /** Which attempt was selected for scoring */
+  judgeSelectedAttempt: "attempt_1" | "attempt_2" | null;
+  /** Mismatch info between the two attempts */
+  judgeMismatch: JudgeMismatch;
+  /** Rendered markdown sent to the judge */
+  renderedContext: string;
 }
 
 export interface JudgeDebug {
@@ -98,64 +116,86 @@ export async function judgeTaskWithEngine(
   const { resolvedScreenshotPath, screenshotB64 } = resolveScreenshot(screenshotPath, runDir);
   const usedScreenshot = screenshotB64 !== null;
 
+  // ── Render agent output to clean markdown ─────────────────────────────────
+  const renderedContext = renderAgentOutput(agentOutput);
+
   // ── Build grading prompt ──────────────────────────────────────────────────
   const prompt = buildJudgePrompt(
     taskName,
     taskInstruction,
-    agentOutput,
+    renderedContext,
     screenshotB64,
     resolvedScreenshotPath
   );
 
-  // ── Call the judge agent ──────────────────────────────────────────────────
-  let parseResult: ParseResult;
-  let providerError: string | null = null;
-  let rawLines: string[] = [];
-  let exitCode: number | null = null;
+  // ── Run judge agent twice ─────────────────────────────────────────────────
+  const providerOpts: ProviderOptions = {
+    model: options.model,
+    timeoutMs: options.timeoutMs,
+  };
 
-  try {
-    const providerResult = await runJudgeAgent(prompt, {
-      model: options.model,
-      timeoutMs: options.timeoutMs,
-    } satisfies ProviderOptions);
+  const attempt1 = await runSingleAttempt(prompt, providerOpts);
+  const attempt2 = await runSingleAttempt(prompt, providerOpts);
+  const judgeAttempts: JudgeAttemptResult[] = [attempt1, attempt2];
 
-    rawLines = providerResult.rawLines;
-    exitCode = providerResult.exitCode;
+  // ── Select best valid attempt ─────────────────────────────────────────────
+  const attempt1Valid = isAttemptValid(attempt1);
+  const attempt2Valid = isAttemptValid(attempt2);
 
-    // If the agent process succeeded but returned empty text, log it
-    const textToParse = providerResult.assistantText || providerResult.rawStdout;
-    parseResult = parseJudgeOutput(textToParse);
-  } catch (err) {
-    providerError = err instanceof Error ? err.message : String(err);
-    // Return a safe FAIL result with debug info
-    return buildFailResult(
-      usedScreenshot,
-      {
-        parseStrategy: "default",
-        rawJudgeText: "",
-        parseErrors: [`Provider error: ${providerError}`],
-        rawLines,
-        exitCode,
-        providerError,
-      },
-      options.humanBaselineSteps
-    );
+  let selectedAttempt: JudgeAttemptResult | null = null;
+  let judgeSelectedAttempt: "attempt_1" | "attempt_2" | null = null;
+
+  if (attempt1Valid) {
+    selectedAttempt = attempt1;
+    judgeSelectedAttempt = "attempt_1";
+  } else if (attempt2Valid) {
+    selectedAttempt = attempt2;
+    judgeSelectedAttempt = "attempt_2";
+  }
+
+  // ── Mismatch detection ────────────────────────────────────────────────────
+  const judgeMismatch = detectMismatch(attempt1, attempt2, attempt1Valid, attempt2Valid);
+
+  // ── Build result from selected attempt ────────────────────────────────────
+  if (!selectedAttempt || !selectedAttempt.parsedOutput) {
+    // Both attempts failed
+    const debug: JudgeDebug = {
+      parseStrategy: "default",
+      rawJudgeText: attempt1.assistantText || attempt2.assistantText || "",
+      parseErrors: [
+        ...(attempt1.error ? [`[attempt_1] Provider error: ${attempt1.error}`] : []),
+        ...(attempt1.parsedOutput?.parseErrors ?? []).map(e => `[attempt_1] ${e}`),
+        ...(attempt2.error ? [`[attempt_2] Provider error: ${attempt2.error}`] : []),
+        ...(attempt2.parsedOutput?.parseErrors ?? []).map(e => `[attempt_2] ${e}`),
+      ],
+      rawLines: [],
+      exitCode: attempt1.exitCode,
+      providerError: attempt1.error ?? attempt2.error ?? null,
+    };
+
+    return {
+      ...buildFailResult(usedScreenshot, debug, options.humanBaselineSteps),
+      judgeAttempts,
+      judgeSelectedAttempt,
+      judgeMismatch,
+      renderedContext,
+    };
   }
 
   // ── Apply rubrics ─────────────────────────────────────────────────────────
-  const raw: JudgeRawOutput = parseResult.output;
+  const raw: JudgeRawOutput = selectedAttempt.parsedOutput.output;
   const analysis = applyRubrics(raw, options.humanBaselineSteps);
 
   // ── Normalize to backward-compatible score ────────────────────────────────
   const score = raw.verdict === "PASS" ? 100 : raw.verdict === "PARTIAL" ? 50 : 0;
 
   const debug: JudgeDebug = {
-    parseStrategy: parseResult.strategy,
-    rawJudgeText: parseResult.rawText,
-    parseErrors: parseResult.parseErrors,
-    rawLines,
-    exitCode,
-    providerError,
+    parseStrategy: selectedAttempt.parsedOutput.strategy,
+    rawJudgeText: selectedAttempt.parsedOutput.rawText,
+    parseErrors: selectedAttempt.parsedOutput.parseErrors,
+    rawLines: [],
+    exitCode: selectedAttempt.exitCode,
+    providerError: selectedAttempt.error,
   };
 
   return {
@@ -166,7 +206,76 @@ export async function judgeTaskWithEngine(
     completionScore: raw.completionScore,
     analysis,
     judgeDebug: debug,
+    judgeAttempts,
+    judgeSelectedAttempt,
+    judgeMismatch,
+    renderedContext,
   };
+}
+
+// ─── Single attempt runner ────────────────────────────────────────────────────
+
+async function runSingleAttempt(
+  prompt: string,
+  providerOpts: ProviderOptions
+): Promise<JudgeAttemptResult> {
+  try {
+    const providerResult = await runJudgeAgent(prompt, providerOpts);
+    const textToParse = providerResult.assistantText || providerResult.rawStdout;
+    const parsedOutput = parseJudgeOutput(textToParse);
+
+    return {
+      rawStdout: providerResult.rawStdout,
+      assistantText: providerResult.assistantText,
+      parsedOutput,
+      error: null,
+      exitCode: providerResult.exitCode,
+    };
+  } catch (err) {
+    return {
+      rawStdout: "",
+      assistantText: "",
+      parsedOutput: null,
+      error: err instanceof Error ? err.message : String(err),
+      exitCode: null,
+    };
+  }
+}
+
+// ─── Validation helpers ───────────────────────────────────────────────────────
+
+/**
+ * An attempt is "valid" if it parsed successfully beyond the legacy/default fallback.
+ * strategy === "strict" or "fallback" means actual JSON was extracted.
+ */
+function isAttemptValid(attempt: JudgeAttemptResult): boolean {
+  return attempt.parsedOutput !== null && attempt.parsedOutput.strategy !== "default";
+}
+
+/**
+ * Compare two valid attempts for mismatch on key numeric fields.
+ */
+function detectMismatch(
+  attempt1: JudgeAttemptResult,
+  attempt2: JudgeAttemptResult,
+  attempt1Valid: boolean,
+  attempt2Valid: boolean
+): JudgeMismatch {
+  if (!attempt1Valid || !attempt2Valid) {
+    return { detected: false, fields: [] };
+  }
+
+  const out1 = attempt1.parsedOutput!.output;
+  const out2 = attempt2.parsedOutput!.output;
+  const diffFields: string[] = [];
+
+  for (const field of MISMATCH_FIELDS) {
+    if (out1[field] !== out2[field]) {
+      diffFields.push(field);
+    }
+  }
+
+  return { detected: diffFields.length > 0, fields: diffFields };
 }
 
 // ─── Prompt builder ───────────────────────────────────────────────────────────
@@ -174,7 +283,7 @@ export async function judgeTaskWithEngine(
 function buildJudgePrompt(
   taskName: string,
   taskInstruction: string,
-  agentOutput: string,
+  renderedAgentOutput: string,
   screenshotB64: string | null,
   screenshotPath: string | null
 ): string {
@@ -184,9 +293,9 @@ function buildJudgePrompt(
   lines.push(`TASK INSTRUCTION:`);
   lines.push(taskInstruction.trim());
   lines.push(``);
-  lines.push(`AGENT OUTPUT (full captured stdout):`);
+  lines.push(`AGENT OUTPUT:`);
   lines.push(`---`);
-  lines.push(agentOutput.trim().slice(0, 12_000)); // guard against enormous outputs
+  lines.push(renderedAgentOutput);
   lines.push(`---`);
 
   if (screenshotPath) {
@@ -241,7 +350,10 @@ function buildFailResult(
   usedScreenshot: boolean,
   debug: JudgeDebug,
   humanBaselineSteps?: number
-): JudgeEngineResult {
+): Omit<
+  JudgeEngineResult,
+  "judgeAttempts" | "judgeSelectedAttempt" | "judgeMismatch" | "renderedContext"
+> {
   const raw: JudgeRawOutput = {
     verdict: "FAIL",
     completionScore: 0,

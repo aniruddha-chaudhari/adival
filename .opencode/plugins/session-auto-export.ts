@@ -1,10 +1,13 @@
 import type { Plugin } from "@opencode-ai/plugin";
 import { basename, join } from "node:path";
-import { mkdir, readdir, unlink, writeFile } from "node:fs/promises";
+import { appendFile, mkdir, readdir, readFile, unlink, writeFile } from "node:fs/promises";
 
+const ENABLE_PLUGIN = false;
+const ENABLE_LOGGING = false;
 const TARGET_DIRECTORY_NAME = "adival";
 const JSON_OUTPUT_DIR = "manager/messages";
 const CHAT_OUTPUT_DIR = "manager/chats";
+const DEBUG_LOG_FILE = "session-auto-export-debug.log";
 const TOOL_TEXT_LIMIT = 400;
 const HELPER_TITLE_PREFIX = "__meta_summary__:";
 const DEFAULT_FORK_TITLE_PATTERN = /\(fork\s*#\d+\)/i;
@@ -49,6 +52,10 @@ async function removeOldExports(
 
 function yamlEscape(input: string): string {
   return input.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
+function yamlUnescape(input: string): string {
+  return input.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
 }
 
 function normalizeLine(input: unknown): string {
@@ -204,6 +211,161 @@ function appendYamlList(lines: string[], key: string, values: string[]): void {
   for (const value of values) {
     lines.push(`  - "${yamlEscape(value)}"`);
   }
+}
+
+function parseYamlScalarLine(line: string, key: string): string {
+  const prefix = `${key}:`;
+  if (!line.startsWith(prefix)) return "";
+  const raw = line.slice(prefix.length).trim();
+  if (raw.startsWith('"') && raw.endsWith('"') && raw.length >= 2) {
+    return normalizeLine(yamlUnescape(raw.slice(1, -1)));
+  }
+  return normalizeLine(raw);
+}
+
+function parseYamlListFromLines(
+  lines: string[],
+  startIndex: number,
+  key: string
+): {
+  values: string[];
+  nextIndex: number;
+} {
+  const inlineEmpty = `${key}: []`;
+  const blockStart = `${key}:`;
+  const line = lines[startIndex] || "";
+
+  if (line === inlineEmpty) {
+    return { values: [], nextIndex: startIndex + 1 };
+  }
+
+  if (line !== blockStart) {
+    return { values: [], nextIndex: startIndex };
+  }
+
+  const values: string[] = [];
+  let i = startIndex + 1;
+  while (i < lines.length) {
+    const row = lines[i] || "";
+    if (!row.startsWith("  - ")) break;
+    const raw = row.slice(4).trim();
+    const value =
+      raw.startsWith('"') && raw.endsWith('"') && raw.length >= 2
+        ? yamlUnescape(raw.slice(1, -1))
+        : raw;
+    const normalized = normalizeLine(value);
+    if (normalized) values.push(normalized);
+    i += 1;
+  }
+
+  return { values: normalizeList(values), nextIndex: i };
+}
+
+function parseSummaryFromChatMarkdown(markdown: string, sessionTitle: string): SummaryData | null {
+  const frontmatterMatch = markdown.match(/^---\n([\s\S]*?)\n---/);
+  if (!frontmatterMatch) return null;
+
+  const lines = frontmatterMatch[1].split("\n");
+  const fallback = fallbackSummary(sessionTitle);
+  const summary: SummaryData = {
+    ...fallback,
+    description: fallback.description,
+    important_lessons: [],
+    gotchas: [],
+    future_agent_instructions: [],
+  };
+
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i] || "";
+    if (line.startsWith("description:")) {
+      summary.description = parseYamlScalarLine(line, "description") || fallback.description;
+      i += 1;
+      continue;
+    }
+
+    if (line === "important_lessons:" || line === "important_lessons: []") {
+      const parsed = parseYamlListFromLines(lines, i, "important_lessons");
+      summary.important_lessons = parsed.values;
+      i = parsed.nextIndex;
+      continue;
+    }
+
+    if (line === "gotchas:" || line === "gotchas: []") {
+      const parsed = parseYamlListFromLines(lines, i, "gotchas");
+      summary.gotchas = parsed.values;
+      i = parsed.nextIndex;
+      continue;
+    }
+
+    if (line === "future_agent_instructions:" || line === "future_agent_instructions: []") {
+      const parsed = parseYamlListFromLines(lines, i, "future_agent_instructions");
+      summary.future_agent_instructions = parsed.values;
+      i = parsed.nextIndex;
+      continue;
+    }
+
+    i += 1;
+  }
+
+  return summary;
+}
+
+async function readPreviousSummaryFromChatExport(
+  chatOutputDir: string,
+  sessionID: string,
+  sessionTitle: string
+): Promise<SummaryData | null> {
+  try {
+    const files = await readdir(chatOutputDir);
+    const suffix = `--${sessionID}.md`;
+    const candidates = files.filter(file => file.endsWith(suffix)).sort();
+    if (candidates.length === 0) return null;
+
+    const filePath = join(chatOutputDir, candidates[candidates.length - 1]);
+    const markdown = await readFile(filePath, "utf8");
+    return parseSummaryFromChatMarkdown(markdown, sessionTitle);
+  } catch {
+    return null;
+  }
+}
+
+async function appendDebugLog(
+  logFilePath: string,
+  payload: Record<string, unknown>
+): Promise<void> {
+  if (!ENABLE_LOGGING) return;
+  try {
+    const entry = {
+      time: new Date().toISOString(),
+      ...payload,
+    };
+    await appendFile(logFilePath, `${JSON.stringify(entry)}\n`, "utf8");
+  } catch {
+    // Ignore debug logging failures.
+  }
+}
+
+function areNormalizedListsEqual(a: string[], b: string[]): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i += 1) {
+    if (normalizeLine(a[i]) !== normalizeLine(b[i])) return false;
+  }
+  return true;
+}
+
+function didSummaryChange(previousSummary: SummaryData | null, nextSummary: SummaryData): boolean {
+  if (!previousSummary) return true;
+
+  return !(
+    normalizeLine(previousSummary.description) === normalizeLine(nextSummary.description) &&
+    areNormalizedListsEqual(previousSummary.important_lessons, nextSummary.important_lessons) &&
+    areNormalizedListsEqual(previousSummary.gotchas, nextSummary.gotchas) &&
+    areNormalizedListsEqual(
+      previousSummary.future_agent_instructions,
+      nextSummary.future_agent_instructions
+    )
+  );
 }
 
 function toBlock(value: unknown, language: string): string {
@@ -436,11 +598,12 @@ async function generateSummaryFromHelperSession(
   session: any,
   directory: string,
   ignoredSessionIDs: Set<string>,
-  $: any
+  $: any,
+  previousSummary: SummaryData | null
 ): Promise<SummaryData> {
   const sessionID = String(session?.id || "");
   const sessionTitle = String(session?.title || "");
-  const fallback = fallbackSummary(sessionTitle);
+  const fallback = previousSummary || fallbackSummary(sessionTitle);
   if (!sessionID) return fallback;
 
   let helperSessionID = "";
@@ -455,6 +618,9 @@ async function generateSummaryFromHelperSession(
 
     const prompt = [
       "Summarize this conversation for future coding agents.",
+      previousSummary
+        ? "You are given a previous summary. Update it incrementally; keep stable items unless new evidence invalidates them."
+        : "No previous summary is available. Create one from scratch.",
       "Return STRICT JSON only (no markdown, no prose outside JSON) with keys:",
       "Output must be directly parsable by JSON.parse().",
       `Schema:
@@ -467,7 +633,10 @@ async function generateSummaryFromHelperSession(
       `,
       "Keep each item very concise and actionable.",
       "Add item only if it is very useful to the future coding agents and saves them extra work and time.",
+      "Preserve existing wording when still accurate; avoid unnecessary rewrites.",
+      "Remove items only if clearly obsolete or contradicted by the conversation.",
       "If no items for a list, return an empty array.",
+      previousSummary ? `Previous summary JSON:\n${JSON.stringify(previousSummary, null, 2)}` : "",
     ].join("\n");
 
     const cliText = await promptSessionForSummaryViaCli($, helperSessionID, prompt);
@@ -492,8 +661,15 @@ async function generateSummaryFromHelperSession(
 }
 
 export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
+  if (!ENABLE_PLUGIN) {
+    return {
+      event: async () => {},
+    };
+  }
+
   const jsonOutputAbsoluteDir = join(directory, JSON_OUTPUT_DIR);
   const chatOutputAbsoluteDir = join(directory, CHAT_OUTPUT_DIR);
+  const debugLogFilePath = join(jsonOutputAbsoluteDir, DEBUG_LOG_FILE);
   await mkdir(jsonOutputAbsoluteDir, { recursive: true });
   await mkdir(chatOutputAbsoluteDir, { recursive: true });
   const inFlightBySession = new Map<string, Promise<void>>();
@@ -552,6 +728,26 @@ export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
             const chatFileName = `${title}--${sessionID}.md`;
             const chatFilePath = join(chatOutputAbsoluteDir, chatFileName);
 
+            const previousSummary = await readPreviousSummaryFromChatExport(
+              chatOutputAbsoluteDir,
+              sessionID,
+              session.title || title
+            );
+
+            await appendDebugLog(debugLogFilePath, {
+              event: event.type,
+              sessionID,
+              sessionTitle: session.title || title,
+              previousSummaryFound: Boolean(previousSummary),
+              previousCounts: previousSummary
+                ? {
+                    important_lessons: previousSummary.important_lessons.length,
+                    gotchas: previousSummary.gotchas.length,
+                    future_agent_instructions: previousSummary.future_agent_instructions.length,
+                  }
+                : undefined,
+            });
+
             await removeOldExports(jsonOutputAbsoluteDir, sessionID, jsonFileName, "json");
             await removeOldExports(chatOutputAbsoluteDir, sessionID, chatFileName, "md");
 
@@ -561,8 +757,20 @@ export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
               session,
               directory,
               ignoredSessionIDs,
-              $
+              $,
+              previousSummary
             );
+            await appendDebugLog(debugLogFilePath, {
+              event: "summary.generated",
+              sessionID,
+              usedPreviousSummary: Boolean(previousSummary),
+              summaryChangedFromPrevious: didSummaryChange(previousSummary, summary),
+              summaryCounts: {
+                important_lessons: summary.important_lessons.length,
+                gotchas: summary.gotchas.length,
+                future_agent_instructions: summary.future_agent_instructions.length,
+              },
+            });
             const mergedSummary = mergeSummaryWithHeuristics(
               summary,
               exported,
@@ -577,8 +785,24 @@ export const SessionAutoExport: Plugin = async ({ client, directory, $ }) => {
 
             await writeFile(jsonFilePath, exported, "utf8");
             await writeFile(chatFilePath, markdown, "utf8");
+            await appendDebugLog(debugLogFilePath, {
+              event: "export.written",
+              sessionID,
+              jsonFileName,
+              chatFileName,
+              mergedCounts: {
+                important_lessons: mergedSummary.important_lessons.length,
+                gotchas: mergedSummary.gotchas.length,
+                future_agent_instructions: mergedSummary.future_agent_instructions.length,
+              },
+            });
           } catch (error) {
             const message = error instanceof Error ? error.message : String(error);
+            await appendDebugLog(debugLogFilePath, {
+              event: "export.failed",
+              sessionID,
+              error: message,
+            });
             if (client.app?.log) {
               await client.app.log({
                 body: {

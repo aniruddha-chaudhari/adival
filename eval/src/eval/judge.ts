@@ -18,6 +18,7 @@
 import { judgeTaskWithEngine, type JudgeEngineResult } from "./judge/engine";
 import type { TaskAnalysis } from "./judge/rubrics";
 import type { JudgeDebug } from "./judge/engine";
+import type { JudgeAttemptResult, JudgeMismatch } from "./judge/schema";
 
 // ─── Backward-compatible public types ────────────────────────────────────────
 
@@ -41,6 +42,16 @@ export interface JudgeResult {
   analysis?: TaskAnalysis;
   /** Debug payload for diagnosing judge failures */
   judgeDebug?: JudgeDebug;
+
+  // ── Two-attempt fields ─────────────────────────────────────────────────────
+  /** Both judge attempts with full artifacts */
+  judgeAttempts?: JudgeAttemptResult[];
+  /** Which attempt was selected for scoring */
+  judgeSelectedAttempt?: "attempt_1" | "attempt_2" | null;
+  /** Mismatch info between the two attempts */
+  judgeMismatch?: JudgeMismatch;
+  /** Rendered markdown sent to the judge */
+  renderedContext?: string;
 }
 
 // ─── Options ──────────────────────────────────────────────────────────────────
@@ -95,5 +106,9 @@ export async function judgeTask(
     completionScore: engineResult.completionScore,
     analysis: engineResult.analysis,
     judgeDebug: engineResult.judgeDebug,
+    judgeAttempts: engineResult.judgeAttempts,
+    judgeSelectedAttempt: engineResult.judgeSelectedAttempt,
+    judgeMismatch: engineResult.judgeMismatch,
+    renderedContext: engineResult.renderedContext,
   };
 }

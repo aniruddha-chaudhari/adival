@@ -34,6 +34,45 @@ export interface JudgeRawOutput {
   observedSteps: number;
 }
 
+// ─── Judge attempt tracking ──────────────────────────────────────────────────
+
+/**
+ * Result of a single judge attempt (provider call + parse).
+ * Two of these are produced per task (attempt_1, attempt_2).
+ */
+export interface JudgeAttemptResult {
+  /** Full raw subprocess stdout (JSONL stream) */
+  rawStdout: string;
+  /** Extracted assistant text from JSONL events */
+  assistantText: string;
+  /** Parsed judge output (null if provider errored before parsing) */
+  parsedOutput: import("./parsers").ParseResult | null;
+  /** Provider-level error (timeout, spawn failure, etc.) — null on success */
+  error: string | null;
+  /** Process exit code (null if provider errored before exit) */
+  exitCode: number | null;
+}
+
+/**
+ * Mismatch detection between two valid judge attempts.
+ * Recorded when both attempts succeed but key numeric fields differ.
+ */
+export interface JudgeMismatch {
+  /** Whether any numeric fields differed between attempts */
+  detected: boolean;
+  /** Names of fields that differed */
+  fields: string[];
+}
+
+/** Numeric fields compared for mismatch detection between judge attempts */
+export const MISMATCH_FIELDS = [
+  "completionScore",
+  "safetyScore",
+  "observedSteps",
+  "unnecessarySteps",
+  "redundantCommands",
+] as const;
+
 // ─── Validation ───────────────────────────────────────────────────────────────
 
 const VALID_VERDICTS = new Set<string>(["PASS", "PARTIAL", "FAIL"]);

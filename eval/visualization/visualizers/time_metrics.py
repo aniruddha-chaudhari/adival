@@ -1,4 +1,4 @@
-"""Time-to-success visualization"""
+"""Time-to-success visualization with median, IQR, and success-conditioned metrics"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,12 +9,13 @@ from .utils import (
     get_color_palette,
     format_model_name,
     set_figure_width_by_model_count,
+    compute_ci_median_iqr,
 )
 import config
 
 
 class TimeMetricsVisualizer:
-    """Visualize time-to-success metrics"""
+    """Visualize time-to-success metrics with median/IQR and success-conditioned speed"""
 
     def __init__(self, task_results_by_model: Dict[str, list]):
         """
@@ -24,18 +25,23 @@ class TimeMetricsVisualizer:
         self.task_results = task_results_by_model
 
     def plot_distribution(self, top_n: int = None):
-        """Create box plot of elapsed time distribution across models"""
+        """Create box plot of elapsed time distribution with success-conditioned mean markers"""
 
         # Extract elapsed times per model (in seconds)
         time_data = {}
+        passed_time_data = {}
         for model, tasks in self.task_results.items():
-            times = []
+            all_times = []
+            passed_times = []
             for task in tasks:
                 elapsed_ms = task.get("elapsedMs", 0)
                 elapsed_sec = elapsed_ms / 1000  # Convert to seconds
-                times.append(elapsed_sec)
-            if times:
-                time_data[model] = times
+                all_times.append(elapsed_sec)
+                if task.get("status") == "pass":
+                    passed_times.append(elapsed_sec)
+            if all_times:
+                time_data[model] = all_times
+                passed_time_data[model] = passed_times
 
         if not time_data:
             print("[SKIP] Time metrics visualization: No elapsed time data found")
@@ -87,11 +93,43 @@ class TimeMetricsVisualizer:
         for flier in bp["fliers"]:
             flier.set(marker="o", markerfacecolor="gray", markersize=4, alpha=0.5)
 
+        # Add success-conditioned mean as diamond markers
+        for i, model in enumerate(sorted_models):
+            passed_times = passed_time_data.get(model, [])
+            if passed_times:
+                mean_passed = np.mean(passed_times)
+                ax.scatter(
+                    mean_passed,
+                    i + 1,
+                    marker="D",
+                    color="navy",
+                    s=40,
+                    zorder=5,
+                    label="Mean (passed)" if i == 0 else None,
+                )
+
+            # Add IQR annotation on the right
+            arr = np.array(time_data[model])
+            median_val, q25, q75 = compute_ci_median_iqr(arr)
+            iqr = q75 - q25
+            ax.annotate(
+                f"IQR={iqr:.1f}s",
+                xy=(q75, i + 1),
+                xytext=(5, 0),
+                textcoords="offset points",
+                fontsize=config.FONT_SIZE_TICK - 1,
+                va="center",
+                color="gray",
+            )
+
         ax.set_xlabel("Wall-Clock Time (seconds)", fontsize=config.FONT_SIZE_LABEL)
         ax.set_title(
-            "Time-to-Success Distribution", fontsize=config.FONT_SIZE_TITLE, pad=15
+            "Time-to-Success Distribution (median + IQR)",
+            fontsize=config.FONT_SIZE_TITLE,
+            pad=15,
         )
         ax.grid(axis="x", alpha=0.3)
+        ax.legend(loc="lower right", fontsize=config.FONT_SIZE_LEGEND)
 
         save_figure(fig, "05_time_metrics_distribution", tight_layout=True)
         plt.close(fig)
