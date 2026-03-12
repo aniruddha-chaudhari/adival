@@ -1,41 +1,62 @@
-# Eval tooling
+# Eval
 
-All evaluation assets live inside this directory so agents can discover the tooling that scores OpenCode agent-browser runs.
-
-## Overview
-
-- `eval/run-eval.ts` hosts the CLI that loads tasks, runs `opencode run ...`, scores the output (keywords + optional judge), and saves the results.
-- `eval/run-task-demo.ts` is a small demo that exercises the evaluation framework with the (mock) verification utilities in `eval/src/eval`.
-- `eval/src/eval` holds the eval framework: task definitions, runners, telemetry scoring, judge integrations, and helpers used by both CLIs.
+Runs OpenCode agent-browser tasks, scores them (keyword + LLM judge), and saves structured results.
 
 ## Setup
 
-1. Install dependencies via Bun at the workspace root (`bun install`).
-2. Start Chrome with remote debugging enabled on port 9222 before running tasks.
-   ```bash
-   node src/launch-chrome-standalone.cjs
-   # or: chrome --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-profile
-   ```
-3. Confirm the port is listening:
-   ```bash
-   netstat -tlnp | grep :9222
-   ```
+1. `bun install` at workspace root
 
-## Running evaluations
+## Config files
 
-- `bun run eval/run-eval.ts --list` lists available eval tasks.
-- `bun run eval/run-eval.ts` runs every task defined in `eval/eval-config.json`.
-- `bun run eval/run-eval.ts EVAL_ID` runs a single task by ID.
-- `bun run eval/run-task-demo.ts` demonstrates how to use the eval framework with the demo task.
+| File               | Purpose                                                      |
+| ------------------ | ------------------------------------------------------------ |
+| `eval-config.json` | Task definitions for a domain (add `name`, `tasks`, scorers) |
+| `models.json`      | List of models to run evaluations against                    |
 
-Use `eval/eval-config.json` to add or edit tasks, scorers, and judge settings for new evaluations.
+Each eval config must have a top-level `"name"` field (e.g. `"web-browsing"`). This becomes the output folder name under the model directory.
 
-## Output
+## Running
 
-- Each run writes to `eval/eval-results/<YYYY-MM-DD_HH-MM-SS>/` (summary, raw output, screenshots).
-- The latest aggregated summary is stored at `eval/eval-results.json` for convenience.
+```bash
+# Run all tasks (default config + models.json)
+bun run run-eval.ts
 
-## Notes
+# Run a specific config file
+bun run run-eval.ts --config eval-config-coding.json
 
-- `eval/src/eval` exports everything an agent needs: tasks, runners, scoring, telemetry, and helper scripts.
-- Keep `eval/eval-results/` and `eval/eval-result.json` out of version control (they are ignored in `.gitignore`).
+# Use a different models file
+bun run run-eval.ts --config eval-config-coding.json --models models-pro.json
+
+# Run a single task by ID (against all models in models.json)
+bun run run-eval.ts --task EVAL_001 --config eval-config-coding.json --models models-pro.json
+
+# List available tasks
+bun run run-eval.ts --list
+```
+
+## Output structure
+
+```
+eval-results/
+  <model>/
+    <domain>/              ← wiped and recreated on each run of that config+model
+      summary.json         ← scores, tokens, analysis for the whole run
+      <TASK_ID>_<slug>/
+        agent-output.jsonl
+        judge/
+          context-sent.md
+          attempt_1/       ← raw-stdout.jsonl, assistant-text.txt, parsed-output.json
+          attempt_2/
+        screenshots/
+      errors/              ← tasks where both judge attempts failed
+        <TASK_ID>.json
+```
+
+Re-running one config+model pair only wipes that `<domain>/` folder — other domains and models are untouched.
+
+## Adding a new domain
+
+1. Copy `eval-config.json` → `eval-config-<domain>.json`
+2. Set `"name": "<domain>"` at the top
+3. Add your tasks with prompts and scorers
+4. Run with `--config eval-config-<domain>.json`

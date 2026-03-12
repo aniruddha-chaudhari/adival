@@ -1,5 +1,6 @@
 {
   "$schema": "./eval-config.schema.json",
+  "name": "web-browsing",
   "defaultModel": "opencode/minimax-m2.5-free",
   "tasks": [
     {

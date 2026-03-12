@@ -2,13 +2,15 @@
  * run-eval.ts — Eval CLI
  *
  * Usage:
- *   bun run-eval.ts               # run all tasks
- *   bun run-eval.ts EVAL_006      # run a single task by ID
- *   bun run-eval.ts --list        # list available tasks
+ *   bun run-eval.ts                                          # run all tasks (default config + models.json)
+ *   bun run-eval.ts --config eval-config-coding.json         # run all tasks from a specific config
+ *   bun run-eval.ts --models models.json                     # explicit models file (default: eval/models.json)
+ *   bun run-eval.ts --task EVAL_006                          # run a single task by ID
+ *   bun run-eval.ts --list                                   # list available tasks
  *
  * Results are saved to:
- *   eval/eval-results/<modelName>/
- *     <taskId>/
+ *   eval/eval-results/<modelName>/<domain>/
+ *     <taskId>_<task-slug>/
  *       agent-output.jsonl         — full raw agent output
  *       judge/
  *         context-sent.md          — rendered context sent to judge
@@ -18,27 +20,96 @@
  *     errors/
  *       <taskId>.json              — tasks where both judge attempts failed
  *     summary.json                 — scores, tokens, judge verdicts
+ *
+ * Re-running the same config+model pair wipes only that <domain>/ folder,
+ * leaving other domains for the same model intact.
  */
 
 import { mkdirSync, existsSync, renameSync, rmSync } from "fs";
-import { dirname, join } from "path";
+import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
 import { getAllTasks, getTaskById, loadEvalConfig } from "./src/eval/tasks";
 import { runTask, runAllTasks, type TaskRunResult } from "./src/eval/runner";
 import { aggregateRun, type TaskResultForAggregation } from "./src/eval/aggregates";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const projectRoot = join(__dirname, "..");
-const evalRoot = join(projectRoot, "eval");
-const resultsRoot = join(evalRoot, "eval-results");
+const resultsRoot = join(__dirname, "eval-results");
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/** Sanitize a string for use as a directory name */
+function safeName(s: string): string {
+  return s.replace(/[/\\:*?"<>|]/g, "_").replace(/\s+/g, "_");
+}
+
+/** Slugify a task name for use in folder names (lowercase, hyphens) */
+function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
+
+/**
+ * Returns the domain directory path for a given model + config name.
+ * Wipes only the domain subfolder (leaves other domains intact).
+ */
+function makeDomainDir(modelName: string, domainName: string): string {
+  const dir = join(resultsRoot, safeName(modelName), safeName(domainName));
+  if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
+  mkdirSync(dir, { recursive: true });
+  return dir;
+}
+
+/** Returns the per-task directory path inside a domain dir */
+function taskDirName(taskId: string, taskName: string): string {
+  return `${taskId}_${slugify(taskName)}`;
+}
+
+// ─── CLI arg parsing ──────────────────────────────────────────────────────────
+
+function parseArgs(args: string[]): {
+  configFile: string | undefined;
+  modelsFile: string | undefined;
+  taskId: string | undefined;
+  list: boolean;
+} {
+  const configIdx = args.indexOf("--config");
+  const modelsIdx = args.indexOf("--models");
+  const taskIdx = args.indexOf("--task");
+
+  return {
+    configFile: configIdx !== -1 ? args[configIdx + 1] : undefined,
+    modelsFile: modelsIdx !== -1 ? args[modelsIdx + 1] : undefined,
+    taskId: taskIdx !== -1 ? args[taskIdx + 1] : undefined,
+    list: args.includes("--list") || args.includes("-l"),
+  };
+}
+
+/** Load models from models.json (defaults to eval/models.json) */
+async function loadModels(modelsFile?: string): Promise<string[]> {
+  const resolvedPath = modelsFile ? resolve(modelsFile) : join(__dirname, "models.json");
+
+  const text = await Bun.file(resolvedPath).text();
+  const parsed = JSON.parse(text) as { models: string[] };
+  if (!Array.isArray(parsed.models) || parsed.models.length === 0) {
+    throw new Error(`No models found in ${resolvedPath}`);
+  }
+  return parsed.models;
+}
 
 // ─── Main script ──────────────────────────────────────────────────────────────
 
 (async () => {
   const args = process.argv.slice(2);
+  const { configFile, modelsFile, taskId, list } = parseArgs(args);
 
-  if (args.includes("--list") || args.includes("-l")) {
-    const tasks = await getAllTasks();
+  // Resolve config path (absolute or relative to cwd)
+  const configPath = configFile ? resolve(configFile) : undefined;
+
+  if (list) {
+    const tasks = await getAllTasks(configPath);
     console.log("\nAvailable eval tasks:\n");
     for (const t of tasks) {
       const judge = t.llmJudge ? " [+judge]" : "";
@@ -49,68 +120,56 @@ const resultsRoot = join(evalRoot, "eval-results");
     return;
   }
 
-  const taskId = args.find(a => !a.startsWith("-"));
-
-  // ─── Determine model name ──────────────────────────────────────────────────
-
-  const { defaultModel } = await loadEvalConfig();
-
-  // ─── Create model directory (overwrites previous run for this model) ───────
-
-  function makeModelDir(modelName: string): string {
-    const safeName = modelName.replace(/[/\\:*?"<>|]/g, "_").replace(/\s+/g, "_");
-    const dir = join(resultsRoot, safeName);
-    // Overwrite entire model dir on each run
-    if (existsSync(dir)) {
-      rmSync(dir, { recursive: true, force: true });
-    }
-    mkdirSync(dir, { recursive: true });
-    return dir;
-  }
-
-  // ─── Main ─────────────────────────────────────────────────────────────────────
+  const { name: domainName, defaultModel } = await loadEvalConfig(configPath);
+  const models = await loadModels(modelsFile);
 
   if (taskId) {
-    const task = await getTaskById(taskId);
+    // ── Single task mode ────────────────────────────────────────────────────
+    const task = await getTaskById(taskId, configPath);
     if (!task) {
       console.error(`Task not found: ${taskId}`);
       console.error(`Run with --list to see available tasks.`);
       process.exit(1);
     }
 
-    const modelName = task.model || defaultModel;
-    const modelDir = makeModelDir(modelName);
+    // Single task: run against all models sequentially
+    for (const modelId of models) {
+      const domainDir = makeDomainDir(modelId, domainName);
 
-    console.log("=".repeat(60));
-    console.log("  OpenCode Agent-Browser Eval");
-    console.log(`  Model : ${modelName}`);
-    console.log(`  Run dir: ${modelDir}`);
-    console.log("=".repeat(60));
+      console.log("=".repeat(60));
+      console.log("  OpenCode Agent-Browser Eval");
+      console.log(`  Domain : ${domainName}`);
+      console.log(`  Model  : ${modelId}`);
+      console.log(`  Run dir: ${domainDir}`);
+      console.log("=".repeat(60));
+      console.log(`\nRunning: ${task.name} (${task.id})\n`);
 
-    console.log(`\nRunning: ${task.name} (${task.id})`);
-    if (task.llmJudge) console.log(`  Scoring: keyword + LLM judge`);
-    console.log();
-
-    const result = await runTask(task, modelDir);
-    printResult(result, true);
-    await saveResults([result], modelDir, modelName);
+      const taskWithModel = { ...task, model: modelId };
+      const result = await runTask(taskWithModel, domainDir);
+      printResult(result, true);
+      await saveResults([result], domainDir, modelId, domainName);
+    }
   } else {
-    const tasks = await getAllTasks();
+    // ── Full run mode ───────────────────────────────────────────────────────
+    const tasks = await getAllTasks(configPath);
 
-    // Use first task's model or defaultModel for the run directory
-    const modelName = defaultModel;
-    const modelDir = makeModelDir(modelName);
+    for (const modelId of models) {
+      const domainDir = makeDomainDir(modelId, domainName);
 
-    console.log("=".repeat(60));
-    console.log("  OpenCode Agent-Browser Eval");
-    console.log(`  Model : ${modelName}`);
-    console.log(`  Run dir: ${modelDir}`);
-    console.log("=".repeat(60));
+      console.log("=".repeat(60));
+      console.log("  OpenCode Agent-Browser Eval");
+      console.log(`  Domain : ${domainName}`);
+      console.log(`  Model  : ${modelId}`);
+      console.log(`  Run dir: ${domainDir}`);
+      console.log("=".repeat(60));
+      console.log(`\nRunning ${tasks.length} tasks...\n`);
 
-    console.log(`\nRunning ${tasks.length} tasks...\n`);
-    const results = await runAllTasks(tasks, modelDir, r => printResult(r, false));
-    printSummary(results);
-    await saveResults(results, modelDir, modelName);
+      // Override model on every task with the current model from the list
+      const tasksForModel = tasks.map(t => ({ ...t, model: modelId }));
+      const results = await runAllTasks(tasksForModel, domainDir, r => printResult(r, false));
+      printSummary(results, modelId, domainName);
+      await saveResults(results, domainDir, modelId, domainName);
+    }
   }
 })().catch(e => {
   console.error(e);
@@ -153,7 +212,6 @@ function printResult(r: TaskRunResult, verbose: boolean) {
   if (r.judgeMismatch?.detected) {
     console.log(`       Mismatch: fields=[${r.judgeMismatch.fields.join(", ")}]`);
   }
-  // Log judge failures: both attempts failed
   if (r.judgeAttempts && r.judgeSelectedAttempt === null) {
     const failedAttempts = r.judgeAttempts.filter(a => a.error || a.parsedOutput === null);
     if (failedAttempts.length > 0) {
@@ -174,7 +232,7 @@ function printResult(r: TaskRunResult, verbose: boolean) {
   }
 }
 
-function printSummary(results: TaskRunResult[]) {
+function printSummary(results: TaskRunResult[], modelId: string, domainName: string) {
   const pass = results.filter(r => r.status === "pass").length;
   const partial = results.filter(r => r.status === "partial").length;
   const fail = results.filter(r => r.status === "fail").length;
@@ -185,7 +243,7 @@ function printSummary(results: TaskRunResult[]) {
   const totalOut = results.reduce((s, r) => s + (r.tokens?.outputTokens ?? 0), 0);
 
   console.log("\n" + "=".repeat(60));
-  console.log("  SUMMARY");
+  console.log(`  SUMMARY  [${domainName}]  model=${modelId}`);
   console.log("=".repeat(60));
   console.log(`  Tasks     : ${results.length}`);
   console.log(`  Pass      : ${pass}`);
@@ -200,11 +258,16 @@ function printSummary(results: TaskRunResult[]) {
 
 // ─── Save results ─────────────────────────────────────────────────────────────
 
-async function saveResults(results: TaskRunResult[], modelDir: string, modelName: string) {
+async function saveResults(
+  results: TaskRunResult[],
+  domainDir: string,
+  modelName: string,
+  domainName: string
+) {
   // ── (a) Per-task artifact persistence ──────────────────────────────────────
 
   for (const r of results) {
-    const taskDir = join(modelDir, r.taskId);
+    const taskDir = join(domainDir, taskDirName(r.taskId, r.taskName));
     mkdirSync(taskDir, { recursive: true });
 
     // agent-output.jsonl — full raw agent output
@@ -256,7 +319,7 @@ async function saveResults(results: TaskRunResult[], modelDir: string, modelName
   );
 
   if (judgeErrors.length > 0) {
-    const errorsDir = join(modelDir, "errors");
+    const errorsDir = join(domainDir, "errors");
     mkdirSync(errorsDir, { recursive: true });
 
     for (const r of judgeErrors) {
@@ -278,12 +341,13 @@ async function saveResults(results: TaskRunResult[], modelDir: string, modelName
     }
   }
 
-  // ── (c) summary.json — model-level summary (no output or judgeDebug) ───────
+  // ── (c) summary.json — domain-level summary ────────────────────────────────
 
   const summary = {
     runAt: new Date().toISOString(),
     model: modelName,
-    runDir: modelDir,
+    domain: domainName,
+    runDir: domainDir,
     results: results.map(r => ({
       id: r.taskId,
       name: r.taskName,
@@ -334,20 +398,15 @@ async function saveResults(results: TaskRunResult[], modelDir: string, modelName
     analysis: aggregateRun(results as TaskResultForAggregation[]),
   };
 
-  const summaryPath = join(modelDir, "summary.json");
+  const summaryPath = join(domainDir, "summary.json");
   await Bun.write(summaryPath, JSON.stringify(summary, null, 2));
-
-  // ── (d) Global summary — eval/eval-results.json ────────────────────────────
-
-  const globalSummaryPath = join(evalRoot, "eval-results.json");
-  await Bun.write(globalSummaryPath, JSON.stringify(summary, null, 2));
 
   // ── Console output ─────────────────────────────────────────────────────────
 
-  console.log(`\nResults saved to ${modelDir}/`);
+  console.log(`\nResults saved to ${domainDir}/`);
   console.log(`  summary.json`);
-  console.log(`  <taskId>/agent-output.jsonl (per task)`);
-  console.log(`  <taskId>/judge/ (context + attempt artifacts)`);
+  console.log(`  <taskId>_<slug>/agent-output.jsonl (per task)`);
+  console.log(`  <taskId>_<slug>/judge/ (context + attempt artifacts)`);
   if (judgeErrors.length > 0) {
     console.log(`  errors/ (${judgeErrors.length} judge failure(s))`);
   }

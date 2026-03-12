@@ -95,6 +95,8 @@ export interface EvalTask {
 // ─── Loading from JSON ───────────────────────────────────────────────────────
 
 export interface EvalConfig {
+  /** Human-readable domain name, used as the sub-folder under the model directory */
+  name: string;
   defaultModel: string;
   tasks: Array<{
     id: string;
@@ -116,15 +118,19 @@ export interface EvalConfig {
 
 let loadedTasks: EvalTask[] | null = null;
 let loadedDefaultModel: string | null = null;
+let loadedConfigName: string | null = null;
 
-export async function loadEvalConfig(): Promise<{ defaultModel: string; tasks: EvalTask[] }> {
-  if (loadedTasks && loadedDefaultModel)
-    return { defaultModel: loadedDefaultModel, tasks: loadedTasks };
+export async function loadEvalConfig(
+  configPath?: string
+): Promise<{ name: string; defaultModel: string; tasks: EvalTask[] }> {
+  // If a specific path is given, bypass the module-level cache
+  if (!configPath && loadedTasks && loadedDefaultModel && loadedConfigName)
+    return { name: loadedConfigName, defaultModel: loadedDefaultModel, tasks: loadedTasks };
 
-  // Resolve config path relative to this file (eval/src/eval/ -> eval/)
+  // Resolve config path: explicit arg, or default next to run-eval.ts (eval/)
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  const configPath = join(__dirname, "..", "..", "eval-config.json");
-  const configText = await Bun.file(configPath).text();
+  const resolvedPath = configPath ?? join(__dirname, "..", "..", "eval-config.json");
+  const configText = await Bun.file(resolvedPath).text();
   const config: EvalConfig = JSON.parse(configText);
 
   const tasks: EvalTask[] = config.tasks.map(t => ({
@@ -140,20 +146,25 @@ export async function loadEvalConfig(): Promise<{ defaultModel: string; tasks: E
     humanBaselineSteps: t.humanBaselineSteps,
   }));
 
-  loadedTasks = tasks;
-  loadedDefaultModel = config.defaultModel;
-  return { defaultModel: config.defaultModel, tasks };
+  if (!configPath) {
+    // Cache only the default config load
+    loadedTasks = tasks;
+    loadedDefaultModel = config.defaultModel;
+    loadedConfigName = config.name;
+  }
+
+  return { name: config.name, defaultModel: config.defaultModel, tasks };
 }
 
 // ─── Registry ─────────────────────────────────────────────────────────────────
 
 export const ALL_TASKS: EvalTask[] = []; // Placeholder, use getAllTasks()
-export async function getAllTasks(): Promise<EvalTask[]> {
-  const { tasks } = await loadEvalConfig();
+export async function getAllTasks(configPath?: string): Promise<EvalTask[]> {
+  const { tasks } = await loadEvalConfig(configPath);
   return tasks;
 }
 
-export async function getTaskById(id: string): Promise<EvalTask | undefined> {
-  const tasks = await getAllTasks();
+export async function getTaskById(id: string, configPath?: string): Promise<EvalTask | undefined> {
+  const tasks = await getAllTasks(configPath);
   return tasks.find(t => t.id === id);
 }
