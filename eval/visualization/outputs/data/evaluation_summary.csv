@@ -1,3 +1,3 @@
-model,total_tasks,passed_tasks,success_rate,mean_input_tokens,mean_output_tokens,mean_total_tokens,mean_elapsed_sec,mean_trajectory_length,safety_score,thrash_ratio
-google/antigravity-gemini-3-flash,6,6,100.0,70950.5,706.3333333333334,73232.66666666667,73.73683333333332,3.6666666666666665,100.0,0.0
-unknown,6,0,0.0,10268.666666666666,1315.6666666666667,11584.333333333334,58.839,0.0,100.0,0.0
+model,domain,total_tasks,passed_tasks,success_rate,mean_score,mean_input_tokens,mean_output_tokens,mean_total_tokens,mean_elapsed_sec_all,mean_elapsed_sec,mean_trajectory_length,mean_tool_call_count,safety_score,thrash_ratio
+unknown,unknown,6,0,0.0,41.666666666666664,10268.666666666666,1315.6666666666667,11584.333333333334,58.839,0,0.0,0,100.0,0.0
+google/antigravity-gemini-3-flash,unknown,1,0,0.0,50.0,106127.0,1130.0,108503.0,116.178,0,1.0,0,100.0,0.0

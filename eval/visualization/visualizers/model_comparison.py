@@ -26,16 +26,32 @@ class ModelComparisonVisualizer:
         """
 
         # Select relevant metrics for heatmap
+        # mean_elapsed_sec_all is the all-tasks mean; fall back to mean_elapsed_sec
+        # (pass-conditioned, present in older aggregated data) if not available.
         metric_cols = [
             "success_rate",
             "mean_input_tokens",
             "mean_output_tokens",
             "mean_total_tokens",
+            "mean_elapsed_sec_all",
             "mean_elapsed_sec",
             "mean_trajectory_length",
             "safety_score",
             "thrash_ratio",
         ]
+
+        # Metrics where a LOWER value is better.
+        # These are inverted (1 - norm) so the RdYlGn colormap
+        # consistently shows green=good, red=bad (Bug D fix).
+        LOWER_IS_BETTER = {
+            "mean_input_tokens",
+            "mean_output_tokens",
+            "mean_total_tokens",
+            "mean_elapsed_sec_all",
+            "mean_elapsed_sec",
+            "mean_trajectory_length",
+            "thrash_ratio",
+        }
 
         # Filter to metrics that exist
         available_metrics = [col for col in metric_cols if col in self.data.columns]
@@ -56,9 +72,11 @@ class ModelComparisonVisualizer:
         # Prepare matrix
         heatmap_data = plot_data[available_metrics].copy()
 
-        # Normalize each metric to 0-1 scale
+        # Normalize each metric to 0-1 scale.
+        # Lower-is-better metrics are inverted so green always means "good".
         for col in heatmap_data.columns:
-            heatmap_data[col] = normalize_metrics(heatmap_data[col].values)
+            normed = normalize_metrics(heatmap_data[col].values)
+            heatmap_data[col] = (1 - normed) if col in LOWER_IS_BETTER else normed
 
         # Set index to model names
         heatmap_data.index = [format_model_name(m) for m in plot_data["model"]]
@@ -122,10 +140,19 @@ class ModelComparisonVisualizer:
             "success_rate",
             "mean_input_tokens",
             "mean_output_tokens",
+            "mean_elapsed_sec_all",
             "mean_elapsed_sec",
             "mean_trajectory_length",
             "safety_score",
         ]
+
+        LOWER_IS_BETTER = {
+            "mean_input_tokens",
+            "mean_output_tokens",
+            "mean_elapsed_sec_all",
+            "mean_elapsed_sec",
+            "mean_trajectory_length",
+        }
 
         available_metrics = [col for col in metric_cols if col in self.data.columns]
 
@@ -144,9 +171,10 @@ class ModelComparisonVisualizer:
         # Prepare matrix
         heatmap_data = plot_data[available_metrics].copy()
 
-        # Normalize each metric
+        # Normalize each metric; invert lower-is-better so green=good throughout
         for col in heatmap_data.columns:
-            heatmap_data[col] = normalize_metrics(heatmap_data[col].values)
+            normed = normalize_metrics(heatmap_data[col].values)
+            heatmap_data[col] = (1 - normed) if col in LOWER_IS_BETTER else normed
 
         heatmap_data.index = [format_model_name(m) for m in plot_data["model"]]
 
@@ -190,6 +218,8 @@ class ModelComparisonVisualizer:
         save_figure(fig, "07_top_models_comparison", tight_layout=True)
         plt.close(fig)
 
-        print(f"[+] Top models comparison created ({min(top_n, len(plot_data))} models)")
+        print(
+            f"[+] Top models comparison created ({min(top_n, len(plot_data))} models)"
+        )
 
         return fig

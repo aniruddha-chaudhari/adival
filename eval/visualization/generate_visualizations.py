@@ -3,11 +3,12 @@
 Evaluation Results Visualization Script
 
 Generates publication-quality visualizations from evaluation summary JSON files.
-Supports multiple models and creates comparative analysis charts.
+Supports multiple models and domains and creates comparative analysis charts.
 
 Usage:
     python generate_visualizations.py
     python generate_visualizations.py --input-dir /path/to/eval-results --top-n 15
+    python generate_visualizations.py --model gpt-4o --domain wikipedia
 """
 
 import json
@@ -31,6 +32,9 @@ from visualizers import (
     FailureAnalysisVisualizer,
     TimeMetricsVisualizer,
     ModelComparisonVisualizer,
+    DomainComparisonVisualizer,
+    ScoreEfficiencyVisualizer,
+    JudgeAnalysisVisualizer,
 )
 import config
 
@@ -44,11 +48,20 @@ class EvalResultsAggregator:
             eval_results_dir: Path to eval-results directory
         """
         self.eval_dir = eval_results_dir or config.EVAL_RESULTS_DIR
+        # Keyed by "model::domain" — prevents multi-domain collision (Bug A fix).
         self.models_data = {}
         self.aggregated_data = None
 
-    def load_all_results(self) -> bool:
-        """Load all summary.json files from eval-results directory
+    def load_all_results(
+        self,
+        model_filter: str = None,
+        domain_filter: str = None,
+    ) -> bool:
+        """Load all summary.json files from eval-results directory.
+
+        Args:
+            model_filter: Only load entries whose model name contains this string.
+            domain_filter: Only load entries whose domain name contains this string.
 
         Returns:
             True if at least one file was loaded
@@ -69,36 +82,51 @@ class EvalResultsAggregator:
                     data = json.load(f)
 
                 model_name = data.get("model", "unknown")
+                # New runs (run-eval.ts >=2026-03) write domain; old runs omit it.
+                domain_name = data.get("domain", "unknown")
                 run_dir = data.get("runDir", str(summary_file.parent))
 
-                self.models_data[model_name] = {
+                # Apply optional filters
+                if model_filter and model_filter not in model_name:
+                    continue
+                if domain_filter and domain_filter not in domain_name:
+                    continue
+
+                # Key by model::domain so multi-domain runs from the same model
+                # don't overwrite each other (Bug A fix).
+                key = f"{model_name}::{domain_name}"
+
+                self.models_data[key] = {
                     "summary": data,
+                    "model": model_name,
+                    "domain": domain_name,
                     "run_dir": run_dir,
                     "file_path": summary_file,
                 }
 
-                print(f"  [+] {model_name}")
+                print(f"  [+] {model_name} / {domain_name}")
 
             except Exception as e:
                 print(f"  [-] Failed to load {summary_file}: {e}")
 
-        print(f"\n[OK] Loaded {len(self.models_data)} unique models")
+        print(f"\n[OK] Loaded {len(self.models_data)} unique (model, domain) runs")
         return len(self.models_data) > 0
 
     def aggregate_metrics(self) -> pd.DataFrame:
-        """Aggregate metrics across all models
+        """Aggregate metrics across all (model, domain) runs.
 
         Returns:
-            DataFrame with aggregated metrics per model
+            DataFrame with one row per (model, domain) pair.
         """
         print("\n[CHART] Aggregating metrics...")
 
         aggregated = []
 
-        for model_name, model_info in self.models_data.items():
+        for key, model_info in self.models_data.items():
             summary = model_info["summary"]
             results = summary.get("results", [])
-            analysis = summary.get("analysis", {})
+            model_name = model_info["model"]
+            domain_name = model_info["domain"]
 
             # Count task outcomes
             total_tasks = len(results)
@@ -106,11 +134,18 @@ class EvalResultsAggregator:
             partial_tasks = len([r for r in results if r.get("status") == "partial"])
             failed_tasks = total_tasks - passed_tasks - partial_tasks
 
-            # Token statistics
+            # Per-task accumulators
             all_input_tokens = []
             all_output_tokens = []
             all_total_tokens = []
-            all_elapsed_ms = []
+            all_scores = []
+
+            # Time data — two separate lists (Bug C fix):
+            #   all_elapsed_ms_all   : every task  → maps to TS meanElapsedMs
+            #   all_elapsed_ms_passed: passed tasks → maps to TS meanElapsedMsPassed
+            all_elapsed_ms_all = []
+            all_elapsed_ms_passed = []
+
             all_trajectory_lengths = []
 
             error_counts = {
@@ -132,9 +167,14 @@ class EvalResultsAggregator:
                 all_output_tokens.append(tokens.get("outputTokens", 0))
                 all_total_tokens.append(tokens.get("totalTokens", 0))
 
-                # Time data (passed tasks only — failed/errored time is not meaningful)
+                # Score
+                all_scores.append(result.get("score", 0))
+
+                # Time data — collect ALL tasks unconditionally (Bug C fix)
+                elapsed = result.get("elapsedMs", 0)
+                all_elapsed_ms_all.append(elapsed)
                 if result.get("status") == "pass":
-                    all_elapsed_ms.append(result.get("elapsedMs", 0))
+                    all_elapsed_ms_passed.append(elapsed)
 
                 # Efficiency data
                 result_analysis = result.get("analysis") or {}
@@ -161,9 +201,10 @@ class EvalResultsAggregator:
                 if tool_calls is not None:
                     all_tool_call_counts.append(tool_calls)
 
-            # Compute statistics
+            # Build row
             row = {
                 "model": model_name,
+                "domain": domain_name,
                 "total_tasks": total_tasks,
                 "passed_tasks": passed_tasks,
                 "partial_tasks": partial_tasks,
@@ -171,6 +212,8 @@ class EvalResultsAggregator:
                 "success_rate": (passed_tasks / total_tasks * 100)
                 if total_tasks > 0
                 else 0,
+                "mean_score": np.mean(all_scores) if all_scores else 0,
+                # Token stats
                 "mean_input_tokens": np.mean(all_input_tokens)
                 if all_input_tokens
                 else 0,
@@ -185,12 +228,25 @@ class EvalResultsAggregator:
                 if all_total_tokens
                 else 0,
                 "std_total_tokens": np.std(all_total_tokens) if all_total_tokens else 0,
-                "mean_elapsed_ms": np.mean(all_elapsed_ms) if all_elapsed_ms else 0,
-                "mean_elapsed_sec": np.mean(all_elapsed_ms) / 1000
-                if all_elapsed_ms
+                # All-tasks elapsed — matches TS meanElapsedMs (Bug C fix)
+                "mean_elapsed_ms_all": np.mean(all_elapsed_ms_all)
+                if all_elapsed_ms_all
                 else 0,
-                "std_elapsed_sec": np.std(np.array(all_elapsed_ms) / 1000)
-                if all_elapsed_ms
+                "mean_elapsed_sec_all": np.mean(all_elapsed_ms_all) / 1000
+                if all_elapsed_ms_all
+                else 0,
+                "std_elapsed_sec_all": np.std(np.array(all_elapsed_ms_all) / 1000)
+                if all_elapsed_ms_all
+                else 0,
+                # Pass-conditioned elapsed — matches TS meanElapsedMsPassed
+                "mean_elapsed_ms_passed": np.mean(all_elapsed_ms_passed)
+                if all_elapsed_ms_passed
+                else 0,
+                "mean_elapsed_sec": np.mean(all_elapsed_ms_passed) / 1000
+                if all_elapsed_ms_passed
+                else 0,
+                "std_elapsed_sec": np.std(np.array(all_elapsed_ms_passed) / 1000)
+                if all_elapsed_ms_passed
                 else 0,
                 "mean_trajectory_length": np.mean(all_trajectory_lengths)
                 if all_trajectory_lengths
@@ -214,20 +270,22 @@ class EvalResultsAggregator:
 
         self.aggregated_data = pd.DataFrame(aggregated)
 
-        print(f"[OK] Aggregated metrics for {len(self.aggregated_data)} models")
+        print(
+            f"[OK] Aggregated metrics for {len(self.aggregated_data)} (model, domain) runs"
+        )
 
         return self.aggregated_data
 
     def get_task_results_by_model(self) -> Dict[str, List]:
-        """Get raw task results organized by model
+        """Get raw task results organized by 'model::domain' key.
 
         Returns:
-            Dict mapping model name to list of task results
+            Dict mapping "model::domain" string to list of task result dicts.
         """
         task_results = {}
-        for model_name, model_info in self.models_data.items():
+        for key, model_info in self.models_data.items():
             summary = model_info["summary"]
-            task_results[model_name] = summary.get("results", [])
+            task_results[key] = summary.get("results", [])
         return task_results
 
 
@@ -236,12 +294,12 @@ def generate_all_visualizations(
     task_results_by_model: Dict[str, List],
     top_n_models: int = None,
 ):
-    """Generate all visualization types
+    """Generate all visualization types.
 
     Args:
-        aggregated_data: Aggregated metrics DataFrame
-        task_results_by_model: Raw task results by model
-        top_n_models: Limit visualizations to top N models (optional)
+        aggregated_data: Aggregated metrics DataFrame (one row per model::domain)
+        task_results_by_model: Raw task results keyed by "model::domain"
+        top_n_models: Limit visualizations to top N series (optional)
     """
 
     print("\n[STATS] Generating visualizations...")
@@ -280,6 +338,26 @@ def generate_all_visualizations(
     mc_viz.plot_heatmap(top_n=top_n_models)
     mc_viz.plot_top_models_radar(top_n=min(10, len(aggregated_data)))
 
+    # 7. Domain × Model Comparison
+    print("\n[7]  Domain × Model Comparison")
+    dc_viz = DomainComparisonVisualizer(aggregated_data)
+    dc_viz.plot_pass_rate_by_domain()
+    dc_viz.plot_score_heatmap()
+
+    # 8. Score Efficiency
+    print("\n[8]  Score Efficiency")
+    se2_viz = ScoreEfficiencyVisualizer(aggregated_data, task_results_by_model)
+    se2_viz.plot_score_per_token()
+    se2_viz.plot_speed_vs_score()
+    se2_viz.plot_thrash_vs_score()
+
+    # 9. Judge Analysis
+    print("\n[9]  Judge Analysis")
+    ja_viz = JudgeAnalysisVisualizer(task_results_by_model)
+    ja_viz.plot_keyword_vs_judge_concordance()
+    ja_viz.plot_per_task_scores()
+    ja_viz.plot_error_category_by_domain()
+
     print("\n" + "=" * 60)
     print("[OK] All visualizations generated successfully!\n")
 
@@ -292,12 +370,15 @@ def save_summary_table(aggregated_data: pd.DataFrame):
     # Select key metrics for summary
     summary_cols = [
         "model",
+        "domain",
         "total_tasks",
         "passed_tasks",
         "success_rate",
+        "mean_score",
         "mean_input_tokens",
         "mean_output_tokens",
         "mean_total_tokens",
+        "mean_elapsed_sec_all",
         "mean_elapsed_sec",
         "mean_trajectory_length",
         "mean_tool_call_count",
@@ -346,7 +427,19 @@ def main():
         "--top-n",
         type=int,
         default=None,
-        help="Limit visualizations to top N models (by success rate)",
+        help="Limit visualizations to top N (model, domain) series (by success rate)",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default=None,
+        help="Filter: only load runs whose model name contains this string",
+    )
+    parser.add_argument(
+        "--domain",
+        type=str,
+        default=None,
+        help="Filter: only load runs whose domain name contains this string",
     )
 
     args = parser.parse_args()
@@ -361,7 +454,10 @@ def main():
 
     # Load results
     aggregator = EvalResultsAggregator(args.input_dir)
-    if not aggregator.load_all_results():
+    if not aggregator.load_all_results(
+        model_filter=args.model,
+        domain_filter=args.domain,
+    ):
         print("[ERROR] No evaluation results found. Exiting.")
         return 1
 

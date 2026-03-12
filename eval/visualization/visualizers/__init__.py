@@ -12,6 +12,9 @@ from .step_efficiency import StepEfficiencyVisualizer
 from .failure_analysis import FailureAnalysisVisualizer
 from .time_metrics import TimeMetricsVisualizer
 from .model_comparison import ModelComparisonVisualizer
+from .domain_comparison import DomainComparisonVisualizer
+from .score_efficiency import ScoreEfficiencyVisualizer
+from .judge_analysis import JudgeAnalysisVisualizer
 
 __all__ = [
     "setup_matplotlib_style",
@@ -24,4 +27,7 @@ __all__ = [
     "FailureAnalysisVisualizer",
     "TimeMetricsVisualizer",
     "ModelComparisonVisualizer",
+    "DomainComparisonVisualizer",
+    "ScoreEfficiencyVisualizer",
+    "JudgeAnalysisVisualizer",
 ]
