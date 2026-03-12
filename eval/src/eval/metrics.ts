@@ -98,8 +98,11 @@ export function aggregateResults(results: TaskResult[]): EvalSummary {
   const averagePartialScore =
     results.reduce((sum, r) => sum + r.verification.partialScore, 0) / totalTasks;
 
+  const passedResults = results.filter(r => r.status === "success");
   const averageExecutionTimeMs =
-    results.reduce((sum, r) => sum + r.metrics.executionTimeMs, 0) / totalTasks;
+    passedResults.length > 0
+      ? passedResults.reduce((sum, r) => sum + r.metrics.executionTimeMs, 0) / passedResults.length
+      : 0;
 
   const averageActions = results.reduce((sum, r) => sum + r.metrics.totalActions, 0) / totalTasks;
 

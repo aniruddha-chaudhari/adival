@@ -132,8 +132,9 @@ class EvalResultsAggregator:
                 all_output_tokens.append(tokens.get("outputTokens", 0))
                 all_total_tokens.append(tokens.get("totalTokens", 0))
 
-                # Time data
-                all_elapsed_ms.append(result.get("elapsedMs", 0))
+                # Time data (passed tasks only — failed/errored time is not meaningful)
+                if result.get("status") == "pass":
+                    all_elapsed_ms.append(result.get("elapsedMs", 0))
 
                 # Efficiency data
                 result_analysis = result.get("analysis") or {}

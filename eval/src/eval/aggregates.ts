@@ -27,9 +27,8 @@ export interface TaskResultForAggregation {
   analysis?: TaskAnalysis | null;
   /** Present when telemetry extraction ran */
   telemetry?: {
-    observedCommands: number;
-    redundantCommandCount: number;
-    thrashRatio: number | null;
+    timeoutDetected: boolean;
+    errorDetected: boolean;
   } | null;
 }
 

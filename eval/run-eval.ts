@@ -323,9 +323,6 @@ async function saveResults(results: TaskRunResult[], modelDir: string, modelName
         : null,
       telemetry: r.telemetry
         ? {
-            observedCommands: r.telemetry.observedCommands,
-            redundantCommandCount: r.telemetry.redundantCommandCount,
-            thrashRatio: r.telemetry.thrashRatio,
             inferredErrorCategory: r.telemetry.inferredErrorCategory,
             timeoutDetected: r.telemetry.timeoutDetected,
             errorDetected: r.telemetry.errorDetected,
