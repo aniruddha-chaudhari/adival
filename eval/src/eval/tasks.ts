@@ -58,7 +58,7 @@ export function parseScorer(json: JsonScorer): Scorer {
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-export const DEFAULT_MODEL = "google/antigravity-gemini-3.1-pro";
+export const DEFAULT_MODEL = "github-copilot/claude-sonnet-4.6";
 
 export interface EvalTask {
   id: string;
