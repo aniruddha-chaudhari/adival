@@ -1,6 +1,6 @@
 {
   "$schema": "./eval-config.schema.json",
-  "name": "web-browsing-hard",
+  "name": "web-browsing-hard-pinchtab",
   "defaultModel": "opencode/minimax-m2.5-free",
   "tasks": [
     {
@@ -82,7 +82,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["expressversion:", "directdeps:", "firstdepname:", "firstdepweeklydownloads:"]
+                "words": [
+                  "expressversion:",
+                  "directdeps:",
+                  "firstdepname:",
+                  "firstdepweeklydownloads:"
+                ]
               }
             },
             {
@@ -222,7 +227,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["lateststable:", "oldestrelease:", "totalreleasecount:", "latestreleasedate:"]
+                "words": [
+                  "lateststable:",
+                  "oldestrelease:",
+                  "totalreleasecount:",
+                  "latestreleasedate:"
+                ]
               }
             },
             {
@@ -257,7 +267,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["globalusage:", "chromefullsupportversion:", "firefoxfullsupportversion:", "knownissuescount:"]
+                "words": [
+                  "globalusage:",
+                  "chromefullsupportversion:",
+                  "firefoxfullsupportversion:",
+                  "knownissuescount:"
+                ]
               }
             },
             {
@@ -292,7 +307,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["acceptedanswervotes:", "acceptedanswerauthor:", "codeblockcount:", "totalanswers:"]
+                "words": [
+                  "acceptedanswervotes:",
+                  "acceptedanswerauthor:",
+                  "codeblockcount:",
+                  "totalanswers:"
+                ]
               }
             },
             {
