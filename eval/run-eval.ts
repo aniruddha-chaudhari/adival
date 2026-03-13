@@ -226,9 +226,9 @@ function printResult(r: TaskRunResult, verbose: boolean) {
     console.log(`       Error: ${r.error}`);
   }
   if (verbose && r.output) {
-    console.log("\n--- opencode output ---");
-    console.log(r.output.trim());
-    console.log("-".repeat(60));
+    // console.log("\n--- opencode output ---");
+    // console.log(r.output.trim());
+    // console.log("-".repeat(60));
   }
 }
 

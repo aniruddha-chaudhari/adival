@@ -1,0 +1,188 @@
+{
+  "$schema": "./eval-config.schema.json",
+  "name": "web-browsing",
+  "defaultModel": "opencode/minimax-m2.5-free",
+  "tasks": [
+    {
+      "id": "EVAL_AMZ_001",
+      "name": "Amazon: Filtered Product Intelligence",
+      "category": "navigation",
+      "prompt": "Navigate to https://www.amazon.com and search for \"wireless ergonomic mouse\". Apply filters for 4 Stars & Up and Prime Eligible. Sort results by Price: Low to High. Open the first non-sponsored product listing. Extract and report: (1) product title, (2) listed price, (3) star rating, (4) total number of ratings, and (5) earliest delivery date shown. Save a screenshot to eval-amazon-task.png before finishing. Return the final answer in exactly five labeled lines: Title:, Price:, Rating:, Reviews:, Delivery:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 12,
+      "screenshotPath": "eval-amazon-task.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Price:\\s*\\$?\\d+[\\d,]*(?:\\.\\d{2})?"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Rating:\\s*\\d(?:\\.\\d)?\\s*(?:out of 5|/5|stars?)"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Reviews:\\s*\\d[\\d,]*"
+              }
+            },
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["title:", "delivery:", "prime"]
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_LNKD_001",
+      "name": "LinkedIn: Company Page Data Extraction",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://www.linkedin.com/company/microsoft/. If a sign-in prompt appears, dismiss it and continue on the public company page. Extract and report: (1) company name, (2) number of followers, and (3) industry. Save a screenshot to eval-linkedin-task.png before finishing. Return the final answer in exactly three labeled lines: Company:, Followers:, Industry:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 8,
+      "screenshotPath": "eval-linkedin-task.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["company:", "followers:", "industry:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Followers:\\s*\\d[\\d,\\.]*\\s*(?:followers|m|k)?"
+              }
+            },
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["microsoft", "linkedin"]
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GH_001",
+      "name": "GitHub: Repository Release Intelligence",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://github.com/microsoft/vscode. Open the Releases section and then open the latest release page. Extract and report: (1) release tag, (2) release title, (3) published relative time/date text, and (4) total number of reactions shown on that release page. Save a screenshot to eval-github-release.png before finishing. Return the final answer in exactly four labeled lines: Tag:, Title:, Published:, Reactions:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 10,
+      "screenshotPath": "eval-github-release.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["tag:", "title:", "published:", "reactions:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Tag:\\s*v?\\d+\\.\\d+(?:\\.\\d+)?"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Reactions:\\s*\\d[\\d,]*"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_WIKI_001",
+      "name": "Wikipedia: Multi-Field Infobox Extraction",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://en.wikipedia.org/wiki/JavaScript. From the infobox, extract and report: (1) designed by, (2) first appeared year, (3) stable release name/version text, and (4) filename extension entry. Save a screenshot to eval-wikipedia-js.png before finishing. Return the final answer in exactly four labeled lines: DesignedBy:, FirstAppeared:, StableRelease:, Extension:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 9,
+      "screenshotPath": "eval-wikipedia-js.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["designedby:", "firstappeared:", "stablerelease:", "extension:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "FirstAppeared:\\s*(19|20)\\d{2}"
+              }
+            },
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["brendan eich"]
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_SO_001",
+      "name": "Stack Overflow: Tagged Questions Snapshot",
+      "category": "navigation",
+      "prompt": "Navigate to https://stackoverflow.com/questions/tagged/python?tab=Newest. Open the first question in the list. Extract and report: (1) question title, (2) vote count, (3) answer count, and (4) the first tag shown on that question. Save a screenshot to eval-stackoverflow-question.png before finishing. Return the final answer in exactly four labeled lines: Title:, Votes:, Answers:, FirstTag:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 10,
+      "screenshotPath": "eval-stackoverflow-question.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["title:", "votes:", "answers:", "firsttag:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Votes:\\s*-?\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Answers:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    }
+  ]
+}
