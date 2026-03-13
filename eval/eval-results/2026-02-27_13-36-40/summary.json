@@ -1,0 +1,132 @@
+{
+  "runAt": "2026-02-27T13:37:46.905Z",
+  "runDir": "eval-results\\2026-02-27_13-36-40",
+  "results": [
+    {
+      "id": "EVAL_001",
+      "name": "Wikipedia: Python release year",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 2939,
+      "tokens": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "output": ""
+    },
+    {
+      "id": "EVAL_002",
+      "name": "GitHub: facebook/react star count",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 2239,
+      "tokens": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "output": ""
+    },
+    {
+      "id": "EVAL_003",
+      "name": "Google: current time in Tokyo",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 2422,
+      "tokens": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "output": ""
+    },
+    {
+      "id": "EVAL_004",
+      "name": "Form fill: httpbin.org post",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 2322,
+      "tokens": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "output": ""
+    },
+    {
+      "id": "EVAL_005",
+      "name": "Screenshot: example.com",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 2309,
+      "tokens": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "output": ""
+    },
+    {
+      "id": "EVAL_006",
+      "name": "YouTube: open a Minecraft video",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "",
+        "usedScreenshot": false
+      },
+      "elapsedMs": 2335,
+      "tokens": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "totalTokens": 0
+      },
+      "output": ""
+    }
+  ]
+}
