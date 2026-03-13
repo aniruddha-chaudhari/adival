@@ -52,11 +52,21 @@ function slugify(s: string): string {
 }
 
 /**
- * Returns the domain directory path for a given model + config name.
- * Wipes only the domain subfolder (leaves other domains intact).
+ * Ensures the domain directory exists without wiping it.
+ * Used by both single-task and full-run modes — other task folders are preserved.
  */
-function makeDomainDir(modelName: string, domainName: string): string {
+function ensureDomainDir(modelName: string, domainName: string): string {
   const dir = join(resultsRoot, safeName(modelName), safeName(domainName));
+  mkdirSync(dir, { recursive: true });
+  return dir;
+}
+
+/**
+ * Wipes only the specific task subfolder and recreates it.
+ * All sibling task folders are left untouched.
+ */
+function makeTaskDir(domainDir: string, taskId: string, taskName: string): string {
+  const dir = join(domainDir, taskDirName(taskId, taskName));
   if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
   return dir;
@@ -105,8 +115,32 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
   const args = process.argv.slice(2);
   const { configFile, modelsFile, taskId, list } = parseArgs(args);
 
-  // Resolve config path (absolute or relative to cwd)
-  const configPath = configFile ? resolve(configFile) : undefined;
+  // Resolve config path: absolute paths used as-is; relative paths are
+  // resolved first relative to the eval/ directory (where run-eval.ts lives),
+  // then relative to eval/tasks/ as a fallback, and finally relative to cwd.
+  let configPath: string | undefined;
+  if (configFile) {
+    if (
+      configFile.startsWith("/") ||
+      configFile.startsWith("\\") ||
+      /^[A-Za-z]:/.test(configFile)
+    ) {
+      // Absolute path — use as-is
+      configPath = configFile;
+    } else {
+      // Relative path — try eval/ dir first, then eval/tasks/, then cwd
+      const candidateEval = join(__dirname, configFile);
+      const candidateTasks = join(__dirname, "tasks", configFile);
+      const candidateCwd = resolve(configFile);
+      if (existsSync(candidateEval)) {
+        configPath = candidateEval;
+      } else if (existsSync(candidateTasks)) {
+        configPath = candidateTasks;
+      } else {
+        configPath = candidateCwd; // will fail with a clear error if not found
+      }
+    }
+  }
 
   if (list) {
     const tasks = await getAllTasks(configPath);
@@ -134,7 +168,8 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
 
     // Single task: run against all models sequentially
     for (const modelId of models) {
-      const domainDir = makeDomainDir(modelId, domainName);
+      const domainDir = ensureDomainDir(modelId, domainName);
+      makeTaskDir(domainDir, task.id, task.name);
 
       console.log("=".repeat(60));
       console.log("  OpenCode Agent-Browser Eval");
@@ -154,7 +189,7 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
     const tasks = await getAllTasks(configPath);
 
     for (const modelId of models) {
-      const domainDir = makeDomainDir(modelId, domainName);
+      const domainDir = ensureDomainDir(modelId, domainName);
 
       console.log("=".repeat(60));
       console.log("  OpenCode Agent-Browser Eval");
@@ -166,7 +201,13 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
 
       // Override model on every task with the current model from the list
       const tasksForModel = tasks.map(t => ({ ...t, model: modelId }));
-      const results = await runAllTasks(tasksForModel, domainDir, r => printResult(r, false));
+      const results: TaskRunResult[] = [];
+      for (const task of tasksForModel) {
+        makeTaskDir(domainDir, task.id, task.name);
+        const result = await runTask(task, domainDir);
+        results.push(result);
+        printResult(result, false);
+      }
       printSummary(results, modelId, domainName);
       await saveResults(results, domainDir, modelId, domainName);
     }
@@ -296,9 +337,15 @@ async function saveResults(
       }
     }
 
-    // screenshots/ — move any matching screenshots from cwd
-    const possibleShots = ["eval-minecraft.png", "eval-form-result.png", "eval-screenshot.png"];
-    for (const shot of possibleShots) {
+    // screenshots/ — move screenshot from cwd into the task's screenshots/ folder.
+    // Primary: the filename the task config told the agent to use (screenshotPath).
+    // Fallback: legacy hardcoded names from older task definitions.
+    const LEGACY_SHOTS = ["eval-minecraft.png", "eval-form-result.png", "eval-screenshot.png"];
+    const shotsToCheck = r.screenshotPath
+      ? [r.screenshotPath, ...LEGACY_SHOTS.filter(s => s !== r.screenshotPath)]
+      : LEGACY_SHOTS;
+
+    for (const shot of shotsToCheck) {
       const src = join(process.cwd(), shot);
       if (existsSync(src)) {
         const screenshotDir = join(taskDir, "screenshots");
@@ -343,62 +390,79 @@ async function saveResults(
 
   // ── (c) summary.json — domain-level summary ────────────────────────────────
 
+  const summaryPath = join(domainDir, "summary.json");
+
+  // Serialize the current batch of results
+  const newEntries = results.map(r => ({
+    id: r.taskId,
+    name: r.taskName,
+    model: r.model,
+    status: r.status,
+    score: r.score,
+    keywordScore: r.keywordScore,
+    judgeScore: r.judgeScore,
+    judge: r.judge
+      ? {
+          verdict: r.judge.verdict,
+          score: r.judge.score,
+          reason: r.judge.reason,
+          usedScreenshot: r.judge.usedScreenshot,
+        }
+      : null,
+    judgeSelectedAttempt: r.judgeSelectedAttempt ?? null,
+    judgeMismatch: r.judgeMismatch ?? null,
+    toolCallCount: r.toolCallCount ?? null,
+    elapsedMs: r.elapsedMs,
+    tokens: r.tokens
+      ? {
+          inputTokens: r.tokens.inputTokens,
+          outputTokens: r.tokens.outputTokens,
+          totalTokens: r.tokens.totalTokens,
+          byModel: r.tokens.byModel,
+        }
+      : null,
+    error: r.error,
+    analysis: r.analysis
+      ? {
+          efficiency: r.analysis.efficiency,
+          error: r.analysis.error,
+          safety: r.analysis.safety,
+          thrashing: r.analysis.thrashing,
+        }
+      : null,
+    telemetry: r.telemetry
+      ? {
+          inferredErrorCategory: r.telemetry.inferredErrorCategory,
+          timeoutDetected: r.telemetry.timeoutDetected,
+          errorDetected: r.telemetry.errorDetected,
+        }
+      : null,
+  }));
+
+  // Merge with existing summary: keep tasks not in this run, replace/append new ones
+  let existingEntries: typeof newEntries = [];
+  if (existsSync(summaryPath)) {
+    try {
+      const existing = JSON.parse(await Bun.file(summaryPath).text());
+      existingEntries = existing.results ?? [];
+    } catch {
+      /* ignore corrupt or missing file */
+    }
+  }
+
+  const newIds = new Set(newEntries.map(e => e.id));
+  const mergedEntries = [...existingEntries.filter(e => !newIds.has(e.id)), ...newEntries];
+
   const summary = {
     runAt: new Date().toISOString(),
     model: modelName,
     domain: domainName,
     runDir: domainDir,
-    results: results.map(r => ({
-      id: r.taskId,
-      name: r.taskName,
-      model: r.model,
-      status: r.status,
-      score: r.score,
-      keywordScore: r.keywordScore,
-      judgeScore: r.judgeScore,
-      judge: r.judge
-        ? {
-            verdict: r.judge.verdict,
-            score: r.judge.score,
-            reason: r.judge.reason,
-            usedScreenshot: r.judge.usedScreenshot,
-          }
-        : null,
-      judgeSelectedAttempt: r.judgeSelectedAttempt ?? null,
-      judgeMismatch: r.judgeMismatch ?? null,
-      toolCallCount: r.toolCallCount ?? null,
-      elapsedMs: r.elapsedMs,
-      tokens: r.tokens
-        ? {
-            inputTokens: r.tokens.inputTokens,
-            outputTokens: r.tokens.outputTokens,
-            totalTokens: r.tokens.totalTokens,
-            byModel: r.tokens.byModel,
-          }
-        : null,
-      error: r.error,
-      analysis: r.analysis
-        ? {
-            efficiency: r.analysis.efficiency,
-            error: r.analysis.error,
-            safety: r.analysis.safety,
-            thrashing: r.analysis.thrashing,
-          }
-        : null,
-      telemetry: r.telemetry
-        ? {
-            inferredErrorCategory: r.telemetry.inferredErrorCategory,
-            timeoutDetected: r.telemetry.timeoutDetected,
-            errorDetected: r.telemetry.errorDetected,
-          }
-        : null,
-    })),
-
-    // Run-level analysis
-    analysis: aggregateRun(results as TaskResultForAggregation[]),
+    results: mergedEntries,
+    // Recomputed from the full merged set so it always reflects all known tasks
+    analysis: aggregateRun(mergedEntries as TaskResultForAggregation[]),
   };
 
-  const summaryPath = join(domainDir, "summary.json");
   await Bun.write(summaryPath, JSON.stringify(summary, null, 2));
 
   // ── Console output ─────────────────────────────────────────────────────────

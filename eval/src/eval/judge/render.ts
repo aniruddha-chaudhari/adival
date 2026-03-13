@@ -5,7 +5,7 @@
  * Replaces the old approach of sending truncated raw JSONL to the judge.
  */
 
-const RENDER_LIMIT = 15_000; // Max chars in rendered output
+const RENDER_LIMIT = 100_000; // Max chars in rendered output
 
 interface JsonlEvent {
   type: string;
@@ -32,7 +32,7 @@ interface JsonlEvent {
  *   - Skips step_start/step_finish metadata events
  *
  * @param rawOutput  Full raw JSONL stdout from the agent run
- * @param limit      Max characters in the rendered output (default 15000)
+ * @param limit      Max characters in the rendered output (default 100000)
  */
 export function renderAgentOutput(rawOutput: string, limit: number = RENDER_LIMIT): string {
   const lines = rawOutput.split("\n").filter(l => l.trim().length > 0);
@@ -65,17 +65,19 @@ export function renderAgentOutput(rawOutput: string, limit: number = RENDER_LIMI
 
       let section = `## Tool: ${toolName}`;
       if (callId) section += ` (${callId})`;
-      section += `\n**Status:** ${status}\n`;
+      section += `\nStatus: ${status}`;
 
       if (state?.input) {
-        const inputStr = JSON.stringify(state.input, null, 2);
-        section += `\n### Input\n\`\`\`json\n${truncate(inputStr, 500)}\n\`\`\`\n`;
+        for (const [k, v] of Object.entries(state.input)) {
+          const val = typeof v === "string" ? v : JSON.stringify(v);
+          section += `\n${k}: ${truncate(val, 100)}`;
+        }
       }
 
       if (state?.error) {
-        section += `\n### Error\n\`\`\`\n${truncate(state.error, 500)}\n\`\`\`\n`;
+        section += `\nError: ${truncateLines(state.error, 5)}`;
       } else if (state?.output) {
-        section += `\n### Output\n\`\`\`\n${truncate(state.output, 500)}\n\`\`\`\n`;
+        section += `\nOutput: ${truncateLines(state.output, 5)}`;
       }
 
       sections.push(section);
@@ -88,11 +90,17 @@ export function renderAgentOutput(rawOutput: string, limit: number = RENDER_LIMI
     return rawOutput.trim().slice(0, limit);
   }
 
-  const rendered = sections.join("\n---\n\n");
+  const rendered = sections.join("\n\n");
   return rendered.length > limit ? rendered.slice(0, limit) + "\n\n(truncated)" : rendered;
 }
 
 function truncate(text: string, maxLen: number): string {
   if (text.length <= maxLen) return text;
-  return text.slice(0, maxLen) + "\n...(truncated)";
+  return text.slice(0, maxLen) + "...(truncated)";
+}
+
+function truncateLines(text: string, maxLines: number): string {
+  const lines = text.split("\n");
+  if (lines.length <= maxLines) return text;
+  return lines.slice(0, maxLines).join("\n") + "\n...(truncated)";
 }

@@ -21,8 +21,12 @@
  */
 
 import { writeFileSync, unlinkSync } from "fs";
-import { join } from "path";
+import { dirname, join, resolve } from "path";
+import { fileURLToPath } from "url";
 import { tmpdir } from "os";
+
+// Project root = five levels up from eval/src/eval/judge/providers/
+const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../../../..");
 
 // ─── JSONL event shapes ───────────────────────────────────────────────────────
 // Actual opencode --format json event shapes observed:
@@ -94,7 +98,7 @@ export async function runJudgeAgent(
   let proc: ReturnType<typeof Bun.spawn>;
   try {
     proc = Bun.spawn(["opencode", ...args], {
-      cwd: process.cwd(),
+      cwd: PROJECT_ROOT,
       stdout: "pipe",
       stderr: "pipe",
     });

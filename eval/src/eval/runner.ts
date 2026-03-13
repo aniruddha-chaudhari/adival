@@ -8,6 +8,11 @@
 import type { EvalTask } from "./tasks";
 import { DEFAULT_MODEL } from "./tasks";
 import { getSessionTokensSince, type TokenUsage } from "./opencode-tokens";
+import { dirname, join, resolve } from "path";
+import { fileURLToPath } from "url";
+
+// Project root = three levels up from eval/src/eval/
+const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 import { judgeTask, type JudgeResult } from "./judge";
 import { extractTelemetry, countToolCalls, type TelemetryResult } from "./telemetry";
 import type { TaskAnalysis } from "./judge/rubrics";
@@ -52,6 +57,8 @@ export interface TaskRunResult {
   renderedContext?: string | null;
   /** Tool call count from structured JSONL events */
   toolCallCount?: number | null;
+  /** Screenshot filename the agent was instructed to save (from task config) */
+  screenshotPath?: string | null;
 }
 
 const PASS_THRESHOLD = 80;
@@ -93,6 +100,7 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
       judgeMismatch: null,
       renderedContext: null,
       toolCallCount: null,
+      screenshotPath: task.screenshotPath ?? null,
       error,
     };
   }
@@ -118,6 +126,7 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
   if (task.llmJudge) {
     judge = await judgeTask(task.name, task.prompt, output, task.screenshotPath, runDir, {
       humanBaselineSteps: task.humanBaselineSteps,
+      // model: task.model || DEFAULT_MODEL,
       model: task.model || DEFAULT_MODEL,
     }).catch(e => ({
       verdict: "FAIL" as const,
@@ -153,6 +162,7 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
     judgeMismatch: judge?.judgeMismatch ?? null,
     renderedContext: judge?.renderedContext ?? null,
     toolCallCount,
+    screenshotPath: task.screenshotPath ?? null,
   };
 }
 
@@ -187,7 +197,7 @@ async function runOpencode(
   args.push("--format", "json");
 
   const proc = Bun.spawn(["opencode", ...args], {
-    cwd: process.cwd(),
+    cwd: PROJECT_ROOT,
     stdout: "pipe",
     stderr: "pipe",
   });

@@ -129,7 +129,8 @@ export async function loadEvalConfig(
 
   // Resolve config path: explicit arg, or default next to run-eval.ts (eval/)
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  const resolvedPath = configPath ?? join(__dirname, "..", "..", "eval-config.json");
+  // Default: eval/tasks/eval-config.json (two levels up from eval/src/eval/, then into tasks/)
+  const resolvedPath = configPath ?? join(__dirname, "..", "..", "tasks", "eval-config.json");
   const configText = await Bun.file(resolvedPath).text();
   const config: EvalConfig = JSON.parse(configText);
 
