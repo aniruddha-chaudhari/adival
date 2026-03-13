@@ -1,10 +1,9 @@
 .env
 node_modules
 
-eval/eval-results
-eval/eval-result.json
 unpacked
 test-unpacked
+nul
 eval/nul
 
 # Adding .opencode/.gitignore to the ignore list

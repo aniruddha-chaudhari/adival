@@ -1,0 +1,56 @@
+{
+  "runAt": "2026-03-08T06:26:21.767Z",
+  "model": "google/antigravity-gemini-3-flash",
+  "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-08_06-26-14",
+  "results": [
+    {
+      "id": "EVAL_001",
+      "name": "Wikipedia: Python release year",
+      "model": "google/antigravity-gemini-3-flash",
+      "status": "error",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": null,
+      "judge": null,
+      "elapsedMs": 6847,
+      "tokens": null,
+      "output": "",
+      "error": "opencode returned empty output — possible model or configuration error (stderr: 1182 |     const info = provider.models[modelID]\n1183 |     if (!info) {\n1184 |       const availableModels = Object.keys(provider.models)\n1185 |       const matches = fuzzysort.go(modelID, availableModels, { limit: 3, threshold: -10000 })\n1186 |       const suggestions = matches.map((m) => m.target)\n1187 |       throw new ModelNotFoundError({ providerID, modelID, suggestions })\n                  )",
+      "analysis": null,
+      "judgeDebug": null,
+      "telemetry": null
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": null,
+      "semSteps": null,
+      "meanStepsSuccessful": null,
+      "meanStepsFailed": null,
+      "taskCount": 0
+    },
+    "error": {
+      "totalFailures": 1,
+      "failureRate": 1,
+      "byCategory": {
+        "none": 1,
+        "comprehension": 0,
+        "execution": 0,
+        "resource": 0,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": null
+    },
+    "safety": {
+      "meanSafetyScore": null,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 0,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": null,
+      "totalRedundantCommands": 0,
+      "thrashingTaskCount": 0
+    }
+  }
+}
