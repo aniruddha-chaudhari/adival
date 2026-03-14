@@ -1,0 +1,24 @@
+{
+  "taskId": "EVAL_FM_001",
+  "taskName": "Excel: Multi-Sheet Formula Audit & Summary Report",
+  "model": "github-copilot/gpt-5.3-codex",
+  "judgeSelectedAttempt": null,
+  "attempts": [
+    {
+      "attempt": "attempt_1",
+      "error": "ENOSPC: no space left on device, write",
+      "exitCode": null,
+      "parsedOutput": null,
+      "assistantTextLength": 0,
+      "rawStdoutLength": 0
+    },
+    {
+      "attempt": "attempt_2",
+      "error": "ENOSPC: no space left on device, write",
+      "exitCode": null,
+      "parsedOutput": null,
+      "assistantTextLength": 0,
+      "rawStdoutLength": 0
+    }
+  ]
+}
