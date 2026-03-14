@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
+  <w:body>
+    <w:p>
+      <w:pPr>
+        <w:pStyle w:val="Title"/>
+      </w:pPr>
+      <w:commentRangeStart w:id="0"/>
+      <w:r>
+        <w:t>Service Agreement Contract</w:t>
+      </w:r>
+      <w:commentRangeEnd w:id="0"/>
+      <w:r>
+        <w:rPr><w:rStyle w:val="CommentReference"/></w:rPr>
+        <w:commentReference w:id="0"/>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t xml:space="preserve">This </w:t>
+      </w:r>
+      <w:ins w:id="10" w:author="Carol" w:date="2024-01-01T00:00:00Z">
+        <w:r>
+          <w:t xml:space="preserve">binding </w:t>
+        </w:r>
+      </w:ins>
+      <w:r>
+        <w:t>Agreement is entered into as of the date last signed below.</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t xml:space="preserve">WHEREAS, the Company desires to engage the Contractor to perform </w:t>
+      </w:r>
+      <w:r>
+        <w:t>certain </w:t>
+      </w:r>
+      <w:r>
+        <w:t>services;</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t>WHEREAS, the Contractor desires to perform such services for the Company;</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t>NOW, THEREFORE, in consideration of the mutual covenants and agreements set forth herein:</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t xml:space="preserve">1. SERVICES. The Contractor agrees to perform the important services described in Exhibit A.</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t>2. COMPENSATION. The Company shall pay the Contractor according to the rate schedule in Exhibit B.</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t xml:space="preserve">3. TERM. This Agreement shall commence on the Effective Date and continue for eighteen (18) months.</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t xml:space="preserve">4. TERMINATION. Either party may terminate this Agreement immediately with thirty (30) days written notice.</w:t>
+      </w:r>
+    </w:p>
+    <w:p>
+      <w:r>
+        <w:t xml:space="preserve">5. CONFIDENTIALITY. The Contractor agrees to maintain confidentiality of all proprietary information.</w:t>
+      </w:r>
+    </w:p>
+    <w:sectPr w:rsidR="00FC693F" w:rsidRPr="0006063C" w:rsidSect="00034616">
+      <w:pgSz w:w="12240" w:h="15840"/>
+      <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800" w:header="720" w:footer="720" w:gutter="0"/>
+      <w:cols w:space="720"/>
+      <w:docGrid w:linePitch="360"/>
+    </w:sectPr>
+  </w:body>
+</w:document>

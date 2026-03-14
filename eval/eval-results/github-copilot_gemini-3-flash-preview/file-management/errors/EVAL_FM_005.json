@@ -1,0 +1,66 @@
+{
+  "taskId": "EVAL_FM_005",
+  "taskName": "PowerPoint: Slide Deck Restructure & Style Normalization",
+  "model": "github-copilot/gemini-3-flash-preview",
+  "judgeSelectedAttempt": null,
+  "attempts": [
+    {
+      "attempt": "attempt_1",
+      "error": null,
+      "exitCode": 0,
+      "parsedOutput": {
+        "output": {
+          "verdict": "FAIL",
+          "completionScore": 0,
+          "rationale": "Judge produced unparseable output.",
+          "errorCategory": "execution",
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "unnecessarySteps": 0,
+          "redundantCommands": 0,
+          "observedSteps": 1
+        },
+        "strategy": "default",
+        "rawText": "ses_313e31566ffeb7yO0jmQgLwvJp",
+        "parseErrors": [
+          "[strict] raw text does not start with '{', skipping strict parse",
+          "[fallback] no '{' found in raw text",
+          "[default] all parse strategies failed, returning FAIL default"
+        ]
+      },
+      "assistantTextLength": 30,
+      "rawStdoutLength": 186
+    },
+    {
+      "attempt": "attempt_2",
+      "error": null,
+      "exitCode": 0,
+      "parsedOutput": {
+        "output": {
+          "verdict": "FAIL",
+          "completionScore": 0,
+          "rationale": "Judge produced unparseable output.",
+          "errorCategory": "execution",
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "unnecessarySteps": 0,
+          "redundantCommands": 0,
+          "observedSteps": 1
+        },
+        "strategy": "default",
+        "rawText": "ses_313e30b6cffebpxLpju7PSK32S",
+        "parseErrors": [
+          "[strict] raw text does not start with '{', skipping strict parse",
+          "[fallback] no '{' found in raw text",
+          "[default] all parse strategies failed, returning FAIL default"
+        ]
+      },
+      "assistantTextLength": 30,
+      "rawStdoutLength": 186
+    }
+  ]
+}

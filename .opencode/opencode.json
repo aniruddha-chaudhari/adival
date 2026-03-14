@@ -20,7 +20,7 @@
         "C:\\Users\\Aniruddha Chaudhari\\node_modules\\@tobilu\\qmd\\dist\\qmd.js",
         "mcp"
       ],
-      "enabled": true,
+      "enabled": false,
       "timeout": 60000
     },
     "use-chrome": {

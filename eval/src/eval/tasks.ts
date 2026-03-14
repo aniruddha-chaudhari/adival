@@ -2,8 +2,13 @@
  * Eval Task Definitions — Loaded from eval-config.json
  */
 
-import { dirname, join } from "path";
+import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
+import { existsSync } from "fs";
+
+// Project root = three levels up from eval/src/eval/
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const PROJECT_ROOT = resolve(__dirname, "../../..");
 
 // ─── Scorer helpers ──────────────────────────────────────────────────────────
 
@@ -34,10 +39,18 @@ export function anyOf(...scorers: Scorer[]): Scorer {
   return output => Math.max(...scorers.map(s => s(output)));
 }
 
+/** Score 100 if file exists at path (relative to project root), else 0. */
+export function fileExists(filePath: string): Scorer {
+  return _output => {
+    const absolutePath = resolve(PROJECT_ROOT, filePath);
+    return existsSync(absolutePath) ? 100 : 0;
+  };
+}
+
 export type Scorer = (output: string) => number; // 0–100
 
 export type JsonScorer = {
-  type: "keywords" | "regex" | "allOf" | "anyOf";
+  type: "keywords" | "regex" | "allOf" | "anyOf" | "fileExists";
   params: any;
 };
 
@@ -51,6 +64,8 @@ export function parseScorer(json: JsonScorer): Scorer {
       return allOf(...json.params.scorers.map(parseScorer));
     case "anyOf":
       return anyOf(...json.params.scorers.map(parseScorer));
+    case "fileExists":
+      return fileExists(json.params.path);
     default:
       throw new Error(`Unknown scorer type: ${json.type}`);
   }
@@ -128,7 +143,6 @@ export async function loadEvalConfig(
     return { name: loadedConfigName, defaultModel: loadedDefaultModel, tasks: loadedTasks };
 
   // Resolve config path: explicit arg, or default next to run-eval.ts (eval/)
-  const __dirname = dirname(fileURLToPath(import.meta.url));
   // Default: eval/tasks/eval-config.json (two levels up from eval/src/eval/, then into tasks/)
   const resolvedPath = configPath ?? join(__dirname, "..", "..", "tasks", "eval-config.json");
   const configText = await Bun.file(resolvedPath).text();
