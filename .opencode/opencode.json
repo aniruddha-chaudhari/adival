@@ -41,7 +41,7 @@
     "supermemory": {
       "type": "remote",
       "url": "https://mcp.supermemory.ai/mcp",
-      "enabled": true
+      "enabled": false
     }
   }
 }
