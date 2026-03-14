@@ -1,0 +1,733 @@
+{
+  "runAt": "2026-03-14T13:10:59.445Z",
+  "model": "github-copilot/claude-sonnet-4.6",
+  "domain": "web-browsing-hard-playwright-mcp",
+  "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_claude-sonnet-4.6\\web-browsing-hard-playwright-mcp",
+  "results": [
+    {
+      "id": "EVAL_GH_002",
+      "name": "GitHub: Cross-Repo Contributor Overlap Analysis",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified sebmarkbage as top React contributor, checked React Native top 30, saved screenshot, and returned all 4 labeled lines.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 21,
+      "elapsedMs": 184295,
+      "tokens": {
+        "inputTokens": 83539,
+        "outputTokens": 3991,
+        "totalTokens": 87530,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 83539,
+            "outputTokens": 3991
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 18,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.16666666666666666,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 18,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 18,
+          "thrashRatio": 0.1111111111111111,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_WIKI_002",
+      "name": "Wikipedia: Chained Article Hop Extraction",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified Anders Hejlsberg, extracted all four fields accurately, saved screenshot, and closed browser.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore"
+        ]
+      },
+      "toolCallCount": 8,
+      "elapsedMs": 54267,
+      "tokens": {
+        "inputTokens": 55865,
+        "outputTokens": 1273,
+        "totalTokens": 57138,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 55865,
+            "outputTokens": 1273
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.25,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 8,
+            "overheadRatio": 0.8
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_NPM_001",
+      "name": "npm: Dependency Chain Depth Analysis",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly found express v5.2.1, 28 deps, first dep 'accepts', weekly downloads, and saved screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 10,
+      "elapsedMs": 68813,
+      "tokens": {
+        "inputTokens": 42839,
+        "outputTokens": 1744,
+        "totalTokens": 44583,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 42839,
+            "outputTokens": 1744
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 10,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.3,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 10,
+            "overheadRatio": 0.625
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 10,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_ARXIV_001",
+      "name": "arXiv: Paper Metadata & Citation Cross-Check",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly extracted all 4 fields: 8 authors, Jun 12 2017, cs.CL, 166 words, and saved screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 3,
+      "elapsedMs": 36473,
+      "tokens": {
+        "inputTokens": 30362,
+        "outputTokens": 1275,
+        "totalTokens": 31637,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 30362,
+            "outputTokens": 1275
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 4,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 4,
+            "overheadRatio": 0.4
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 4,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_MDN_001",
+      "name": "MDN Web Docs: API Browser Compatibility Diff",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent navigated MDN pages, extracted all 4 values correctly, saved screenshot to eval-mdn-compat.png.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 57441,
+      "tokens": {
+        "inputTokens": 47788,
+        "outputTokens": 1554,
+        "totalTokens": 49342,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 47788,
+            "outputTokens": 1554
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.3333333333333333,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 9,
+            "overheadRatio": 0.75
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_HN_001",
+      "name": "Hacker News: Top Story Thread Deep Dive",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all 4 required extractions, saved screenshot, and returned correctly formatted 4-line answer.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 16,
+      "elapsedMs": 93360,
+      "tokens": {
+        "inputTokens": 60789,
+        "outputTokens": 2379,
+        "totalTokens": 63168,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 60789,
+            "outputTokens": 2379
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 15,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.2,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 15,
+            "overheadRatio": 1.0714285714285714
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 15,
+          "thrashRatio": 0.06666666666666667,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_PYPI_001",
+      "name": "PyPI: Package Release History Delta",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge produced unparseable output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 28807,
+      "tokens": {
+        "inputTokens": 40916,
+        "outputTokens": 529,
+        "totalTokens": 41445,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 40916,
+            "outputTokens": 529
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 1,
+            "overheadRatio": 0.1
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_CANIUSE_001",
+      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted all 4 required data points and saved screenshot; values 97.2%, Chrome 57, Firefox 52, KnownIssues 3 are plausible.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "redundantCommands"
+        ]
+      },
+      "toolCallCount": 12,
+      "elapsedMs": 88399,
+      "tokens": {
+        "inputTokens": 47433,
+        "outputTokens": 2067,
+        "totalTokens": 49500,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 47433,
+            "outputTokens": 2067
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 11,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.2727272727272727,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 11,
+            "overheadRatio": 0.9166666666666666
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 11,
+          "thrashRatio": 0.18181818181818182,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_STACKOVERFLOW_002",
+      "name": "Stack Overflow: Answer Audit with Code Block Detection",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted all 4 fields correctly, saved screenshot, with minor uncertainty on CodeBlockCount (reported 5 vs earlier JS eval of 10).",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "redundantCommands"
+        ]
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 82017,
+      "tokens": {
+        "inputTokens": 43061,
+        "outputTokens": 2165,
+        "totalTokens": 45226,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 43061,
+            "outputTokens": 2165
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.125,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 8,
+            "overheadRatio": 0.6666666666666666
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 8,
+          "thrashRatio": 0.125,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GH_003",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "partial",
+      "score": 67,
+      "keywordScore": 33,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified issue #1980, title, labels (4.x, module:router), comment count 31, and saved screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 8,
+      "elapsedMs": 58633,
+      "tokens": {
+        "inputTokens": 83787,
+        "outputTokens": 1115,
+        "totalTokens": 84902,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 83787,
+            "outputTokens": 1115
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.125,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 8,
+            "overheadRatio": 0.5
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 8,
+          "thrashRatio": 0.125,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 9.2,
+      "semSteps": 1.5400292205020008,
+      "meanStepsSuccessful": 10.38,
+      "meanStepsFailed": null,
+      "taskCount": 10
+    },
+    "error": {
+      "totalFailures": 0,
+      "failureRate": 0,
+      "byCategory": {
+        "none": 9,
+        "comprehension": 0,
+        "execution": 1,
+        "resource": 0,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 0,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.06,
+      "totalRedundantCommands": 7,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 75250.5,
+      "meanElapsedMsPassed": 83133.13,
+      "medianElapsedMs": 63723,
+      "iqrElapsedMs": 34132
+    }
+  }
+}

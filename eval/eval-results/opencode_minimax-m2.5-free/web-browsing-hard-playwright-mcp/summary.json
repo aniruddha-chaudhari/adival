@@ -1,0 +1,736 @@
+{
+  "runAt": "2026-03-14T14:24:38.648Z",
+  "model": "opencode/minimax-m2.5-free",
+  "domain": "web-browsing-hard-playwright-mcp",
+  "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\opencode_minimax-m2.5-free\\web-browsing-hard-playwright-mcp",
+  "results": [
+    {
+      "id": "EVAL_GH_002",
+      "name": "GitHub: Cross-Repo Contributor Overlap Analysis",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified sebmarkbage as React's top contributor with 1939 commits, confirmed they don't appear in React Native's top 30, and saved the required screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 22,
+      "elapsedMs": 193586,
+      "tokens": {
+        "inputTokens": 94015,
+        "outputTokens": 2689,
+        "totalTokens": 96704,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 94015,
+            "outputTokens": 2689
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 22,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 22,
+            "overheadRatio": 1.2222222222222223
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 22,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_WIKI_002",
+      "name": "Wikipedia: Chained Article Hop Extraction",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly navigated TypeScript Wikipedia page, found designer Anders Hejlsberg, extracted his nationality (Danish), confirmed no PhD, identified C# as other project, and saved screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 3,
+      "elapsedMs": 74432,
+      "tokens": {
+        "inputTokens": 16049,
+        "outputTokens": 3445,
+        "totalTokens": 19494,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 16049,
+            "outputTokens": 3445
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 3,
+            "overheadRatio": 0.3
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_NPM_001",
+      "name": "npm: Dependency Chain Depth Analysis",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified express v5.2.1, 28 dependencies, first alphabetical dependency 'accepts', and 74,456,455 weekly downloads.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 52684,
+      "tokens": {
+        "inputTokens": 20927,
+        "outputTokens": 6719,
+        "totalTokens": 27646,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 20927,
+            "outputTokens": 6719
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 4,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 4,
+            "overheadRatio": 0.25
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 4,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_ARXIV_001",
+      "name": "arXiv: Paper Metadata & Citation Cross-Check",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent correctly extracted 3 of 4 required fields (authors, date, subject code) but miscounted abstract words (165 vs actual ~158).",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 2,
+      "elapsedMs": 72971,
+      "tokens": {
+        "inputTokens": 26076,
+        "outputTokens": 9987,
+        "totalTokens": 36063,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 26076,
+            "outputTokens": 9987
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 2,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 2,
+            "overheadRatio": 0.2
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 2,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_MDN_001",
+      "name": "MDN Web Docs: API Browser Compatibility Diff",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent correctly extracted Firefox (69), Safari (13.1), SafariBorderBoxSize (Yes) but incorrectly reported Chrome as 64 instead of 80.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore"
+        ]
+      },
+      "toolCallCount": 5,
+      "elapsedMs": 84102,
+      "tokens": {
+        "inputTokens": 31496,
+        "outputTokens": 13383,
+        "totalTokens": 44879,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 31496,
+            "outputTokens": 13383
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 5,
+            "overheadRatio": 0.4166666666666667
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_HN_001",
+      "name": "Hacker News: Top Story Thread Deep Dive",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully navigated to HN, opened #1 story comments, extracted story title (XML Is a Cheap DSL), points (91), total comments (51), and identified top comment author (necovek) with most direct",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 191236,
+      "tokens": {
+        "inputTokens": 40981,
+        "outputTokens": 19289,
+        "totalTokens": 60270,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 40981,
+            "outputTokens": 19289
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 7,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 7,
+            "overheadRatio": 0.5
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 7,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_PYPI_001",
+      "name": "PyPI: Package Release History Delta",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully navigated to PyPI requests history, extracted all four required data points (latest stable 2.32.5, oldest 0.0.1, count 157, date Aug 19 2025), saved screenshot, and returned formatt",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "observedSteps",
+          "unnecessarySteps",
+          "redundantCommands"
+        ]
+      },
+      "toolCallCount": 11,
+      "elapsedMs": 125993,
+      "tokens": {
+        "inputTokens": 21519,
+        "outputTokens": 2871,
+        "totalTokens": 24390,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 21519,
+            "outputTokens": 2871
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 10,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.3,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 10,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 10,
+          "thrashRatio": 0.2,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_CANIUSE_001",
+      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly extracted all four values from caniuse.com/css-grid: 97.2% global usage, Chrome 57, Firefox 52, and 3 known issues, and saved the screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 2,
+      "elapsedMs": 49683,
+      "tokens": {
+        "inputTokens": 50195,
+        "outputTokens": 25020,
+        "totalTokens": 75215,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 50195,
+            "outputTokens": 25020
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 3,
+            "overheadRatio": 0.25
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_STACKOVERFLOW_002",
+      "name": "Stack Overflow: Answer Audit with Code Block Detection",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent successfully navigated to SO question, extracted all 4 required values, saved screenshot, and returned properly formatted output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 15,
+      "elapsedMs": 185795,
+      "tokens": {
+        "inputTokens": 58054,
+        "outputTokens": 29899,
+        "totalTokens": 87953,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 58054,
+            "outputTokens": 29899
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 14,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 14,
+            "overheadRatio": 1.1666666666666667
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 14,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GH_003",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
+      "model": "opencode/minimax-m2.5-free",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly found oldest open issue #1980, extracted all required info accurately, took screenshot, and returned in correct format.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 5,
+      "elapsedMs": 66824,
+      "tokens": {
+        "inputTokens": 62119,
+        "outputTokens": 32424,
+        "totalTokens": 94543,
+        "byModel": {
+          "minimax-m2.5-free": {
+            "inputTokens": 62119,
+            "outputTokens": 32424
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 5,
+            "overheadRatio": 0.3125
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 7.5,
+      "semSteps": 1.9859103705857422,
+      "meanStepsSuccessful": 8.5,
+      "meanStepsFailed": null,
+      "taskCount": 10
+    },
+    "error": {
+      "totalFailures": 0,
+      "failureRate": 0,
+      "byCategory": {
+        "none": 8,
+        "comprehension": 0,
+        "execution": 2,
+        "resource": 0,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 0,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.02,
+      "totalRedundantCommands": 2,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 109730.6,
+      "meanElapsedMsPassed": 117529.13,
+      "medianElapsedMs": 79267,
+      "iqrElapsedMs": 118971
+    }
+  }
+}
