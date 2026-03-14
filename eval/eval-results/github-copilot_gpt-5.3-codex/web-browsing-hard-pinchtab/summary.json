@@ -1,0 +1,748 @@
+{
+  "runAt": "2026-03-14T02:06:28.017Z",
+  "model": "github-copilot/gpt-5.3-codex",
+  "domain": "web-browsing-hard-pinchtab",
+  "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gpt-5.3-codex\\web-browsing-hard-pinchtab",
+  "results": [
+    {
+      "id": "EVAL_GH_002",
+      "name": "GitHub: Cross-Repo Contributor Overlap Analysis",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all required outputs and screenshot, despite a few failed intermediate commands.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "unnecessarySteps",
+          "redundantCommands"
+        ]
+      },
+      "toolCallCount": 10,
+      "elapsedMs": 96573,
+      "tokens": {
+        "inputTokens": 18677,
+        "outputTokens": 2195,
+        "totalTokens": 22288,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 18677,
+            "outputTokens": 2195
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 10,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.3,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 10,
+            "overheadRatio": 0.5555555555555556
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 10,
+          "thrashRatio": 0.2,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_WIKI_002",
+      "name": "Wikipedia: Chained Article Hop Extraction",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted correct Anders Hejlsberg details, saved screenshot, and returned exact four labeled lines.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 11,
+      "elapsedMs": 155308,
+      "tokens": {
+        "inputTokens": 54616,
+        "outputTokens": 2897,
+        "totalTokens": 59574,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 54616,
+            "outputTokens": 2897
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 12,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.16666666666666666,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 12,
+            "overheadRatio": 1.2
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 12,
+          "thrashRatio": 0.08333333333333333,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_NPM_001",
+      "name": "npm: Dependency Chain Depth Analysis",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge produced unparseable output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 22,
+      "elapsedMs": 118901,
+      "tokens": {
+        "inputTokens": 25221,
+        "outputTokens": 3040,
+        "totalTokens": 30397,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 25221,
+            "outputTokens": 3040
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 1,
+            "overheadRatio": 0.0625
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_ARXIV_001",
+      "name": "arXiv: Paper Metadata & Citation Cross-Check",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted all four requested fields correctly and saved the required screenshot in the exact output format.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 124083,
+      "tokens": {
+        "inputTokens": 28726,
+        "outputTokens": 3041,
+        "totalTokens": 34152,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 28726,
+            "outputTokens": 3041
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.1111111111111111,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 9,
+            "overheadRatio": 0.9
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_MDN_001",
+      "name": "MDN Web Docs: API Browser Compatibility Diff",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent returned correct four labeled values and saved the screenshot, with several unnecessary detours.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps"
+        ]
+      },
+      "toolCallCount": 17,
+      "elapsedMs": 157429,
+      "tokens": {
+        "inputTokens": 30652,
+        "outputTokens": 3642,
+        "totalTokens": 37018,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 30652,
+            "outputTokens": 3642
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 18,
+          "unnecessarySteps": 6,
+          "inefficiencyRatio": 0.3333333333333333,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 18,
+            "overheadRatio": 1.5
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 18,
+          "thrashRatio": 0.05555555555555555,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_HN_001",
+      "name": "Hacker News: Top Story Thread Deep Dive",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent provided all 4 required fields and saved the screenshot, with minor detours after a tab-read error.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "redundantCommands"
+        ]
+      },
+      "toolCallCount": 12,
+      "elapsedMs": 145156,
+      "tokens": {
+        "inputTokens": 22949,
+        "outputTokens": 4950,
+        "totalTokens": 31560,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 22949,
+            "outputTokens": 4950
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 12,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.3333333333333333,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 12,
+            "overheadRatio": 0.8571428571428571
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 12,
+          "thrashRatio": 0.08333333333333333,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_PYPI_001",
+      "name": "PyPI: Package Release History Delta",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Got versions/count and screenshot, but latest stable release date was incorrect versus page evidence.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 12,
+      "elapsedMs": 110775,
+      "tokens": {
+        "inputTokens": 39684,
+        "outputTokens": 4069,
+        "totalTokens": 46929,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 39684,
+            "outputTokens": 4069
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 13,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.23076923076923078,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 13,
+            "overheadRatio": 1.3
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 13,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_CANIUSE_001",
+      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent completed workflow and screenshot, but reported 97.2% instead of displayed 97.5% global usage.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 79153,
+      "tokens": {
+        "inputTokens": 19605,
+        "outputTokens": 1810,
+        "totalTokens": 22934,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 19605,
+            "outputTokens": 1810
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 7,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 7,
+            "overheadRatio": 0.5833333333333334
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 7,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_STACKOVERFLOW_002",
+      "name": "Stack Overflow: Answer Audit with Code Block Detection",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent captured screenshot and correctly reported votes, author, code blocks, and total answers.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 7,
+      "elapsedMs": 72649,
+      "tokens": {
+        "inputTokens": 21833,
+        "outputTokens": 2231,
+        "totalTokens": 25502,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 21833,
+            "outputTokens": 2231
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 8,
+            "overheadRatio": 0.6666666666666666
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GH_003",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent found issue #1980, extracted title/labels/comments, saved screenshot, and used exact 4-line format.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": true,
+        "fields": [
+          "completionScore",
+          "observedSteps",
+          "unnecessarySteps"
+        ]
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 71470,
+      "tokens": {
+        "inputTokens": 23008,
+        "outputTokens": 1526,
+        "totalTokens": 25597,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 23008,
+            "outputTokens": 1526
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 9,
+            "overheadRatio": 0.5625
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 9.9,
+      "semSteps": 1.4008890034545918,
+      "meanStepsSuccessful": 11.14,
+      "meanStepsFailed": null,
+      "taskCount": 10
+    },
+    "error": {
+      "totalFailures": 0,
+      "failureRate": 0,
+      "byCategory": {
+        "none": 7,
+        "comprehension": 0,
+        "execution": 3,
+        "resource": 0,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 0,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.04,
+      "totalRedundantCommands": 5,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 113149.7,
+      "meanElapsedMsPassed": 117524,
+      "medianElapsedMs": 114838,
+      "iqrElapsedMs": 66003
+    }
+  }
+}
