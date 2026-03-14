@@ -1,5 +1,4 @@
 {
-  "models": ["opencode/minimax-m2.5-free"]
   "models": [
     "github-copilot/gpt-5.3-codex",
     "github-copilot/grok-code-fast-1",
