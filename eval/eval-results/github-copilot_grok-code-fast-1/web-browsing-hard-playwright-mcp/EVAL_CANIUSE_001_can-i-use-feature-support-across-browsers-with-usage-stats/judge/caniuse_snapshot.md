@@ -1,0 +1,450 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - list [ref=e5]:
+        - listitem [ref=e6]:
+          - link "Home" [ref=e7] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e8]:
+          - link "News" [ref=e9] [cursor=pointer]:
+            - /url: /ciu/news
+      - list [ref=e10]:
+        - listitem [ref=e11]:
+          - link "Compare browsers" [ref=e12] [cursor=pointer]:
+            - /url: /ciu/comparison
+        - listitem [ref=e13]:
+          - link "About" [ref=e14] [cursor=pointer]:
+            - /url: /ciu/about
+      - 'link "March 5, 2026 - New feature: Lazy loading via attribute for video & audio" [ref=e15] [cursor=pointer]':
+        - /url: https://caniuse.com/loading-lazy-media
+    - generic [ref=e17]:
+      - link "Can I use" [ref=e18] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e19]:
+        - generic [ref=e20]: Search
+        - textbox "Search" [active] [ref=e21]
+      - text: "?"
+      - button "Settings" [ref=e22] [cursor=pointer]:
+        - img [ref=e23]
+        - text: Settings
+  - main [ref=e25]:
+    - generic [ref=e27]:
+      - button "filter" [ref=e31]:
+        - img "filter"
+      - generic [ref=e33]:
+        - link "#" [ref=e34] [cursor=pointer]:
+          - /url: css-grid
+        - button "☆" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - heading "CSS Grid Layout (level 1)" [level=3] [ref=e38]
+            - link "Specification - CR" [ref=e39] [cursor=pointer]:
+              - /url: https://www.w3.org/TR/css-grid-1/
+              - img "Specification" [ref=e40]
+              - text: "-"
+              - generic "W3C Candidate Recommendation" [ref=e42]: CR
+            - generic [ref=e44]:
+              - img [ref=e46]
+              - generic [ref=e47]:
+                - term [ref=e48]: Baseline
+                - definition [ref=e49]: Widely available across major browsers
+              - button [ref=e50] [cursor=pointer]:
+                - img [ref=e51]
+              - link [ref=e52] [cursor=pointer]:
+                - /url: https://forms.gle/29rNTUzg9fppGsY67
+                - img [ref=e53]
+            - paragraph [ref=e54]:
+              - text: Method of using a grid concept to lay out content, providing a mechanism for authors to divide available space for layout into columns and rows using a set of predictable sizing behaviors. Includes support for all
+              - code [ref=e55]: grid-*
+              - text: properties and the
+              - code [ref=e56]: fr
+              - text: unit.
+          - generic [ref=e57]:
+            - generic [ref=e58]:
+              - text: Usage
+              - generic [ref=e59]:
+                - text: "% of"
+                - generic [ref=e60]:
+                  - combobox [ref=e61]:
+                    - option "all users" [selected]
+                    - option "all tracked"
+                    - option "tracked desktop"
+                    - option "tracked mobile"
+                  - img
+                - button "?" [ref=e62]:
+                  - generic: "?"
+            - list [ref=e63]:
+              - listitem [ref=e64]:
+                - heading "Global" [level=4] [ref=e65]:
+                  - generic [ref=e66]: Global
+                - generic "97.2% Supported" [ref=e67]: 97.2%
+                - generic [ref=e68]: +
+                - generic "Partially Supported" [ref=e69]: 0.29%
+                - generic [ref=e70]: =
+                - generic "97.5% Total" [ref=e71]: 97.5%
+              - listitem [ref=e72]:
+                - heading "unprefixed:" [level=4] [ref=e73]:
+                  - generic [ref=e74]: "unprefixed:"
+                - generic "97.2% Supported" [ref=e75]: 97.2%
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - button "Current aligned" [ref=e78]
+            - button "Usage relative" [ref=e79] [cursor=pointer]
+            - button "Date relative" [ref=e80] [cursor=pointer]
+          - generic [ref=e81]:
+            - button "Filtered" [ref=e82] [cursor=pointer]
+            - button "All" [ref=e83]
+          - link "Open settings" [ref=e84] [cursor=pointer]:
+            - /url: /ciu/settings#display
+            - img "Open settings"
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - heading "Chrome" [level=4] [ref=e88]
+            - generic [ref=e89]:
+              - generic [ref=e91] [cursor=pointer]:
+                - text: 4 - 28
+                - generic: ": Not supported"
+              - generic [ref=e93] [cursor=pointer]:
+                - text: 29 - 56
+                - generic: ": Not supported"
+                - heading "See notes:" [level=5]
+                - list [ref=e94]:
+                  - listitem [ref=e95]: "1"
+              - generic [ref=e97] [cursor=pointer]:
+                - text: "57"
+                - generic: ": Supported"
+                - heading "See notes:" [level=5]
+                - list [ref=e98]:
+                  - listitem [ref=e99]: "4"
+              - generic [ref=e101] [cursor=pointer]:
+                - text: 58 - 145
+                - generic: ": Supported"
+              - generic [ref=e103] [cursor=pointer]:
+                - text: "146"
+                - generic: ": Supported"
+            - generic [ref=e105] [cursor=pointer]:
+              - text: 147 - 149
+              - generic: ": Supported"
+          - generic [ref=e106]:
+            - heading "Edge *" [level=4] [ref=e107]:
+              - text: Edge
+              - generic: "*"
+            - generic [ref=e108]:
+              - generic [ref=e110] [cursor=pointer]:
+                - text: 12 - 15
+                - generic: ": Partial support"
+                - heading "See notes:" [level=5]
+                - list [ref=e111]:
+                  - listitem [ref=e112]: "2"
+              - generic [ref=e114] [cursor=pointer]:
+                - text: 16 - 144
+                - generic: ": Supported"
+              - generic [ref=e116] [cursor=pointer]:
+                - text: "145"
+                - generic: ": Supported"
+          - generic [ref=e117]:
+            - heading "Safari" [level=4] [ref=e118]
+            - generic [ref=e119]:
+              - generic [ref=e121] [cursor=pointer]:
+                - text: 3.1 - 10
+                - generic: ": Not supported"
+              - generic [ref=e123] [cursor=pointer]:
+                - text: 10.1 - 26.2
+                - generic: ": Supported"
+              - generic [ref=e125] [cursor=pointer]:
+                - text: "26.3"
+                - generic: ": Supported"
+            - generic [ref=e127] [cursor=pointer]:
+              - text: 26.4 - TP
+              - generic: ": Supported"
+          - generic [ref=e128]:
+            - heading "Firefox" [level=4] [ref=e129]
+            - generic [ref=e130]:
+              - generic [ref=e132] [cursor=pointer]:
+                - text: 2 - 39
+                - generic: ": Not supported"
+              - generic [ref=e134] [cursor=pointer]:
+                - text: 40 - 51
+                - generic: ": Not supported"
+                - heading "See notes:" [level=5]
+                - list [ref=e135]:
+                  - listitem [ref=e136]: "3"
+              - generic [ref=e138] [cursor=pointer]:
+                - text: 52 - 53
+                - generic: ": Supported"
+                - heading "See notes:" [level=5]
+                - list [ref=e139]:
+                  - listitem [ref=e140]: "4"
+              - generic [ref=e142] [cursor=pointer]:
+                - text: 54 - 147
+                - generic: ": Supported"
+              - generic [ref=e144] [cursor=pointer]:
+                - text: "148"
+                - generic: ": Supported"
+            - generic [ref=e146] [cursor=pointer]:
+              - text: 149 - 151
+              - generic: ": Supported"
+          - generic [ref=e147]:
+            - heading "Opera" [level=4] [ref=e148]
+            - generic [ref=e149]:
+              - generic [ref=e151] [cursor=pointer]:
+                - text: 10 - 27
+                - generic: ": Not supported"
+              - generic [ref=e153] [cursor=pointer]:
+                - text: 28 - 43
+                - generic: ": Not supported"
+                - heading "See notes:" [level=5]
+                - list [ref=e154]:
+                  - listitem [ref=e155]: "1"
+              - generic [ref=e157] [cursor=pointer]:
+                - text: 44 - 126
+                - generic: ": Supported"
+              - generic [ref=e159] [cursor=pointer]:
+                - text: "127"
+                - generic: ": Supported"
+          - generic [ref=e160]:
+            - heading "IE" [level=4] [ref=e161]
+            - generic [ref=e162]:
+              - generic [ref=e164] [cursor=pointer]:
+                - text: 6 - 9
+                - generic: ": Not supported"
+              - generic [ref=e166] [cursor=pointer]:
+                - text: "10"
+                - generic: ": Partial support"
+                - heading "See notes:" [level=5]
+                - list [ref=e167]:
+                  - listitem [ref=e168]: "2"
+              - generic [ref=e170] [cursor=pointer]:
+                - text: "11"
+                - generic: ": Partial support"
+                - heading "See notes:" [level=5]
+                - list [ref=e171]:
+                  - listitem [ref=e172]: "2"
+          - generic [ref=e173]:
+            - heading "Chrome for Android" [level=4] [ref=e174]
+            - generic [ref=e177] [cursor=pointer]:
+              - text: "145"
+              - generic: ": Supported"
+          - generic [ref=e178]:
+            - heading "Safari on iOS *" [level=4] [ref=e179]:
+              - text: Safari on iOS
+              - generic: "*"
+            - generic [ref=e180]:
+              - generic [ref=e182] [cursor=pointer]:
+                - text: 3.2 - 10.2
+                - generic: ": Not supported"
+              - generic [ref=e184] [cursor=pointer]:
+                - text: 10.3 - 26.2
+                - generic: ": Supported"
+              - generic [ref=e186] [cursor=pointer]:
+                - text: "26.3"
+                - generic: ": Supported"
+            - generic [ref=e188] [cursor=pointer]:
+              - text: "26.4"
+              - generic: ": Supported"
+          - generic [ref=e189]:
+            - heading "Samsung Internet" [level=4] [ref=e190]
+            - generic [ref=e191]:
+              - generic [ref=e193] [cursor=pointer]:
+                - text: 4 - 5.4
+                - generic: ": Not supported"
+              - generic [ref=e195] [cursor=pointer]:
+                - text: 6.2 - 28
+                - generic: ": Supported"
+              - generic [ref=e197] [cursor=pointer]:
+                - text: "29"
+                - generic: ": Supported"
+          - generic [ref=e198]:
+            - heading "Opera Mini *" [level=4] [ref=e199]:
+              - text: Opera Mini
+              - generic: "*"
+            - generic [ref=e202] [cursor=pointer]:
+              - text: all
+              - generic: ": Not supported"
+          - generic [ref=e203]:
+            - heading "Opera Mobile" [level=4] [ref=e204]
+            - generic [ref=e205]:
+              - generic [ref=e207] [cursor=pointer]:
+                - text: 12 - 12.1
+                - generic: ": Not supported"
+              - generic [ref=e209] [cursor=pointer]:
+                - text: "80"
+                - generic: ": Supported"
+          - generic [ref=e210]:
+            - heading "UC Browser for Android" [level=4] [ref=e211]
+            - generic [ref=e214] [cursor=pointer]:
+              - text: "15.5"
+              - generic: ": Supported"
+          - generic [ref=e215]:
+            - heading "Android Browser *" [level=4] [ref=e216]:
+              - text: Android Browser
+              - generic: "*"
+            - generic [ref=e217]:
+              - generic [ref=e219] [cursor=pointer]:
+                - text: 2.1 - 4.4.4
+                - generic: ": Not supported"
+              - generic [ref=e221] [cursor=pointer]:
+                - text: "145"
+                - generic: ": Supported"
+          - generic [ref=e222]:
+            - heading "Firefox for Android" [level=4] [ref=e223]
+            - generic [ref=e226] [cursor=pointer]:
+              - text: "147"
+              - generic: ": Supported"
+          - generic [ref=e227]:
+            - heading "QQ Browser" [level=4] [ref=e228]
+            - generic [ref=e231] [cursor=pointer]:
+              - text: "14.9"
+              - generic: ": Supported"
+          - generic [ref=e232]:
+            - heading "Baidu Browser" [level=4] [ref=e233]
+            - generic [ref=e236] [cursor=pointer]:
+              - text: "13.52"
+              - generic: ": Supported"
+          - generic [ref=e237]:
+            - heading "KaiOS Browser" [level=4] [ref=e238]
+            - generic [ref=e239]:
+              - generic [ref=e241] [cursor=pointer]:
+                - text: "2.5"
+                - generic: ": Supported"
+              - generic [ref=e243] [cursor=pointer]:
+                - text: "3.1"
+                - generic: ": Supported"
+        - generic [ref=e244]:
+          - text: ">"
+          - tablist [ref=e245]:
+            - tab "Notes" [selected] [ref=e246] [cursor=pointer]
+            - tab "Test on a real browser" [ref=e247]
+            - tab "Known issues (3)" [ref=e248]
+            - tab "Resources (7)" [ref=e249]
+            - tab "Feedback" [ref=e250]
+          - generic [ref=e251]:
+            - paragraph [ref=e252]:
+              - text: Since October 2017, this feature works across the latest devices and major browser versions (
+              - link "Learn more about Baseline" [ref=e253] [cursor=pointer]:
+                - /url: https://web-platform-dx.github.io/web-features/
+              - text: )
+            - text: See also support for
+            - link "subgrids" [ref=e254] [cursor=pointer]:
+              - /url: "#feat=css-subgrid"
+            - paragraph [ref=e255]:
+              - generic [ref=e256]: "1"
+              - text: Enabled in Chrome through the "experimental Web Platform features" flag in chrome://flags
+            - paragraph [ref=e257]:
+              - generic [ref=e258]: "2"
+              - text: Partial support in IE refers to supporting an
+              - link "older version" [ref=e259] [cursor=pointer]:
+                - /url: https://www.w3.org/TR/2011/WD-css3-grid-layout-20110407/
+              - text: of the specification.
+            - paragraph [ref=e260]:
+              - generic [ref=e261]: "3"
+              - text: Enabled in Firefox through the
+              - code [ref=e262]: layout.css.grid.enabled
+              - text: flag
+            - paragraph [ref=e263]:
+              - generic [ref=e264]: "4"
+              - text: There are some bugs with overflow (
+              - link "1356820" [ref=e265] [cursor=pointer]:
+                - /url: https://bugzilla.mozilla.org/show_bug.cgi?id=1356820
+              - text: ","
+              - link "1348857" [ref=e266] [cursor=pointer]:
+                - /url: https://bugzilla.mozilla.org/show_bug.cgi?id=1348857
+              - text: ","
+              - link "1350925" [ref=e267] [cursor=pointer]:
+                - /url: https://bugzilla.mozilla.org/show_bug.cgi?id=1350925
+              - text: )
+  - complementary [ref=e268]:
+    - insertion [ref=e269]:
+      - iframe [ref=e271]:
+        - generic [active] [ref=f13e1]:
+          - link "Android Developers Code faster with Gemini DOWNLOAD" [ref=f13e6] [cursor=pointer]:
+            - /url: https://www.googleadservices.com/pagead/aclk?sa=L&ai=CBB6XWYO1aYDzNMXG7OsPla30kQXe94XwhQG198_z1xSX2vT9CBABIJfByxNg5YKAgLwOoAGZ86D8AsgBAagDAcgDywSqBNQBT9CSCRNpwi6aBgXPr7K5MCxtjhZ3d3akH6uFScDuPAcG_3knfdyRqJff4yuJ0ktUII882ThEymA5t-AhcCW8QTYgFc5bZZ3TOWqvBhEhSS9xkX6qzR8zljvPDu3sQ3njW0FRXb8YgtX3rKcAPTdhuTm4jm_aY7M851lWmHd0MlNIWgbE9x1WusaDZyxdDA85RayKFRMRLdjKHZH1PwLnn5QIG0CcP400vXBmyGtrIr9fwIjZhaFWgSA7vTkhJt8EDcb0X03deePPoKgUfNNQc2McL3_ABL3ohaKiBYgF_Z3z-1SAB8-M34MBqAenzLECqAemvhuoB8zOsQKoB_PRG6gHltgbqAeqm7ECqAeOzhuoB5PYG6gH8OAbqAfulrECqAf-nrECqAevvrECqAfVyRuoB9m2sQKoB5oGqAeYxbECqAf_nrECqAffn7ECqAf4wrECqAf7wrEC2AcB0ggvCIBhEAEYnwMyCIqCgICAgIAIOg2AQIDAgICAgKiAAqgDSL39wTpYrM2G3N6fkwOaCS9odHRwczovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9nZW1pbmktaW4tYW5kcm9pZLEJdx6Q7WZ3sZuACgHICwHgCwGqDQJJTsgNAeoNEwjYiojc3p-TAxVFI3sHHZUWPVKIDgnYEw2IFATQFQHKFgIKAPgWAYAXAbIXDhgBKgoxMjA1OTI5MzM5uhcCOAGqGBcJAAAAAADf-UASCjEyMDU5MjkzMzkYAbIYCRIC6FgYASIBANAYAcIZAggB&gclid=EAIaIQobChMIwIOI3N6fkwMVRSN7Bx2VFj1SEAEYASAAEgJE0PD_BwE&num=1&cid=CAQS6QEA56J1eWr_CGVSY76_Mw2HWBhWmYHh9jss0eAXvnGsbn_c5w8LEEzJPBKrJMeDbqnS85sbJUR0dEF48ELMq79rEEAZCVgoZrq6f4hLq4qU-sUDT2gqMg3_9-4255Miwrz9tjN6Dyn5z_B6Sdq0jg24HKKd3L8N5ZL1vwyX0Hx2CpD17YWyU0jwB8lftPUDeSb6I3Q4uXBU2E98IERc7ksWnP6HCTwH1BAgWIkpY8jVFcLFgb-4z9LLFdMj8Dmwi1QNrQVovD3U9fj7tquUkFN531Df4t1DXc0QeMWLRzUwsaiJb1iT_d0y_BgB&sig=AOD64_0IhuzgqgdO_ob5_0f3FMyChugQlQ&client=ca-pub-3347535679733957&rf=1&nb=2&adurl=https://ad.doubleclick.net/searchads/link/click%3F%26ds_a_cid%3D276767502%26ds_a_caid%3D22808415997%26ds_a_agid%3D180996895805%26ds_a_fiid%3D%26ds_a_lid%3D%26ds_a_extid%3D%26%26ds_e_adid%3D774925385924%26ds_e_matchtype%3Dcontent%26ds_e_device%3Dc%26ds_e_network%3Dd%26%26ds_url_v%3D2%26ds_dest_url%3Dhttps://developer.android.com/gemini-in-android%3Fgclsrc%3Daw.ds%26gad_source%3D5%26gad_campaignid%3D22808415997
+            - generic [ref=f13e7]:
+              - generic [ref=f13e10]:
+                - generic "Android Developers" [ref=f13e11]
+                - generic "Android Developers" [ref=f13e12]: Code faster with Gemini
+              - generic [ref=f13e16]:
+                - generic: DOWNLOAD
+                - img [ref=f13e17]
+          - img [ref=f13e23] [cursor=pointer]
+          - button [ref=f13e25] [cursor=pointer]:
+            - img [ref=f13e26]
+          - iframe
+  - contentinfo [ref=e272]:
+    - generic [ref=e273]:
+      - heading "Can I use..." [level=3] [ref=e274]
+      - paragraph [ref=e275]: Browser support tables for modern web technologies
+      - paragraph [ref=e276]:
+        - text: Created & maintained by
+        - link "@Fyrd" [ref=e277] [cursor=pointer]:
+          - /url: https://front-end.social/@fyrd
+        - text: ", design by"
+        - link "@Lensco" [ref=e278] [cursor=pointer]:
+          - /url: https://mastodon.world/@lensco
+        - text: .
+      - paragraph [ref=e279]:
+        - text: Support data contributions by the GitHub
+        - link "community" [ref=e280] [cursor=pointer]:
+          - /url: https://github.com/Fyrd/caniuse/graphs/contributors
+        - text: .
+      - paragraph [ref=e281]:
+        - text: Usage share statistics by
+        - link "StatCounter GlobalStats" [ref=e282] [cursor=pointer]:
+          - /url: http://gs.statcounter.com/
+        - text: for February, 2026
+      - paragraph [ref=e283]:
+        - text: Location detection provided by
+        - link "ipinfo.io" [ref=e284] [cursor=pointer]:
+          - /url: //ipinfo.io
+        - text: .
+      - paragraph [ref=e285]:
+        - text: Browser testing done via
+        - link "BrowserStack" [ref=e286] [cursor=pointer]:
+          - /url: https://www.browserstack.com?ref=caniuse-source&caniuse_source=brand-asset&utm_source=caniuse&utm_medium=partnered&utm_campaigncode=701OW000008y9C1YAI
+          - img "BrowserStack" [ref=e287]
+    - generic [ref=e288]:
+      - heading "Support via Patreon" [level=3] [ref=e289]
+      - paragraph [ref=e290]: Become a caniuse Patron to support the site and disable ads for only $1/month!
+      - link "Become a Patron!" [ref=e292] [cursor=pointer]:
+        - /url: https://www.patreon.com/join/caniuse
+        - img "Become a Patron!" [ref=e293]
+      - paragraph [ref=e294]:
+        - text: or
+        - link "Log in" [ref=e295] [cursor=pointer]:
+          - /url: http://www.patreon.com/oauth2/authorize?response_type=code&client_id=efdd32564c7459c2c0dcd644b984e6948070b23b72961a3b9fb32ab3ad797184&redirect_uri=https%3A%2F%2Fcaniuse.com
+    - generic [ref=e296]:
+      - heading "Site links" [level=3] [ref=e297]
+      - list [ref=e298]:
+        - listitem [ref=e299]:
+          - link "Home" [ref=e300] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=e301]:
+          - link "Feature index" [ref=e302] [cursor=pointer]:
+            - /url: /ciu/index
+        - listitem [ref=e303]:
+          - link "Browser usage table" [ref=e304] [cursor=pointer]:
+            - /url: /usage-table
+        - listitem [ref=e305]:
+          - link "Feature suggestion list" [ref=e306] [cursor=pointer]:
+            - /url: /issue-list
+        - listitem [ref=e307]:
+          - link "Caniuse data on GitHub" [ref=e308] [cursor=pointer]:
+            - /url: https://github.com/fyrd/caniuse
+    - generic [ref=e310]:
+      - heading "Legend" [level=2] [ref=e311]
+      - list [ref=e312]:
+        - listitem [ref=e313]:
+          - generic [ref=e314]: Green
+          - text: = Supported
+        - listitem [ref=e315]:
+          - generic [ref=e316]: Red
+          - text: = Not supported
+        - listitem [ref=e317]:
+          - generic [ref=e318]: Greenish yellow
+          - text: = Partial support
+        - listitem [ref=e319]:
+          - generic [ref=e320]: Gray
+          - text: = Support unknown
+      - paragraph [ref=e321]:
+        - link "Enable color-blind friendly colors" [ref=e322] [cursor=pointer]:
+          - /url: /ciu/settings#theme
