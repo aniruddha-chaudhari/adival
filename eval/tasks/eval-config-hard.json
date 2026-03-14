@@ -1,6 +1,6 @@
 {
   "$schema": "./eval-config.schema.json",
-  "name": "web-browsing-hard-pinchtab",
+  "name": "web-browsing-hard-playwright-mcp",
   "defaultModel": "opencode/minimax-m2.5-free",
   "tasks": [
     {
