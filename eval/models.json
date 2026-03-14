@@ -1,7 +1,6 @@
 {
   "models": [
-    "github-copilot/gpt-5.3-codex",
-    "github-copilot/grok-code-fast-1",
+
     "github-copilot/gemini-3-flash-preview"
   ]
 }
