@@ -1,114 +1,73 @@
-#!/usr/bin/env python3
 import csv
-import re
 import sys
+import re
 from datetime import datetime
 
-
-DATE_FORMATS = [
-    "%m/%d/%Y",
-    "%Y-%m-%d",
-    "%d-%b-%Y",
-]
-
-
-def normalize_date(value: str) -> str:
-    text = value.strip()
-    candidates = [text]
-    if re.match(r"^\d{1,2}-[A-Za-z]{3}-\d{4}$", text):
-        parts = text.split("-")
-        candidates.append(f"{parts[0]}-{parts[1].title()}-{parts[2]}")
-
-    for candidate in candidates:
-        for fmt in DATE_FORMATS:
-            try:
-                dt = datetime.strptime(candidate, fmt)
-                return dt.strftime("%Y-%m-%d")
-            except ValueError:
-                continue
-    return text
-
-
-def normalize_phone(value: str) -> str:
-    text = value.strip()
-    digits = re.sub(r"\D", "", text)
-    if len(digits) == 10:
-        return "+1" + digits
-    if len(digits) == 11 and digits.startswith("1"):
-        return "+" + digits
-    return text
-
-
-def normalize_currency(value: str) -> str:
-    text = value.strip()
-    no_symbols = text.replace("$", "").replace(",", "")
-
-    if re.fullmatch(r"[+-]?\d+(\.\d+)?", no_symbols):
+def normalize_date(date_str):
+    date_str = date_str.strip()
+    # Mixed formats: MM/DD/YYYY, YYYY-MM-DD, DD-Mon-YYYY
+    fmts = ['%m/%d/%Y', '%Y-%m-%d', '%d-%b-%Y']
+    for fmt in fmts:
         try:
-            return str(float(no_symbols))
+            return datetime.strptime(date_str, fmt).strftime('%Y-%m-%d')
         except ValueError:
-            return text
-    return text
+            continue
+    return date_str
 
+def normalize_phone(phone_str):
+    nums = re.sub(r'\D', '', phone_str)
+    if len(nums) == 10:
+        return f"+1{nums}"
+    elif len(nums) == 11 and nums.startswith('1'):
+        return f"+{nums}"
+    return phone_str
 
-def normalize_cell(value: str) -> str:
-    normalized = value.strip()
+def normalize_currency(curr_str):
+    clean = curr_str.replace('$', '').replace(',', '').strip()
+    try:
+        return f"{float(clean):.2f}"
+    except ValueError:
+        return clean
 
-    date_candidate = normalize_date(normalized)
-    if date_candidate != normalized:
-        return date_candidate
-
-    phone_candidate = normalize_phone(normalized)
-    if phone_candidate != normalized:
-        return phone_candidate
-
-    currency_candidate = normalize_currency(normalized)
-    if currency_candidate != normalized:
-        return currency_candidate
-
-    return normalized
-
-
-def main() -> int:
+def main():
     if len(sys.argv) != 3:
-        print("Usage: python csv_normalizer.py <input_path> <output_path>")
-        return 1
-
-    input_path = sys.argv[1]
-    output_path = sys.argv[2]
-
-    changed_cells = 0
-
-    with open(input_path, "r", newline="", encoding="utf-8") as infile:
-        reader = csv.reader(infile)
-        rows = list(reader)
-
-    if not rows:
-        with open(output_path, "w", newline="", encoding="utf-8") as outfile:
-            writer = csv.writer(outfile)
-            writer.writerows(rows)
-        print("Cells changed: 0")
-        return 0
-
-    header = rows[0]
-    normalized_rows = [header]
-
-    for row in rows[1:]:
-        normalized_row = []
-        for cell in row:
-            new_value = normalize_cell(cell)
-            if new_value != cell:
-                changed_cells += 1
-            normalized_row.append(new_value)
-        normalized_rows.append(normalized_row)
-
-    with open(output_path, "w", newline="", encoding="utf-8") as outfile:
-        writer = csv.writer(outfile)
-        writer.writerows(normalized_rows)
-
-    print(f"Cells changed: {changed_cells}")
-    return 0
-
+        sys.exit(1)
+    
+    in_path, out_path = sys.argv[1], sys.argv[2]
+    cells_changed = 0
+    
+    with open(in_path, 'r', encoding='utf-8') as f:
+        reader = list(csv.reader(f))
+    
+    header = [h.strip() for h in reader[0]]
+    data = reader[1:]
+    
+    clean_data = []
+    for row in data:
+        new_row = []
+        for i, cell in enumerate(row):
+            orig = cell
+            val = cell.strip()
+            col = header[i].lower()
+            
+            if 'date' in col:
+                val = normalize_date(val)
+            elif 'phone' in col:
+                val = normalize_phone(val)
+            elif 'amount' in col or 'currency' in col:
+                val = normalize_currency(val)
+            
+            if val != orig:
+                cells_changed += 1
+            new_row.append(val)
+        clean_data.append(new_row)
+        
+    with open(out_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(clean_data)
+    
+    print(f"TotalCellsChanged: {cells_changed}")
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()
