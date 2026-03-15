@@ -25,7 +25,7 @@
  * leaving other domains for the same model intact.
  */
 
-import { mkdirSync, existsSync, renameSync, rmSync } from "fs";
+import { mkdirSync, existsSync, renameSync, rmSync, readdirSync } from "fs";
 import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
 import { getAllTasks, getTaskById, loadEvalConfig } from "./src/eval/tasks";
@@ -75,6 +75,45 @@ function makeTaskDir(domainDir: string, taskId: string, taskName: string): strin
 /** Returns the per-task directory path inside a domain dir */
 function taskDirName(taskId: string, taskName: string): string {
   return `${taskId}_${slugify(taskName)}`;
+}
+
+/**
+ * Moves all files from <projectRoot>/outputs/ into <taskDir>/outputs/,
+ * preserving subdirectory structure (e.g. outputs/tools/ → <taskDir>/outputs/tools/).
+ * After the move, recreates empty outputs/ and outputs/tools/ in the project root
+ * so the next task starts with a clean slate.
+ */
+function moveOutputsToTaskDir(taskDir: string): void {
+  const projectRoot = process.cwd();
+  const srcRoot = join(projectRoot, "outputs");
+  const destRoot = join(taskDir, "outputs");
+
+  if (existsSync(srcRoot)) {
+    _moveFilesRecursive(srcRoot, destRoot);
+  }
+
+  // Always recreate the empty shell directories so the next task can write to them
+  mkdirSync(join(projectRoot, "outputs", "tools"), { recursive: true });
+}
+
+/** Recursively moves all files from src into dest, preserving subdirectory structure. */
+function _moveFilesRecursive(src: string, dest: string): void {
+  const entries = readdirSync(src, { withFileTypes: true });
+  for (const entry of entries) {
+    const srcPath = join(src, entry.name);
+    const destPath = join(dest, entry.name);
+    if (entry.isDirectory()) {
+      mkdirSync(destPath, { recursive: true });
+      _moveFilesRecursive(srcPath, destPath);
+    } else {
+      mkdirSync(dest, { recursive: true });
+      try {
+        renameSync(srcPath, destPath);
+      } catch {
+        /* ignore move failures (e.g. cross-device) */
+      }
+    }
+  }
 }
 
 // ─── CLI arg parsing ──────────────────────────────────────────────────────────
@@ -181,6 +220,7 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
 
       const taskWithModel = { ...task, model: modelId };
       const result = await runTask(taskWithModel, domainDir);
+      moveOutputsToTaskDir(join(domainDir, taskDirName(task.id, task.name)));
       printResult(result, true);
       await saveResults([result], domainDir, modelId, domainName);
     }
@@ -205,11 +245,12 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
       for (const task of tasksForModel) {
         makeTaskDir(domainDir, task.id, task.name);
         const result = await runTask(task, domainDir);
+        moveOutputsToTaskDir(join(domainDir, taskDirName(task.id, task.name)));
         results.push(result);
         printResult(result, false);
+        await saveResults([result], domainDir, modelId, domainName);
       }
       printSummary(results, modelId, domainName);
-      await saveResults(results, domainDir, modelId, domainName);
     }
   }
 })().catch(e => {

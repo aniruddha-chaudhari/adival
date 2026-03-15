@@ -90,6 +90,10 @@ export interface JudgeEngineOptions {
    * When set, efficiency findings include an overhead ratio comparison.
    */
   humanBaselineSteps?: number;
+  /** Files the agent was expected to produce — passed as paths to the judge */
+  outputFiles?: string[];
+  /** Path to a pre-authored reference answer file — passed as a path to the judge */
+  expectedOutputFile?: string;
 }
 
 // ─── Engine entry point ───────────────────────────────────────────────────────
@@ -125,7 +129,9 @@ export async function judgeTaskWithEngine(
     taskInstruction,
     renderedContext,
     screenshotB64,
-    resolvedScreenshotPath
+    resolvedScreenshotPath,
+    options.outputFiles,
+    options.expectedOutputFile
   );
 
   // ── Run judge agent twice ─────────────────────────────────────────────────
@@ -285,7 +291,9 @@ function buildJudgePrompt(
   taskInstruction: string,
   renderedAgentOutput: string,
   screenshotB64: string | null,
-  screenshotPath: string | null
+  screenshotPath: string | null,
+  outputFiles?: string[],
+  expectedOutputFile?: string
 ): string {
   const lines: string[] = [];
 
@@ -297,6 +305,18 @@ function buildJudgePrompt(
   lines.push(`---`);
   lines.push(renderedAgentOutput);
   lines.push(`---`);
+
+  if (outputFiles && outputFiles.length > 0) {
+    lines.push(``);
+    lines.push(`PRODUCED OUTPUT FILES:`);
+    for (const f of outputFiles) lines.push(`  - ${f}`);
+  }
+
+  if (expectedOutputFile) {
+    lines.push(``);
+    lines.push(`EXPECTED OUTPUT FILE (reference answer):`);
+    lines.push(`  - ${expectedOutputFile}`);
+  }
 
   if (screenshotPath) {
     lines.push(``);

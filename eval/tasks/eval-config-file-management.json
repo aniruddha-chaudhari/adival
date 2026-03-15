@@ -11,7 +11,7 @@
       "timeoutSeconds": 600,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/sales_data.xlsx"],
+      "inputFiles": ["uploads/sales_data.xlsx"],
       "outputFiles": ["outputs/sales_data_audited.xlsx"],
       "scorer": {
         "type": "allOf",
@@ -20,7 +20,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["highestrevenueesheet:", "bestsellingproduct:", "firstinconsistency:", "summarysheetcreated:"]
+                "words": [
+                  "highestrevenueesheet:",
+                  "bestsellingproduct:",
+                  "firstinconsistency:",
+                  "summarysheetcreated:"
+                ]
               }
             },
             {
@@ -55,7 +60,7 @@
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/contract_redlined.docx"],
+      "inputFiles": ["uploads/contract_redlined.docx"],
       "outputFiles": ["outputs/contract_final.docx"],
       "scorer": {
         "type": "allOf",
@@ -64,7 +69,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["totaltrackedchanges:", "alicechangesaccepted:", "bobchangesrejected:", "remainingchanges:"]
+                "words": [
+                  "totaltrackedchanges:",
+                  "alicechangesaccepted:",
+                  "bobchangesrejected:",
+                  "remainingchanges:"
+                ]
               }
             },
             {
@@ -99,7 +109,7 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 25,
       "screenshotPath": null,
-      "requiredFiles": [
+      "inputFiles": [
         "uploads/invoices/invoice_001.png",
         "uploads/invoices/invoice_002.png",
         "uploads/invoices/invoice_003.png",
@@ -114,7 +124,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["highestamountinvoice:", "duplicatevendor:", "totalsumall:", "csvrowcount:"]
+                "words": [
+                  "highestamountinvoice:",
+                  "duplicatevendor:",
+                  "totalsumallinvoices:",
+                  "csvrowcount:"
+                ]
               }
             },
             {
@@ -149,7 +164,7 @@
       "timeoutSeconds": 660,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/project_files/"],
+      "inputFiles": ["uploads/project_files/"],
       "scorer": {
         "type": "allOf",
         "params": {
@@ -157,7 +172,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["recentpyfilecount:", "largestfilepath:", "logfileswitherror:", "duplicatefilepairs:"]
+                "words": [
+                  "recentpyfilecount:",
+                  "largestfilepath:",
+                  "logfileswitherror:",
+                  "duplicatefilepairs:"
+                ]
               }
             },
             {
@@ -192,7 +212,7 @@
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/deck_messy.pptx"],
+      "inputFiles": ["uploads/deck_messy.pptx"],
       "outputFiles": ["outputs/deck_normalized.pptx"],
       "scorer": {
         "type": "allOf",
@@ -201,7 +221,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["slideswithwrongtitlesize:", "titlesnormalized:", "footeradded:", "slidereordered:"]
+                "words": [
+                  "slideswithwrongtitlesize:",
+                  "titlesnormalized:",
+                  "footeraddedtoslides:",
+                  "slidereordered:"
+                ]
               }
             },
             {
@@ -236,7 +261,7 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 26,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/photos/"],
+      "inputFiles": ["uploads/photos/"],
       "scorer": {
         "type": "allOf",
         "params": {
@@ -244,7 +269,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["fileswithexif:", "duplicatepairs:", "filesrenamed:", "folderdistribution:"]
+                "words": [
+                  "fileswithexif:",
+                  "duplicatepairs:",
+                  "filesrenamed:",
+                  "folderdistribution:"
+                ]
               }
             },
             {
@@ -273,7 +303,7 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 28,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/dirty_data.csv"],
+      "inputFiles": ["uploads/dirty_data.csv"],
       "outputFiles": ["outputs/tools/csv_normalizer.py", "outputs/dirty_data_clean.csv"],
       "scorer": {
         "type": "allOf",
@@ -316,6 +346,56 @@
       "setupInstructions": "See eval-file-management-setup.md — Section FM_008 for dirty CSV generation script."
     },
     {
+      "id": "EVAL_FM_009",
+      "name": "Excel: Extract Failed Students from Exam Results",
+      "category": "file-processing",
+      "prompt": "Read the Excel file at uploads/result_analysis/COMP_FINAL_RESULT.xls which contains semester exam results for Computer Engineering students. Analyze the data and extract all students who have failed (students with 'FAIL' status or those who did not pass based on the grading criteria in the file). For each failed student, capture their Roll Number, Name, and Status: failed. Save the extracted failed students data to outputs/failed_students_output.xlsx with columns: RollNo, Name, Status. Return the final answer in exactly four labeled lines: TotalStudents:, FailedStudentsCount:, OutputFileSaved:",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 12,
+      "screenshotPath": null,
+      "inputFiles": ["uploads/result_analysis/COMP_FINAL_RESULT.xls"],
+      "outputFiles": ["outputs/failed_students_output.xlsx"],
+      "expectedOutputFile": "uploads/result_analysis/answer.xlsx",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["totalstudents:", "failedstudentscount:", "outputfilesaved:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalStudents:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "FailedStudentsCount:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "OutputFileSaved:\\s*(Yes|True)"
+              }
+            },
+            {
+              "type": "fileExists",
+              "params": {
+                "path": "outputs/failed_students_output.xlsx"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
       "id": "EVAL_FM_010",
       "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
       "category": "analyze-excel",
@@ -323,7 +403,7 @@
       "timeoutSeconds": 780,
       "humanBaselineSteps": 32,
       "screenshotPath": null,
-      "requiredFiles": ["uploads/employee_data.xlsx"],
+      "inputFiles": ["uploads/employee_data.xlsx"],
       "outputFiles": ["outputs/employee_data_pivot.xlsx", "outputs/promotion_report.docx"],
       "scorer": {
         "type": "allOf",
@@ -332,7 +412,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["topperformancedept:", "promotioncandidatecount:", "pivotsheetcreated:", "wordreportcreated:"]
+                "words": [
+                  "topperformancedept:",
+                  "promotioncandidatecount:",
+                  "pivotsheetcreated:",
+                  "wordreportcreated:"
+                ]
               }
             },
             {

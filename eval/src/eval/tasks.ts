@@ -105,6 +105,25 @@ export interface EvalTask {
    * Set in eval-config.json as a placeholder; populate with real data later.
    */
   humanBaselineSteps?: number;
+  /**
+   * Files the agent must produce, relative to project root.
+   * These paths are injected into the agent prompt so the agent knows
+   * exactly where and with what name to save its outputs.
+   * Example: ["outputs/sales_data_audited.xlsx"]
+   */
+  outputFiles?: string[];
+  /**
+   * Input files the task depends on, relative to project root.
+   * Injected into the agent prompt so the agent knows which files to read.
+   * Example: ["uploads/sales_data.xlsx"]
+   */
+  inputFiles?: string[];
+  /**
+   * Path to a pre-authored reference answer file, relative to project root.
+   * Passed to the judge as a path so it can open and verify against it.
+   * Example: "eval/answers/EVAL_FM_001_answer.json"
+   */
+  expectedOutputFile?: string;
 }
 
 // ─── Loading from JSON ───────────────────────────────────────────────────────
@@ -128,6 +147,12 @@ export interface EvalConfig {
      * comparisons in efficiency analysis. Leave undefined to skip.
      */
     humanBaselineSteps?: number;
+    /** Files the agent must produce, relative to project root. */
+    outputFiles?: string[];
+    /** Input files the task depends on, relative to project root. */
+    inputFiles?: string[];
+    /** Path to a pre-authored reference answer file, relative to project root. */
+    expectedOutputFile?: string;
   }>;
 }
 
@@ -159,6 +184,9 @@ export async function loadEvalConfig(
     llmJudge: t.llmJudge,
     screenshotPath: t.screenshotPath,
     humanBaselineSteps: t.humanBaselineSteps,
+    outputFiles: t.outputFiles,
+    inputFiles: t.inputFiles,
+    expectedOutputFile: t.expectedOutputFile,
   }));
 
   if (!configPath) {

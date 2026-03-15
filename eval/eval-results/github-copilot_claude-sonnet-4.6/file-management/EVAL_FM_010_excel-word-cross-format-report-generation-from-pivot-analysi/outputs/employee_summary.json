@@ -1,0 +1,50 @@
+{
+  "top_performance_dept": "Sales",
+  "promotion_candidate_count": 5,
+  "candidates": [
+    {
+      "Name": "Eve Davis",
+      "Department": "Engineering",
+      "Salary": 80495,
+      "PerformanceScore": 5
+    },
+    {
+      "Name": "Frank Miller",
+      "Department": "Sales",
+      "Salary": 123563,
+      "PerformanceScore": 5
+    },
+    {
+      "Name": "Grace Wilson",
+      "Department": "Marketing",
+      "Salary": 78893,
+      "PerformanceScore": 5
+    },
+    {
+      "Name": "Henry Moore",
+      "Department": "HR",
+      "Salary": 50851,
+      "PerformanceScore": 4
+    },
+    {
+      "Name": "Jack Anderson",
+      "Department": "Engineering",
+      "Salary": 63396,
+      "PerformanceScore": 4
+    }
+  ],
+  "avg_salary_per_dept": {
+    "Engineering": 96823.8,
+    "Finance": 93899.8,
+    "HR": 82937.6,
+    "Marketing": 91248.4,
+    "Sales": 108418.0
+  },
+  "avg_perf_per_dept": {
+    "Engineering": 3.2,
+    "Finance": 2.4,
+    "HR": 3.4,
+    "Marketing": 3.4,
+    "Sales": 3.6
+  }
+}

@@ -63,6 +63,10 @@ export interface JudgeOptions {
   timeoutMs?: number;
   /** Human baseline steps for this task, used in efficiency comparison */
   humanBaselineSteps?: number;
+  /** Files the agent was expected to produce, passed as paths to the judge */
+  outputFiles?: string[];
+  /** Path to a pre-authored reference answer file, passed as a path to the judge */
+  expectedOutputFile?: string;
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -95,6 +99,8 @@ export async function judgeTask(
       model: options.model,
       timeoutMs: options.timeoutMs,
       humanBaselineSteps: options.humanBaselineSteps,
+      outputFiles: options.outputFiles,
+      expectedOutputFile: options.expectedOutputFile,
     }
   );
 

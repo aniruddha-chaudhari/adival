@@ -75,8 +75,27 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
   let output = "";
   let error: string | undefined;
 
+  // Build the final prompt: append file path instructions when the task
+  // specifies inputFiles (inputs) or outputFiles (expected outputs).
+  // This ensures the agent knows exactly which files to read and where to
+  // save results — without changing the original task prompt text.
+  let finalPrompt = task.prompt;
+  const fileLines: string[] = [];
+
+  if (task.inputFiles && task.inputFiles.length > 0) {
+    fileLines.push("INPUT FILES (read these):");
+    for (const f of task.inputFiles) fileLines.push(`  - ${f}`);
+  }
+  if (task.outputFiles && task.outputFiles.length > 0) {
+    fileLines.push("OUTPUT FILES (save results to exactly these paths):");
+    for (const f of task.outputFiles) fileLines.push(`  - ${f}`);
+  }
+  if (fileLines.length > 0) {
+    finalPrompt = `${task.prompt}\n\n${fileLines.join("\n")}`;
+  }
+
   try {
-    output = await runOpencode(task.prompt, task.model, timeoutMs);
+    output = await runOpencode(finalPrompt, task.model, timeoutMs);
   } catch (err) {
     error = err instanceof Error ? err.message : String(err);
     const elapsed = Date.now() - start;
@@ -128,6 +147,8 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
       humanBaselineSteps: task.humanBaselineSteps,
       // model: task.model || DEFAULT_MODEL,
       model: task.model || DEFAULT_MODEL,
+      outputFiles: task.outputFiles,
+      expectedOutputFile: task.expectedOutputFile,
     }).catch(e => ({
       verdict: "FAIL" as const,
       score: 0,
