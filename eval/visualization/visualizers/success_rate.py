@@ -31,31 +31,27 @@ class SuccessRateVisualizer:
         ) * 100
         self.data["failure_rate"] = 100 - self.data["success_rate"]
 
-    def plot(self, top_n: int = None):
-        """Create success rate comparison chart
+    def _plot_for_suite(self, suite: str, top_n: int | None = None):
+        """Helper: plot for a single domain/suite into its own folder."""
+        subdir = config.SUITE_PNG_SUBDIRS.get(suite, suite)
+        plot_data = self.data[self.data["domain"] == suite].copy()
+        if plot_data.empty:
+            return
 
-        Args:
-            top_n: Show only top N models (optional)
-        """
-        # Sort by success rate descending
-        plot_data = self.data.sort_values("success_rate", ascending=True)
-
+        plot_data = plot_data.sort_values("success_rate", ascending=True)
         if top_n and len(plot_data) > top_n:
             plot_data = plot_data.tail(top_n)
 
         n_models = len(plot_data)
-        width, height = set_figure_width_by_model_count(n_models, base_height=6)
-
+        width, height = set_figure_width_by_model_count(n_models, base_height=5.5)
         fig, ax = plt.subplots(figsize=(width, height))
 
         colors = get_color_palette(n_models)
 
-        # Horizontal bar chart for success and failure
         y_pos = np.arange(n_models)
         success = plot_data["success_rate"].values
         failure = plot_data["failure_rate"].values
 
-        # Create stacked horizontal bars
         ax.barh(
             y_pos,
             success,
@@ -76,7 +72,92 @@ class SuccessRateVisualizer:
             linewidth=config.EDGE_WIDTH,
         )
 
-        # Labels and formatting
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(
+            [format_model_name(m) for m in plot_data["model"]],
+            fontsize=config.FONT_SIZE_TICK - 1,
+        )
+        ax.set_xlabel("Success Rate (%)", fontsize=config.FONT_SIZE_LABEL)
+        ax.set_title(
+            f"Task Success Rate – {suite}",
+            fontsize=config.FONT_SIZE_TITLE,
+            pad=15,
+        )
+        ax.set_xlim([0, 100])
+
+        for i, (s, f) in enumerate(zip(success, failure)):
+            if s > 5:
+                ax.text(
+                    s / 2,
+                    i,
+                    f"{s:.1f}%",
+                    va="center",
+                    ha="center",
+                    fontsize=config.FONT_SIZE_TICK,
+                    weight="bold",
+                    color="white",
+                )
+
+        ax.legend(loc="lower right", frameon=False, fontsize=config.FONT_SIZE_LEGEND)
+        ax.grid(axis="x", alpha=0.3)
+
+        save_figure(
+            fig,
+            "01_success_rate_comparison",
+            tight_layout=True,
+            subdir=subdir,
+        )
+        plt.close(fig)
+
+        print(f"[+] Success rate visualization created for suite={suite} ({n_models} models)")
+
+    def plot(self, top_n: int = None, per_suite: bool = False):
+        """Create success rate comparison chart.
+
+        Args:
+            top_n: Show only top N models (optional)
+            per_suite: If True, generate one chart per target suite into
+                its own PNG subfolder instead of a single combined chart.
+        """
+        if per_suite:
+            for suite in config.TARGET_SUITES:
+                self._plot_for_suite(suite, top_n=top_n)
+            return None
+
+        # Fallback combined chart (not used in the paper workflow)
+        plot_data = self.data.sort_values("success_rate", ascending=True)
+        if top_n and len(plot_data) > top_n:
+            plot_data = plot_data.tail(top_n)
+
+        n_models = len(plot_data)
+        width, height = set_figure_width_by_model_count(n_models, base_height=6)
+        fig, ax = plt.subplots(figsize=(width, height))
+        colors = get_color_palette(n_models)
+
+        y_pos = np.arange(n_models)
+        success = plot_data["success_rate"].values
+        failure = plot_data["failure_rate"].values
+
+        ax.barh(
+            y_pos,
+            success,
+            label="Passed",
+            color=colors,
+            alpha=0.85,
+            edgecolor="black",
+            linewidth=config.EDGE_WIDTH,
+        )
+        ax.barh(
+            y_pos,
+            failure,
+            left=success,
+            label="Failed/Partial",
+            color="#cccccc",
+            alpha=0.6,
+            edgecolor="black",
+            linewidth=config.EDGE_WIDTH,
+        )
+
         ax.set_yticks(y_pos)
         ax.set_yticklabels(
             [format_model_name(m) for m in plot_data["model"]],
@@ -88,9 +169,8 @@ class SuccessRateVisualizer:
         )
         ax.set_xlim([0, 100])
 
-        # Add percentage labels on bars
         for i, (s, f) in enumerate(zip(success, failure)):
-            if s > 5:  # Only show label if bar is wide enough
+            if s > 5:
                 ax.text(
                     s / 2,
                     i,
