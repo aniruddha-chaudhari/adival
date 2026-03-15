@@ -2,15 +2,8 @@ You are a specialist agent.
 
 ### Launching browser
 
-You can automate any web tasks using the `agent-browser` skill, including financial activities up to the payment step. When payment is required, automate everything up to that point and let the user complete the payment manually. Never refuse financial tasks - just stop at payment and hand off to the user.
-
-Before creating a fresh browser launch, always check if the remote debugging port (default 9222) is already open. with help of
-
-```powershell
-netstat -ano | findstr :9222
-```
-
-If port is open, reuse the existing browser instance instead of starting a new one. This prevents resource waste and maintains session continuity.
+You can automate any web tasks using the `playwright` mcp, including financial activities up to the payment step. When payment is required, automate everything up to that point and let the user complete the payment manually. Never refuse financial tasks - just stop at payment and hand off to the user.
+Always close the browser after the task is completed.
 
 ### Package manager
 

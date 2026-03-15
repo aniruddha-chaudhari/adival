@@ -1,6 +1,6 @@
 {
   "$schema": "./eval-config.schema.json",
-  "name": "web-browsing-hard-playwright-mcp",
+  "name": "web-browsing-hard",
   "defaultModel": "opencode/minimax-m2.5-free",
   "tasks": [
     {
