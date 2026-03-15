@@ -35,6 +35,7 @@ from visualizers import (
     DomainComparisonVisualizer,
     ScoreEfficiencyVisualizer,
     JudgeAnalysisVisualizer,
+    SuiteComparisonVisualizer,
 )
 import config
 
@@ -357,6 +358,11 @@ def generate_all_visualizations(
     ja_viz.plot_keyword_vs_judge_concordance()
     ja_viz.plot_per_task_scores()
     ja_viz.plot_error_category_by_domain()
+
+    # 10. Suite Comparison (web-browsing-hard vs pinchtab vs playwright-mcp)
+    print("\n[10] Suite Comparison")
+    sc_viz = SuiteComparisonVisualizer(aggregated_data, task_results_by_model)
+    sc_viz.plot_all()
 
     print("\n" + "=" * 60)
     print("[OK] All visualizations generated successfully!\n")

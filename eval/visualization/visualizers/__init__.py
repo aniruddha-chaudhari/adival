@@ -15,6 +15,7 @@ from .model_comparison import ModelComparisonVisualizer
 from .domain_comparison import DomainComparisonVisualizer
 from .score_efficiency import ScoreEfficiencyVisualizer
 from .judge_analysis import JudgeAnalysisVisualizer
+from .suite_comparison import SuiteComparisonVisualizer
 
 __all__ = [
     "setup_matplotlib_style",
@@ -30,4 +31,5 @@ __all__ = [
     "DomainComparisonVisualizer",
     "ScoreEfficiencyVisualizer",
     "JudgeAnalysisVisualizer",
+    "SuiteComparisonVisualizer",
 ]

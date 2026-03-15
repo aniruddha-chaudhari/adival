@@ -31,8 +31,9 @@ class StepEfficiencyVisualizer:
         for model, tasks in self.task_results.items():
             lengths = []
             for task in tasks:
-                if "analysis" in task and "efficiency" in task["analysis"]:
-                    traj_len = task["analysis"]["efficiency"].get("trajectoryLength", 0)
+                analysis = task.get("analysis") or {}
+                if "efficiency" in analysis:
+                    traj_len = analysis["efficiency"].get("trajectoryLength", 0)
                     lengths.append(traj_len)
             if lengths:
                 trajectory_data[model] = lengths
