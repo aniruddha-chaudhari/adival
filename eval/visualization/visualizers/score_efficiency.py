@@ -94,22 +94,17 @@ class ScoreEfficiencyVisualizer:
             figsize=(config.FIGURE_WIDTH_DOUBLE, config.FIGURE_HEIGHT_DOUBLE)
         )
 
-        for _, row in df.iterrows():
-            color = color_map[row["model"]]
+        # Scatter points per model, legend instead of text labels to avoid clutter
+        for model in unique_models:
+            subset = df[df["model"] == model]
             ax.scatter(
-                row["mean_elapsed_sec_all"],
-                row["success_rate"],
-                color=color,
-                s=80,
+                subset["mean_elapsed_sec_all"],
+                subset["success_rate"],
+                color=color_map[model],
+                s=60,
+                alpha=0.8,
                 zorder=3,
-            )
-            label = format_model_name(row["model"]) + " / " + row["domain"]
-            ax.annotate(
-                label,
-                xy=(row["mean_elapsed_sec_all"], row["success_rate"]),
-                xytext=(5, 5),
-                textcoords="offset points",
-                fontsize=config.FONT_SIZE_TICK,
+                label=format_model_name(model),
             )
 
         ax.set_xlabel("Mean Time per Task (s)", fontsize=config.FONT_SIZE_LABEL)
@@ -117,6 +112,12 @@ class ScoreEfficiencyVisualizer:
         ax.set_title("Speed vs. Pass Rate", fontsize=config.FONT_SIZE_TITLE, pad=15)
         ax.tick_params(axis="both", labelsize=config.FONT_SIZE_TICK)
         ax.grid(alpha=0.3)
+        ax.legend(
+            loc="lower right",
+            frameon=False,
+            fontsize=config.FONT_SIZE_LEGEND,
+            ncol=1,
+        )
 
         save_figure(fig, "11_speed_vs_score", tight_layout=True)
         plt.close(fig)
@@ -140,22 +141,16 @@ class ScoreEfficiencyVisualizer:
             figsize=(config.FIGURE_WIDTH_DOUBLE, config.FIGURE_HEIGHT_DOUBLE)
         )
 
-        for _, row in df.iterrows():
-            color = color_map[row["model"]]
+        for model in unique_models:
+            subset = df[df["model"] == model]
             ax.scatter(
-                row["thrash_ratio"],
-                row["success_rate"],
-                color=color,
-                s=80,
+                subset["thrash_ratio"],
+                subset["success_rate"],
+                color=color_map[model],
+                s=60,
+                alpha=0.8,
                 zorder=3,
-            )
-            label = format_model_name(row["model"]) + " / " + row["domain"]
-            ax.annotate(
-                label,
-                xy=(row["thrash_ratio"], row["success_rate"]),
-                xytext=(5, 5),
-                textcoords="offset points",
-                fontsize=config.FONT_SIZE_TICK,
+                label=format_model_name(model),
             )
 
         ax.set_xlabel("Mean Thrash Ratio", fontsize=config.FONT_SIZE_LABEL)
@@ -165,6 +160,12 @@ class ScoreEfficiencyVisualizer:
         )
         ax.tick_params(axis="both", labelsize=config.FONT_SIZE_TICK)
         ax.grid(alpha=0.3)
+        ax.legend(
+            loc="lower right",
+            frameon=False,
+            fontsize=config.FONT_SIZE_LEGEND,
+            ncol=1,
+        )
 
         save_figure(fig, "12_thrash_vs_score", tight_layout=True)
         plt.close(fig)

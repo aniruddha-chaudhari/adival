@@ -5,7 +5,7 @@ import matplotlib as mpl
 import seaborn as sns
 import numpy as np
 from pathlib import Path
-from typing import Tuple, List, Dict, Any
+from typing import Tuple, List, Dict, Any, Optional
 import scienceplots
 import config
 
@@ -54,20 +54,42 @@ def get_color_palette(n_colors: int) -> List[str]:
         ]
 
 
-def save_figure(fig: plt.Figure, name: str, tight_layout: bool = True):
-    """Save figure in both PNG and PDF formats"""
+def save_figure(
+    fig: plt.Figure,
+    name: str,
+    tight_layout: bool = True,
+    subdir: Optional[str] = None,
+):
+    """Save figure in both PNG and PDF formats.
+
+    Args:
+        fig: Matplotlib figure to save.
+        name: Base filename (without extension).
+        tight_layout: Whether to call tight_layout() before saving.
+        subdir: Optional PNG/PDF subdirectory under the standard
+            output dirs. Used to route suite-specific charts into
+            per-suite folders (e.g., web-browsing-hard-pinchtab).
+    """
     if tight_layout:
         fig.tight_layout()
 
+    png_root = config.PNG_DIR
+    pdf_root = config.VECTOR_DIR
+    if subdir:
+        png_root = png_root / subdir
+        pdf_root = pdf_root / subdir
+        png_root.mkdir(parents=True, exist_ok=True)
+        pdf_root.mkdir(parents=True, exist_ok=True)
+
     # Save PNG
     if config.SAVE_PNG:
-        png_path = config.PNG_DIR / f"{name}.png"
+        png_path = png_root / f"{name}.png"
         fig.savefig(png_path, dpi=config.FIGURE_DPI_PNG, bbox_inches="tight")
         print(f"  [+] PNG saved: {png_path}")
 
     # Save PDF
     if config.SAVE_PDF:
-        pdf_path = config.VECTOR_DIR / f"{name}.pdf"
+        pdf_path = pdf_root / f"{name}.pdf"
         fig.savefig(
             pdf_path, dpi=config.FIGURE_DPI_PDF, bbox_inches="tight", format="pdf"
         )
