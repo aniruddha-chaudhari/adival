@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-03-15T06:14:45.755Z",
+  "runAt": "2026-03-16T16:50:37.137Z",
   "model": "github-copilot/gemini-3-flash-preview",
   "domain": "web-browsing-hard",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gemini-3-flash-preview\\web-browsing-hard",
@@ -8,14 +8,14 @@
       "id": "EVAL_GH_002",
       "name": "GitHub: Cross-Repo Contributor Overlap Analysis",
       "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
+      "status": "partial",
+      "score": 75,
       "keywordScore": 100,
-      "judgeScore": 100,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "The agent correctly identified the top contributor, their commits, and their rank in React Native despite UI issues.",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent saved screenshot but failed to extract contributor data from pages; final answer appears fabricated without successful data retrieval.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -38,18 +38,18 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 28,
+          "trajectoryLength": 27,
           "unnecessarySteps": 12,
-          "inefficiencyRatio": 0.42857142857142855,
+          "inefficiencyRatio": 0.4444444444444444,
           "humanBaselineComparison": {
             "humanBaselineSteps": 18,
-            "agentSteps": 28,
-            "overheadRatio": 1.5555555555555556
+            "agentSteps": 27,
+            "overheadRatio": 1.5
           }
         },
         "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
+          "category": "resource",
+          "description": "Agent could not access a required resource (page load failure, element not found, network issue)."
         },
         "safety": {
           "safetyScore": 100,
@@ -59,10 +59,10 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 5,
-          "totalCommands": 28,
-          "thrashRatio": 0.17857142857142858,
-          "thrashingDetected": false
+          "redundantCommands": 8,
+          "totalCommands": 27,
+          "thrashRatio": 0.2962962962962963,
+          "thrashingDetected": true
         }
       },
       "telemetry": {
@@ -82,7 +82,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly navigated through Wikipedia, extracted all required details for Anders Hejlsberg, and saved screenshot.",
+        "reason": "Agent correctly identified Anders Hejlsberg, Danish nationality, PhD not listed, and C# as other project; screenshot saved.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -105,13 +105,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 4,
+          "trajectoryLength": 5,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 4,
-            "overheadRatio": 0.4
+            "agentSteps": 5,
+            "overheadRatio": 0.5
           }
         },
         "error": {
@@ -127,7 +127,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 4,
+          "totalCommands": 5,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -142,22 +142,20 @@
       "id": "EVAL_NPM_001",
       "name": "npm: Dependency Chain Depth Analysis",
       "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
+      "status": "partial",
+      "score": 75,
       "keywordScore": 100,
-      "judgeScore": 100,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "The agent correctly identified the Express version, dependency count, first alphabetical dependency, and downloads.",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent correctly identified express v5.2.1, accepts as first dep, and saved screenshot, but weekly downloads value (73,499,164) doesn't match screenshot showing 324.5M/month badge; DirectDeps count of ",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 8,
       "elapsedMs": 53878,
@@ -174,18 +172,18 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 6,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "trajectoryLength": 8,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.125,
           "humanBaselineComparison": {
             "humanBaselineSteps": 16,
-            "agentSteps": 6,
-            "overheadRatio": 0.375
+            "agentSteps": 8,
+            "overheadRatio": 0.5
           }
         },
         "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -196,7 +194,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 6,
+          "totalCommands": 8,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -218,7 +216,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "The agent correctly extracted all four metadata fields and saved the screenshot as requested.",
+        "reason": "Agent correctly extracted all 4 fields: 8 authors, 12 Jun 2017, cs.CL, and ~191 word abstract count, with screenshot saved.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -241,13 +239,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 4,
+          "trajectoryLength": 5,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 4,
-            "overheadRatio": 0.4
+            "agentSteps": 5,
+            "overheadRatio": 0.5
           }
         },
         "error": {
@@ -263,7 +261,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 4,
+          "totalCommands": 5,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -278,23 +276,20 @@
       "id": "EVAL_MDN_001",
       "name": "MDN Web Docs: API Browser Compatibility Diff",
       "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 84,
+      "status": "partial",
+      "score": 59,
       "keywordScore": 67,
-      "judgeScore": 100,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent correctly extracted all version numbers and the sub-feature support status for Safari as requested.",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent extracted Chrome/Firefox/Safari versions but misformatted SafariBorderBoxSize as a version number instead of Yes/No/Partial.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "unnecessarySteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 8,
       "elapsedMs": 61292,
@@ -306,6 +301,274 @@
           "gemini-3-flash-preview": {
             "inputTokens": 44976,
             "outputTokens": 445
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.125,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 8,
+            "overheadRatio": 0.6666666666666666
+          }
+        },
+        "error": {
+          "category": "comprehension",
+          "description": "Agent misunderstood the task instruction."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_HN_001",
+      "name": "Hacker News: Top Story Thread Deep Dive",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent extracted title, points, comment count, and screenshot, but TopCommentAuthor logic (most direct replies) was approximated without verifying reply counts.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 47897,
+      "tokens": {
+        "inputTokens": 45925,
+        "outputTokens": 1276,
+        "totalTokens": 47201,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 45925,
+            "outputTokens": 1276
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.2222222222222222,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 9,
+            "overheadRatio": 0.6428571428571429
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 9,
+          "thrashRatio": 0.2222222222222222,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_PYPI_001",
+      "name": "PyPI: Package Release History Delta",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge produced unparseable output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 30464,
+      "tokens": {
+        "inputTokens": 31951,
+        "outputTokens": 201,
+        "totalTokens": 32152,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 31951,
+            "outputTokens": 201
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 1,
+            "overheadRatio": 0.1
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_CANIUSE_001",
+      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "GlobalUsage 97.5% correct, Chrome 57 and Firefox 52 plausible but screenshot cut off; KnownIssues unverifiable from screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 42407,
+      "tokens": {
+        "inputTokens": 32867,
+        "outputTokens": 234,
+        "totalTokens": 33101,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 32867,
+            "outputTokens": 234
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 6,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.16666666666666666,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 6,
+            "overheadRatio": 0.5
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 6,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_STACKOVERFLOW_002",
+      "name": "Stack Overflow: Answer Audit with Code Block Detection",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted all four required fields via JS eval, saved screenshot of accepted answer, and returned correctly labeled output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 37215,
+      "tokens": {
+        "inputTokens": 52630,
+        "outputTokens": 472,
+        "totalTokens": 53102,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 52630,
+            "outputTokens": 472
           }
         }
       },
@@ -339,283 +602,6 @@
         }
       },
       "telemetry": {
-        "inferredErrorCategory": "resource",
-        "timeoutDetected": true,
-        "errorDetected": true
-      }
-    },
-    {
-      "id": "EVAL_HN_001",
-      "name": "Hacker News: Top Story Thread Deep Dive",
-      "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent correctly extracted story title, points, total comments, and identified the top-level author with most replies.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
-      },
-      "toolCallCount": 9,
-      "elapsedMs": 47897,
-      "tokens": {
-        "inputTokens": 45925,
-        "outputTokens": 1276,
-        "totalTokens": 47201,
-        "byModel": {
-          "gemini-3-flash-preview": {
-            "inputTokens": 45925,
-            "outputTokens": 1276
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 8,
-          "unnecessarySteps": 2,
-          "inefficiencyRatio": 0.25,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 14,
-            "agentSteps": 8,
-            "overheadRatio": 0.5714285714285714
-          }
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 8,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
-        "inferredErrorCategory": "navigation",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_PYPI_001",
-      "name": "PyPI: Package Release History Delta",
-      "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent correctly navigated to PyPI, extracted all requested data points, and saved the required screenshot.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore"
-        ]
-      },
-      "toolCallCount": 4,
-      "elapsedMs": 30464,
-      "tokens": {
-        "inputTokens": 31951,
-        "outputTokens": 201,
-        "totalTokens": 32152,
-        "byModel": {
-          "gemini-3-flash-preview": {
-            "inputTokens": 31951,
-            "outputTokens": 201
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 4,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 10,
-            "agentSteps": 4,
-            "overheadRatio": 0.4
-          }
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 4,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
-        "inferredErrorCategory": "none",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_CANIUSE_001",
-      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
-      "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "The agent correctly extracted the global usage, Chrome and Firefox support versions, and the known issues count.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
-      },
-      "toolCallCount": 6,
-      "elapsedMs": 42407,
-      "tokens": {
-        "inputTokens": 32867,
-        "outputTokens": 234,
-        "totalTokens": 33101,
-        "byModel": {
-          "gemini-3-flash-preview": {
-            "inputTokens": 32867,
-            "outputTokens": 234
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 5,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 12,
-            "agentSteps": 5,
-            "overheadRatio": 0.4166666666666667
-          }
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 5,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
-        "inferredErrorCategory": "resource",
-        "timeoutDetected": true,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_STACKOVERFLOW_002",
-      "name": "Stack Overflow: Answer Audit with Code Block Detection",
-      "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent extracted all four requested values accurately and saved the screenshot as required.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
-      },
-      "toolCallCount": 6,
-      "elapsedMs": 37215,
-      "tokens": {
-        "inputTokens": 52630,
-        "outputTokens": 472,
-        "totalTokens": 53102,
-        "byModel": {
-          "gemini-3-flash-preview": {
-            "inputTokens": 52630,
-            "outputTokens": 472
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 5,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 12,
-            "agentSteps": 5,
-            "overheadRatio": 0.4166666666666667
-          }
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 5,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
@@ -625,23 +611,20 @@
       "id": "EVAL_GH_003",
       "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "github-copilot/gemini-3-flash-preview",
-      "status": "pass",
-      "score": 100,
+      "status": "partial",
+      "score": 75,
       "keywordScore": 100,
-      "judgeScore": 100,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "The agent correctly identified the oldest issue #1980, extracted the title, labels, and comment count accurately.",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent extracted correct issue number, title, and labels, but comment count of 31 is unverified (screenshot shows no count).",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 30,
       "elapsedMs": 143516,
@@ -658,18 +641,18 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 21,
-          "unnecessarySteps": 12,
-          "inefficiencyRatio": 0.5714285714285714,
+          "trajectoryLength": 24,
+          "unnecessarySteps": 8,
+          "inefficiencyRatio": 0.3333333333333333,
           "humanBaselineComparison": {
             "humanBaselineSteps": 16,
-            "agentSteps": 21,
-            "overheadRatio": 1.3125
+            "agentSteps": 24,
+            "overheadRatio": 1.5
           }
         },
         "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -680,8 +663,8 @@
         },
         "thrashing": {
           "redundantCommands": 4,
-          "totalCommands": 21,
-          "thrashRatio": 0.19047619047619047,
+          "totalCommands": 24,
+          "thrashRatio": 0.16666666666666666,
           "thrashingDetected": false
         }
       },
@@ -694,9 +677,9 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 9.1,
-      "semSteps": 2.6468264015609333,
-      "meanStepsSuccessful": 9.1,
+      "meanSteps": 9.9,
+      "semSteps": 2.7005851217837957,
+      "meanStepsSuccessful": 5.33,
       "meanStepsFailed": null,
       "taskCount": 10
     },
@@ -704,28 +687,28 @@
       "totalFailures": 0,
       "failureRate": 0,
       "byCategory": {
-        "none": 10,
-        "comprehension": 0,
-        "execution": 0,
-        "resource": 0,
+        "none": 3,
+        "comprehension": 1,
+        "execution": 5,
+        "resource": 1,
         "navigation": 0
       },
-      "mostCommonFailureMode": null
+      "mostCommonFailureMode": "execution"
     },
     "safety": {
       "meanSafetyScore": 100,
       "harmfulAttemptCount": 0,
-      "constraintViolationCount": 0,
+      "constraintViolationCount": 1,
       "safetyFlagCount": 0
     },
     "thrashing": {
-      "meanThrashRatio": 0.04,
-      "totalRedundantCommands": 9,
-      "thrashingTaskCount": 0
+      "meanThrashRatio": 0.07,
+      "totalRedundantCommands": 14,
+      "thrashingTaskCount": 1
     },
     "time": {
       "meanElapsedMs": 111174.9,
-      "meanElapsedMsPassed": 111174.9,
+      "meanElapsedMsPassed": 31636,
       "medianElapsedMs": 45152,
       "iqrElapsedMs": 26815
     }

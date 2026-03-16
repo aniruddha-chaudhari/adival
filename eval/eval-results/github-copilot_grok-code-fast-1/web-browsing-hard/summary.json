@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-03-13T14:37:24.141Z",
+  "runAt": "2026-03-16T17:05:13.624Z",
   "model": "github-copilot/grok-code-fast-1",
   "domain": "web-browsing-hard",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_grok-code-fast-1\\web-browsing-hard",
@@ -15,16 +15,13 @@
       "judge": {
         "verdict": "PARTIAL",
         "score": 50,
-        "reason": "Agent navigated to both repos, attempted to extract contributors, saved screenshot, and provided required output format, but React contributor extraction failed with incorrect data, though final answe",
+        "reason": "Agent completed the workflow and saved screenshot, but failed to get React top contributor data correctly due to truncated extraction.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 19,
       "elapsedMs": 105625,
@@ -41,13 +38,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 15,
-          "unnecessarySteps": 4,
-          "inefficiencyRatio": 0.26666666666666666,
+          "trajectoryLength": 16,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.1875,
           "humanBaselineComparison": {
             "humanBaselineSteps": 18,
-            "agentSteps": 15,
-            "overheadRatio": 0.8333333333333334
+            "agentSteps": 16,
+            "overheadRatio": 0.8888888888888888
           }
         },
         "error": {
@@ -63,8 +60,8 @@
         },
         "thrashing": {
           "redundantCommands": 3,
-          "totalCommands": 15,
-          "thrashRatio": 0.2,
+          "totalCommands": 16,
+          "thrashRatio": 0.1875,
           "thrashingDetected": false
         }
       },
@@ -85,7 +82,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent navigated to TypeScript page, clicked to Anders Hejlsberg, extracted correct info, saved screenshot, and returned properly formatted answer.",
+        "reason": "Agent correctly navigated to TypeScript page, clicked through to Anders Hejlsberg, extracted all 4 fields accurately, and saved screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -108,149 +105,9 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 9,
+          "trajectoryLength": 8,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 10,
-            "agentSteps": 9,
-            "overheadRatio": 0.9
-          }
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 9,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
-        "inferredErrorCategory": "navigation",
-        "timeoutDetected": false,
-        "errorDetected": false
-      }
-    },
-    {
-      "id": "EVAL_NPM_001",
-      "name": "npm: Dependency Chain Depth Analysis",
-      "model": "github-copilot/grok-code-fast-1",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent navigated to Express page, extracted version 5.2.1, counted 28 dependencies, identified 'accepts' as first alphabetical dep, retrieved weekly downloads 74,252,867, and saved screenshot.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
-      },
-      "toolCallCount": 25,
-      "elapsedMs": 141167,
-      "tokens": {
-        "inputTokens": 23474,
-        "outputTokens": 1332,
-        "totalTokens": 24806,
-        "byModel": {
-          "grok-code-fast-1": {
-            "inputTokens": 23474,
-            "outputTokens": 1332
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 20,
-          "unnecessarySteps": 8,
-          "inefficiencyRatio": 0.4,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 16,
-            "agentSteps": 20,
-            "overheadRatio": 1.25
-          }
-        },
-        "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 3,
-          "totalCommands": 20,
-          "thrashRatio": 0.15,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
-        "inferredErrorCategory": "resource",
-        "timeoutDetected": true,
-        "errorDetected": true
-      }
-    },
-    {
-      "id": "EVAL_ARXIV_001",
-      "name": "arXiv: Paper Metadata & Citation Cross-Check",
-      "model": "github-copilot/grok-code-fast-1",
-      "status": "pass",
-      "score": 100,
-      "keywordScore": 100,
-      "judgeScore": 100,
-      "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent navigated to the page, extracted all required data accurately, saved screenshot, and returned output in exact format.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
-      },
-      "toolCallCount": 7,
-      "elapsedMs": 47888,
-      "tokens": {
-        "inputTokens": 42339,
-        "outputTokens": 374,
-        "totalTokens": 42713,
-        "byModel": {
-          "grok-code-fast-1": {
-            "inputTokens": 42339,
-            "outputTokens": 374
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 8,
-          "unnecessarySteps": 1,
-          "inefficiencyRatio": 0.125,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
             "agentSteps": 8,
@@ -276,86 +133,14 @@
         }
       },
       "telemetry": {
-        "inferredErrorCategory": "none",
+        "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
       }
     },
     {
-      "id": "EVAL_MDN_001",
-      "name": "MDN Web Docs: API Browser Compatibility Diff",
-      "model": "github-copilot/grok-code-fast-1",
-      "status": "partial",
-      "score": 75,
-      "keywordScore": 100,
-      "judgeScore": 50,
-      "judge": {
-        "verdict": "PARTIAL",
-        "score": 50,
-        "reason": "Agent navigated to page, scrolled, took screenshot, but extraction evals failed and answer may be inaccurate.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": "attempt_1",
-      "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
-      },
-      "toolCallCount": 14,
-      "elapsedMs": 102502,
-      "tokens": {
-        "inputTokens": 34059,
-        "outputTokens": 2084,
-        "totalTokens": 36143,
-        "byModel": {
-          "grok-code-fast-1": {
-            "inputTokens": 34059,
-            "outputTokens": 2084
-          }
-        }
-      },
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 12,
-          "unnecessarySteps": 3,
-          "inefficiencyRatio": 0.25,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 12,
-            "agentSteps": 12,
-            "overheadRatio": 1
-          }
-        },
-        "error": {
-          "category": "execution",
-          "description": "Agent understood the task but failed to execute correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 2,
-          "totalCommands": 12,
-          "thrashRatio": 0.16666666666666666,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": {
-        "inferredErrorCategory": "resource",
-        "timeoutDetected": true,
-        "errorDetected": true
-      }
-    },
-    {
-      "id": "EVAL_HN_001",
-      "name": "Hacker News: Top Story Thread Deep Dive",
+      "id": "EVAL_NPM_001",
+      "name": "npm: Dependency Chain Depth Analysis",
       "model": "github-copilot/grok-code-fast-1",
       "status": "pass",
       "score": 100,
@@ -364,7 +149,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent navigated to HN, opened #1 story's comment thread, extracted title, points, comments count, top comment author, and saved screenshot.",
+        "reason": "Agent correctly reported all four required values and saved screenshot; minor truncation in intermediate steps but final answers complete.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -372,28 +157,28 @@
         "detected": false,
         "fields": []
       },
-      "toolCallCount": 10,
-      "elapsedMs": 59053,
+      "toolCallCount": 25,
+      "elapsedMs": 141167,
       "tokens": {
-        "inputTokens": 19876,
-        "outputTokens": 731,
-        "totalTokens": 20607,
+        "inputTokens": 23474,
+        "outputTokens": 1332,
+        "totalTokens": 24806,
         "byModel": {
           "grok-code-fast-1": {
-            "inputTokens": 19876,
-            "outputTokens": 731
+            "inputTokens": 23474,
+            "outputTokens": 1332
           }
         }
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 10,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "trajectoryLength": 22,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.18181818181818182,
           "humanBaselineComparison": {
-            "humanBaselineSteps": 14,
-            "agentSteps": 10,
-            "overheadRatio": 0.7142857142857143
+            "humanBaselineSteps": 16,
+            "agentSteps": 22,
+            "overheadRatio": 1.375
           }
         },
         "error": {
@@ -408,21 +193,21 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 10,
-          "thrashRatio": 0,
+          "redundantCommands": 2,
+          "totalCommands": 22,
+          "thrashRatio": 0.09090909090909091,
           "thrashingDetected": false
         }
       },
       "telemetry": {
-        "inferredErrorCategory": "navigation",
-        "timeoutDetected": false,
-        "errorDetected": false
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
       }
     },
     {
-      "id": "EVAL_PYPI_001",
-      "name": "PyPI: Package Release History Delta",
+      "id": "EVAL_ARXIV_001",
+      "name": "arXiv: Paper Metadata & Citation Cross-Check",
       "model": "github-copilot/grok-code-fast-1",
       "status": "pass",
       "score": 100,
@@ -431,34 +216,32 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent navigated to PyPI history page, extracted all required release data accurately, saved screenshot, and returned in exact specified format.",
+        "reason": "All four fields correctly extracted: 8 authors, 12 Jun 2017, cs.CL, ~170 words abstract; screenshot saved.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "detected": false,
+        "fields": []
       },
-      "toolCallCount": 6,
-      "elapsedMs": 34598,
+      "toolCallCount": 7,
+      "elapsedMs": 47888,
       "tokens": {
-        "inputTokens": 22404,
-        "outputTokens": 345,
-        "totalTokens": 22749,
+        "inputTokens": 42339,
+        "outputTokens": 374,
+        "totalTokens": 42713,
         "byModel": {
           "grok-code-fast-1": {
-            "inputTokens": 22404,
-            "outputTokens": 345
+            "inputTokens": 42339,
+            "outputTokens": 374
           }
         }
       },
       "analysis": {
         "efficiency": {
           "trajectoryLength": 6,
-          "unnecessarySteps": 1,
-          "inefficiencyRatio": 0.16666666666666666,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
             "agentSteps": 6,
@@ -490,6 +273,207 @@
       }
     },
     {
+      "id": "EVAL_MDN_001",
+      "name": "MDN Web Docs: API Browser Compatibility Diff",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge produced unparseable output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 14,
+      "elapsedMs": 102502,
+      "tokens": {
+        "inputTokens": 34059,
+        "outputTokens": 2084,
+        "totalTokens": 36143,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 34059,
+            "outputTokens": 2084
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 1,
+            "overheadRatio": 0.08333333333333333
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_HN_001",
+      "name": "Hacker News: Top Story Thread Deep Dive",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent navigated HN, extracted story title, points, comments, top comment author, and saved screenshot successfully.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 10,
+      "elapsedMs": 59053,
+      "tokens": {
+        "inputTokens": 19876,
+        "outputTokens": 731,
+        "totalTokens": 20607,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 19876,
+            "outputTokens": 731
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 9,
+            "overheadRatio": 0.6428571428571429
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_PYPI_001",
+      "name": "PyPI: Package Release History Delta",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge produced unparseable output.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 34598,
+      "tokens": {
+        "inputTokens": 22404,
+        "outputTokens": 345,
+        "totalTokens": 22749,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 22404,
+            "outputTokens": 345
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 1,
+            "overheadRatio": 0.1
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
       "id": "EVAL_CANIUSE_001",
       "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
       "model": "github-copilot/grok-code-fast-1",
@@ -500,7 +484,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent navigated to caniuse.com/css-grid, extracted global usage, Chrome/Firefox versions, known issues count, saved screenshot, and returned in exact format.",
+        "reason": "Agent correctly extracted GlobalUsage 97.5%, Chrome 57, Firefox 52, KnownIssues 3 — all confirmed by screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -523,13 +507,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 7,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "trajectoryLength": 6,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.16666666666666666,
           "humanBaselineComparison": {
             "humanBaselineSteps": 12,
-            "agentSteps": 7,
-            "overheadRatio": 0.5833333333333334
+            "agentSteps": 6,
+            "overheadRatio": 0.5
           }
         },
         "error": {
@@ -545,7 +529,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 7,
+          "totalCommands": 6,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -567,16 +551,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent successfully navigated to the Stack Overflow URL, extracted all required data points, saved the screenshot, and returned results in the exact specified format.",
+        "reason": "Agent extracted all 4 required fields and saved screenshot; minor inefficiency with connection errors before success.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps",
-          "redundantCommands"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 15,
       "elapsedMs": 272723,
@@ -593,13 +574,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 16,
-          "unnecessarySteps": 3,
-          "inefficiencyRatio": 0.1875,
+          "trajectoryLength": 14,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.2857142857142857,
           "humanBaselineComparison": {
             "humanBaselineSteps": 12,
-            "agentSteps": 16,
-            "overheadRatio": 1.3333333333333333
+            "agentSteps": 14,
+            "overheadRatio": 1.1666666666666667
           }
         },
         "error": {
@@ -615,8 +596,8 @@
         },
         "thrashing": {
           "redundantCommands": 2,
-          "totalCommands": 16,
-          "thrashRatio": 0.125,
+          "totalCommands": 14,
+          "thrashRatio": 0.14285714285714285,
           "thrashingDetected": false
         }
       },
@@ -630,23 +611,20 @@
       "id": "EVAL_GH_003",
       "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "github-copilot/grok-code-fast-1",
-      "status": "pass",
-      "score": 100,
+      "status": "partial",
+      "score": 75,
       "keywordScore": 100,
-      "judgeScore": 100,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent navigated to issues page, opened oldest issue #1980, extracted title, labels, comment count, and saved screenshot.",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent correctly found issue #1980, title, and labels (4.x,module:router), but comment count of 31 is unverified from screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 13,
       "elapsedMs": 71088,
@@ -664,8 +642,8 @@
       "analysis": {
         "efficiency": {
           "trajectoryLength": 11,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.09090909090909091,
           "humanBaselineComparison": {
             "humanBaselineSteps": 16,
             "agentSteps": 11,
@@ -673,8 +651,8 @@
           }
         },
         "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -684,9 +662,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 0,
+          "redundantCommands": 1,
           "totalCommands": 11,
-          "thrashRatio": 0,
+          "thrashRatio": 0.09090909090909091,
           "thrashingDetected": false
         }
       },
@@ -699,9 +677,9 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 11.4,
-      "semSteps": 1.4008890034545918,
-      "meanStepsSuccessful": 10.88,
+      "meanSteps": 9.4,
+      "semSteps": 2.08710325571113,
+      "meanStepsSuccessful": 10.83,
       "meanStepsFailed": null,
       "taskCount": 10
     },
@@ -709,9 +687,9 @@
       "totalFailures": 0,
       "failureRate": 0,
       "byCategory": {
-        "none": 8,
+        "none": 6,
         "comprehension": 0,
-        "execution": 2,
+        "execution": 4,
         "resource": 0,
         "navigation": 0
       },
@@ -724,13 +702,13 @@
       "safetyFlagCount": 0
     },
     "thrashing": {
-      "meanThrashRatio": 0.06,
-      "totalRedundantCommands": 10,
+      "meanThrashRatio": 0.05,
+      "totalRedundantCommands": 8,
       "thrashingTaskCount": 0
     },
     "time": {
       "meanElapsedMs": 91335.3,
-      "meanElapsedMsPassed": 88153.25,
+      "meanElapsedMsPassed": 99923.33,
       "medianElapsedMs": 65070.5,
       "iqrElapsedMs": 64179
     }

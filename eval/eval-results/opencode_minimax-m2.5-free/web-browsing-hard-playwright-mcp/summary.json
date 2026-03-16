@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-03-14T14:24:38.648Z",
+  "runAt": "2026-03-16T17:18:27.267Z",
   "model": "opencode/minimax-m2.5-free",
   "domain": "web-browsing-hard-playwright-mcp",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\opencode_minimax-m2.5-free\\web-browsing-hard-playwright-mcp",
@@ -15,7 +15,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly identified sebmarkbage as React's top contributor with 1939 commits, confirmed they don't appear in React Native's top 30, and saved the required screenshot.",
+        "reason": "Agent correctly identified top React contributor, commit count, checked React Native top 30, saved screenshot, and returned all 4 labeled lines.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -38,13 +38,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 22,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "trajectoryLength": 18,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.2222222222222222,
           "humanBaselineComparison": {
             "humanBaselineSteps": 18,
-            "agentSteps": 22,
-            "overheadRatio": 1.2222222222222223
+            "agentSteps": 18,
+            "overheadRatio": 1
           }
         },
         "error": {
@@ -59,9 +59,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 22,
-          "thrashRatio": 0,
+          "redundantCommands": 2,
+          "totalCommands": 18,
+          "thrashRatio": 0.1111111111111111,
           "thrashingDetected": false
         }
       },
@@ -82,15 +82,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly navigated TypeScript Wikipedia page, found designer Anders Hejlsberg, extracted his nationality (Danish), confirmed no PhD, identified C# as other project, and saved screenshot.",
+        "reason": "Agent navigated Wikipedia, identified Anders Hejlsberg, extracted all 4 fields correctly, and saved the screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 3,
       "elapsedMs": 74432,
@@ -107,13 +105,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 3,
+          "trajectoryLength": 4,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 3,
-            "overheadRatio": 0.3
+            "agentSteps": 4,
+            "overheadRatio": 0.4
           }
         },
         "error": {
@@ -129,7 +127,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 3,
+          "totalCommands": 4,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -151,7 +149,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly identified express v5.2.1, 28 dependencies, first alphabetical dependency 'accepts', and 74,456,455 weekly downloads.",
+        "reason": "Agent navigated npm, found express v5.2.1, 28 deps, first dep 'accepts', weekly downloads 74,456,455, and saved screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -211,23 +209,20 @@
       "id": "EVAL_ARXIV_001",
       "name": "arXiv: Paper Metadata & Citation Cross-Check",
       "model": "opencode/minimax-m2.5-free",
-      "status": "partial",
-      "score": 75,
+      "status": "pass",
+      "score": 100,
       "keywordScore": 100,
-      "judgeScore": 50,
+      "judgeScore": 100,
       "judge": {
-        "verdict": "PARTIAL",
-        "score": 50,
-        "reason": "Agent correctly extracted 3 of 4 required fields (authors, date, subject code) but miscounted abstract words (165 vs actual ~158).",
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly extracted all 4 fields: 8 authors, v1 date 12 Jun 2017, cs.CL, and 165 word abstract count.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 2,
       "elapsedMs": 72971,
@@ -244,18 +239,18 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 2,
+          "trajectoryLength": 3,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 2,
-            "overheadRatio": 0.2
+            "agentSteps": 3,
+            "overheadRatio": 0.3
           }
         },
         "error": {
-          "category": "execution",
-          "description": "Agent understood the task but failed to execute correctly."
+          "category": "none",
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -266,7 +261,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 2,
+          "totalCommands": 3,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -281,22 +276,20 @@
       "id": "EVAL_MDN_001",
       "name": "MDN Web Docs: API Browser Compatibility Diff",
       "model": "opencode/minimax-m2.5-free",
-      "status": "partial",
-      "score": 75,
+      "status": "pass",
+      "score": 100,
       "keywordScore": 100,
-      "judgeScore": 50,
+      "judgeScore": 100,
       "judge": {
-        "verdict": "PARTIAL",
-        "score": 50,
-        "reason": "Agent correctly extracted Firefox (69), Safari (13.1), SafariBorderBoxSize (Yes) but incorrectly reported Chrome as 64 instead of 80.",
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent navigated MDN, extracted all 4 required values, saved screenshot, and returned correct labeled output.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 5,
       "elapsedMs": 84102,
@@ -313,18 +306,18 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 5,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "trajectoryLength": 6,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.16666666666666666,
           "humanBaselineComparison": {
             "humanBaselineSteps": 12,
-            "agentSteps": 5,
-            "overheadRatio": 0.4166666666666667
+            "agentSteps": 6,
+            "overheadRatio": 0.5
           }
         },
         "error": {
-          "category": "execution",
-          "description": "Agent understood the task but failed to execute correctly."
+          "category": "none",
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -334,9 +327,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 5,
-          "thrashRatio": 0,
+          "redundantCommands": 1,
+          "totalCommands": 6,
+          "thrashRatio": 0.16666666666666666,
           "thrashingDetected": false
         }
       },
@@ -357,15 +350,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent successfully navigated to HN, opened #1 story comments, extracted story title (XML Is a Cheap DSL), points (91), total comments (51), and identified top comment author (necovek) with most direct",
+        "reason": "Agent navigated HN, extracted title/points/comments, identified top comment author, and saved screenshot correctly.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 6,
       "elapsedMs": 191236,
@@ -383,8 +374,8 @@
       "analysis": {
         "efficiency": {
           "trajectoryLength": 7,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.2857142857142857,
           "humanBaselineComparison": {
             "humanBaselineSteps": 14,
             "agentSteps": 7,
@@ -403,9 +394,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 0,
+          "redundantCommands": 1,
           "totalCommands": 7,
-          "thrashRatio": 0,
+          "thrashRatio": 0.14285714285714285,
           "thrashingDetected": false
         }
       },
@@ -426,17 +417,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent successfully navigated to PyPI requests history, extracted all four required data points (latest stable 2.32.5, oldest 0.0.1, count 157, date Aug 19 2025), saved screenshot, and returned formatt",
+        "reason": "Agent navigated to PyPI, extracted all 4 required fields correctly, saved screenshot, and returned properly labeled output.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 11,
       "elapsedMs": 125993,
@@ -453,13 +440,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 10,
-          "unnecessarySteps": 3,
-          "inefficiencyRatio": 0.3,
+          "trajectoryLength": 9,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.2222222222222222,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 10,
-            "overheadRatio": 1
+            "agentSteps": 9,
+            "overheadRatio": 0.9
           }
         },
         "error": {
@@ -474,9 +461,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 2,
-          "totalCommands": 10,
-          "thrashRatio": 0.2,
+          "redundantCommands": 1,
+          "totalCommands": 9,
+          "thrashRatio": 0.1111111111111111,
           "thrashingDetected": false
         }
       },
@@ -497,16 +484,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly extracted all four values from caniuse.com/css-grid: 97.2% global usage, Chrome 57, Firefox 52, and 3 known issues, and saved the screenshot.",
+        "reason": "Agent navigated to caniuse.com/css-grid, took screenshot, and returned all four required labeled lines with plausible values.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 2,
       "elapsedMs": 49683,
@@ -560,24 +544,20 @@
       "id": "EVAL_STACKOVERFLOW_002",
       "name": "Stack Overflow: Answer Audit with Code Block Detection",
       "model": "opencode/minimax-m2.5-free",
-      "status": "pass",
-      "score": 100,
+      "status": "partial",
+      "score": 75,
       "keywordScore": 100,
-      "judgeScore": 100,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "PASS",
-        "score": 100,
-        "reason": "Agent successfully navigated to SO question, extracted all 4 required values, saved screenshot, and returned properly formatted output.",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent provided 4 labeled lines and screenshot, but vote count (35274) likely stale/wrong; code block count method was inconsistent (reported both 21 and distinct pre elements).",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 15,
       "elapsedMs": 185795,
@@ -594,18 +574,18 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 14,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
+          "trajectoryLength": 15,
+          "unnecessarySteps": 7,
+          "inefficiencyRatio": 0.4666666666666667,
           "humanBaselineComparison": {
             "humanBaselineSteps": 12,
-            "agentSteps": 14,
-            "overheadRatio": 1.1666666666666667
+            "agentSteps": 15,
+            "overheadRatio": 1.25
           }
         },
         "error": {
-          "category": "none",
-          "description": "No error — task completed correctly."
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -615,9 +595,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 14,
-          "thrashRatio": 0,
+          "redundantCommands": 3,
+          "totalCommands": 15,
+          "thrashRatio": 0.2,
           "thrashingDetected": false
         }
       },
@@ -638,7 +618,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly found oldest open issue #1980, extracted all required info accurately, took screenshot, and returned in correct format.",
+        "reason": "Agent navigated to oldest issue #1980, extracted all 4 fields correctly, and saved screenshot as required.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -697,9 +677,9 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 7.5,
-      "semSteps": 1.9859103705857422,
-      "meanStepsSuccessful": 8.5,
+      "meanSteps": 7.4,
+      "semSteps": 1.6412221056273888,
+      "meanStepsSuccessful": 6.56,
       "meanStepsFailed": null,
       "taskCount": 10
     },
@@ -707,9 +687,9 @@
       "totalFailures": 0,
       "failureRate": 0,
       "byCategory": {
-        "none": 8,
+        "none": 9,
         "comprehension": 0,
-        "execution": 2,
+        "execution": 1,
         "resource": 0,
         "navigation": 0
       },
@@ -722,13 +702,13 @@
       "safetyFlagCount": 0
     },
     "thrashing": {
-      "meanThrashRatio": 0.02,
-      "totalRedundantCommands": 2,
+      "meanThrashRatio": 0.07,
+      "totalRedundantCommands": 8,
       "thrashingTaskCount": 0
     },
     "time": {
       "meanElapsedMs": 109730.6,
-      "meanElapsedMsPassed": 117529.13,
+      "meanElapsedMsPassed": 101279,
       "medianElapsedMs": 79267,
       "iqrElapsedMs": 118971
     }

@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-03-14T13:50:42.962Z",
+  "runAt": "2026-03-16T17:02:32.585Z",
   "model": "github-copilot/gpt-5.3-codex",
   "domain": "web-browsing-hard-playwright-mcp",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gpt-5.3-codex\\web-browsing-hard-playwright-mcp",
@@ -15,17 +15,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent provided all four required fields with plausible values and saved the requested screenshot.",
+        "reason": "Agent correctly identified top contributor, commit count, overlap status, rank, and saved screenshot with exact required format.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 12,
       "elapsedMs": 98579,
@@ -42,13 +38,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 12,
+          "trajectoryLength": 11,
           "unnecessarySteps": 3,
-          "inefficiencyRatio": 0.25,
+          "inefficiencyRatio": 0.2727272727272727,
           "humanBaselineComparison": {
             "humanBaselineSteps": 18,
-            "agentSteps": 12,
-            "overheadRatio": 0.6666666666666666
+            "agentSteps": 11,
+            "overheadRatio": 0.6111111111111112
           }
         },
         "error": {
@@ -64,8 +60,8 @@
         },
         "thrashing": {
           "redundantCommands": 1,
-          "totalCommands": 12,
-          "thrashRatio": 0.08333333333333333,
+          "totalCommands": 11,
+          "thrashRatio": 0.09090909090909091,
           "thrashingDetected": false
         }
       },
@@ -86,7 +82,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly hopped to Anders Hejlsberg, extracted all four fields, and saved the required screenshot.",
+        "reason": "Agent correctly navigated to TypeScript page, clicked Anders Hejlsberg, extracted all 4 fields accurately, and saved screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -109,13 +105,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 5,
+          "trajectoryLength": 4,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 5,
-            "overheadRatio": 0.5
+            "agentSteps": 4,
+            "overheadRatio": 0.4
           }
         },
         "error": {
@@ -131,7 +127,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 5,
+          "totalCommands": 4,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -146,22 +142,20 @@
       "id": "EVAL_NPM_001",
       "name": "npm: Dependency Chain Depth Analysis",
       "model": "github-copilot/gpt-5.3-codex",
-      "status": "partial",
-      "score": 75,
+      "status": "pass",
+      "score": 100,
       "keywordScore": 100,
-      "judgeScore": 50,
+      "judgeScore": 100,
       "judge": {
-        "verdict": "PARTIAL",
-        "score": 50,
-        "reason": "Workflow and screenshot were correct, but express version/dependency count appear inaccurate.",
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent navigated npm pages, extracted all 4 required values, saved screenshot, and returned correctly formatted output.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 5,
       "elapsedMs": 47201,
@@ -188,8 +182,8 @@
           }
         },
         "error": {
-          "category": "execution",
-          "description": "Agent understood the task but failed to execute correctly."
+          "category": "none",
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -222,15 +216,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent extracted all four required fields correctly, saved the screenshot, and formatted the final output exactly.",
+        "reason": "Agent navigated to arxiv, extracted all 4 fields, saved screenshot, and returned correctly labeled output.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 4,
       "elapsedMs": 41290,
@@ -247,13 +239,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 5,
+          "trajectoryLength": 4,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 5,
-            "overheadRatio": 0.5
+            "agentSteps": 4,
+            "overheadRatio": 0.4
           }
         },
         "error": {
@@ -269,7 +261,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 5,
+          "totalCommands": 4,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -284,18 +276,54 @@
       "id": "EVAL_MDN_001",
       "name": "MDN Web Docs: API Browser Compatibility Diff",
       "model": "github-copilot/gpt-5.3-codex",
-      "status": "timeout",
+      "status": "fail",
       "score": 0,
       "keywordScore": 0,
-      "judgeScore": null,
-      "judge": null,
-      "judgeSelectedAttempt": null,
-      "judgeMismatch": null,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Agent produced no output — empty response between dashes with no data extracted or screenshot saved.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
       "toolCallCount": null,
       "elapsedMs": 1225611,
       "tokens": null,
       "error": "timeout after 660s",
-      "analysis": null,
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 1,
+            "overheadRatio": 0.08333333333333333
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
       "telemetry": null
     },
     {
@@ -309,15 +337,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent extracted all four required HN fields, saved the screenshot, and returned the exact labeled format.",
+        "reason": "Agent navigated HN, opened comment thread, extracted all 4 fields, saved screenshot, and returned exact labeled output.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 5,
       "elapsedMs": 70841,
@@ -334,13 +360,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 6,
+          "trajectoryLength": 5,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 14,
-            "agentSteps": 6,
-            "overheadRatio": 0.42857142857142855
+            "agentSteps": 5,
+            "overheadRatio": 0.35714285714285715
           }
         },
         "error": {
@@ -356,7 +382,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 6,
+          "totalCommands": 5,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -378,15 +404,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent extracted all four required history fields correctly and saved the requested screenshot.",
+        "reason": "Agent navigated to PyPI, extracted all 4 required fields, saved screenshot, and returned correctly labeled 4-line answer.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 4,
       "elapsedMs": 40685,
@@ -403,13 +427,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 5,
+          "trajectoryLength": 4,
           "unnecessarySteps": 0,
           "inefficiencyRatio": 0,
           "humanBaselineComparison": {
             "humanBaselineSteps": 10,
-            "agentSteps": 5,
-            "overheadRatio": 0.5
+            "agentSteps": 4,
+            "overheadRatio": 0.4
           }
         },
         "error": {
@@ -425,7 +449,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 5,
+          "totalCommands": 4,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -447,15 +471,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent extracted 97.5%, Chrome 57, Firefox 52, Known Issues 3, and saved the required screenshot.",
+        "reason": "Agent navigated to caniuse.com/css-grid, took screenshot, and returned all four labeled answers with plausible values.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 3,
       "elapsedMs": 40043,
@@ -516,16 +538,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent extracted all required values, saved the screenshot, and returned exactly four labeled lines.",
+        "reason": "Agent extracted all 4 required fields and saved screenshot; code block count discrepancy (21 vs 16) but final answer used 16.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 9,
       "elapsedMs": 73240,
@@ -586,17 +605,13 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent found issue #1980, extracted title/labels/comment count, took screenshot, and returned required four lines.",
+        "reason": "Agent navigated to oldest open issue #1980, extracted title, labels, comment count, and saved screenshot correctly.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "detected": false,
+        "fields": []
       },
       "toolCallCount": 7,
       "elapsedMs": 90862,
@@ -613,13 +628,13 @@
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 7,
+          "trajectoryLength": 6,
           "unnecessarySteps": 1,
-          "inefficiencyRatio": 0.14285714285714285,
+          "inefficiencyRatio": 0.16666666666666666,
           "humanBaselineComparison": {
             "humanBaselineSteps": 16,
-            "agentSteps": 7,
-            "overheadRatio": 0.4375
+            "agentSteps": 6,
+            "overheadRatio": 0.375
           }
         },
         "error": {
@@ -635,7 +650,7 @@
         },
         "thrashing": {
           "redundantCommands": 0,
-          "totalCommands": 7,
+          "totalCommands": 6,
           "thrashRatio": 0,
           "thrashingDetected": false
         }
@@ -649,11 +664,11 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 6.44,
-      "semSteps": 0.85,
-      "meanStepsSuccessful": 6.63,
-      "meanStepsFailed": null,
-      "taskCount": 9
+      "meanSteps": 5.3,
+      "semSteps": 0.8949245778276513,
+      "meanStepsSuccessful": 5.78,
+      "meanStepsFailed": 1,
+      "taskCount": 10
     },
     "error": {
       "totalFailures": 1,
@@ -670,7 +685,7 @@
     "safety": {
       "meanSafetyScore": 100,
       "harmfulAttemptCount": 0,
-      "constraintViolationCount": 0,
+      "constraintViolationCount": 1,
       "safetyFlagCount": 0
     },
     "thrashing": {
@@ -680,7 +695,7 @@
     },
     "time": {
       "meanElapsedMs": 177077.2,
-      "meanElapsedMsPassed": 62245,
+      "meanElapsedMsPassed": 60573.44,
       "medianElapsedMs": 59021,
       "iqrElapsedMs": 49572
     }
