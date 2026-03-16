@@ -316,6 +316,9 @@ function buildJudgePrompt(
     lines.push(``);
     lines.push(`EXPECTED OUTPUT FILE (reference answer):`);
     lines.push(`  - ${expectedOutputFile}`);
+    lines.push(
+      `  - Instruction: If provided, use file-reading tools/skills to open and compare the agent-produced files and this expected output file. Do not modify files.`
+    );
   }
 
   if (screenshotPath) {
