@@ -146,7 +146,7 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
     judge = await judgeTask(task.name, task.prompt, output, task.screenshotPath, runDir, {
       humanBaselineSteps: task.humanBaselineSteps,
       // model: task.model || DEFAULT_MODEL,
-      model: task.model || DEFAULT_MODEL,
+      model: DEFAULT_MODEL,
       outputFiles: task.outputFiles,
       expectedOutputFile: task.expectedOutputFile,
     }).catch(e => ({

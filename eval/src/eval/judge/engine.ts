@@ -94,6 +94,12 @@ export interface JudgeEngineOptions {
   outputFiles?: string[];
   /** Path to a pre-authored reference answer file — passed as a path to the judge */
   expectedOutputFile?: string;
+  /**
+   * Number of independent judge calls to make (default 2).
+   * Use 1 to halve LLM cost — mismatch detection is disabled and
+   * judgeSelectedAttempt will always be "attempt_1".
+   */
+  attempts?: 1 | 2;
 }
 
 // ─── Engine entry point ───────────────────────────────────────────────────────
@@ -134,19 +140,19 @@ export async function judgeTaskWithEngine(
     options.expectedOutputFile
   );
 
-  // ── Run judge agent twice ─────────────────────────────────────────────────
+  // ── Run judge agent (once or twice) ──────────────────────────────────────
   const providerOpts: ProviderOptions = {
     model: options.model,
     timeoutMs: options.timeoutMs,
   };
 
   const attempt1 = await runSingleAttempt(prompt, providerOpts);
-  const attempt2 = await runSingleAttempt(prompt, providerOpts);
-  const judgeAttempts: JudgeAttemptResult[] = [attempt1, attempt2];
+  const attempt2 = options.attempts === 1 ? null : await runSingleAttempt(prompt, providerOpts);
+  const judgeAttempts: JudgeAttemptResult[] = attempt2 ? [attempt1, attempt2] : [attempt1];
 
   // ── Select best valid attempt ─────────────────────────────────────────────
   const attempt1Valid = isAttemptValid(attempt1);
-  const attempt2Valid = isAttemptValid(attempt2);
+  const attempt2Valid = attempt2 !== null && isAttemptValid(attempt2);
 
   let selectedAttempt: JudgeAttemptResult | null = null;
   let judgeSelectedAttempt: "attempt_1" | "attempt_2" | null = null;
@@ -155,28 +161,28 @@ export async function judgeTaskWithEngine(
     selectedAttempt = attempt1;
     judgeSelectedAttempt = "attempt_1";
   } else if (attempt2Valid) {
-    selectedAttempt = attempt2;
+    selectedAttempt = attempt2!;
     judgeSelectedAttempt = "attempt_2";
   }
 
   // ── Mismatch detection ────────────────────────────────────────────────────
-  const judgeMismatch = detectMismatch(attempt1, attempt2, attempt1Valid, attempt2Valid);
+  const judgeMismatch = detectMismatch(attempt1, attempt2 ?? null, attempt1Valid, attempt2Valid);
 
   // ── Build result from selected attempt ────────────────────────────────────
   if (!selectedAttempt || !selectedAttempt.parsedOutput) {
     // Both attempts failed
     const debug: JudgeDebug = {
       parseStrategy: "default",
-      rawJudgeText: attempt1.assistantText || attempt2.assistantText || "",
+      rawJudgeText: attempt1.assistantText || attempt2?.assistantText || "",
       parseErrors: [
         ...(attempt1.error ? [`[attempt_1] Provider error: ${attempt1.error}`] : []),
         ...(attempt1.parsedOutput?.parseErrors ?? []).map(e => `[attempt_1] ${e}`),
-        ...(attempt2.error ? [`[attempt_2] Provider error: ${attempt2.error}`] : []),
-        ...(attempt2.parsedOutput?.parseErrors ?? []).map(e => `[attempt_2] ${e}`),
+        ...(attempt2?.error ? [`[attempt_2] Provider error: ${attempt2.error}`] : []),
+        ...(attempt2?.parsedOutput?.parseErrors ?? []).map(e => `[attempt_2] ${e}`),
       ],
       rawLines: [],
       exitCode: attempt1.exitCode,
-      providerError: attempt1.error ?? attempt2.error ?? null,
+      providerError: attempt1.error ?? attempt2?.error ?? null,
     };
 
     return {
@@ -263,11 +269,11 @@ function isAttemptValid(attempt: JudgeAttemptResult): boolean {
  */
 function detectMismatch(
   attempt1: JudgeAttemptResult,
-  attempt2: JudgeAttemptResult,
+  attempt2: JudgeAttemptResult | null,
   attempt1Valid: boolean,
   attempt2Valid: boolean
 ): JudgeMismatch {
-  if (!attempt1Valid || !attempt2Valid) {
+  if (!attempt1Valid || !attempt2Valid || attempt2 === null) {
     return { detected: false, fields: [] };
   }
 
