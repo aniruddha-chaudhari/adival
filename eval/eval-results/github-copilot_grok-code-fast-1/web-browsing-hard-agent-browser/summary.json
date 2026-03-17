@@ -117,7 +117,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -185,7 +185,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -253,7 +253,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -389,7 +389,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -491,7 +491,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent correctly extracted GlobalUsage 97.5%, Chrome 57, Firefox 52, KnownIssues 3 \u2014 all confirmed by screenshot.",
+        "reason": "Agent correctly extracted GlobalUsage 97.5%, Chrome 57, Firefox 52, KnownIssues 3 — all confirmed by screenshot.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -525,7 +525,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -593,7 +593,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -618,7 +618,7 @@
     },
     {
       "id": "EVAL_GH_003",
-      "name": "GitHub: Issue Triage \u2014 Label & Milestone Extraction",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "github-copilot/grok-code-fast-1",
       "status": "partial",
       "score": 75,

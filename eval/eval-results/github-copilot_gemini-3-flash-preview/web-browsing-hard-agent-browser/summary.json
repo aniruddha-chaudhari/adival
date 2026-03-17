@@ -117,7 +117,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -253,7 +253,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -593,7 +593,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -618,7 +618,7 @@
     },
     {
       "id": "EVAL_GH_003",
-      "name": "GitHub: Issue Triage \u2014 Label & Milestone Extraction",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "github-copilot/gemini-3-flash-preview",
       "status": "partial",
       "score": 75,

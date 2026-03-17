@@ -7,7 +7,7 @@ First, I'll explore the directory structure to confirm its existence and content
 ## Tool: glob (call_MHxxMmNFNjNLdFhlNzdacndvQ1Q)
 
 Status: completed
-pattern: uploads/project_files/\*_/_
+pattern: uploads/project*files/\**/\_
 Output: F:\Aniruddha\code\college\mcpserver\uploads\project_files\scripts\deploy.py
 F:\Aniruddha\code\college\mcpserver\uploads\project_files\scripts\cleanup.py
 F:\Aniruddha\code\college\mcpserver\uploads\project_files\scripts\backup_copy.py

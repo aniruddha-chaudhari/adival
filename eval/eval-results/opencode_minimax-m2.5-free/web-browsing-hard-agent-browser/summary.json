@@ -117,7 +117,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -185,7 +185,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -253,7 +253,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -287,7 +287,7 @@
       "judge": {
         "verdict": "PARTIAL",
         "score": 50,
-        "reason": "Agent provided version answers and saved a screenshot, but screenshot does not show the compatibility table\u2014it shows code examples instead.",
+        "reason": "Agent provided version answers and saved a screenshot, but screenshot does not show the compatibility table—it shows code examples instead.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -389,7 +389,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -457,7 +457,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -525,7 +525,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -605,7 +605,7 @@
     },
     {
       "id": "EVAL_GH_003",
-      "name": "GitHub: Issue Triage \u2014 Label & Milestone Extraction",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "opencode/minimax-m2.5-free",
       "status": "partial",
       "score": 75,

@@ -66,7 +66,8 @@ description: Read XLS with UTF-8 output
 Output: Traceback (most recent call last):
 File "<string>", line 1, in <module>
 import sys; data=sys.stdin.buffer.read(); print(data.decode('utf-8', errors='replace'))
-~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+```^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 File "C:\Users\pravi\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
 ...(truncated)
 
@@ -211,3 +212,4 @@ OutputFileSaved: outputs/failed_students_output.xlsx
 - Students are identified by detecting numeric values in column 0 (roll numbers range 43001–43163).
 - The RESULT column contains `'P'` (Pass) or `'F'` (Fail). Students with `'F'` were extracted.
 - Output file has 3 columns — `RollNo`, `Name`, `Status` — with `Status = "Failed"` for all 69 failed students, saved to `outputs/failed_students_output.xlsx`.
+```

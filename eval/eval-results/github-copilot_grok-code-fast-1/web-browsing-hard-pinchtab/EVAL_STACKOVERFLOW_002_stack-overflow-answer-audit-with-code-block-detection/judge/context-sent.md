@@ -110,6 +110,7 @@ description: See the first few lines with js-vote-count and following lines
 Output: <div class="js-vote-count flex--item d-flex fd-column ai-center fc-theme-body-font fw-bold fs-subheading py4"
 itemprop="upvoteCount"
 --
+
 <div class="js-vote-count flex--item d-flex fd-column ai-center fc-theme-body-font fw-bold fs-subheading py4"
 
 ## Tool: bash (call_23089814)

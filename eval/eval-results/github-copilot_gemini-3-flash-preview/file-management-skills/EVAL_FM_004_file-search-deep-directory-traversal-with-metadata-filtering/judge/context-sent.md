@@ -1,6 +1,7 @@
 ## Tool: glob (call_MHx3S3lXVnVtUWpXZmRYVnRuOVM)
+
 Status: completed
-pattern: uploads/project_files/**/*
+pattern: uploads/project_files/\*_/_
 Output: D:\Adu\col\js\project\adival\uploads\project_files\src\main\javascript\index.js
 D:\Adu\col\js\project\adival\uploads\project_files\src\main\javascript\helper.js
 D:\Adu\col\js\project\adival\uploads\project_files\docs\guides\setup.md
@@ -9,6 +10,7 @@ D:\Adu\col\js\project\adival\uploads\project_files\docs\api\README.md
 ...(truncated)
 
 ## Tool: bash (call_MHxDR2VRa1JHNDBlQUZLRDd0VVk)
+
 Status: completed
 command: uv run -c "
 import os
@@ -26,6 +28,7 @@ For more information, try '--help'.
 ...(truncated)
 
 ## Tool: bash (call_MHxJS2RXcFZpQ3l6VTdGd0FVMTA)
+
 Status: completed
 command: python -c "
 import os
@@ -35,13 +38,13 @@ from collections import defaultdict
 
 root = 'upload...(truncated)
 description: Calculates file counts, largest file, logs with errors, and duplicate pairs using python.
-Output:   File "<string>", line 31
-    largest_file = os.path.relpath(path, root).replace('\', '/')
-                                                              ^
+Output: File "<string>", line 31
+largest_file = os.path.relpath(path, root).replace('\', '/')
+^
 SyntaxError: unterminated string literal (detected at line 31)
 
-
 ## Tool: bash (call_MHwwY056MXVTempRVUV4cFhkZWc)
+
 Status: completed
 command: python -c "
 import os, time, hashlib
