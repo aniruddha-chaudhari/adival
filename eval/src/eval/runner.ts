@@ -147,6 +147,7 @@ export async function runTask(task: EvalTask, runDir?: string): Promise<TaskRunR
       humanBaselineSteps: task.humanBaselineSteps,
       // model: task.model || DEFAULT_MODEL,
       model: DEFAULT_MODEL,
+      attempts: 1,
       outputFiles: task.outputFiles,
       expectedOutputFile: task.expectedOutputFile,
     }).catch(e => ({

@@ -67,6 +67,8 @@ export interface JudgeOptions {
   outputFiles?: string[];
   /** Path to a pre-authored reference answer file, passed as a path to the judge */
   expectedOutputFile?: string;
+  /** Number of independent judge calls (default 2). Use 1 to halve LLM cost. */
+  attempts?: 1 | 2;
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -101,6 +103,7 @@ export async function judgeTask(
       humanBaselineSteps: options.humanBaselineSteps,
       outputFiles: options.outputFiles,
       expectedOutputFile: options.expectedOutputFile,
+      attempts: options.attempts,
     }
   );
 
