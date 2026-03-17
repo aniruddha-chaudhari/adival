@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-13T15:59:43.392Z",
   "model": "github-copilot/claude-opus-4.6",
-  "domain": "web-browsing-hard-agent-browser",
+  "domain": "agent-browser",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_claude-opus-4.6\\web-browsing-hard",
   "results": [
     {
@@ -155,11 +155,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 20,
       "elapsedMs": 114913,
@@ -226,9 +222,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 8,
       "elapsedMs": 51094,
@@ -295,10 +289,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "redundantCommands"
-        ]
+        "fields": ["observedSteps", "redundantCommands"]
       },
       "toolCallCount": 14,
       "elapsedMs": 90905,
@@ -365,9 +356,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 15,
       "elapsedMs": 120791,
@@ -501,10 +490,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "redundantCommands"
-        ]
+        "fields": ["completionScore", "redundantCommands"]
       },
       "toolCallCount": 10,
       "elapsedMs": 75724,
@@ -571,9 +557,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 15,
       "elapsedMs": 134090,
@@ -640,10 +624,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "redundantCommands"
-        ]
+        "fields": ["observedSteps", "redundantCommands"]
       },
       "toolCallCount": 35,
       "elapsedMs": 247696,

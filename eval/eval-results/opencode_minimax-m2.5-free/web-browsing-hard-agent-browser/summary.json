@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-16T17:12:35.338Z",
   "model": "opencode/minimax-m2.5-free",
-  "domain": "web-browsing-hard-agent-browser",
+  "domain": "agent-browser",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\opencode_minimax-m2.5-free\\web-browsing-hard",
   "results": [
     {
@@ -70,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -140,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_NPM_001",
@@ -210,9 +206,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -280,9 +274,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_MDN_001",
@@ -350,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_HN_001",
@@ -420,9 +410,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -490,9 +478,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -560,9 +546,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -685,9 +669,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     }
   ],
   "analysis": {

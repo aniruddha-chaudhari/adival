@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-14T13:10:59.445Z",
   "model": "github-copilot/claude-sonnet-4.6",
-  "domain": "web-browsing-hard-playwright-mcp",
+  "domain": "playwright-mcp",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_claude-sonnet-4.6\\web-browsing-hard-playwright-mcp",
   "results": [
     {
@@ -89,9 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 8,
       "elapsedMs": 54267,
@@ -159,9 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 10,
       "elapsedMs": 68813,
@@ -365,9 +361,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 16,
       "elapsedMs": 93360,
@@ -503,10 +497,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "redundantCommands"
-        ]
+        "fields": ["completionScore", "redundantCommands"]
       },
       "toolCallCount": 12,
       "elapsedMs": 88399,
@@ -574,11 +565,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "redundantCommands"
-        ]
+        "fields": ["completionScore", "observedSteps", "redundantCommands"]
       },
       "toolCallCount": 9,
       "elapsedMs": 82017,
@@ -646,11 +633,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 8,
       "elapsedMs": 58633,

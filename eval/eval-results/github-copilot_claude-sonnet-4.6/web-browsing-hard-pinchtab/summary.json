@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-14T01:31:30.820Z",
   "model": "github-copilot/claude-sonnet-4.6",
-  "domain": "web-browsing-hard-pinchtab",
+  "domain": "pinchtab",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_claude-sonnet-4.6\\web-browsing-hard-pinchtab",
   "results": [
     {
@@ -70,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -140,9 +138,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_NPM_001",
@@ -180,9 +176,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 16,
       "elapsedMs": 124354,
@@ -231,9 +225,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_MDN_001",
@@ -252,10 +244,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 35,
       "elapsedMs": 242916,
@@ -304,9 +293,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_HN_001",
@@ -374,9 +361,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -395,9 +380,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "redundantCommands"
-        ]
+        "fields": ["redundantCommands"]
       },
       "toolCallCount": 13,
       "elapsedMs": 107240,
@@ -446,9 +429,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -467,9 +448,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "redundantCommands"
-        ]
+        "fields": ["redundantCommands"]
       },
       "toolCallCount": 22,
       "elapsedMs": 223347,
@@ -518,9 +497,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -588,9 +565,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_GH_003",
@@ -609,10 +584,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 45,
       "elapsedMs": 287916,
@@ -661,9 +633,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     }
   ],
   "analysis": {
