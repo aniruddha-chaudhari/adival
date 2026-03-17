@@ -1,0 +1,147 @@
+{
+  "count": 20,
+  "events": [
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-18T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-18T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Holidays in India",
+      "end": "2026-03-20",
+      "location": "",
+      "start": "2026-03-19",
+      "summary": "Ugadi"
+    },
+    {
+      "calendar": "Holidays in India",
+      "end": "2026-03-20",
+      "location": "",
+      "start": "2026-03-19",
+      "summary": "Gudi Padwa"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-19T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-19T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Holidays in India",
+      "end": "2026-03-21",
+      "location": "",
+      "start": "2026-03-20",
+      "summary": "Jamat Ul-Vida"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-20T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-20T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Holidays in India",
+      "end": "2026-03-22",
+      "location": "",
+      "start": "2026-03-21",
+      "summary": "Ramzan Id (tentative)"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-21T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-21T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-22T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-22T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-23T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-23T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-24T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-24T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-25T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-25T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Holidays in India",
+      "end": "2026-03-27",
+      "location": "",
+      "start": "2026-03-26",
+      "summary": "Rama Navami"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-26T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-26T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-27T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-27T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-28T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-28T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-29T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-29T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-30T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-30T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    },
+    {
+      "calendar": "Holidays in India",
+      "end": "2026-04-01",
+      "location": "",
+      "start": "2026-03-31",
+      "summary": "Mahavir Jayanti"
+    },
+    {
+      "calendar": "Todoist",
+      "end": "2026-03-31T07:30:00+05:30",
+      "location": "",
+      "start": "2026-03-31T07:00:00+05:30",
+      "summary": "✓ Eat protein"
+    }
+  ],
+  "timeMax": "2026-03-31T09:13:48.335281700+00:00",
+  "timeMin": "2026-03-17T09:13:48.335281700+00:00"
+}

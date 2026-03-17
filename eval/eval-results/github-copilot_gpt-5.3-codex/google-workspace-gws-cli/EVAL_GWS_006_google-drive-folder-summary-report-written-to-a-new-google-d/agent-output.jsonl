@@ -1,0 +1,24 @@
+The folder exists. Now let me list all files inside it.
+Here are the results:
+
+---
+
+**Folder:** `Monthly Reports` (ID: `1BEhyCHy7Lo4S3hfUlAG7Hws3Zqu72dud`)
+
+| # | Name | Type | Last Modified |
+|---|------|------|---------------|
+| — | *(no files)* | — | — |
+
+---
+
+**Summary**
+
+| Metric | Value |
+|--------|-------|
+| Total Files | **0** |
+| Most Recent File | **None** |
+| Oldest File | **None** |
+
+---
+
+The `Monthly Reports` folder exists in your Google Drive root but is currently **empty** — no files are stored inside it.

@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": 400,
+    "message": "Invalid field selection visibility",
+    "reason": "invalidParameter"
+  }
+}

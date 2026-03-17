@@ -1,0 +1,287 @@
+{
+  "$schema": "./eval-config.schema.json",
+  "name": "google-workspace-gws-cli",
+  "defaultModel": "opencode/minimax-m2.5-free",
+  "tasks": [
+    {
+      "id": "EVAL_GWS_001",
+      "name": "Gmail: Unread Inbox Triage & Sender Domain Breakdown",
+      "category": "gmail",
+      "prompt": "Use the gws CLI to look into my Gmail inbox. I want to know how many unread emails I've received in the last 7 days. Group them by the sender's domain and tell me the top 3 domains sending me the most mail. Also flag anything where the subject mentions 'urgent' or 'action required'. Finally, tell me what the oldest unread email in that window is — just the subject and who sent it. Return the final answer in exactly four labeled lines: UnreadCount:, TopDomains:, UrgentCount:, OldestUnread:",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 14,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["unreadcount:", "topdomains:", "urgentcount:", "oldestunread:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "UnreadCount:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "UrgentCount:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_002",
+      "name": "Gmail: Smart Draft Replies for a Project Thread",
+      "category": "gmail",
+      "prompt": "Use the gws CLI to find the 3 most recent emails in my inbox with 'Project Alpha' in the subject. If there are fewer than 3 matching emails (including zero), fall back to the 3 most recent emails in my inbox instead (still proceed). Read each email carefully. For every email you select, write a reply draft that addresses the sender by their first name, responds directly to whatever they actually asked or said, and wraps up with a clear next step. Save each as a draft — don't send anything. To avoid reusing drafts across runs, ensure each new draft you create has a subject that includes a unique run marker such as a timestamp suffix (for example: '[Run YYYY-MM-DD HH:mm:ss] — Reply: <original subject>'). Once done, tell me how many drafts were created, what the subject line is for each, and the total character count across all the draft bodies. Return the final answer in exactly three labeled lines: DraftsCreated:, DraftSubjects:, TotalBodyChars:",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 20,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["draftscreated:", "draftsubjects:", "totalbodychars:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "DraftsCreated:\\s*[123]"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalBodyChars:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_003",
+      "name": "Google Calendar: Full Week Audit — Conflicts & Free Time",
+      "category": "calendar",
+      "prompt": "Use the gws CLI to pull all my calendar events for this week, Monday through Sunday. I want four things: the total number of events I have this week, whether any of them overlap on the same day (and if so which ones conflict), the longest stretch of unbooked time I have between 9am and 6pm anywhere in the week, and the total number of hours I'm spending in meetings.\n\nCompute LongestFreeBlock precisely: for each day, consider the window 09:00–18:00 local time, subtract all busy intervals from events that overlap that window (including partial overlaps), merge overlapping busy intervals, then take the maximum gap between merged busy intervals (including from 09:00 to first busy interval and last busy interval to 18:00). Report LongestFreeBlock as 'DAY HH:MM–HH:MM (XhYm)'. If there are no events on a day inside the window, that day has a free block of 09:00–18:00.\n\nCompute ConflictPairs precisely: list each pair of events on the same day whose time ranges overlap (event titles only; if none, write 'None').\n\nReturn the final answer in exactly four labeled lines: TotalEvents:, ConflictPairs:, LongestFreeBlock:, TotalMeetingHours:",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 16,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["totalevents:", "conflictpairs:", "longestfreeblock:", "totalmeetinghours:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalEvents:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalMeetingHours:\\s*\\d+(?:\\.\\d+)?"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_004",
+      "name": "Gmail: Thread Summarization & Action Item Extraction",
+      "category": "gmail",
+      "prompt": "Use the gws CLI to find the email thread with the most back-and-forth in my inbox over the last 30 days — the one with the highest number of messages. Read through the whole thing and tell me: the subject, how many messages are in it, how many different people are involved, and how many action items are buried in the conversation (things like requests, to-dos, follow-ups, or deadlines). Then write a single draft email to everyone in the thread that recaps what the discussion was about, lists out all the action items, and suggests a follow-up meeting at 10am on the next available weekday. Save it as a draft and give me the draft's message ID. To avoid colliding with drafts from previous runs, give this draft a subject or body marker that includes a unique run identifier such as the current timestamp (for example: prefix the subject with '[Thread Summary — YYYY-MM-DD HH:mm:ss]'). Return the final answer in exactly four labeled lines: ThreadSubject:, UniqueParticipants:, ActionItemCount:, SummaryDraftId:",
+      "timeoutSeconds": 720,
+      "humanBaselineSteps": 24,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["threadsubject:", "uniqueparticipants:", "actionitemcount:", "summarydraftid:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "UniqueParticipants:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "ActionItemCount:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_005",
+      "name": "Google Drive: File Hygiene Audit — Stale, Oversized & Public Files",
+      "category": "drive",
+      "prompt": "Use the gws CLI to run a health check on my Google Drive. I need to know: how many files haven't been touched in over 90 days, which single file is taking up the most space (name, type, and size), how many Google Docs have the word 'Draft' in their title, and how many files are shared with anyone who has the link — and of those, which one was most recently modified. Return the final answer in exactly four labeled lines: StaleFileCount:, LargestFile:, DraftDocsCount:, PublicFiles:",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 18,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["stalefilecount:", "largestfile:", "draftdocscount:", "publicfiles:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "StaleFileCount:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "DraftDocsCount:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_006",
+      "name": "Google Drive: Folder Summary Report Written to a New Google Doc",
+      "category": "drive",
+      "prompt": "Use the gws CLI to look inside the folder named 'Monthly Reports' in my Google Drive. If a folder with that exact name does not exist, create it in the root of my Drive and continue (the folder may be empty). List every file in it — get the name, type, and last modified date for each one. Then figure out: how many files are in there total, which file was modified most recently, and which file is the oldest. If the folder is empty, use 'None' for MostRecentFile and OldestFile.\n\nWrite a short summary of what's in the folder and save it as a brand new Google Doc in the root of my Drive. To avoid reusing old files across runs, give this Doc a unique name each time by appending the current timestamp to the title, for example: 'Monthly Reports Summary — [today's date] — [HH:mm:ss]'. Give me the file ID of the doc you just created. Return the final answer in exactly four labeled lines: TotalFilesInFolder:, MostRecentFile:, OldestFile:, SummaryDocId:",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 20,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["totalfilesinfolder:", "mostrecentfile:", "oldestfile:", "summarydocid:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalFilesInFolder:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "SummaryDocId:\\s*[A-Za-z0-9_-]+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_007",
+      "name": "Google Calendar: Next 14 Days — Recurring Event Audit",
+      "category": "calendar",
+      "prompt": "Use the gws CLI to look at everything on my calendar over the next 14 days. I want to understand my recurring commitments. Find all events that repeat more than once across the 14-day window — those are my recurring events. Tell me how many distinct recurring events there are, which one takes up the most total time across the 14 days (title and total minutes), which day of the week has the highest number of events across the whole window, and how many days in the 14-day window have zero events scheduled at all. Return the final answer in exactly four labeled lines: RecurringEventCount:, HeaviestRecurringEvent:, BusiestDayOfWeek:, EmptyDayCount:",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 18,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["recurringeventcount:", "heaviestrecurringevent:", "busiestdayofweek:", "emptydaycount:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "RecurringEventCount:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "EmptyDayCount:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GWS_008",
+      "name": "Gmail: Sent Mail Analysis — Response Rate & Top Contacts",
+      "category": "gmail",
+      "prompt": "Use the gws CLI to dig into my sent emails from the last 30 days. I want to understand my communication patterns. Tell me: how many emails I sent in total, who I emailed the most (top 3 recipients by email count with their address and count), what percentage of my sent emails got at least one reply back into my inbox, and what my average response time was — meaning how long it typically took me to reply to an email after receiving it (in hours, rounded to one decimal). Return the final answer in exactly four labeled lines: TotalSent:, TopRecipients:, ReplyRate:, AvgResponseTimeHours:",
+      "timeoutSeconds": 720,
+      "humanBaselineSteps": 22,
+      "screenshotPath": null,
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["totalsent:", "toprecipients:", "replyrate:", "avgresponsetimehours:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalSent:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "AvgResponseTimeHours:\\s*\\d+(?:\\.\\d)?"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    }
+  ]
+}
