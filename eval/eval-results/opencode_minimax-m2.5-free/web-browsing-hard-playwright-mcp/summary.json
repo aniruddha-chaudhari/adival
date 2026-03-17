@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-16T17:18:27.267Z",
   "model": "opencode/minimax-m2.5-free",
-  "domain": "web-browsing-hard-playwright-mcp",
+  "domain": "playwright-mcp",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\opencode_minimax-m2.5-free\\web-browsing-hard-playwright-mcp",
   "results": [
     {
