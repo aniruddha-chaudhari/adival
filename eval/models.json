@@ -1,3 +1,5 @@
 {
-  "models": ["github-copilot/claude-sonnet-4.6"]
+  "models": [
+    "opencode/minimax-m2.5-free"
+  ]
 }

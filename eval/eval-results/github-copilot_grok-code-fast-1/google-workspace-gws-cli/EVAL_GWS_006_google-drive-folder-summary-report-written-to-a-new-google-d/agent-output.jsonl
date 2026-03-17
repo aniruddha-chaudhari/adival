@@ -1,0 +1,29 @@
+The folder exists. Now let me list all files inside it.
+Here are the results:
+
+---
+
+**Folder:** `Monthly Reports` (ID: `1BEhyCHy7Lo4S3hfUlAG7Hws3Zqu72dud`)
+**Last modified:** 2026-03-17T09:40:01Z
+
+---
+
+**File Listing**
+
+| Name | Type | Last Modified |
+|------|------|---------------|
+| *(no files)* | — | — |
+
+---
+
+**Summary**
+
+| Metric | Value |
+|--------|-------|
+| Total Files | 0 |
+| Most Recent File | None |
+| Oldest File | None |
+
+---
+
+The `Monthly Reports` folder already existed in the root of your Drive but is currently **empty** — no files are inside it.

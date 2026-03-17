@@ -1,0 +1,582 @@
+{
+  "runAt": "2026-03-17T09:44:01.895Z",
+  "model": "github-copilot/gemini-3-flash-preview",
+  "domain": "google-workspace-gws-cli",
+  "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\github-copilot_gemini-3-flash-preview\\google-workspace-gws-cli",
+  "results": [
+    {
+      "id": "EVAL_GWS_001",
+      "name": "Gmail: Unread Inbox Triage & Sender Domain Breakdown",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent fetched unread emails, grouped by domain, checked for urgent subjects, and returned all four labeled lines correctly.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 2,
+      "elapsedMs": 19260,
+      "tokens": {
+        "inputTokens": 24860,
+        "outputTokens": 141,
+        "totalTokens": 25001,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 24860,
+            "outputTokens": 141
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 3,
+            "overheadRatio": 0.21428571428571427
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_002",
+      "name": "Gmail: Smart Draft Replies for a Project Thread",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent created drafts but only 2 draft IDs returned; 3rd draft creation not confirmed, and subject lines lack proper formatting.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 13,
+      "elapsedMs": 79532,
+      "tokens": {
+        "inputTokens": 85726,
+        "outputTokens": 3287,
+        "totalTokens": 89013,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 85726,
+            "outputTokens": 3287
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 13,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.15384615384615385,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 13,
+            "overheadRatio": 0.65
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 13,
+          "thrashRatio": 0.07692307692307693,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_003",
+      "name": "Google Calendar: Full Week Audit — Conflicts & Free Time",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "fail",
+      "score": 25,
+      "keywordScore": 0,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent retrieved events and analyzed conflicts/free time but did not output the required four labeled lines format.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 0,
+      "elapsedMs": 36167,
+      "tokens": {
+        "inputTokens": 66457,
+        "outputTokens": 656,
+        "totalTokens": 67113,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 66457,
+            "outputTokens": 656
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 5,
+            "overheadRatio": 0.3125
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_004",
+      "name": "Gmail: Thread Summarization & Action Item Extraction",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all four labeled outputs: ThreadSubject, UniqueParticipants, ActionItemCount, and SummaryDraftId with a valid draft ID.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 45992,
+      "tokens": {
+        "inputTokens": 147630,
+        "outputTokens": 1417,
+        "totalTokens": 149047,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 147630,
+            "outputTokens": 1417
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.125,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 24,
+            "agentSteps": 8,
+            "overheadRatio": 0.3333333333333333
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 8,
+          "thrashRatio": 0.125,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_005",
+      "name": "Google Drive: File Hygiene Audit — Stale, Oversized & Public Files",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all four health check sub-goals and returned results in the required labeled format.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 15,
+      "elapsedMs": 75411,
+      "tokens": {
+        "inputTokens": 55939,
+        "outputTokens": 1603,
+        "totalTokens": 57542,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 55939,
+            "outputTokens": 1603
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 14,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.2857142857142857,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 14,
+            "overheadRatio": 0.7777777777777778
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 3,
+          "totalCommands": 14,
+          "thrashRatio": 0.21428571428571427,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_006",
+      "name": "Google Drive: Folder Summary Report Written to a New Google Doc",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "fail",
+      "score": 25,
+      "keywordScore": 0,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent created folder and listed contents but never created the summary Google Doc or returned SummaryDocId.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 0,
+      "elapsedMs": 61120,
+      "tokens": {
+        "inputTokens": 58217,
+        "outputTokens": 1610,
+        "totalTokens": 59827,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 58217,
+            "outputTokens": 1610
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 4,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 4,
+            "overheadRatio": 0.2
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 4,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_007",
+      "name": "Google Calendar: Next 14 Days — Recurring Event Audit",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent fetched 14-day calendar, identified recurring events, and returned all four required labeled lines correctly.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 2,
+      "elapsedMs": 16462,
+      "tokens": {
+        "inputTokens": 20918,
+        "outputTokens": 82,
+        "totalTokens": 21000,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 20918,
+            "outputTokens": 82
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 3,
+            "overheadRatio": 0.16666666666666666
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_008",
+      "name": "Gmail: Sent Mail Analysis — Response Rate & Top Contacts",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent produced all four labeled lines but top recipients list only 2 (not 3), and analysis may be incomplete due to date filter issues.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 24,
+      "elapsedMs": 133706,
+      "tokens": {
+        "inputTokens": 93154,
+        "outputTokens": 6077,
+        "totalTokens": 99231,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 93154,
+            "outputTokens": 6077
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 22,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.18181818181818182,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 22,
+            "agentSteps": 22,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 3,
+          "totalCommands": 22,
+          "thrashRatio": 0.13636363636363635,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 9,
+      "semSteps": 2.4041630560342613,
+      "meanStepsSuccessful": 7,
+      "meanStepsFailed": 4.5,
+      "taskCount": 8
+    },
+    "error": {
+      "totalFailures": 2,
+      "failureRate": 0.25,
+      "byCategory": {
+        "none": 4,
+        "comprehension": 0,
+        "execution": 4,
+        "resource": 0,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 3,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.07,
+      "totalRedundantCommands": 8,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 58456.25,
+      "meanElapsedMsPassed": 39281.25,
+      "medianElapsedMs": 53556,
+      "iqrElapsedMs": 43365
+    }
+  }
+}

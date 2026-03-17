@@ -1,0 +1,582 @@
+{
+  "runAt": "2026-03-17T15:05:46.323Z",
+  "model": "github-copilot/claude-sonnet-4.6",
+  "domain": "google-workspace-gws-cli",
+  "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\github-copilot_claude-sonnet-4.6\\google-workspace-gws-cli",
+  "results": [
+    {
+      "id": "EVAL_GWS_001",
+      "name": "Gmail: Unread Inbox Triage & Sender Domain Breakdown",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent fetched emails, analyzed domains, flagged urgent, found oldest, and returned all four labeled lines correctly.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 79085,
+      "tokens": {
+        "inputTokens": 76685,
+        "outputTokens": 3348,
+        "totalTokens": 80033,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 76685,
+            "outputTokens": 3348
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.25,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 14,
+            "agentSteps": 8,
+            "overheadRatio": 0.5714285714285714
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_002",
+      "name": "Gmail: Smart Draft Replies for a Project Thread",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent found 0 Project Alpha emails, fell back correctly, read 3 emails, created 3 timestamped drafts, and reported all required labeled lines.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 25,
+      "elapsedMs": 210267,
+      "tokens": {
+        "inputTokens": 127124,
+        "outputTokens": 6466,
+        "totalTokens": 133590,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 127124,
+            "outputTokens": 6466
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 20,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.05,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 20,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 20,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_003",
+      "name": "Google Calendar: Full Week Audit — Conflicts & Free Time",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "fail",
+      "score": 25,
+      "keywordScore": 0,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent computed all four metrics but failed to output the required four labeled lines format; result presented as prose/table instead.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 0,
+      "elapsedMs": 76063,
+      "tokens": {
+        "inputTokens": 47816,
+        "outputTokens": 2367,
+        "totalTokens": 50183,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 47816,
+            "outputTokens": 2367
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.25,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 8,
+            "overheadRatio": 0.5
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_004",
+      "name": "Gmail: Thread Summarization & Action Item Extraction",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent found busiest thread, read it, extracted 4 action items, created timestamped draft, and returned all 4 required labeled lines.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 29,
+      "elapsedMs": 476885,
+      "tokens": {
+        "inputTokens": 101771,
+        "outputTokens": 10289,
+        "totalTokens": 112060,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 101771,
+            "outputTokens": 10289
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 22,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.13636363636363635,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 24,
+            "agentSteps": 22,
+            "overheadRatio": 0.9166666666666666
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 22,
+          "thrashRatio": 0.045454545454545456,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_005",
+      "name": "Google Drive: File Hygiene Audit — Stale, Oversized & Public Files",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "partial",
+      "score": 67,
+      "keywordScore": 33,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all four sub-goals with labeled results; format used bold not exact labeled-line format requested.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 33,
+      "elapsedMs": 150682,
+      "tokens": {
+        "inputTokens": 74338,
+        "outputTokens": 5738,
+        "totalTokens": 80076,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 74338,
+            "outputTokens": 5738
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 28,
+          "unnecessarySteps": 4,
+          "inefficiencyRatio": 0.14285714285714285,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 28,
+            "overheadRatio": 1.5555555555555556
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 28,
+          "thrashRatio": 0.07142857142857142,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_006",
+      "name": "Google Drive: Folder Summary Report Written to a New Google Doc",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Agent found/listed folder contents but never created a summary Google Doc or returned the required four labeled lines.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 0,
+      "elapsedMs": 41406,
+      "tokens": {
+        "inputTokens": 96267,
+        "outputTokens": 1153,
+        "totalTokens": 97420,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 96267,
+            "outputTokens": 1153
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 3,
+            "overheadRatio": 0.15
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_GWS_007",
+      "name": "Google Calendar: Next 14 Days — Recurring Event Audit",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "partial",
+      "score": 67,
+      "keywordScore": 33,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all four labeled outputs correctly using proper tooling and clear methodology notes.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 84779,
+      "tokens": {
+        "inputTokens": 74749,
+        "outputTokens": 5105,
+        "totalTokens": 79854,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 74749,
+            "outputTokens": 5105
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 6,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.16666666666666666,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 6,
+            "overheadRatio": 0.3333333333333333
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 6,
+          "thrashRatio": 0.16666666666666666,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_GWS_008",
+      "name": "Gmail: Sent Mail Analysis — Response Rate & Top Contacts",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "status": "partial",
+      "score": 59,
+      "keywordScore": 67,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent investigated thoroughly but found 0 sent emails in last 30 days; no final labeled output was produced.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 46,
+      "elapsedMs": 519242,
+      "tokens": {
+        "inputTokens": 139817,
+        "outputTokens": 19064,
+        "totalTokens": 158881,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 139817,
+            "outputTokens": 19064
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 22,
+          "unnecessarySteps": 6,
+          "inefficiencyRatio": 0.2727272727272727,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 22,
+            "agentSteps": 22,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "resource",
+          "description": "Agent could not access a required resource (page load failure, element not found, network issue)."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 3,
+          "totalCommands": 22,
+          "thrashRatio": 0.13636363636363635,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 14.63,
+      "semSteps": 3.309259735953042,
+      "meanStepsSuccessful": 16.67,
+      "meanStepsFailed": 5.5,
+      "taskCount": 8
+    },
+    "error": {
+      "totalFailures": 2,
+      "failureRate": 0.25,
+      "byCategory": {
+        "none": 5,
+        "comprehension": 0,
+        "execution": 2,
+        "resource": 1,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 3,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.05,
+      "totalRedundantCommands": 7,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 204801.13,
+      "meanElapsedMsPassed": 255412.33,
+      "medianElapsedMs": 117730.5,
+      "iqrElapsedMs": 397800
+    }
+  }
+}
