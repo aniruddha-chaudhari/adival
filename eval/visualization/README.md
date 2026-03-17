@@ -23,7 +23,7 @@ Output is written to `outputs/png/` (300 DPI), `outputs/vector/` (PDF), and `out
 
 ```bash
 # Default: read from eval/eval-results/, write to outputs/
-python generate_visualizations.py
+uv run --active eval/visualization/generate_visualizations.py
 
 # Custom paths
 python generate_visualizations.py --input-dir /path/to/eval-results --output-dir /path/to/outputs
