@@ -10,6 +10,7 @@
         "agent-browser": "^0.15.0",
         "csv-writer": "^1.6.0",
         "docx": "^9.6.1",
+        "exif-parser": "^0.1.12",
         "exif-reader": "^2.0.3",
         "hono": "^4.0.0",
         "puppeteer-core": "^24.39.1",
@@ -270,6 +271,8 @@
     "eventsource": ["eventsource@3.0.7", "", { "dependencies": { "eventsource-parser": "^3.0.1" } }, "sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA=="],
 
     "eventsource-parser": ["eventsource-parser@3.0.6", "", {}, "sha512-Vo1ab+QXPzZ4tCa8SwIHJFaSzy4R6SHf7BY79rFBDf0idraZWAkYrDjDj8uWaSm3S2TK+hJ7/t1CEmZ7jXw+pg=="],
+
+    "exif-parser": ["exif-parser@0.1.12", "", {}, "sha512-c2bQfLNbMzLPmzQuOr8fy0csy84WmwnER81W88DzTp9CYNPJ6yzOj2EZAh9pywYpqHnshVLHQJ8WzldAyfY+Iw=="],
 
     "exif-reader": ["exif-reader@2.0.3", "", {}, "sha512-zFbQvguwT9JkqyYhR7pjE1Yn8SagwaGLNRU0Oh14xFa1paSf5Gzxn4gxgk0XhnudI0UIqU+HgnBX93+nva592A=="],
 

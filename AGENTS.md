@@ -19,13 +19,16 @@ Instead of `pip` --> Use `uv` for python packages. use `uv add <package>` to ins
 
 Always use `bun run` to execute TypeScript scripts:
 And `uv run` to execute python script files
+example:
 
 ```bash
 bun run src/x/test-normalize.ts
+
+uv run src/x/test-normalize.py
 ```
 
 ### Scripts
 
 Create script files in `manager/tools` folder in the root only, (never in other place).
 Make sure to give the file a good name for later understanding its use, use `_` instead of spaces while naming the files.
-You can also see scripts written by other agents in the `manager/tools` folder aswell and use them if you want to.
+Delete the unnecessary script files you have created after the task is complete.

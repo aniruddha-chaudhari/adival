@@ -1,3 +1,9 @@
 {
-  "models": ["github-copilot/claude-sonnet-4.6"]
+  "models": [
+    "github-copilot/claude-sonnet-4.6",
+    "github-copilot/gemini-3-flash-preview",
+    "github-copilot/gpt-5.3-codex",
+    "github-copilot/grok-code-fast-1",
+    "opencode/minimax-m2.5-free"
+  ]
 }

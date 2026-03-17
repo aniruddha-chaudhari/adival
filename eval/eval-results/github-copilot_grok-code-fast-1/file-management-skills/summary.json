@@ -1,0 +1,984 @@
+{
+  "runAt": "2026-03-17T12:26:27.528Z",
+  "model": "github-copilot/grok-code-fast-1",
+  "domain": "file-management-skills",
+  "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_grok-code-fast-1\\file-management-skills",
+  "results": [
+    {
+      "id": "EVAL_FM_001",
+      "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 97,
+      "keywordScore": 94,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified HighestRevenueSheet:Q3, BestSellingProduct:Widget A, FirstInconsistency:Q1:5, created Summary sheet matching expected output exactly.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 29025,
+      "tokens": {
+        "inputTokens": 16988,
+        "outputTokens": 670,
+        "totalTokens": 17658,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 16988,
+            "outputTokens": 670
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 5,
+            "overheadRatio": 0.25
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_FM_002",
+      "name": "Word: Tracked-Changes Redline Review & Selective Accept",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "partial",
+      "score": 75,
+      "keywordScore": 100,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent produced output file with correct comment text but reported 0 for all counts; reference shows 1 remaining change (Carol). Alice/Bob changes not properly processed.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 44,
+      "elapsedMs": 362298,
+      "tokens": {
+        "inputTokens": 31518,
+        "outputTokens": 8227,
+        "totalTokens": 39745,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 31518,
+            "outputTokens": 8227
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 35,
+          "unnecessarySteps": 8,
+          "inefficiencyRatio": 0.22857142857142856,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 22,
+            "agentSteps": 35,
+            "overheadRatio": 1.5909090909090908
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 3,
+          "totalCommands": 35,
+          "thrashRatio": 0.08571428571428572,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_003",
+      "name": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "fail",
+      "score": 0,
+      "keywordScore": 0,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Agent failed to perform OCR; Tesseract install errored and no CSV was produced with extracted invoice data.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 8,
+      "elapsedMs": 50787,
+      "tokens": {
+        "inputTokens": 14952,
+        "outputTokens": 588,
+        "totalTokens": 15540,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 14952,
+            "outputTokens": 588
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.2222222222222222,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 25,
+            "agentSteps": 9,
+            "overheadRatio": 0.36
+          }
+        },
+        "error": {
+          "category": "resource",
+          "description": "Agent could not access a required resource (page load failure, element not found, network issue)."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_FM_004",
+      "name": "File Search: Deep Directory Traversal with Metadata Filtering",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all four subtasks and returned correctly labeled results; duplicate file pair output was empty but reported as 0.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 5,
+      "elapsedMs": 51932,
+      "tokens": {
+        "inputTokens": 13642,
+        "outputTokens": 348,
+        "totalTokens": 13990,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 13642,
+            "outputTokens": 348
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 5,
+            "overheadRatio": 0.25
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_005",
+      "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge call failed: Judge agent timed out after 90s",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 30,
+      "elapsedMs": 424452,
+      "tokens": {
+        "inputTokens": 39070,
+        "outputTokens": 2175,
+        "totalTokens": 41245,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 39070,
+            "outputTokens": 2175
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 22,
+            "agentSteps": 1,
+            "overheadRatio": 0.045454545454545456
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_007",
+      "name": "Image Organization: EXIF-Based Sort, Dedup & Rename Pipeline",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all 4 sub-goals: EXIF count, duplicate pairs, renaming, and folder distribution with correct format.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 6,
+      "elapsedMs": 57986,
+      "tokens": {
+        "inputTokens": 14760,
+        "outputTokens": 993,
+        "totalTokens": 15753,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 14760,
+            "outputTokens": 993
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 7,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 26,
+            "agentSteps": 7,
+            "overheadRatio": 0.2692307692307692
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 7,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_FM_008",
+      "name": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 90,
+      "keywordScore": 80,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent identified 4 issues, created tool, ran it, reported 32 cells changed, and saved clean CSV with correct normalization.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 41197,
+      "tokens": {
+        "inputTokens": 14047,
+        "outputTokens": 843,
+        "totalTokens": 14890,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 14047,
+            "outputTokens": 843
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 4,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 28,
+            "agentSteps": 4,
+            "overheadRatio": 0.14285714285714285
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 4,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_009",
+      "name": "Excel: Extract Failed Students from Exam Results",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 90,
+      "keywordScore": 80,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly extracted 164 total students, 76 failed, saved output xlsx, and returned all four required labeled lines.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 21,
+      "elapsedMs": 136740,
+      "tokens": {
+        "inputTokens": 22091,
+        "outputTokens": 2522,
+        "totalTokens": 24613,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 22091,
+            "outputTokens": 2522
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 18,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.16666666666666666,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 18,
+            "overheadRatio": 1.5
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 18,
+          "thrashRatio": 0.1111111111111111,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_010",
+      "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all 4 sub-tasks: computed dept averages, counted promotion candidates, created pivot sheet, and generated Word report.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 17,
+      "elapsedMs": 80131,
+      "tokens": {
+        "inputTokens": 24935,
+        "outputTokens": 2579,
+        "totalTokens": 27514,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 24935,
+            "outputTokens": 2579
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 16,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.0625,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 32,
+            "agentSteps": 16,
+            "overheadRatio": 0.5
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 16,
+          "thrashRatio": 0.0625,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_011",
+      "name": "Office Multi-App: PDF Financial Report → Excel Analysis + Word Summary",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 80,
+      "keywordScore": 60,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted NVIDIA financial data, created outputs/report.xlsx and outputs/summary.docx with required content and labeled output lines.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 23,
+      "elapsedMs": 85931,
+      "tokens": {
+        "inputTokens": 35857,
+        "outputTokens": 3020,
+        "totalTokens": 38877,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 35857,
+            "outputTokens": 3020
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 18,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.1111111111111111,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 18,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 18,
+          "thrashRatio": 0.05555555555555555,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_012",
+      "name": "Excel: Cell-Level Formula — Count Countries per Company with Employee Filter",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 88,
+      "keywordScore": 75,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent applied COUNTIFS formula, produced output file, and returned correct labeled lines with FormulaApplied, ValueI12=5, ValueI13=3.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 178335,
+      "tokens": {
+        "inputTokens": 17803,
+        "outputTokens": 767,
+        "totalTokens": 18570,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 17803,
+            "outputTokens": 767
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.125,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 8,
+            "overheadRatio": 0.8
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_013",
+      "name": "Excel: Sheet-Level Manipulation — Merge RANGES into LISTS with Sorted Sections and Totals",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "partial",
+      "score": 63,
+      "keywordScore": 75,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "3 sections populated and file saved, but TOTAL row amounts are all NaN and sort order (by date+REF) is incorrect.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 12,
+      "elapsedMs": 147569,
+      "tokens": {
+        "inputTokens": 20648,
+        "outputTokens": 8399,
+        "totalTokens": 29047,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 20648,
+            "outputTokens": 8399
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 11,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.18181818181818182,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 11,
+            "overheadRatio": 0.6875
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 11,
+          "thrashRatio": 0.09090909090909091,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
+    },
+    {
+      "id": "EVAL_FM_014",
+      "name": "Image-Excel: Table Recognition from Scientific Paper Image",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "partial",
+      "score": 62,
+      "keywordScore": 73,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent created Excel file and output column headers but extracted 0 data rows, missing all actual table data.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 5,
+      "elapsedMs": 55168,
+      "tokens": {
+        "inputTokens": 15252,
+        "outputTokens": 376,
+        "totalTokens": 15628,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 15252,
+            "outputTokens": 376
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 5,
+            "overheadRatio": 0.4166666666666667
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      }
+    },
+    {
+      "id": "EVAL_FM_015",
+      "name": "PowerPoint: Add Agenda Slide After Title Slide",
+      "model": "github-copilot/grok-code-fast-1",
+      "status": "pass",
+      "score": 98,
+      "keywordScore": 96,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent added Agenda slide at position 2 with correct title, 3 bullet items, and reported TotalSlideCount:11 correctly.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 42,
+      "elapsedMs": 169507,
+      "tokens": {
+        "inputTokens": 87276,
+        "outputTokens": 3200,
+        "totalTokens": 90476,
+        "byModel": {
+          "grok-code-fast-1": {
+            "inputTokens": 87276,
+            "outputTokens": 3200
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 35,
+          "unnecessarySteps": 5,
+          "inefficiencyRatio": 0.14285714285714285,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 35,
+            "overheadRatio": 3.5
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 3,
+          "totalCommands": 35,
+          "thrashRatio": 0.08571428571428572,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      }
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 12.64,
+      "semSteps": 2.891766637492432,
+      "meanStepsSuccessful": 12.89,
+      "meanStepsFailed": 9,
+      "taskCount": 14
+    },
+    "error": {
+      "totalFailures": 1,
+      "failureRate": 0.07142857142857142,
+      "byCategory": {
+        "none": 9,
+        "comprehension": 0,
+        "execution": 4,
+        "resource": 1,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 0,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.04,
+      "totalRedundantCommands": 11,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 133647,
+      "meanElapsedMsPassed": 92309.33,
+      "medianElapsedMs": 83031,
+      "iqrElapsedMs": 117575
+    }
+  }
+}

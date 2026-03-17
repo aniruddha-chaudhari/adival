@@ -16,6 +16,7 @@
     "agent-browser": "^0.15.0",
     "csv-writer": "^1.6.0",
     "docx": "^9.6.1",
+    "exif-parser": "^0.1.12",
     "exif-reader": "^2.0.3",
     "hono": "^4.0.0",
     "puppeteer-core": "^24.39.1",
