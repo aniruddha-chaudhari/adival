@@ -306,37 +306,47 @@ def generate_all_visualizations(
     print("\n[STATS] Generating visualizations...")
     print("=" * 60)
 
+    # Focus charts on the primary models only, to reduce clutter and
+    # match the paper figures.
+    target_models = set(config.TARGET_MODELS)
+    aggregated_data = aggregated_data[aggregated_data["model"].isin(target_models)].copy()
+    task_results_by_model = {
+        key: results
+        for key, results in task_results_by_model.items()
+        if key.split("::", 1)[0] in target_models
+    }
+
     # 1. Success Rate
     print("\n[1]  Success Rate Comparison")
     sr_viz = SuccessRateVisualizer(aggregated_data)
-    sr_viz.plot(top_n=top_n_models)
+    sr_viz.plot(top_n=top_n_models, per_suite=True)
 
     # 2. Token Efficiency
     print("\n[2]  Token Efficiency")
     te_viz = TokenEfficiencyVisualizer(aggregated_data)
-    te_viz.plot_input_tokens(top_n=top_n_models)
-    te_viz.plot_output_tokens(top_n=top_n_models)
-    te_viz.plot_total_tokens(top_n=top_n_models)
+    te_viz.plot_input_tokens(top_n=top_n_models, per_suite=True)
+    te_viz.plot_output_tokens(top_n=top_n_models, per_suite=True)
+    te_viz.plot_total_tokens(top_n=top_n_models, per_suite=True)
 
     # 3. Step Efficiency
     print("\n[3]  Step Efficiency Distribution")
     se_viz = StepEfficiencyVisualizer(task_results_by_model)
-    se_viz.plot_distribution(top_n=top_n_models)
+    se_viz.plot_distribution(top_n=top_n_models, per_suite=True)
 
     # 4. Failure Analysis
     print("\n[4]  Failure Analysis")
     fa_viz = FailureAnalysisVisualizer(aggregated_data)
-    fa_viz.plot_failure_breakdown(top_n=top_n_models)
+    fa_viz.plot_failure_breakdown(top_n=top_n_models, per_suite=True)
 
     # 5. Time Metrics
     print("\n[5]  Time-to-Success Distribution")
     tm_viz = TimeMetricsVisualizer(task_results_by_model)
-    tm_viz.plot_distribution(top_n=top_n_models)
+    tm_viz.plot_distribution(top_n=top_n_models, per_suite=True)
 
     # 6. Model Comparison
     print("\n[6]  Model Comparison Heatmaps")
     mc_viz = ModelComparisonVisualizer(aggregated_data)
-    mc_viz.plot_heatmap(top_n=top_n_models)
+    mc_viz.plot_heatmap(top_n=top_n_models, per_suite=True)
     mc_viz.plot_top_models_radar(top_n=min(10, len(aggregated_data)))
 
     # 7. Domain × Model Comparison

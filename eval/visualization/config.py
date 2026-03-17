@@ -11,6 +11,30 @@ PNG_DIR = OUTPUT_DIR / "png"
 VECTOR_DIR = OUTPUT_DIR / "vector"
 DATA_DIR = OUTPUT_DIR / "data"
 
+# Target models and suites for focused visualizations
+# (used to reduce clutter and match paper figures)
+TARGET_MODELS = [
+    "github-copilot/claude-sonnet-4.6",
+    "github-copilot/gemini-3-flash-preview",
+    "github-copilot/gpt-5.3-codex",
+    "github-copilot/grok-code-fast-1",
+    "opencode/minimax-m2.5-free",
+]
+
+# Logical suite/domain identifiers in eval-results
+TARGET_SUITES = [
+    "web-browsing-hard-agent-browser",
+    "web-browsing-hard-pinchtab",
+    "web-browsing-hard-playwright-mcp",
+]
+
+# Mapping from eval domain name -> PNG subdirectory name
+SUITE_PNG_SUBDIRS = {
+    "web-browsing-hard-agent-browser": "web-browsing-hard-agent-browser",
+    "web-browsing-hard-pinchtab": "web-browsing-hard-pinchtab",
+    "web-browsing-hard-playwright-mcp": "web-browsing-hard-playwright-mcp",
+}
+
 # Visualization settings
 FIGURE_DPI_SCREEN = 100
 FIGURE_DPI_PNG = 300

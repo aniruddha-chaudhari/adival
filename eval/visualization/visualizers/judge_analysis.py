@@ -75,8 +75,9 @@ class JudgeAnalysisVisualizer:
             label="Perfect concordance",
         )
 
-        ax.set_xlim(0, 100)
-        ax.set_ylim(0, 100)
+        # Add small margins so edge points are not clipped
+        ax.set_xlim(-5, 105)
+        ax.set_ylim(-5, 105)
         ax.set_xlabel("Keyword Score", fontsize=config.FONT_SIZE_LABEL)
         ax.set_ylabel("Judge Score", fontsize=config.FONT_SIZE_LABEL)
         ax.set_title(
@@ -96,11 +97,21 @@ class JudgeAnalysisVisualizer:
 
     def plot_per_task_scores(self):
         """
-        Grouped bar chart showing score per task ID, one bar per model::domain run.
+        Grouped bar chart showing score per task ID, split into one chart per suite.
+        Each chart has one bar per model for each task, improving readability.
         """
-        keys = list(self.task_results_by_model.keys())
-        if len(keys) < 2:
-            print("[SKIP] Per-task score breakdown: fewer than 2 (model, domain) runs")
+        # Organize keys by suite
+        suite_to_keys: Dict[str, List[str]] = {}
+        for key in self.task_results_by_model.keys():
+            if "::" not in key:
+                continue
+            model, domain = key.split("::", 1)
+            if model not in config.TARGET_MODELS or domain not in config.TARGET_SUITES:
+                continue
+            suite_to_keys.setdefault(domain, []).append(key)
+
+        if not suite_to_keys:
+            print("[SKIP] Per-task score breakdown: no matching (model, suite) runs")
             return
 
         # Collect all unique task IDs (sorted)
@@ -112,55 +123,71 @@ class JudgeAnalysisVisualizer:
             }
         )
         n_tasks = len(all_task_ids)
-        n_keys = len(keys)
 
-        # Build score lookup: key -> task_id -> score
-        score_lookup: Dict[str, Dict[str, float]] = {}
-        for key, tasks in self.task_results_by_model.items():
-            score_lookup[key] = {task["id"]: task.get("score", 0) for task in tasks}
+        for suite in config.TARGET_SUITES:
+            keys = suite_to_keys.get(suite, [])
+            if not keys:
+                continue
 
-        palette = get_color_palette(n_keys)
-        key_color = {k: palette[i] for i, k in enumerate(keys)}
+            # Build score lookup: key -> task_id -> score
+            score_lookup: Dict[str, Dict[str, float]] = {}
+            for key in keys:
+                tasks = self.task_results_by_model[key]
+                score_lookup[key] = {task["id"]: task.get("score", 0) for task in tasks}
 
-        width_fig = max(8, n_tasks * 0.8)
-        fig, ax = plt.subplots(figsize=(width_fig, 5))
+            n_keys = len(keys)
+            palette = get_color_palette(n_keys)
+            key_color = {k: palette[i] for i, k in enumerate(keys)}
 
-        bar_width = 0.8 / n_keys
-        x = np.arange(n_tasks)
+            width_fig = max(10, n_tasks * 0.9)
+            fig, ax = plt.subplots(figsize=(width_fig, 5.5))
 
-        for i, key in enumerate(keys):
-            scores = [score_lookup[key].get(tid, 0) for tid in all_task_ids]
-            offset = (i - (n_keys - 1) / 2) * bar_width
-            ax.bar(
-                x + offset,
-                scores,
-                width=bar_width,
-                color=key_color[key],
-                label=key,
-                alpha=0.85,
-                edgecolor="black",
-                linewidth=config.EDGE_WIDTH,
+            bar_width = 0.8 / n_keys
+            x = np.arange(n_tasks)
+
+            for i, key in enumerate(keys):
+                scores = [score_lookup[key].get(tid, 0) for tid in all_task_ids]
+                offset = (i - (n_keys - 1) / 2) * bar_width
+                model, _domain = key.split("::", 1)
+                ax.bar(
+                    x + offset,
+                    scores,
+                    width=bar_width,
+                    color=key_color[key],
+                    label=format_model_name(model),
+                    alpha=0.85,
+                    edgecolor="black",
+                    linewidth=config.EDGE_WIDTH,
+                )
+
+            ax.set_xticks(x)
+            ax.set_xticklabels(
+                all_task_ids, rotation=45, ha="right", fontsize=config.FONT_SIZE_TICK
             )
+            ax.set_ylabel("Score (0-100)", fontsize=config.FONT_SIZE_LABEL)
+            ax.set_title(
+                f"Per-Task Score Breakdown – {suite}",
+                fontsize=config.FONT_SIZE_TITLE,
+                pad=15,
+            )
+            ax.tick_params(axis="y", labelsize=config.FONT_SIZE_TICK)
+            ax.set_ylim(0, 105)
+            ax.legend(
+                frameon=False,
+                fontsize=config.FONT_SIZE_LEGEND,
+                ncol=1,
+            )
+            ax.grid(axis="y", alpha=0.3)
 
-        ax.set_xticks(x)
-        ax.set_xticklabels(
-            all_task_ids, rotation=45, ha="right", fontsize=config.FONT_SIZE_TICK
-        )
-        ax.set_ylabel("Score (0-100)", fontsize=config.FONT_SIZE_LABEL)
-        ax.set_title(
-            "Per-Task Score Breakdown by Model/Domain",
-            fontsize=config.FONT_SIZE_TITLE,
-            pad=15,
-        )
-        ax.tick_params(axis="y", labelsize=config.FONT_SIZE_TICK)
-        ax.set_ylim(0, 105)
-        ax.legend(frameon=False, fontsize=config.FONT_SIZE_LEGEND)
-        ax.grid(axis="y", alpha=0.3)
+            save_figure(
+                fig,
+                "14_per_task_score_breakdown",
+                tight_layout=True,
+                subdir=config.SUITE_PNG_SUBDIRS.get(suite, suite),
+            )
+            plt.close(fig)
 
-        save_figure(fig, "14_per_task_score_breakdown", tight_layout=True)
-        plt.close(fig)
-
-        print(f"[+] Per-task score breakdown created ({n_tasks} tasks)")
+            print(f"[+] Per-task score breakdown created for suite={suite} ({n_tasks} tasks)")
 
     def plot_error_category_by_domain(self):
         """
