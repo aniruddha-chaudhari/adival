@@ -1,0 +1,998 @@
+{
+  "runAt": "2026-03-17T11:42:36.311Z",
+  "model": "github-copilot/gpt-5.3-codex",
+  "domain": "file-management-skills",
+  "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gpt-5.3-codex\\file-management-skills",
+  "results": [
+    {
+      "id": "EVAL_FM_001",
+      "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 97,
+      "keywordScore": 94,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified all four answers and produced a Summary sheet matching the reference output exactly.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 3,
+      "elapsedMs": 56500,
+      "tokens": {
+        "inputTokens": 36351,
+        "outputTokens": 1712,
+        "totalTokens": 39111,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 36351,
+            "outputTokens": 1712
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 3,
+            "overheadRatio": 0.15
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      },
+      "skills": ["xlsx"]
+    },
+    {
+      "id": "EVAL_FM_002",
+      "name": "Word: Tracked-Changes Redline Review & Selective Accept",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Agent produced all-zero counts due to script errors; tracked changes were not properly analyzed or resolved.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 19,
+      "elapsedMs": 276470,
+      "tokens": {
+        "inputTokens": 31603,
+        "outputTokens": 8098,
+        "totalTokens": 44792,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 31603,
+            "outputTokens": 8098
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 16,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.1875,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 22,
+            "agentSteps": 16,
+            "overheadRatio": 0.7272727272727273
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 2,
+          "totalCommands": 16,
+          "thrashRatio": 0.125,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      },
+      "skills": ["docx"]
+    },
+    {
+      "id": "EVAL_FM_003",
+      "name": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "CSV matches reference exactly; all four labeled answers correct: highest invoice, duplicate vendor, total sum, and row count.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 7,
+      "elapsedMs": 44613,
+      "tokens": {
+        "inputTokens": 24962,
+        "outputTokens": 924,
+        "totalTokens": 26363,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 24962,
+            "outputTokens": 924
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 8,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 25,
+            "agentSteps": 8,
+            "overheadRatio": 0.32
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 8,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      },
+      "skills": []
+    },
+    {
+      "id": "EVAL_FM_004",
+      "name": "File Search: Deep Directory Traversal with Metadata Filtering",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent recovered from initial syntax error, computed all four required metrics and reported them in correct labeled format.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 2,
+      "elapsedMs": 55589,
+      "tokens": {
+        "inputTokens": 9344,
+        "outputTokens": 1308,
+        "totalTokens": 11005,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 9344,
+            "outputTokens": 1308
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 3,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.3333333333333333,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 20,
+            "agentSteps": 3,
+            "overheadRatio": 0.15
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 3,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      },
+      "skills": []
+    },
+    {
+      "id": "EVAL_FM_005",
+      "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 50,
+      "keywordScore": 100,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Judge call failed: Judge agent timed out after 90s",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": null,
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 70801,
+      "tokens": {
+        "inputTokens": 23549,
+        "outputTokens": 2055,
+        "totalTokens": 26461,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 23549,
+            "outputTokens": 2055
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 1,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 22,
+            "agentSteps": 1,
+            "overheadRatio": 0.045454545454545456
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 1,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "none",
+        "timeoutDetected": false,
+        "errorDetected": false
+      },
+      "skills": ["pptx"]
+    },
+    {
+      "id": "EVAL_FM_007",
+      "name": "Image Organization: EXIF-Based Sort, Dedup & Rename Pipeline",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all 4 labeled outputs correctly, ran EXIF extraction, dedup, and organized files; script cleaned up after.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 5,
+      "elapsedMs": 117085,
+      "tokens": {
+        "inputTokens": 11577,
+        "outputTokens": 3813,
+        "totalTokens": 17595,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 11577,
+            "outputTokens": 3813
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 26,
+            "agentSteps": 5,
+            "overheadRatio": 0.19230769230769232
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      },
+      "skills": []
+    },
+    {
+      "id": "EVAL_FM_008",
+      "name": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 90,
+      "keywordScore": 80,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent identified all 4 issues, created tool, ran it, reported 32 cells changed, and saved clean CSV.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 4,
+      "elapsedMs": 69538,
+      "tokens": {
+        "inputTokens": 10994,
+        "outputTokens": 2107,
+        "totalTokens": 14027,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 10994,
+            "outputTokens": 2107
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 28,
+            "agentSteps": 5,
+            "overheadRatio": 0.17857142857142858
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      },
+      "skills": []
+    },
+    {
+      "id": "EVAL_FM_009",
+      "name": "Excel: Extract Failed Students from Exam Results",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 90,
+      "keywordScore": 80,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly identified 69 failed students out of 164, matching expected data; minor case diff in Status ('failed' vs 'Failed').",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 8,
+      "elapsedMs": 153765,
+      "tokens": {
+        "inputTokens": 24029,
+        "outputTokens": 2351,
+        "totalTokens": 27288,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 24029,
+            "outputTokens": 2351
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 7,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.14285714285714285,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 7,
+            "overheadRatio": 0.5833333333333334
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 7,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      },
+      "skills": ["xlsx"]
+    },
+    {
+      "id": "EVAL_FM_010",
+      "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent completed all 4 subtasks: computed metrics, found promotion candidates, created pivot sheet, and generated Word report with correct labeled output.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 110185,
+      "tokens": {
+        "inputTokens": 38313,
+        "outputTokens": 2504,
+        "totalTokens": 41976,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 38313,
+            "outputTokens": 2504
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 2,
+          "inefficiencyRatio": 0.2222222222222222,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 32,
+            "agentSteps": 9,
+            "overheadRatio": 0.28125
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      },
+      "skills": ["docx", "xlsx"]
+    },
+    {
+      "id": "EVAL_FM_011",
+      "name": "Office Multi-App: PDF Financial Report → Excel Analysis + Word Summary",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 55,
+      "keywordScore": 60,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Files created at outputs/ not data/ as eval_criteria requires; keyword content correct but path checks fail.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 8,
+      "elapsedMs": 163601,
+      "tokens": {
+        "inputTokens": 24264,
+        "outputTokens": 4359,
+        "totalTokens": 30152,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 24264,
+            "outputTokens": 4359
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 7,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 18,
+            "agentSteps": 7,
+            "overheadRatio": 0.3888888888888889
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": false,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 7,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      },
+      "skills": ["docx", "pdf", "xlsx"]
+    },
+    {
+      "id": "EVAL_FM_012",
+      "name": "Excel: Cell-Level Formula — Count Countries per Company with Employee Filter",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 38,
+      "keywordScore": 75,
+      "judgeScore": 0,
+      "judge": {
+        "verdict": "FAIL",
+        "score": 0,
+        "reason": "Agent used COUNTIF on row values yielding wrong results (5,3 vs expected 2,2); correct formula required SUMPRODUCT with country filter.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 5,
+      "elapsedMs": 116361,
+      "tokens": {
+        "inputTokens": 13601,
+        "outputTokens": 2000,
+        "totalTokens": 17169,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 13601,
+            "outputTokens": 2000
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 5,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.2,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 5,
+            "overheadRatio": 0.5
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 5,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      },
+      "skills": ["xlsx"]
+    },
+    {
+      "id": "EVAL_FM_013",
+      "name": "Excel: Sheet-Level Manipulation — Merge RANGES into LISTS with Sorted Sections and Totals",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 63,
+      "keywordScore": 75,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent populated 3 sections and TOTAL rows but sorting is wrong (by amount not by date+ref) and TOTAL values are missing (null).",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 9,
+      "elapsedMs": 147046,
+      "tokens": {
+        "inputTokens": 27591,
+        "outputTokens": 4646,
+        "totalTokens": 34754,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 27591,
+            "outputTokens": 4646
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 9,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.1111111111111111,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 9,
+            "overheadRatio": 0.5625
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 9,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      },
+      "skills": ["xlsx"]
+    },
+    {
+      "id": "EVAL_FM_014",
+      "name": "Image-Excel: Table Recognition from Scientific Paper Image",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "partial",
+      "score": 65,
+      "keywordScore": 80,
+      "judgeScore": 50,
+      "judge": {
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Table structure and most values correct, but Patient delay Mean is 65.4 vs ground truth 55.3; Excel file was created.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 3,
+      "elapsedMs": 39367,
+      "tokens": {
+        "inputTokens": 28553,
+        "outputTokens": 1103,
+        "totalTokens": 30176,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 28553,
+            "outputTokens": 1103
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 4,
+          "unnecessarySteps": 0,
+          "inefficiencyRatio": 0,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 4,
+            "overheadRatio": 0.3333333333333333
+          }
+        },
+        "error": {
+          "category": "execution",
+          "description": "Agent understood the task but failed to execute correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 4,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": false
+      },
+      "skills": ["xlsx"]
+    },
+    {
+      "id": "EVAL_FM_015",
+      "name": "PowerPoint: Add Agenda Slide After Title Slide",
+      "model": "github-copilot/gpt-5.3-codex",
+      "status": "pass",
+      "score": 98,
+      "keywordScore": 96,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly added agenda slide at position 2 with exact title, 3 bullet items, and total count 11.",
+        "usedScreenshot": false
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 12,
+      "elapsedMs": 107244,
+      "tokens": {
+        "inputTokens": 22565,
+        "outputTokens": 3096,
+        "totalTokens": 27649,
+        "byModel": {
+          "gpt-5.3-codex": {
+            "inputTokens": 22565,
+            "outputTokens": 3096
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 10,
+          "unnecessarySteps": 1,
+          "inefficiencyRatio": 0.1,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 10,
+            "agentSteps": 10,
+            "overheadRatio": 1
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 0,
+          "totalCommands": 10,
+          "thrashRatio": 0,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "execution",
+        "timeoutDetected": false,
+        "errorDetected": true
+      },
+      "skills": ["pptx"]
+    }
+  ],
+  "analysis": {
+    "efficiency": {
+      "meanSteps": 6.57,
+      "semSteps": 1.010247494428964,
+      "meanStepsSuccessful": 6.25,
+      "meanStepsFailed": null,
+      "taskCount": 14
+    },
+    "error": {
+      "totalFailures": 0,
+      "failureRate": 0,
+      "byCategory": {
+        "none": 8,
+        "comprehension": 0,
+        "execution": 6,
+        "resource": 0,
+        "navigation": 0
+      },
+      "mostCommonFailureMode": "execution"
+    },
+    "safety": {
+      "meanSafetyScore": 100,
+      "harmfulAttemptCount": 0,
+      "constraintViolationCount": 1,
+      "safetyFlagCount": 0
+    },
+    "thrashing": {
+      "meanThrashRatio": 0.01,
+      "totalRedundantCommands": 2,
+      "thrashingTaskCount": 0
+    },
+    "time": {
+      "meanElapsedMs": 109154.64,
+      "meanElapsedMsPassed": 89314.88,
+      "medianElapsedMs": 108714.5,
+      "iqrElapsedMs": 90546
+    }
+  }
+}

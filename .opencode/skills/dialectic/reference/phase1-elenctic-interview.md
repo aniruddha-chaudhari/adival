@@ -12,9 +12,9 @@ This is the most important phase. Everything downstream depends on it.
 >
 > **Step 2: Research.** I'll do deep research on the topic [or: I'll build a detailed picture of your situation from what you tell me] so I'm genuinely knowledgeable about the landscape.
 >
-> **Step 3: Two "Electric Monks."** I'll create two AI agents, each of which will *fully believe* one side of the tension you're facing. They won't hedge or try to be balanced — they'll each make the absolute strongest case for their position. The reason: when you read two positions argued at full conviction, you can see the *structure* of the disagreement clearly, without having to hold either position yourself.
+> **Step 3: Two "Electric Monks."** I'll create two AI agents, each of which will _fully believe_ one side of the tension you're facing. They won't hedge or try to be balanced — they'll each make the absolute strongest case for their position. The reason: when you read two positions argued at full conviction, you can see the _structure_ of the disagreement clearly, without having to hold either position yourself.
 >
-> **Step 4: Structural analysis and synthesis.** I'll analyze *how* each position fails, find the deeper question underneath, and build a synthesis that transforms the question itself — not a compromise, but something genuinely new that neither side could have seen alone.
+> **Step 4: Structural analysis and synthesis.** I'll analyze _how_ each position fails, find the deeper question underneath, and build a synthesis that transforms the question itself — not a compromise, but something genuinely new that neither side could have seen alone.
 >
 > **Step 5: We keep going.** Each synthesis generates new tensions. We'll do multiple rounds, and each round gets sharper and more insightful as we dig deeper into the heart of the matter. The first round is the least calibrated — think of it as setting the stage. The real breakthroughs usually come in rounds 2 and 3.
 >
@@ -32,12 +32,14 @@ Ask the user what they're thinking about. Determine:
 ## 1c. Elenctic Probing
 
 Interview the user using Socratic technique. Your goal is to surface:
+
 - Hidden assumptions they haven't articulated
-- The *deepest* version of the contradiction (not the obvious surface-level framing)
+- The _deepest_ version of the contradiction (not the obvious surface-level framing)
 - What domain type this is (empirical, normative, personal, creative — this affects what a good synthesis looks like)
 - What specific parameters of their mental model they want updated
 
 Key questions to probe:
+
 - "What's your strongest intuition here? Where does it break down?"
 - "What would change your mind?"
 - "What are you actually optimizing for?"
@@ -46,7 +48,7 @@ Key questions to probe:
 
 ## 1d. Ground the Monks (Domain-Adaptive)
 
-The monks need deep grounding before they can believe effectively. But *what* constitutes grounding depends on the domain type and how novel it is. The skill must adapt.
+The monks need deep grounding before they can believe effectively. But _what_ constitutes grounding depends on the domain type and how novel it is. The skill must adapt.
 
 **Research depth is the main knob.** It's the only phase that meaningfully changes the time and cost profile — everything else (essays, analysis, synthesis, validation, auditor) is fast regardless. Calibrate research investment based on how much the orchestrator already knows:
 
@@ -61,6 +63,7 @@ The monks need deep grounding before they can believe effectively. But *what* co
 These domains have literature, case studies, data, and named thinkers. The grounding comes from outside the user.
 
 **When full research is needed,** run 2-3 parallel research subagents on different aspects of the domain. A natural split that works well:
+
 1. **Side A's strongest literature** — the key thinkers, evidence, and arguments for one position
 2. **Side B's strongest literature** — same for the other side
 3. **Broader landscape/context** — institutional structures, historical parallels, adjacent domains, empirical data
@@ -69,16 +72,16 @@ The landscape agent consistently takes longest (broadest scope) — give it more
 
 This is expensive (~150-250K tokens across agents) but is the single most valuable investment in the entire process — deep grounding is what makes everything downstream good.
 
-Research agents should be given *specific* search targets — not "research this topic" but "search for X's argument about Y, specifically the part about Z."
+Research agents should be given _specific_ search targets — not "research this topic" but "search for X's argument about Y, specifically the part about Z."
 
 ### Personal and Values Domains (life decisions, career, relationships, commitments, priorities)
 
-These domains have little useful external literature. The grounding comes from *the user themselves* — their history, values, constraints, relationships, and patterns. **The interview IS the research.**
+These domains have little useful external literature. The grounding comes from _the user themselves_ — their history, values, constraints, relationships, and patterns. **The interview IS the research.**
 
 The elenctic probing (1c) must go deeper and wider for these domains. You need to map:
 
-- **The full landscape of commitments.** Not just the two in tension — *everything* the user is carrying. Ask: "Walk me through what's on your plate right now — all of it." Undifferentiated care (the Empathic Integrator pattern) only becomes visible when you see the full load.
-- **The history.** "Have you faced a decision like this before? What happened? What did you choose? How did it feel afterward?" The Exploratory Debater's commitment pattern only becomes visible across multiple instances. The Practical Executor's optimization lock only shows when you see what they *haven't* questioned.
+- **The full landscape of commitments.** Not just the two in tension — _everything_ the user is carrying. Ask: "Walk me through what's on your plate right now — all of it." Undifferentiated care (the Empathic Integrator pattern) only becomes visible when you see the full load.
+- **The history.** "Have you faced a decision like this before? What happened? What did you choose? How did it feel afterward?" The Exploratory Debater's commitment pattern only becomes visible across multiple instances. The Practical Executor's optimization lock only shows when you see what they _haven't_ questioned.
 - **The stakeholders and their actual capacities.** "Who else is affected by this? What can they actually do — not ideally, but right now?" This separates the vision from the reality, which is the Empathic Integrator's core split.
 - **The values underneath the positions.** "You say you value X and also Y. If you could only have one — gun to your head — which?" This surfaces the Possibility Explorer's values hierarchy that they resist articulating.
 - **The constraints they're treating as fixed.** "What would you do if [constraint] disappeared tomorrow?" This reveals which constraints are real and which are assumed.
@@ -89,13 +92,14 @@ The elenctic probing (1c) must go deeper and wider for these domains. You need t
 
 ### Mixed Domains (normative/institutional, creative direction)
 
-These need both. A dialectic about institutional identity, for example, requires external research (organizational history, governance structures, comparable institutions) *and* the user's personal values and judgment about what the institution should become. The interview needs to surface the personal dimension while the research agents cover the external.
+These need both. A dialectic about institutional identity, for example, requires external research (organizational history, governance structures, comparable institutions) _and_ the user's personal values and judgment about what the institution should become. The interview needs to surface the personal dimension while the research agents cover the external.
 
-For mixed domains, run the extended interview *and* the research agents, and note in the briefing document which material is user-sourced (values, priorities, constraints) vs. externally-sourced (evidence, history, precedent). The monks need to know the difference — they should believe positions grounded in the user's actual situation, not generic arguments.
+For mixed domains, run the extended interview _and_ the research agents, and note in the briefing document which material is user-sourced (values, priorities, constraints) vs. externally-sourced (evidence, history, precedent). The monks need to know the difference — they should believe positions grounded in the user's actual situation, not generic arguments.
 
 ### In All Cases
 
 You need to know the domain well enough to:
+
 - Identify and correct likely **degenerate framings** (the obvious/boring version of the dialectic that won't produce insight)
 - Generate **specific research directives or interview questions** for each subagent
 - Write **framing corrections** that steer monks away from shallow takes
@@ -106,12 +110,14 @@ You need to know the domain well enough to:
 **Synthesize everything — external research AND user-sourced material — into a single neutral briefing document and save it to a file** (e.g., `context_briefing.md`).
 
 For **external-research domains**, this covers:
+
 - Key evidence, sources, and arguments from all sides
 - The landscape of the debate — who the key thinkers are, what positions exist
 - Relevant empirical data, historical context, institutional structures
 - The specific framing you've identified as the deepest contradiction
 
 For **personal/values domains**, this covers:
+
 - The user's full commitment landscape (all the things they're carrying)
 - Relevant history and patterns (past decisions, outcomes, recurring themes)
 - Stakeholders and their actual capacities
@@ -121,11 +127,12 @@ For **personal/values domains**, this covers:
 
 For **mixed domains**, both sections.
 
-Both monks will read this file before writing. For personal domains this is especially important — it gives the monks the user's actual situation rather than letting them argue from generic positions. A monk that believes "you should prioritize your career" in the abstract is useless. A monk that believes "given your specific history of X, your constraint of Y, and the fact that stakeholder Z can actually handle Q — you should prioritize your career *because*..." is an Electric Monk doing its job.
+Both monks will read this file before writing. For personal domains this is especially important — it gives the monks the user's actual situation rather than letting them argue from generic positions. A monk that believes "you should prioritize your career" in the abstract is useless. A monk that believes "given your specific history of X, your constraint of Y, and the fact that stakeholder Z can actually handle Q — you should prioritize your career _because_..." is an Electric Monk doing its job.
 
 ## 1f. Confirm with the User
 
 Before proceeding, summarize back:
+
 - "Here's how I understand the two positions..."
 - "Here's what I think the real tension is..."
 - "Here's what I'll have each agent research and argue..."

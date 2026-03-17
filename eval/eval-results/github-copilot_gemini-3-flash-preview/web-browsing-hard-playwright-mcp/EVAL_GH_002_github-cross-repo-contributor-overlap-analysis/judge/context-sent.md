@@ -3,22 +3,29 @@
 I will navigate to the React and React Native GitHub repositories to identify the top contributor and check for their presence in the React Native top 30 list.
 
 ## Tool: playwright_browser_navigate (call_MHxxMndjQmdlTVNOSnduMlRhZEQ)
+
 Status: completed
 url: https://github.com/facebook/react/graphs/contributors
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react/graphs/contributors');
+await page.goto("https://github.com/facebook/react/graphs/contributors");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_wait_for (call_MHxBZnVWb1FjYkdZSm82c053ZDM)
+
 Status: completed
 time: 5
 Output: ### Result
 Waited for 5
+
 ### Ran Playwright code
-```js
+
+````js
 await new Promise(f => setTimeout(f, 5 * 1000));
 ...(truncated)
 
@@ -140,113 +147,142 @@ url: https://github.com/facebook/react/commits/main/
 Output: ### Ran Playwright code
 ```js
 await page.goto('https://github.com/facebook/react/commits/main/');
-```
+````
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_evaluate (call_MHxONGRaSjVlMzRnZDd6dk1zbms)
+
 Status: completed
 function: () => {
-  const elements = Array.from(document.querySelectorAll('a')).filter(a => a.href && a.href.i...(truncated)
+const elements = Array.from(document.querySelectorAll('a')).filter(a => a.href && a.href.i...(truncated)
 Output: ### Result
 [
-  "jackpope",
-  "hoxyq",
-  "unstubbable",
+"jackpope",
+"hoxyq",
+"unstubbable",
 ...(truncated)
 
 ## Tool: playwright_browser_navigate (call_MHxEaUY4YUtGQzVHVTNadkt5eUw)
+
 Status: completed
 url: https://github.com/facebook/react/graphs/contributors?from=2013-05-26&to=2024-03-14&type=c
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react/graphs/contributors?from=2013-05-26&to=2024-03-14&type=c');
+await page.goto(
+  "https://github.com/facebook/react/graphs/contributors?from=2013-05-26&to=2024-03-14&type=c"
+);
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_navigate (call_MHxuc1VWaWRwNW82aXdiN2g5cDE)
+
 Status: completed
 url: https://github.com/facebook/react/graphs/contributors
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react/graphs/contributors');
+await page.goto("https://github.com/facebook/react/graphs/contributors");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_navigate (call_MHxrdEMyVVVuTlJ1eWFIOGFuZ0c)
+
 Status: completed
 url: https://github.com/facebook/react/graphs/contributors
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react/graphs/contributors');
+await page.goto("https://github.com/facebook/react/graphs/contributors");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_evaluate (call_MHx3T1BWR2J1ZFgyN3RmWXIxSDk)
+
 Status: completed
 function: async () => {
-  const response = await fetch('https://github.com/facebook/react/graphs/contributors-...(truncated)
+const response = await fetch('https://github.com/facebook/react/graphs/contributors-...(truncated)
 Output: ### Result
 [
-  {
-    "total": 9,
-    "author": {
+{
+"total": 9,
+"author": {
 ...(truncated)
 
 ## Tool: playwright_browser_evaluate (call_MHxxWFBESDlqbXJmd3VZUHUxT1Q)
+
 Status: completed
 function: () => {
-  const data = JSON.parse(document.body.innerText);
-  const sorted = data.sort((a, b) => b.t...(truncated)
+const data = JSON.parse(document.body.innerText);
+const sorted = data.sort((a, b) => b.t...(truncated)
 Output: ### Error
-Error: page._evaluateFunction: SyntaxError: Unexpected token 'S', "Skip to co"... is not valid JSON
-    at JSON.parse (<anonymous>)
-    at eval (eval at evaluate (:301:30), <anonymous>:2:21)
-    at UtilityScript.evaluate (<anonymous>:303:16)
+Error: page.\_evaluateFunction: SyntaxError: Unexpected token 'S', "Skip to co"... is not valid JSON
+at JSON.parse (<anonymous>)
+at eval (eval at evaluate (:301:30), <anonymous>:2:21)
+at UtilityScript.evaluate (<anonymous>:303:16)
 ...(truncated)
 
 ## Tool: playwright_browser_evaluate (call_MHxRcjJqZUNWaVM3d1FxZ1oybmM)
+
 Status: completed
 function: async () => {
-  const response = await fetch('https://github.com/facebook/react/graphs/contributors-...(truncated)
+const response = await fetch('https://github.com/facebook/react/graphs/contributors-...(truncated)
 Output: ### Result
 [
-  {
-    "login": "sebmarkbage",
-    "total": 1950
+{
+"login": "sebmarkbage",
+"total": 1950
 ...(truncated)
 
 ## Tool: playwright_browser_evaluate (call_MHxueGJpYXhRSWNieWxpQVByWlU)
+
 Status: completed
 function: async () => {
-  const response = await fetch('https://github.com/facebook/react-native/graphs/contri...(truncated)
+const response = await fetch('https://github.com/facebook/react-native/graphs/contri...(truncated)
 Output: ### Result
 [
-  {
-    "rank": 1,
-    "login": "reactjs-bot",
+{
+"rank": 1,
+"login": "reactjs-bot",
 ...(truncated)
 
 ## Tool: playwright_browser_navigate (call_MHxmMDhva1ZJVGczT0I4dlhRTVM)
+
 Status: completed
 url: https://github.com/facebook/react-native/graphs/contributors
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react-native/graphs/contributors');
+await page.goto("https://github.com/facebook/react-native/graphs/contributors");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_take_screenshot (call_MHxmaHdjRjNnOG91a0tiSHJ3UkI)
+
 Status: completed
 filename: eval-github-overlap.png
 type: png
 Output: ### Result
+
 - [Screenshot of viewport](eval-github-overlap.png)
+
 ### Ran Playwright code
+
 ```js
 // Screenshot viewport and save it as eval-github-overlap.png
 ...(truncated)
@@ -257,3 +293,4 @@ TopContributor: sebmarkbage
 ReactCommits: 1950
 InReactNative: No
 ReactNativeRank: N/A
+```

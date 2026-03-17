@@ -47,7 +47,9 @@ class TimeMetricsVisualizer:
                 passed_time_data[model] = passed_times
 
         if not time_data:
-            print(f"[SKIP] Time metrics visualization: No elapsed time data for suite={suite}")
+            print(
+                f"[SKIP] Time metrics visualization: No elapsed time data for suite={suite}"
+            )
             return
 
         median_times = {m: np.median(l) for m, l in time_data.items()}
@@ -137,7 +139,9 @@ class TimeMetricsVisualizer:
         )
         plt.close(fig)
 
-        print(f"[+] Time metrics visualization created for suite={suite} ({n_models} models)")
+        print(
+            f"[+] Time metrics visualization created for suite={suite} ({n_models} models)"
+        )
 
     def plot_distribution(self, top_n: int = None, per_suite: bool = False):
         """Create box plot of elapsed time distribution with success-conditioned mean markers.
@@ -145,7 +149,8 @@ class TimeMetricsVisualizer:
         When per_suite=True, generates one plot per target suite.
         """
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted({key.split("::", 1)[1] for key in self.task_results})
+            for suite in suites:
                 self._plot_for_suite(suite, top_n=top_n)
             return None
 

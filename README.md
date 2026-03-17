@@ -105,12 +105,12 @@ Use OpenCode with a **local MCP process** for QMD. This is the tested configurat
 ```json
 {
   "mcp": {
-	 "qmd": {
-		"type": "local",
-		"command": ["node", "C:\\Users\\<YourUser>\\node_modules\\@tobilu\\qmd\\dist\\qmd.js", "mcp"],
-		"enabled": true,
-		"timeout": 60000
-	 }
+    "qmd": {
+      "type": "local",
+      "command": ["node", "C:\\Users\\<YourUser>\\node_modules\\@tobilu\\qmd\\dist\\qmd.js", "mcp"],
+      "enabled": true,
+      "timeout": 60000
+    }
   }
 }
 ```
@@ -125,25 +125,26 @@ opencode run "use qmd_search to find 'attack on titan' in memory and tell me wha
 ```
 
 Expected:
+
 - `opencode mcp list` shows `qmd connected`
 - `qmd_search` returns results from `memory/memory/*.md`
 
 ### Known pitfalls and fixes
 
 1. `Invalid input mcp.qmd`
-	- Cause: unsupported config shape (for example `"type": "url"`)
-	- Fix: use `"type": "local"` + `"command": [...]`
+   - Cause: unsupported config shape (for example `"type": "url"`)
+   - Fix: use `"type": "local"` + `"command": [...]`
 
 2. `qmd: command not found` inside OpenCode/bash
-	- Cause: on Windows, `qmd` is a `.cmd` shim and may not exist in bash PATH
-	- Fix: use MCP tools (`qmd_search`, `qmd_get`, `qmd_status`) via OpenCode; for shell use PowerShell
+   - Cause: on Windows, `qmd` is a `.cmd` shim and may not exist in bash PATH
+   - Fix: use MCP tools (`qmd_search`, `qmd_get`, `qmd_status`) via OpenCode; for shell use PowerShell
 
 3. `MCP error -32001: Request timed out`
-	- Cause: model cold start / short timeout
-	- Fix: set `timeout` to `60000` in `opencode.json`
+   - Cause: model cold start / short timeout
+   - Fix: set `timeout` to `60000` in `opencode.json`
 
 4. Search returns no result after writing a note
-	- Cause: index not refreshed
-	- Fix: run `qmd update`
+   - Cause: index not refreshed
+   - Fix: run `qmd update`
 
 See `qmdreadme.md` for a complete operator guide.

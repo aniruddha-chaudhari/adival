@@ -1,20 +1,27 @@
 ## Tool: playwright_browser_navigate (call_20718764)
+
 Status: completed
 url: https://github.com/facebook/react/contributors
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react/contributors');
+await page.goto("https://github.com/facebook/react/contributors");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_wait_for (call_32453052)
+
 Status: completed
 time: 15
 Output: ### Result
 Waited for 15
+
 ### Ran Playwright code
-```js
+
+````js
 await new Promise(f => setTimeout(f, 15 * 1000));
 ...(truncated)
 
@@ -24,20 +31,25 @@ url: https://github.com/facebook/react/contributors
 Output: ### Ran Playwright code
 ```js
 await page.goto('https://github.com/facebook/react/contributors');
-```
+````
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_run_code (call_99697537)
+
 Status: completed
 code: async (page) => {
-  const contribs = await page.$$('.contrib-person');
-  if (contribs.length > 0) {
+const contribs = await page.$$('.contrib-person');
+if (contribs.length > 0) {
 ...(truncated)
 Output: ### Result
 null
+
 ### Ran Playwright code
-```js
+
+````js
 await (async (page) => {
 ...(truncated)
 
@@ -129,7 +141,7 @@ await (async (page) => {
 Status: completed
 format: html
 url: https://github.com/facebook/react/contributors
-Output: 
+Output:
 
 
 
@@ -175,19 +187,25 @@ url: https://github.com/facebook/react-native/contributors
 Output: ### Ran Playwright code
 ```js
 await page.goto('https://github.com/facebook/react-native/contributors');
-```
+````
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_take_screenshot (call_94474764)
+
 Status: completed
 filename: eval-github-overlap.png
 fullPage: true
 type: png
 Output: ### Result
+
 - [Screenshot of full page](eval-github-overlap.png)
+
 ### Ran Playwright code
-```js
+
+````js
 // Screenshot full page and save it as eval-github-overlap.png
 ...(truncated)
 
@@ -206,3 +224,4 @@ TopContributor: sebmarkbage
 ReactCommits: 1939
 InReactNative: No
 ReactNativeRank: N/A
+````

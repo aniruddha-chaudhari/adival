@@ -19,7 +19,7 @@ class JudgeAnalysisVisualizer:
         """
         self.task_results_by_model = task_results_by_model
 
-    def plot_keyword_vs_judge_concordance(self):
+    def plot_keyword_vs_judge_concordance(self, output_subdir: str | None = None):
         """
         Scatter plot of keywordScore vs judgeScore across all tasks/runs.
         Only includes tasks where judgeScore is not None.
@@ -90,12 +90,17 @@ class JudgeAnalysisVisualizer:
         if len(unique_models) <= 10:
             ax.legend(loc="upper left", frameon=False, fontsize=config.FONT_SIZE_LEGEND)
 
-        save_figure(fig, "13_judge_keyword_concordance", tight_layout=True)
+        save_figure(
+            fig,
+            "13_judge_keyword_concordance",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print(f"[+] Judge/keyword concordance created ({len(points)} tasks)")
 
-    def plot_per_task_scores(self):
+    def plot_per_task_scores(self, output_subdir: str | None = None):
         """
         Grouped bar chart showing score per task ID, split into one chart per suite.
         Each chart has one bar per model for each task, improving readability.
@@ -106,7 +111,7 @@ class JudgeAnalysisVisualizer:
             if "::" not in key:
                 continue
             model, domain = key.split("::", 1)
-            if model not in config.TARGET_MODELS or domain not in config.TARGET_SUITES:
+            if model not in config.TARGET_MODELS:
                 continue
             suite_to_keys.setdefault(domain, []).append(key)
 
@@ -124,7 +129,7 @@ class JudgeAnalysisVisualizer:
         )
         n_tasks = len(all_task_ids)
 
-        for suite in config.TARGET_SUITES:
+        for suite in sorted(suite_to_keys.keys()):
             keys = suite_to_keys.get(suite, [])
             if not keys:
                 continue
@@ -179,17 +184,23 @@ class JudgeAnalysisVisualizer:
             )
             ax.grid(axis="y", alpha=0.3)
 
+            suite_subdir = config.SUITE_PNG_SUBDIRS.get(suite, suite)
+            if output_subdir:
+                suite_subdir = f"{output_subdir}/{suite_subdir}"
+
             save_figure(
                 fig,
                 "14_per_task_score_breakdown",
                 tight_layout=True,
-                subdir=config.SUITE_PNG_SUBDIRS.get(suite, suite),
+                subdir=suite_subdir,
             )
             plt.close(fig)
 
-            print(f"[+] Per-task score breakdown created for suite={suite} ({n_tasks} tasks)")
+            print(
+                f"[+] Per-task score breakdown created for suite={suite} ({n_tasks} tasks)"
+            )
 
-    def plot_error_category_by_domain(self):
+    def plot_error_category_by_domain(self, output_subdir: str | None = None):
         """
         Stacked horizontal bar chart of error categories per domain,
         aggregated across all models.
@@ -274,7 +285,12 @@ class JudgeAnalysisVisualizer:
         ax.legend(loc="lower right", frameon=False, fontsize=config.FONT_SIZE_LEGEND)
         ax.grid(axis="x", alpha=0.3)
 
-        save_figure(fig, "15_error_category_by_domain", tight_layout=True)
+        save_figure(
+            fig,
+            "15_error_category_by_domain",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print(f"[+] Error category by domain created ({n_domains} domains)")

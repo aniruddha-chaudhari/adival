@@ -24,10 +24,10 @@ gws docs +write --document <ID> --text <TEXT>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--document` | ✓ | — | Document ID |
-| `--text` | ✓ | — | Text to append (plain text) |
+| Flag         | Required | Default | Description                 |
+| ------------ | -------- | ------- | --------------------------- |
+| `--document` | ✓        | —       | Document ID                 |
+| `--text`     | ✓        | —       | Text to append (plain text) |
 
 ## Examples
 

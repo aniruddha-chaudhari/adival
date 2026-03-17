@@ -1,0 +1,6 @@
+{
+  "combined": {
+    "name": "Browsing",
+    "domains": ["agent-browser", "pinchtab", "playwright-mcp"]
+  }
+}

@@ -24,11 +24,11 @@ gws gmail +send --to <EMAIL> --subject <SUBJECT> --body <TEXT>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--to` | ✓ | — | Recipient email address |
-| `--subject` | ✓ | — | Email subject |
-| `--body` | ✓ | — | Email body (plain text) |
+| Flag        | Required | Default | Description             |
+| ----------- | -------- | ------- | ----------------------- |
+| `--to`      | ✓        | —       | Recipient email address |
+| `--subject` | ✓        | —       | Email subject           |
+| `--body`    | ✓        | —       | Email body (plain text) |
 
 ## Examples
 

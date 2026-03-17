@@ -11,3 +11,4 @@ eval/nul
 
 manager/*
 workbox/*
+.venv

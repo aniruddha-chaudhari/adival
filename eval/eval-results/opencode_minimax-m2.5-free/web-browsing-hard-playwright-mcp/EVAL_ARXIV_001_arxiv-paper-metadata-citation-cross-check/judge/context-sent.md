@@ -1,20 +1,28 @@
 ## Tool: playwright_browser_navigate (call_function_q8rex7eazx1s_1)
+
 Status: completed
 url: https://arxiv.org/abs/1706.03762
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://arxiv.org/abs/1706.03762');
+await page.goto("https://arxiv.org/abs/1706.03762");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_take_screenshot (call_function_ohmfzjoegztr_1)
+
 Status: completed
 filename: eval-arxiv-paper.png
 type: png
 Output: ### Result
+
 - [Screenshot of viewport](eval-arxiv-paper.png)
+
 ### Ran Playwright code
+
 ```js
 // Screenshot viewport and save it as eval-arxiv-paper.png
 ...(truncated)
@@ -37,3 +45,4 @@ AuthorCount: 8
 SubmissionDateV1: 12 Jun 2017
 SubjectCode: cs.CL
 AbstractWordCount: 165
+```

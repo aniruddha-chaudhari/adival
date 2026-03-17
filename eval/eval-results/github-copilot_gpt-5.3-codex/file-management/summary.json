@@ -21,11 +21,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 11,
       "elapsedMs": 174429,
@@ -93,9 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 15,
       "elapsedMs": 209794,
@@ -144,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "docx"
-      ]
+      "skills": ["docx"]
     },
     {
       "id": "EVAL_FM_003",
@@ -165,10 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "fields": ["completionScore", "observedSteps"]
       },
       "toolCallCount": 8,
       "elapsedMs": 51967,
@@ -236,9 +225,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 1,
       "elapsedMs": 38868,
@@ -306,10 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 7,
       "elapsedMs": 163210,
@@ -358,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pptx"
-      ]
+      "skills": ["pptx"]
     },
     {
       "id": "EVAL_FM_007",
@@ -379,9 +361,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 3,
       "elapsedMs": 134681,
@@ -449,9 +429,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 7,
       "elapsedMs": 133992,
@@ -519,9 +497,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 5,
       "elapsedMs": 144476,

@@ -23,6 +23,7 @@ TARGET_MODELS = [
 
 # Logical suite/domain identifiers in eval-results
 TARGET_SUITES = [
+    "file-management",
     "web-browsing-hard-agent-browser",
     "web-browsing-hard-pinchtab",
     "web-browsing-hard-playwright-mcp",
@@ -30,6 +31,7 @@ TARGET_SUITES = [
 
 # Mapping from eval domain name -> PNG subdirectory name
 SUITE_PNG_SUBDIRS = {
+    "file-management": "file-management",
     "web-browsing-hard-agent-browser": "web-browsing-hard-agent-browser",
     "web-browsing-hard-pinchtab": "web-browsing-hard-pinchtab",
     "web-browsing-hard-playwright-mcp": "web-browsing-hard-playwright-mcp",

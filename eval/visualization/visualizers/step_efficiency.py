@@ -42,7 +42,9 @@ class StepEfficiencyVisualizer:
                 trajectory_data[model] = lengths
 
         if not trajectory_data:
-            print(f"[SKIP] Step efficiency visualization: No trajectory data for suite={suite}")
+            print(
+                f"[SKIP] Step efficiency visualization: No trajectory data for suite={suite}"
+            )
             return
 
         median_lengths = {m: np.median(l) for m, l in trajectory_data.items()}
@@ -101,7 +103,9 @@ class StepEfficiencyVisualizer:
         )
         plt.close(fig)
 
-        print(f"[+] Step efficiency visualization created for suite={suite} ({n_models} models)")
+        print(
+            f"[+] Step efficiency visualization created for suite={suite} ({n_models} models)"
+        )
 
     def plot_distribution(self, top_n: int = None, per_suite: bool = False):
         """Create box plot of trajectory length distribution across models.
@@ -110,7 +114,8 @@ class StepEfficiencyVisualizer:
         own directory for clarity.
         """
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted({key.split("::", 1)[1] for key in self.task_results})
+            for suite in suites:
                 self._plot_for_suite(suite, top_n=top_n)
             return None
 

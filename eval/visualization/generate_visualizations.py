@@ -39,6 +39,8 @@ from visualizers import (
 )
 import config
 
+COMBINED_CONFIG_PATH = Path(__file__).parent / "visual-config.json"
+
 
 class EvalResultsAggregator:
     """Aggregate evaluation results from multiple summary JSON files"""
@@ -78,6 +80,8 @@ class EvalResultsAggregator:
         print(f"[STATS] Found {len(summary_files)} evaluation runs")
 
         for summary_file in summary_files:
+            if "others" in summary_file.parts:
+                continue
             try:
                 with open(summary_file, "r") as f:
                     data = json.load(f)
@@ -290,12 +294,26 @@ class EvalResultsAggregator:
         return task_results
 
 
-def generate_all_visualizations(
+def _filter_target_models(
+    aggregated_data: pd.DataFrame, task_results_by_model: Dict[str, List]
+) -> Tuple[pd.DataFrame, Dict[str, List]]:
+    """Filter results down to target models only."""
+    target_models = set(config.TARGET_MODELS)
+    filtered_agg = aggregated_data[aggregated_data["model"].isin(target_models)].copy()
+    filtered_tasks = {
+        key: results
+        for key, results in task_results_by_model.items()
+        if key.split("::", 1)[0] in target_models
+    }
+    return filtered_agg, filtered_tasks
+
+
+def generate_per_suite_visualizations(
     aggregated_data: pd.DataFrame,
     task_results_by_model: Dict[str, List],
     top_n_models: int = None,
 ):
-    """Generate all visualization types.
+    """Generate per-suite visualizations only.
 
     Args:
         aggregated_data: Aggregated metrics DataFrame (one row per model::domain)
@@ -303,18 +321,12 @@ def generate_all_visualizations(
         top_n_models: Limit visualizations to top N series (optional)
     """
 
-    print("\n[STATS] Generating visualizations...")
+    print("\n[STATS] Generating per-suite visualizations...")
     print("=" * 60)
 
-    # Focus charts on the primary models only, to reduce clutter and
-    # match the paper figures.
-    target_models = set(config.TARGET_MODELS)
-    aggregated_data = aggregated_data[aggregated_data["model"].isin(target_models)].copy()
-    task_results_by_model = {
-        key: results
-        for key, results in task_results_by_model.items()
-        if key.split("::", 1)[0] in target_models
-    }
+    aggregated_data, task_results_by_model = _filter_target_models(
+        aggregated_data, task_results_by_model
+    )
 
     # 1. Success Rate
     print("\n[1]  Success Rate Comparison")
@@ -347,35 +359,103 @@ def generate_all_visualizations(
     print("\n[6]  Model Comparison Heatmaps")
     mc_viz = ModelComparisonVisualizer(aggregated_data)
     mc_viz.plot_heatmap(top_n=top_n_models, per_suite=True)
-    mc_viz.plot_top_models_radar(top_n=min(10, len(aggregated_data)))
 
-    # 7. Domain × Model Comparison
-    print("\n[7]  Domain × Model Comparison")
-    dc_viz = DomainComparisonVisualizer(aggregated_data)
-    dc_viz.plot_pass_rate_by_domain()
-    dc_viz.plot_score_heatmap()
-
-    # 8. Score Efficiency
-    print("\n[8]  Score Efficiency")
-    se2_viz = ScoreEfficiencyVisualizer(aggregated_data, task_results_by_model)
-    se2_viz.plot_score_per_token()
-    se2_viz.plot_speed_vs_score()
-    se2_viz.plot_thrash_vs_score()
-
-    # 9. Judge Analysis
-    print("\n[9]  Judge Analysis")
+    # 9. Judge Analysis (per-suite only)
+    print("\n[9]  Judge Analysis (Per-Suite)")
     ja_viz = JudgeAnalysisVisualizer(task_results_by_model)
-    ja_viz.plot_keyword_vs_judge_concordance()
     ja_viz.plot_per_task_scores()
-    ja_viz.plot_error_category_by_domain()
-
-    # 10. Suite Comparison (web-browsing-hard vs pinchtab vs playwright-mcp)
-    print("\n[10] Suite Comparison")
-    sc_viz = SuiteComparisonVisualizer(aggregated_data, task_results_by_model)
-    sc_viz.plot_all()
 
     print("\n" + "=" * 60)
-    print("[OK] All visualizations generated successfully!\n")
+    print("[OK] Per-suite visualizations generated successfully!\n")
+
+
+def generate_combined_visualizations(
+    aggregated_data: pd.DataFrame,
+    task_results_by_model: Dict[str, List],
+    combined_name: str,
+    combined_domains: List[str],
+    top_n_models: int = None,
+):
+    """Generate combined-domain visualizations (7-21) for configured domains."""
+
+    print("\n[COMBINED] Generating combined visualizations...")
+    print("=" * 60)
+
+    aggregated_data, task_results_by_model = _filter_target_models(
+        aggregated_data, task_results_by_model
+    )
+
+    domain_set = set(combined_domains)
+    combined_agg = aggregated_data[aggregated_data["domain"].isin(domain_set)].copy()
+    combined_tasks = {
+        key: results
+        for key, results in task_results_by_model.items()
+        if key.split("::", 1)[1] in domain_set
+    }
+
+    if combined_agg.empty:
+        print("[SKIP] Combined visualizations: no matching domains found")
+        return
+
+    combined_subdir = f"combined/{combined_name}"
+
+    # 7. Top Models Comparison
+    print("\n[7]  Top Models Comparison (Combined)")
+    mc_viz = ModelComparisonVisualizer(combined_agg)
+    mc_viz.plot_top_models_radar(
+        top_n=min(10, len(combined_agg)), output_subdir=combined_subdir
+    )
+
+    # 8. Domain × Model Comparison
+    print("\n[8]  Domain × Model Comparison (Combined)")
+    dc_viz = DomainComparisonVisualizer(combined_agg)
+    dc_viz.plot_pass_rate_by_domain(output_subdir=combined_subdir)
+    dc_viz.plot_score_heatmap(output_subdir=combined_subdir)
+
+    # 9. Score Efficiency
+    print("\n[9]  Score Efficiency (Combined)")
+    se2_viz = ScoreEfficiencyVisualizer(combined_agg, combined_tasks)
+    se2_viz.plot_score_per_token(output_subdir=combined_subdir)
+    se2_viz.plot_speed_vs_score(output_subdir=combined_subdir)
+    se2_viz.plot_thrash_vs_score(output_subdir=combined_subdir)
+
+    # 10. Judge Analysis
+    print("\n[10] Judge Analysis (Combined)")
+    ja_viz = JudgeAnalysisVisualizer(combined_tasks)
+    ja_viz.plot_keyword_vs_judge_concordance(output_subdir=combined_subdir)
+    ja_viz.plot_per_task_scores(output_subdir=combined_subdir)
+    ja_viz.plot_error_category_by_domain(output_subdir=combined_subdir)
+
+    # 11. Suite Comparison (configured domains)
+    print("\n[11] Suite Comparison (Combined)")
+    sc_viz = SuiteComparisonVisualizer(
+        combined_agg,
+        combined_tasks,
+        suite_order=combined_domains,
+        suite_labels={d: d for d in combined_domains},
+    )
+    sc_viz.plot_all(output_subdir=combined_subdir, data_subdir=combined_subdir)
+
+    print("\n" + "=" * 60)
+    print("[OK] Combined visualizations generated successfully!\n")
+
+
+def load_combined_config(config_path: Path) -> Tuple[str, List[str]]:
+    """Load combined visualization config."""
+    if not config_path.exists():
+        raise FileNotFoundError(f"Combined config not found: {config_path}")
+
+    data = json.loads(config_path.read_text(encoding="utf-8"))
+    combined = data.get("combined") or {}
+    name = combined.get("name")
+    domains = combined.get("domains")
+
+    if not name or not isinstance(name, str):
+        raise ValueError("combined.name must be a non-empty string")
+    if not isinstance(domains, list) or not all(isinstance(d, str) for d in domains):
+        raise ValueError("combined.domains must be a list of strings")
+
+    return name, domains
 
 
 def save_summary_table(aggregated_data: pd.DataFrame):
@@ -481,9 +561,19 @@ def main():
     aggregated_data = aggregator.aggregate_metrics()
     task_results_by_model = aggregator.get_task_results_by_model()
 
-    # Generate visualizations
-    generate_all_visualizations(
+    # Generate per-suite visualizations
+    generate_per_suite_visualizations(
         aggregated_data, task_results_by_model, top_n_models=args.top_n
+    )
+
+    # Generate combined visualizations (7-21) from config
+    combined_name, combined_domains = load_combined_config(COMBINED_CONFIG_PATH)
+    generate_combined_visualizations(
+        aggregated_data,
+        task_results_by_model,
+        combined_name=combined_name,
+        combined_domains=combined_domains,
+        top_n_models=args.top_n,
     )
 
     # Save summary table

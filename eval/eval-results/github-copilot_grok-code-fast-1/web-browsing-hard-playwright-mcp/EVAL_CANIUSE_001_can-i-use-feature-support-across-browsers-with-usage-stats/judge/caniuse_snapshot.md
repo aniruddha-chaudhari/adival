@@ -55,7 +55,7 @@
                 - img [ref=e53]
             - paragraph [ref=e54]:
               - text: Method of using a grid concept to lay out content, providing a mechanism for authors to divide available space for layout into columns and rows using a set of predictable sizing behaviors. Includes support for all
-              - code [ref=e55]: grid-*
+              - code [ref=e55]: grid-\*
               - text: properties and the
               - code [ref=e56]: fr
               - text: unit.
@@ -126,9 +126,9 @@
               - text: 147 - 149
               - generic: ": Supported"
           - generic [ref=e106]:
-            - heading "Edge *" [level=4] [ref=e107]:
+            - heading "Edge \*" [level=4] [ref=e107]:
               - text: Edge
-              - generic: "*"
+              - generic: "\*"
             - generic [ref=e108]:
               - generic [ref=e110] [cursor=pointer]:
                 - text: 12 - 15
@@ -226,9 +226,9 @@
               - text: "145"
               - generic: ": Supported"
           - generic [ref=e178]:
-            - heading "Safari on iOS *" [level=4] [ref=e179]:
+            - heading "Safari on iOS \*" [level=4] [ref=e179]:
               - text: Safari on iOS
-              - generic: "*"
+              - generic: "\*"
             - generic [ref=e180]:
               - generic [ref=e182] [cursor=pointer]:
                 - text: 3.2 - 10.2
@@ -255,9 +255,9 @@
                 - text: "29"
                 - generic: ": Supported"
           - generic [ref=e198]:
-            - heading "Opera Mini *" [level=4] [ref=e199]:
+            - heading "Opera Mini \*" [level=4] [ref=e199]:
               - text: Opera Mini
-              - generic: "*"
+              - generic: "\*"
             - generic [ref=e202] [cursor=pointer]:
               - text: all
               - generic: ": Not supported"
@@ -276,9 +276,9 @@
               - text: "15.5"
               - generic: ": Supported"
           - generic [ref=e215]:
-            - heading "Android Browser *" [level=4] [ref=e216]:
+            - heading "Android Browser \*" [level=4] [ref=e216]:
               - text: Android Browser
-              - generic: "*"
+              - generic: "\*"
             - generic [ref=e217]:
               - generic [ref=e219] [cursor=pointer]:
                 - text: 2.1 - 4.4.4

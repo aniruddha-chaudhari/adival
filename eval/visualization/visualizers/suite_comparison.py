@@ -1,8 +1,8 @@
 """Suite comparison visualizations.
 
 Compares the three web-browsing tool suites head-to-head:
-  - web-browsing-hard          (baseline, agent-only)
-  - web-browsing-hard-pinchtab (Pinchtab browser tool)
+  - web-browsing-hard-agent-browser (baseline, agent-only)
+  - web-browsing-hard-pinchtab      (Pinchtab browser tool)
   - web-browsing-hard-playwright-mcp (Playwright MCP)
 
 Produces 6 charts (16–21) and 4 table files (CSV + Markdown).
@@ -26,20 +26,20 @@ import config
 
 # ── Suite metadata ────────────────────────────────────────────────────────────
 SUITE_ORDER = [
-    "web-browsing-hard",
+    "web-browsing-hard-agent-browser",
     "web-browsing-hard-pinchtab",
     "web-browsing-hard-playwright-mcp",
 ]
 
 SUITE_LABELS = {
-    "web-browsing-hard": "Baseline",
+    "web-browsing-hard-agent-browser": "Agent Browser",
     "web-browsing-hard-pinchtab": "Pinchtab",
     "web-browsing-hard-playwright-mcp": "Playwright MCP",
 }
 
 # Consistent suite colours across every chart
 SUITE_COLORS = {
-    "web-browsing-hard": "#5B9BD5",  # blue
+    "web-browsing-hard-agent-browser": "#5B9BD5",  # blue
     "web-browsing-hard-pinchtab": "#ED7D31",  # orange
     "web-browsing-hard-playwright-mcp": "#70AD47",  # green
 }
@@ -95,8 +95,8 @@ def _short_model(model: str) -> str:
     return _MODEL_LABEL_MAP.get(model, model.split("/")[-1])
 
 
-def _suite_label(suite: str) -> str:
-    return SUITE_LABELS.get(suite, suite)
+def _suite_label(suite: str, labels: Dict[str, str]) -> str:
+    return labels.get(suite, suite)
 
 
 def _model_order_key(model: str) -> int:
@@ -116,6 +116,9 @@ class SuiteComparisonVisualizer:
         self,
         aggregated_data: pd.DataFrame,
         task_results_by_model: Dict[str, List],
+        suite_order: List[str] | None = None,
+        suite_labels: Dict[str, str] | None = None,
+        suite_colors: Dict[str, str] | None = None,
     ):
         """
         Args:
@@ -123,14 +126,27 @@ class SuiteComparisonVisualizer:
                 EvalResultsAggregator.aggregate_metrics().
             task_results_by_model: Raw task results keyed by "model::domain".
         """
-        # Filter to only the three target suites
-        mask = aggregated_data["domain"].isin(self.TARGET_SUITES)
+        self.suite_order = suite_order or SUITE_ORDER
+        self.suite_labels = suite_labels or SUITE_LABELS
+
+        if suite_colors is None:
+            colors = config.COLOR_PALETTE
+            self.suite_colors = {
+                s: colors[i % len(colors)] for i, s in enumerate(self.suite_order)
+            }
+        else:
+            self.suite_colors = suite_colors
+
+        self.target_suites = set(self.suite_order)
+
+        # Filter to only the target suites
+        mask = aggregated_data["domain"].isin(self.target_suites)
         self.agg = aggregated_data[mask].copy()
 
         self.raw: Dict[str, List] = {
             k: v
             for k, v in task_results_by_model.items()
-            if "::" in k and k.split("::")[1] in self.TARGET_SUITES
+            if "::" in k and k.split("::")[1] in self.target_suites
         }
 
         # Ordered unique model list (only those present in data)
@@ -160,10 +176,11 @@ class SuiteComparisonVisualizer:
         chart_name: str,
         fmt_fn=None,
         ylim_top: Optional[float] = None,
+        output_subdir: str | None = None,
     ):
         """Generic grouped-bar chart: x=models, 3 bars/model = 3 suites."""
         models = self.models
-        suites = [s for s in SUITE_ORDER if s in self.agg["domain"].values]
+        suites = [s for s in self.suite_order if s in self.agg["domain"].values]
         n_models = len(models)
         n_suites = len(suites)
 
@@ -188,8 +205,8 @@ class SuiteComparisonVisualizer:
                 x + offset,
                 values,
                 width=bar_width * 0.92,
-                label=_suite_label(suite),
-                color=SUITE_COLORS[suite],
+                label=_suite_label(suite, self.suite_labels),
+                color=self.suite_colors[suite],
                 alpha=0.88,
                 edgecolor="black",
                 linewidth=0.6,
@@ -226,7 +243,11 @@ class SuiteComparisonVisualizer:
         ax.grid(axis="y", alpha=0.3)
         ax.legend(
             handles=[
-                mpatches.Patch(color=SUITE_COLORS[s], label=_suite_label(s), alpha=0.88)
+                mpatches.Patch(
+                    color=self.suite_colors[s],
+                    label=_suite_label(s, self.suite_labels),
+                    alpha=0.88,
+                )
                 for s in suites
             ],
             loc="upper right",
@@ -236,13 +257,13 @@ class SuiteComparisonVisualizer:
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
 
-        save_figure(fig, chart_name, tight_layout=True)
+        save_figure(fig, chart_name, tight_layout=True, subdir=output_subdir)
         plt.close(fig)
         print(f"[+] {chart_name} created")
 
     # ── Chart 16 — Pass rate ─────────────────────────────────────────────────
 
-    def plot_pass_rate(self):
+    def plot_pass_rate(self, output_subdir: str | None = None):
         """Chart 16: Grouped bar — success rate (%) per model × suite."""
         self._grouped_bar(
             metric_col="success_rate",
@@ -251,11 +272,12 @@ class SuiteComparisonVisualizer:
             chart_name="16_suite_pass_rate",
             fmt_fn=lambda v: f"{v:.0f}%",
             ylim_top=115,
+            output_subdir=output_subdir,
         )
 
     # ── Chart 17 — Mean score ────────────────────────────────────────────────
 
-    def plot_mean_score(self):
+    def plot_mean_score(self, output_subdir: str | None = None):
         """Chart 17: Grouped bar — mean score per model × suite."""
         self._grouped_bar(
             metric_col="mean_score",
@@ -264,11 +286,12 @@ class SuiteComparisonVisualizer:
             chart_name="17_suite_mean_score",
             fmt_fn=lambda v: f"{v:.1f}",
             ylim_top=115,
+            output_subdir=output_subdir,
         )
 
     # ── Chart 18 — Tool calls ────────────────────────────────────────────────
 
-    def plot_tool_calls(self):
+    def plot_tool_calls(self, output_subdir: str | None = None):
         """Chart 18: Grouped bar — mean tool calls per model × suite."""
         self._grouped_bar(
             metric_col="mean_tool_call_count",
@@ -276,11 +299,12 @@ class SuiteComparisonVisualizer:
             title="Mean Tool Calls by Model and Suite",
             chart_name="18_suite_tool_calls",
             fmt_fn=lambda v: f"{v:.1f}",
+            output_subdir=output_subdir,
         )
 
     # ── Chart 19 — Elapsed time ──────────────────────────────────────────────
 
-    def plot_elapsed_time(self):
+    def plot_elapsed_time(self, output_subdir: str | None = None):
         """Chart 19: Grouped bar — mean elapsed time (s) per model × suite."""
         self._grouped_bar(
             metric_col="mean_elapsed_sec_all",
@@ -288,11 +312,12 @@ class SuiteComparisonVisualizer:
             title="Mean Elapsed Time by Model and Suite",
             chart_name="19_suite_elapsed_time",
             fmt_fn=lambda v: f"{v:.0f}s",
+            output_subdir=output_subdir,
         )
 
     # ── Chart 20 — Total tokens ──────────────────────────────────────────────
 
-    def plot_tokens(self):
+    def plot_tokens(self, output_subdir: str | None = None):
         """Chart 20: Grouped bar — mean total tokens per model × suite."""
 
         def fmt_k(v):
@@ -304,13 +329,14 @@ class SuiteComparisonVisualizer:
             title="Mean Total Tokens by Model and Suite",
             chart_name="20_suite_tokens",
             fmt_fn=fmt_k,
+            output_subdir=output_subdir,
         )
 
     # ── Chart 21 — Per-task score heatmap ────────────────────────────────────
 
-    def plot_task_heatmap(self):
+    def plot_task_heatmap(self, output_subdir: str | None = None):
         """Chart 21: Heatmap — rows=tasks, cols=model×suite, cell=score."""
-        suites = [s for s in SUITE_ORDER if s in self.agg["domain"].values]
+        suites = [s for s in self.suite_order if s in self.agg["domain"].values]
         models = self.models
 
         # Build column list: "ModelShort\n(SuiteShort)"
@@ -318,7 +344,9 @@ class SuiteComparisonVisualizer:
         col_keys: List[tuple] = []  # (model, suite)
         for suite in suites:
             for model in models:
-                cols.append(f"{_short_model(model)}\n({_suite_label(suite)})")
+                cols.append(
+                    f"{_short_model(model)}\n({_suite_label(suite, self.suite_labels)})"
+                )
                 col_keys.append((model, suite))
 
         # Build score matrix  (tasks × cols)
@@ -411,20 +439,22 @@ class SuiteComparisonVisualizer:
             color="#444",
         )
 
-        save_figure(fig, "21_suite_task_heatmap", tight_layout=True)
+        save_figure(
+            fig, "21_suite_task_heatmap", tight_layout=True, subdir=output_subdir
+        )
         plt.close(fig)
         print("[+] 21_suite_task_heatmap created")
 
     # ── Tables ───────────────────────────────────────────────────────────────
 
-    def save_tables(self):
+    def save_tables(self, data_subdir: str | None = None):
         """Save suite_summary_table and per_task_score_table as CSV + Markdown."""
-        self._save_suite_summary_table()
-        self._save_per_task_score_table()
+        self._save_suite_summary_table(data_subdir=data_subdir)
+        self._save_per_task_score_table(data_subdir=data_subdir)
 
-    def _save_suite_summary_table(self):
+    def _save_suite_summary_table(self, data_subdir: str | None = None):
         """Table 1: one row per (model, suite) with key aggregate metrics."""
-        suites = [s for s in SUITE_ORDER if s in self.agg["domain"].values]
+        suites = [s for s in self.suite_order if s in self.agg["domain"].values]
 
         rows = []
         for suite in suites:
@@ -444,7 +474,7 @@ class SuiteComparisonVisualizer:
                 rows.append(
                     {
                         "Model": _short_model(model),
-                        "Suite": _suite_label(suite),
+                        "Suite": _suite_label(suite, self.suite_labels),
                         "Tasks": total,
                         "Pass": passed,
                         "Partial": partial,
@@ -466,22 +496,28 @@ class SuiteComparisonVisualizer:
             print("[SKIP] suite_summary_table: no data")
             return
 
-        csv_path = config.DATA_DIR / "suite_summary_table.csv"
+        csv_root = config.DATA_DIR
+        if data_subdir:
+            csv_root = csv_root / data_subdir
+            csv_root.mkdir(parents=True, exist_ok=True)
+        csv_path = csv_root / "suite_summary_table.csv"
         df.to_csv(csv_path, index=False)
         print(f"  [+] CSV saved: {csv_path}")
 
-        md_path = config.DATA_DIR / "suite_summary_table.md"
+        md_path = csv_root / "suite_summary_table.md"
         md_path.write_text(_df_to_markdown(df), encoding="utf-8")
         print(f"  [+] Markdown saved: {md_path}")
 
-    def _save_per_task_score_table(self):
+    def _save_per_task_score_table(self, data_subdir: str | None = None):
         """Table 2: rows=tasks, cols=model×suite, cell=score (or T/O / —)."""
-        suites = [s for s in SUITE_ORDER if s in self.agg["domain"].values]
+        suites = [s for s in self.suite_order if s in self.agg["domain"].values]
         col_headers = []
         col_keys = []
         for suite in suites:
             for model in self.models:
-                col_headers.append(f"{_short_model(model)} ({_suite_label(suite)})")
+                col_headers.append(
+                    f"{_short_model(model)} ({_suite_label(suite, self.suite_labels)})"
+                )
                 col_keys.append((model, suite))
 
         rows = []
@@ -510,27 +546,33 @@ class SuiteComparisonVisualizer:
             print("[SKIP] per_task_score_table: no data")
             return
 
-        csv_path = config.DATA_DIR / "per_task_score_table.csv"
+        csv_root = config.DATA_DIR
+        if data_subdir:
+            csv_root = csv_root / data_subdir
+            csv_root.mkdir(parents=True, exist_ok=True)
+        csv_path = csv_root / "per_task_score_table.csv"
         df.to_csv(csv_path, index=False)
         print(f"  [+] CSV saved: {csv_path}")
 
-        md_path = config.DATA_DIR / "per_task_score_table.md"
+        md_path = csv_root / "per_task_score_table.md"
         md_path.write_text(_df_to_markdown(df), encoding="utf-8")
         print(f"  [+] Markdown saved: {md_path}")
 
     # ── Run all ──────────────────────────────────────────────────────────────
 
-    def plot_all(self):
+    def plot_all(
+        self, output_subdir: str | None = None, data_subdir: str | None = None
+    ):
         """Generate all 6 charts and 2×2 table files."""
         print("\n[SUITE] Suite Comparison Charts")
-        self.plot_pass_rate()
-        self.plot_mean_score()
-        self.plot_tool_calls()
-        self.plot_elapsed_time()
-        self.plot_tokens()
-        self.plot_task_heatmap()
+        self.plot_pass_rate(output_subdir=output_subdir)
+        self.plot_mean_score(output_subdir=output_subdir)
+        self.plot_tool_calls(output_subdir=output_subdir)
+        self.plot_elapsed_time(output_subdir=output_subdir)
+        self.plot_tokens(output_subdir=output_subdir)
+        self.plot_task_heatmap(output_subdir=output_subdir)
         print("\n[SUITE] Suite Comparison Tables")
-        self.save_tables()
+        self.save_tables(data_subdir=data_subdir)
 
 
 # ── Markdown helper ───────────────────────────────────────────────────────────

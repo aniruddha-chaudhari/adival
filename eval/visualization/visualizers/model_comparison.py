@@ -78,7 +78,10 @@ class ModelComparisonVisualizer:
             heatmap_data[col] = (1 - normed) if col in LOWER_IS_BETTER else normed
 
         # Set index to model names
-        heatmap_data.index = [format_model_name(m) for m in plot_data["model"]]
+        heatmap_data.index = [
+            f"{format_model_name(m)} - {d}"
+            for m, d in zip(plot_data["model"], plot_data["domain"])
+        ]
 
         # Create figure with appropriate size
         n_models = len(heatmap_data)
@@ -129,7 +132,9 @@ class ModelComparisonVisualizer:
         )
         plt.close(fig)
 
-        print(f"[+] Model comparison heatmap created for suite={suite} ({n_models} models)")
+        print(
+            f"[+] Model comparison heatmap created for suite={suite} ({n_models} models)"
+        )
 
     def plot_heatmap(self, top_n: int = None, per_suite: bool = False):
         """Create heatmap of all metrics across models.
@@ -233,7 +238,7 @@ class ModelComparisonVisualizer:
 
         return fig
 
-    def plot_top_models_radar(self, top_n: int = 5):
+    def plot_top_models_radar(self, top_n: int = 5, output_subdir: str | None = None):
         """Create detailed comparison of top N models
 
         Args:
@@ -319,7 +324,12 @@ class ModelComparisonVisualizer:
             ax.get_yticklabels(), rotation=0, fontsize=config.FONT_SIZE_TICK
         )
 
-        save_figure(fig, "07_top_models_comparison", tight_layout=True)
+        save_figure(
+            fig,
+            "07_top_models_comparison",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print(

@@ -138,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pptx"
-      ]
+      "skills": ["pptx"]
     },
     {
       "id": "EVAL_FM_003",
@@ -159,11 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 4,
       "elapsedMs": 42159,
@@ -299,10 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "fields": ["completionScore", "observedSteps"]
       },
       "toolCallCount": 13,
       "elapsedMs": 118175,
@@ -351,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pptx"
-      ]
+      "skills": ["pptx"]
     },
     {
       "id": "EVAL_FM_007",
@@ -372,10 +361,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 19,
       "elapsedMs": 226627,
@@ -443,11 +429,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps", "redundantCommands"]
       },
       "toolCallCount": 7,
       "elapsedMs": 75663,
@@ -515,10 +497,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "fields": ["completionScore", "observedSteps"]
       },
       "toolCallCount": 7,
       "elapsedMs": 73607,

@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-16T16:58:02.794Z",
   "model": "github-copilot/gpt-5.3-codex",
-  "domain": "web-browsing-hard-agent-browser",
+  "domain": "agent-browser",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\github-copilot_gpt-5.3-codex\\web-browsing-hard",
   "results": [
     {
@@ -70,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -85,7 +83,7 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent navigated TypeScript\u2192Anders Hejlsberg, extracted all 4 fields correctly, saved screenshot successfully.",
+        "reason": "Agent navigated TypeScript→Anders Hejlsberg, extracted all 4 fields correctly, saved screenshot successfully.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
@@ -119,7 +117,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -140,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_NPM_001",
@@ -210,9 +206,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -259,7 +253,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -280,9 +274,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_MDN_001",
@@ -329,7 +321,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -350,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_HN_001",
@@ -399,7 +389,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -420,9 +410,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -469,7 +457,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -490,9 +478,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -539,7 +525,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -560,9 +546,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -609,7 +593,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -630,13 +614,11 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_GH_003",
-      "name": "GitHub: Issue Triage \u2014 Label & Milestone Extraction",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "github-copilot/gpt-5.3-codex",
       "status": "pass",
       "score": 100,
@@ -679,7 +661,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -700,9 +682,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     }
   ],
   "analysis": {

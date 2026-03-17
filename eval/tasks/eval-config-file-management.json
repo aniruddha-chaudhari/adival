@@ -11,12 +11,8 @@
       "timeoutSeconds": 600,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/sales_data.xlsx"
-      ],
-      "outputFiles": [
-        "outputs/sales_data_audited.xlsx"
-      ],
+      "inputFiles": ["uploads/sales_data.xlsx"],
+      "outputFiles": ["outputs/sales_data_audited.xlsx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_001/sales_data_audited.xlsx",
       "scorer": {
         "type": "allOf",
@@ -64,12 +60,8 @@
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/contract_redlined.docx"
-      ],
-      "outputFiles": [
-        "outputs/contract_final.docx"
-      ],
+      "inputFiles": ["uploads/contract_redlined.docx"],
+      "outputFiles": ["outputs/contract_final.docx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_002/contract_final.docx",
       "scorer": {
         "type": "allOf",
@@ -124,9 +116,7 @@
         "uploads/invoices/invoice_004.png",
         "uploads/invoices/invoice_005.png"
       ],
-      "outputFiles": [
-        "outputs/invoices_extracted.csv"
-      ],
+      "outputFiles": ["outputs/invoices_extracted.csv"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_003/invoices_extracted.csv",
       "scorer": {
         "type": "allOf",
@@ -174,9 +164,7 @@
       "timeoutSeconds": 660,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/project_files/"
-      ],
+      "inputFiles": ["uploads/project_files/"],
       "scorer": {
         "type": "allOf",
         "params": {
@@ -223,12 +211,8 @@
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/deck_messy.pptx"
-      ],
-      "outputFiles": [
-        "outputs/deck_normalized.pptx"
-      ],
+      "inputFiles": ["uploads/deck_messy.pptx"],
+      "outputFiles": ["outputs/deck_normalized.pptx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_005/deck_normalized.pptx",
       "scorer": {
         "type": "allOf",
@@ -276,9 +260,7 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 26,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/photos/"
-      ],
+      "inputFiles": ["uploads/photos/"],
       "scorer": {
         "type": "allOf",
         "params": {
@@ -319,13 +301,8 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 28,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/dirty_data.csv"
-      ],
-      "outputFiles": [
-        "outputs/tools/csv_normalizer.py",
-        "outputs/dirty_data_clean.csv"
-      ],
+      "inputFiles": ["uploads/dirty_data.csv"],
+      "outputFiles": ["outputs/tools/csv_normalizer.py", "outputs/dirty_data_clean.csv"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_008/dirty_data_clean.csv",
       "scorer": {
         "type": "allOf",
@@ -334,12 +311,7 @@
             {
               "type": "keywords",
               "params": {
-                "words": [
-                  "issuesidentified:",
-                  "toolcreated:",
-                  "cellschanged:",
-                  "cleanfilecreated:"
-                ]
+                "words": ["issuesidentified:", "toolcreated:", "cellschanged:", "cleanfilecreated:"]
               }
             },
             {
@@ -379,12 +351,8 @@
       "timeoutSeconds": 600,
       "humanBaselineSteps": 12,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/result_analysis/COMP_FINAL_RESULT.xls"
-      ],
-      "outputFiles": [
-        "outputs/failed_students_output.xlsx"
-      ],
+      "inputFiles": ["uploads/result_analysis/COMP_FINAL_RESULT.xls"],
+      "outputFiles": ["outputs/failed_students_output.xlsx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_009/failed_students_output.xlsx",
       "scorer": {
         "type": "allOf",
@@ -393,11 +361,7 @@
             {
               "type": "keywords",
               "params": {
-                "words": [
-                  "totalstudents:",
-                  "failedstudentscount:",
-                  "outputfilesaved:"
-                ]
+                "words": ["totalstudents:", "failedstudentscount:", "outputfilesaved:"]
               }
             },
             {
@@ -437,13 +401,8 @@
       "timeoutSeconds": 780,
       "humanBaselineSteps": 32,
       "screenshotPath": null,
-      "inputFiles": [
-        "uploads/employee_data.xlsx"
-      ],
-      "outputFiles": [
-        "outputs/employee_data_pivot.xlsx",
-        "outputs/promotion_report.docx"
-      ],
+      "inputFiles": ["uploads/employee_data.xlsx"],
+      "outputFiles": ["outputs/employee_data_pivot.xlsx", "outputs/promotion_report.docx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_010/employee_summary.json",
       "scorer": {
         "type": "allOf",

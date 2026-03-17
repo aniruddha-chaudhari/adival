@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-16T17:15:39.075Z",
   "model": "opencode/minimax-m2.5-free",
-  "domain": "web-browsing-hard-pinchtab",
+  "domain": "pinchtab",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\opencode_minimax-m2.5-free\\web-browsing-hard-pinchtab",
   "results": [
     {
@@ -70,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -140,9 +138,7 @@
         "timeoutDetected": true,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_NPM_001",
@@ -210,9 +206,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -280,9 +274,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_MDN_001",
@@ -350,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_HN_001",
@@ -420,9 +410,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -490,9 +478,7 @@
         "timeoutDetected": true,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -560,9 +546,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -630,10 +614,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser",
-        "pinchtab"
-      ]
+      "skills": ["agent-browser", "pinchtab"]
     },
     {
       "id": "EVAL_GH_003",
@@ -701,9 +682,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     }
   ],
   "analysis": {

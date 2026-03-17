@@ -1,31 +1,43 @@
 ## Tool: playwright_browser_navigate (call_14289782)
+
 Status: completed
 url: https://en.wikipedia.org/wiki/TypeScript
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://en.wikipedia.org/wiki/TypeScript');
+await page.goto("https://en.wikipedia.org/wiki/TypeScript");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_navigate (call_03877408)
+
 Status: completed
 url: https://en.wikipedia.org/wiki/Anders_Hejlsberg
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://en.wikipedia.org/wiki/Anders_Hejlsberg');
+await page.goto("https://en.wikipedia.org/wiki/Anders_Hejlsberg");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_take_screenshot (call_50020231)
+
 Status: completed
 filename: eval-wikipedia-hop.png
 type: png
 Output: ### Result
+
 - [Screenshot of viewport](eval-wikipedia-hop.png)
+
 ### Ran Playwright code
-```js
+
+````js
 // Screenshot viewport and save it as eval-wikipedia-hop.png
 ...(truncated)
 
@@ -49,7 +61,8 @@ await page.close()
 
 The answer is four lines:
 
-FullName: Anders Hejlsberg  
-Nationality: Danish  
-PhDUniversity: Not listed  
+FullName: Anders Hejlsberg
+Nationality: Danish
+PhDUniversity: Not listed
 OtherProject: C#
+````

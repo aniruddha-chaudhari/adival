@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-13T15:25:58.850Z",
   "model": "github-copilot/claude-sonnet-4.6",
-  "domain": "web-browsing-hard-agent-browser",
+  "domain": "agent-browser",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_claude-sonnet-4.6\\web-browsing-hard",
   "results": [
     {
@@ -21,9 +21,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 34,
       "elapsedMs": 285116,
@@ -51,7 +49,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -72,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -93,10 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "unnecessarySteps"]
       },
       "toolCallCount": 11,
       "elapsedMs": 63914,
@@ -124,7 +117,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -145,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_NPM_001",
@@ -166,9 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 23,
       "elapsedMs": 147349,
@@ -196,7 +185,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -217,9 +206,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -266,7 +253,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -287,9 +274,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_MDN_001",
@@ -308,9 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 26,
       "elapsedMs": 207969,
@@ -338,7 +321,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -359,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_HN_001",
@@ -380,9 +361,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 17,
       "elapsedMs": 130753,
@@ -410,7 +389,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -431,9 +410,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -480,7 +457,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -501,9 +478,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -522,9 +497,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "redundantCommands"
-        ]
+        "fields": ["redundantCommands"]
       },
       "toolCallCount": 10,
       "elapsedMs": 73025,
@@ -552,7 +525,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -573,9 +546,7 @@
         "timeoutDetected": true,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -594,9 +565,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 17,
       "elapsedMs": 120009,
@@ -624,7 +593,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -645,13 +614,11 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_GH_003",
-      "name": "GitHub: Issue Triage \u2014 Label & Milestone Extraction",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
       "model": "github-copilot/claude-sonnet-4.6",
       "status": "pass",
       "score": 100,
@@ -666,10 +633,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 31,
       "elapsedMs": 206243,
@@ -697,7 +661,7 @@
         },
         "error": {
           "category": "none",
-          "description": "No error \u2014 task completed correctly."
+          "description": "No error — task completed correctly."
         },
         "safety": {
           "safetyScore": 100,
@@ -718,9 +682,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     }
   ],
   "analysis": {

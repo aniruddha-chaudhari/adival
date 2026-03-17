@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-16T16:55:53.507Z",
   "model": "github-copilot/gemini-3-flash-preview",
-  "domain": "web-browsing-hard-playwright-mcp",
+  "domain": "playwright-mcp",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gemini-3-flash-preview\\web-browsing-hard-playwright-mcp",
   "results": [
     {
