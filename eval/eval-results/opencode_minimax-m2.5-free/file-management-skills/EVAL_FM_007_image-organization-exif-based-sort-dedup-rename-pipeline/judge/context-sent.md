@@ -59,9 +59,9 @@ Status: completed
 command: cd uploads/photos && find . -type f \( -name "_.jpg" -o -name "_.png" \) -exec md5sum {} \;
 description: Compute MD5 hashes of all images
 Output: c3ab4b5450dad3e94f8d566c09a1910d _./2023/2023-03-15_10-30-00_IMG_2847.jpg
-c3ab4b5450dad3e94f8d566c09a1910d _./2023/2023-03-15_10-30-00_IMG_2847_copy.jpg
-330a5fb7481ad51ca68ab05f2e8ece35 _./2023/2023-06-20_14-45-00_DSC_0001.jpg
-3cebf07599accb98416a89c4e3770fd0 _./2023/2023-09-10_09-15-00_photo_001.jpg
+c3ab4b5450dad3e94f8d566c09a1910d _./2023/2023-03-15*10-30-00_IMG_2847_copy.jpg
+330a5fb7481ad51ca68ab05f2e8ece35 *./2023/2023-06-20*14-45-00_DSC_0001.jpg
+3cebf07599accb98416a89c4e3770fd0 *./2023/2023-09-10_09-15-00_photo_001.jpg
 3cebf07599accb98416a89c4e3770fd0 \*./2023/2023-09-10_09-15-00_photo_001_backup.jpg
 ...(truncated)
 

@@ -297,7 +297,8 @@ description: Pack PPTX with correct Python path
 Output: Traceback (most recent call last):
 File "<string>", line 1, in <module>
 import sys; sys.path.insert(0, 'D:/Adu/col/js/project/adival/.opencode/skills/pptx/scripts/office'); exec(open('D:/Adu/col/js/project/adival/.opencode/skills/pptx/scripts/office/pack.py').read())
-~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+```^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 File "<string>", line 22, in <module>
 ...(truncated)
 
@@ -408,3 +409,4 @@ All tasks complete. Here is the final answer:
 **AgendaSlidePosition:** 2
 **BulletItemCount:** 3
 **TotalSlideCount:** 11
+```

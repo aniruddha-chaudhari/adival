@@ -17,8 +17,8 @@ drwxr-xr-x 1 Aniruddha Chaudhari 197121 0 Mar 14 15:44 docs
 ## Tool: glob (call_function_91hriq6ocbf3_1)
 
 Status: completed
-path: uploads/project*files
-pattern: \**/\_
+path: uploads/project\*files
+pattern: \*\*/\_
 Output: F:\Aniruddha\code\college\mcpserver\uploads\project_files\scripts\cleanup.py
 F:\Aniruddha\code\college\mcpserver\uploads\project_files\scripts\deploy.py
 F:\Aniruddha\code\college\mcpserver\uploads\project_files\scripts\backup_copy.py

@@ -103,7 +103,8 @@ description: Recalculate formulas in Excel file
 Output: Traceback (most recent call last):
 File "D:\Adu\col\js\project\adival\.opencode\skills\xlsx\scripts\recalc.py", line 184, in <module>
 main()
-~~~~^^
+
+```^^
 File "D:\Adu\col\js\project\adival\.opencode\skills\xlsx\scripts\recalc.py", line 179, in main
 ...(truncated)
 
@@ -177,3 +178,4 @@ drwxr-xr-x 1 pravi 197121 0 Mar 17 18:35 tools
 FormulaApplied: =COUNTIF(B12:H12,">0") and =COUNTIF(B13:H13,">0")
 ValueI12: 5
 ValueI13: 3
+```

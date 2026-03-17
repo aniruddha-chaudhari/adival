@@ -1,7 +1,7 @@
 ## Tool: glob (call_MHx3S3lXVnVtUWpXZmRYVnRuOVM)
 
 Status: completed
-pattern: uploads/project_files/\*_/_
+pattern: uploads/project\*files/\*\*/\_
 Output: D:\Adu\col\js\project\adival\uploads\project_files\src\main\javascript\index.js
 D:\Adu\col\js\project\adival\uploads\project_files\src\main\javascript\helper.js
 D:\Adu\col\js\project\adival\uploads\project_files\docs\guides\setup.md

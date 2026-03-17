@@ -95,7 +95,8 @@ description: Recalculate Excel formulas
 Output: Traceback (most recent call last):
 File "D:\Adu\col\js\project\adival\.opencode\skills\xlsx\scripts\recalc.py", line 184, in <module>
 main()
-~~~~^^
+
+```^^
 File "D:\Adu\col\js\project\adival\.opencode\skills\xlsx\scripts\recalc.py", line 179, in main
 ...(truncated)
 
@@ -253,3 +254,4 @@ Output: 0 1 2 3
 SectionsPopulated: 3
 TotalRowsAdded: 3
 OutputFileSaved: outputs/ranges_lists_result.xlsx
+```

@@ -133,7 +133,8 @@ description: Recalculate formulas in the output Excel file
 Output: Traceback (most recent call last):
 File "D:\Adu\col\js\project\adival\.opencode\skills\xlsx\scripts\recalc.py", line 184, in <module>
 main()
-~~~~^^
+
+```^^
 File "D:\Adu\col\js\project\adival\.opencode\skills\xlsx\scripts\recalc.py", line 179, in main
 ...(truncated)
 
@@ -148,3 +149,4 @@ description: Remove the temporary script file
 SectionsPopulated: 3
 TotalRowsAdded: 19
 OutputFileSaved: outputs/ranges_lists_result.xlsx
+```
