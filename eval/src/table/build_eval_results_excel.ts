@@ -62,7 +62,7 @@ const listSummaryFiles = async (rootDir: string): Promise<string[]> => {
 
 const getModelFromPath = (summaryPath: string): string => {
   const parts = summaryPath.split(path.sep);
-  const idx = parts.findIndex((part) => part === "eval-results");
+  const idx = parts.findIndex(part => part === "eval-results");
   if (idx >= 0 && parts[idx + 1]) return parts[idx + 1];
   return "unknown-model";
 };
@@ -79,13 +79,15 @@ const normalizeSheetName = (name: string): string => {
 
 const toCellValue = (value: unknown): string | number | boolean | null => {
   if (value === null || value === undefined) return null;
-  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return value;
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean")
+    return value;
   return JSON.stringify(value);
 };
 
 const buildWorkbook = async (rootDir: string, outFile: string): Promise<void> => {
   const summaryFiles = await listSummaryFiles(rootDir);
   const byModel: Map<string, DomainBlock[]> = new Map();
+  const excludedColumns = new Set(["runAt", "summaryModel", "summaryDomain", "runDir", "analysis"]);
 
   for (const filePath of summaryFiles) {
     const raw = await fs.readFile(filePath, "utf8");
@@ -115,12 +117,25 @@ const buildWorkbook = async (rootDir: string, outFile: string): Promise<void> =>
     for (const block of domainBlocks) {
       for (const result of block.results) {
         const flat = flattenObject(result);
-        Object.keys(flat).forEach((key) => allKeys.add(key));
+        Object.keys(flat).forEach(key => allKeys.add(key));
       }
     }
 
-    const orderedKeys = Array.from(allKeys).sort();
-    const header = ["runAt", "summaryModel", "summaryDomain", "runDir", ...orderedKeys];
+    const orderedKeys = Array.from(allKeys)
+      .filter(key => !excludedColumns.has(key))
+      .sort();
+    const lastSegments = orderedKeys.map(key => key.split(".").pop() || key);
+    const totalCounts = new Map<string, number>();
+    for (const segment of lastSegments) {
+      totalCounts.set(segment, (totalCounts.get(segment) || 0) + 1);
+    }
+    const seenCounts = new Map<string, number>();
+    const header = lastSegments.map(segment => {
+      const seen = (seenCounts.get(segment) || 0) + 1;
+      seenCounts.set(segment, seen);
+      const total = totalCounts.get(segment) || 0;
+      return total > 1 ? `${segment}.${seen}` : segment;
+    });
 
     let firstDomain = true;
     for (const block of domainBlocks) {
@@ -136,13 +151,7 @@ const buildWorkbook = async (rootDir: string, outFile: string): Promise<void> =>
 
       for (const result of block.results) {
         const flat = flattenObject(result);
-        const rowValues = [
-          block.runAt,
-          block.model,
-          block.domain,
-          block.runDir,
-          ...orderedKeys.map((key) => toCellValue(flat[key])),
-        ];
+        const rowValues = orderedKeys.map(key => toCellValue(flat[key]));
         const row = sheet.addRow(rowValues);
         row.font = { name: "Arial" };
       }
@@ -151,7 +160,7 @@ const buildWorkbook = async (rootDir: string, outFile: string): Promise<void> =>
     for (let colIndex = 1; colIndex <= header.length; colIndex += 1) {
       const col = sheet.getColumn(colIndex);
       let maxLen = 10;
-      col.eachCell({ includeEmpty: true }, (cell) => {
+      col.eachCell({ includeEmpty: true }, cell => {
         const val = cell.value;
         const str = val === null || val === undefined ? "" : String(val);
         maxLen = Math.max(maxLen, Math.min(str.length + 2, 60));
@@ -173,13 +182,15 @@ const main = async () => {
   const rootDir = rootArgIndex >= 0 ? args[rootArgIndex + 1] : DEFAULT_ROOT;
   const outFile = outArgIndex >= 0 ? args[outArgIndex + 1] : DEFAULT_OUT;
   if (!rootDir || !outFile) {
-    throw new Error("Usage: bun run manager/tools/build_eval_results_excel.ts --root <path> --out <path>");
+    throw new Error(
+      "Usage: bun run manager/tools/build_eval_results_excel.ts --root <path> --out <path>"
+    );
   }
   await buildWorkbook(rootDir, outFile);
   console.log(`Wrote ${outFile}`);
 };
 
-main().catch((err) => {
+main().catch(err => {
   console.error(err);
   process.exit(1);
 });
