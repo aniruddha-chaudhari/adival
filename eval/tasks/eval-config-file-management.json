@@ -7,12 +7,16 @@
       "id": "EVAL_FM_001",
       "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
       "category": "analyze-excel",
-      "prompt": "You are given a multi-sheet Excel workbook at uploads/sales_data.xlsx. The workbook has three sheets: 'Q1', 'Q2', and 'Q3'. Each sheet has columns: Region, Product, Units, UnitPrice, Revenue. Do the following: (1) Identify which sheet has the highest total Revenue (sum of the Revenue column). (2) Find the single best-selling Product by total Units across ALL sheets combined. (3) Detect any rows where Revenue does NOT equal Units × UnitPrice (formula inconsistency) — report the sheet name and row number of the FIRST such inconsistency found, or 'None' if all are consistent. (4) Create a new summary sheet called 'Summary' appended to the workbook that contains a table with columns Quarter, TotalRevenue, TopProduct — one row per quarter. Save the updated workbook to outputs/sales_data_audited.xlsx. Return the final answer in exactly four labeled lines: HighestRevenueSheet:, BestSellingProduct:, FirstInconsistency:, SummarySheetCreated:",
+      "prompt": "You are given a multi-sheet Excel workbook at uploads/sales_data.xlsx. The workbook has three sheets: 'Q1', 'Q2', and 'Q3'. Each sheet has columns: Region, Product, Units, UnitPrice, Revenue. Do the following: (1) Identify which sheet has the highest total Revenue (sum of the Revenue column). (2) Find the single best-selling Product by total Units across ALL sheets combined. (3) Detect any rows where Revenue does NOT equal Units \u00d7 UnitPrice (formula inconsistency) \u2014 report the sheet name and row number of the FIRST such inconsistency found, or 'None' if all are consistent. (4) Create a new summary sheet called 'Summary' appended to the workbook that contains a table with columns Quarter, TotalRevenue, TopProduct \u2014 one row per quarter. Save the updated workbook to outputs/sales_data_audited.xlsx. Return the final answer in exactly four labeled lines: HighestRevenueSheet:, BestSellingProduct:, FirstInconsistency:, SummarySheetCreated:",
       "timeoutSeconds": 600,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
-      "inputFiles": ["uploads/sales_data.xlsx"],
-      "outputFiles": ["outputs/sales_data_audited.xlsx"],
+      "inputFiles": [
+        "uploads/sales_data.xlsx"
+      ],
+      "outputFiles": [
+        "outputs/sales_data_audited.xlsx"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_001/sales_data_audited.xlsx",
       "scorer": {
         "type": "allOf",
@@ -50,19 +54,22 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_001 for workbook generation script."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_002",
       "name": "Word: Tracked-Changes Redline Review & Selective Accept",
       "category": "edit-word",
-      "prompt": "You are given a Word document at uploads/contract_redlined.docx that contains tracked changes (insertions and deletions) made by multiple authors. Do the following: (1) Count the total number of tracked changes (insertions + deletions combined). (2) Accept ONLY the tracked changes authored by 'Alice' and reject all changes authored by 'Bob'. (3) After resolving Alice's and Bob's changes, report how many tracked changes remain (from any other author). (4) Add a comment on the first paragraph that reads exactly: 'Reviewed by agent — Alice accepted, Bob rejected.' Save the result to outputs/contract_final.docx. Return the final answer in exactly four labeled lines: TotalTrackedChanges:, AliceChangesAccepted:, BobChangesRejected:, RemainingChanges:",
+      "prompt": "You are given a Word document at uploads/contract_redlined.docx that contains tracked changes (insertions and deletions) made by multiple authors. Do the following: (1) Count the total number of tracked changes (insertions + deletions combined). (2) Accept ONLY the tracked changes authored by 'Alice' and reject all changes authored by 'Bob'. (3) After resolving Alice's and Bob's changes, report how many tracked changes remain (from any other author). (4) Add a comment on the first paragraph that reads exactly: 'Reviewed by agent \u2014 Alice accepted, Bob rejected.' Save the result to outputs/contract_final.docx. Return the final answer in exactly four labeled lines: TotalTrackedChanges:, AliceChangesAccepted:, BobChangesRejected:, RemainingChanges:",
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
-      "inputFiles": ["uploads/contract_redlined.docx"],
-      "outputFiles": ["outputs/contract_final.docx"],
+      "inputFiles": [
+        "uploads/contract_redlined.docx"
+      ],
+      "outputFiles": [
+        "outputs/contract_final.docx"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_002/contract_final.docx",
       "scorer": {
         "type": "allOf",
@@ -100,8 +107,7 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_002 for document generation script."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_003",
@@ -118,7 +124,9 @@
         "uploads/invoices/invoice_004.png",
         "uploads/invoices/invoice_005.png"
       ],
-      "outputFiles": ["outputs/invoices_extracted.csv"],
+      "outputFiles": [
+        "outputs/invoices_extracted.csv"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_003/invoices_extracted.csv",
       "scorer": {
         "type": "allOf",
@@ -156,18 +164,19 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_003 for invoice image generation script."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_004",
       "name": "File Search: Deep Directory Traversal with Metadata Filtering",
       "category": "find-files",
-      "prompt": "You are given a directory at uploads/project_files/ containing a deeply nested folder structure (up to 6 levels deep) with mixed file types: .py, .js, .md, .txt, .log, .json, .csv. Do the following: (1) Find ALL .py files modified in the last 30 days (use file modification timestamps). Report the count. (2) Find the single largest file (by byte size) across the entire directory tree regardless of type. Report its relative path and size in bytes. (3) Find all .log files that contain the string 'ERROR' anywhere in their content. Report the count of such files. (4) Find any duplicate files — files with identical content (same MD5 hash) but different names or locations. Report the count of duplicate pairs found (0 if none). Return the final answer in exactly four labeled lines: RecentPyFileCount:, LargestFilePath:, LogFilesWithError:, DuplicateFilePairs:",
+      "prompt": "You are given a directory at uploads/project_files/ containing a deeply nested folder structure (up to 6 levels deep) with mixed file types: .py, .js, .md, .txt, .log, .json, .csv. Do the following: (1) Find ALL .py files modified in the last 30 days (use file modification timestamps). Report the count. (2) Find the single largest file (by byte size) across the entire directory tree regardless of type. Report its relative path and size in bytes. (3) Find all .log files that contain the string 'ERROR' anywhere in their content. Report the count of such files. (4) Find any duplicate files \u2014 files with identical content (same MD5 hash) but different names or locations. Report the count of duplicate pairs found (0 if none). Return the final answer in exactly four labeled lines: RecentPyFileCount:, LargestFilePath:, LogFilesWithError:, DuplicateFilePairs:",
       "timeoutSeconds": 660,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
-      "inputFiles": ["uploads/project_files/"],
+      "inputFiles": [
+        "uploads/project_files/"
+      ],
       "scorer": {
         "type": "allOf",
         "params": {
@@ -204,19 +213,22 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_004 for directory + file generation script."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_005",
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
       "category": "edit-powerpoint",
-      "prompt": "You are given a PowerPoint file at uploads/deck_messy.pptx. The deck has 12 slides with inconsistent formatting: mixed fonts (Arial, Times New Roman, Calibri), inconsistent title font sizes (ranging from 24pt to 48pt), and some slides missing a footer. Do the following: (1) Count how many slides have a title font size NOT equal to 36pt. (2) Normalize ALL slide titles to Arial, Bold, 36pt. (3) Add a footer to every slide that reads 'Confidential — {{SlideNumber}} of 12' where {{SlideNumber}} is the actual slide number. (4) Move slide 7 to become slide 2 (shift others down). Save the result to outputs/deck_normalized.pptx. Return the final answer in exactly four labeled lines: SlidesWithWrongTitleSize:, TitlesNormalized:, FooterAddedToSlides:, SlideReordered:",
+      "prompt": "You are given a PowerPoint file at uploads/deck_messy.pptx. The deck has 12 slides with inconsistent formatting: mixed fonts (Arial, Times New Roman, Calibri), inconsistent title font sizes (ranging from 24pt to 48pt), and some slides missing a footer. Do the following: (1) Count how many slides have a title font size NOT equal to 36pt. (2) Normalize ALL slide titles to Arial, Bold, 36pt. (3) Add a footer to every slide that reads 'Confidential \u2014 {{SlideNumber}} of 12' where {{SlideNumber}} is the actual slide number. (4) Move slide 7 to become slide 2 (shift others down). Save the result to outputs/deck_normalized.pptx. Return the final answer in exactly four labeled lines: SlidesWithWrongTitleSize:, TitlesNormalized:, FooterAddedToSlides:, SlideReordered:",
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
-      "inputFiles": ["uploads/deck_messy.pptx"],
-      "outputFiles": ["outputs/deck_normalized.pptx"],
+      "inputFiles": [
+        "uploads/deck_messy.pptx"
+      ],
+      "outputFiles": [
+        "outputs/deck_normalized.pptx"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_005/deck_normalized.pptx",
       "scorer": {
         "type": "allOf",
@@ -254,8 +266,7 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_005 for PPTX generation script."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_007",
@@ -265,7 +276,9 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 26,
       "screenshotPath": null,
-      "inputFiles": ["uploads/photos/"],
+      "inputFiles": [
+        "uploads/photos/"
+      ],
       "scorer": {
         "type": "allOf",
         "params": {
@@ -296,8 +309,7 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_007 for photo batch generation script with embedded EXIF data."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_008",
@@ -307,8 +319,13 @@
       "timeoutSeconds": 720,
       "humanBaselineSteps": 28,
       "screenshotPath": null,
-      "inputFiles": ["uploads/dirty_data.csv"],
-      "outputFiles": ["outputs/tools/csv_normalizer.py", "outputs/dirty_data_clean.csv"],
+      "inputFiles": [
+        "uploads/dirty_data.csv"
+      ],
+      "outputFiles": [
+        "outputs/tools/csv_normalizer.py",
+        "outputs/dirty_data_clean.csv"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_008/dirty_data_clean.csv",
       "scorer": {
         "type": "allOf",
@@ -317,7 +334,12 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["issuesidentified:", "toolcreated:", "cellschanged:", "cleanfilecreated:"]
+                "words": [
+                  "issuesidentified:",
+                  "toolcreated:",
+                  "cellschanged:",
+                  "cleanfilecreated:"
+                ]
               }
             },
             {
@@ -347,8 +369,7 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_008 for dirty CSV generation script."
+      "llmJudge": true
     },
     {
       "id": "EVAL_FM_009",
@@ -358,8 +379,12 @@
       "timeoutSeconds": 600,
       "humanBaselineSteps": 12,
       "screenshotPath": null,
-      "inputFiles": ["uploads/result_analysis/COMP_FINAL_RESULT.xls"],
-      "outputFiles": ["outputs/failed_students_output.xlsx"],
+      "inputFiles": [
+        "uploads/result_analysis/COMP_FINAL_RESULT.xls"
+      ],
+      "outputFiles": [
+        "outputs/failed_students_output.xlsx"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_009/failed_students_output.xlsx",
       "scorer": {
         "type": "allOf",
@@ -368,7 +393,11 @@
             {
               "type": "keywords",
               "params": {
-                "words": ["totalstudents:", "failedstudentscount:", "outputfilesaved:"]
+                "words": [
+                  "totalstudents:",
+                  "failedstudentscount:",
+                  "outputfilesaved:"
+                ]
               }
             },
             {
@@ -404,12 +433,17 @@
       "id": "EVAL_FM_010",
       "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
       "category": "analyze-excel",
-      "prompt": "You are given an Excel file at uploads/employee_data.xlsx with columns: EmployeeID, Name, Department, Salary, JoinDate, PerformanceScore (1–5), IsRemote (TRUE/FALSE). Do the following: (1) Using only the Excel file, compute: average Salary per Department, and identify the Department with the highest average PerformanceScore. (2) Find all employees who have been with the company for more than 5 years (based on JoinDate vs today) AND have PerformanceScore >= 4. Count them — these are 'promotion candidates'. (3) Generate a pivot table in a new sheet called 'Pivot' in the workbook: rows = Department, columns = IsRemote (True/False), values = COUNT of employees. Save updated workbook to outputs/employee_data_pivot.xlsx. (4) Create a Word document at outputs/promotion_report.docx containing: a heading 'Promotion Candidates Report', a table listing all promotion candidates (Name, Department, Salary, PerformanceScore), and a one-paragraph executive summary. Return the final answer in exactly four labeled lines: TopPerformanceDept:, PromotionCandidateCount:, PivotSheetCreated:, WordReportCreated:",
+      "prompt": "You are given an Excel file at uploads/employee_data.xlsx with columns: EmployeeID, Name, Department, Salary, JoinDate, PerformanceScore (1\u20135), IsRemote (TRUE/FALSE). Do the following: (1) Using only the Excel file, compute: average Salary per Department, and identify the Department with the highest average PerformanceScore. (2) Find all employees who have been with the company for more than 5 years (based on JoinDate vs today) AND have PerformanceScore >= 4. Count them \u2014 these are 'promotion candidates'. (3) Generate a pivot table in a new sheet called 'Pivot' in the workbook: rows = Department, columns = IsRemote (True/False), values = COUNT of employees. Save updated workbook to outputs/employee_data_pivot.xlsx. (4) Create a Word document at outputs/promotion_report.docx containing: a heading 'Promotion Candidates Report', a table listing all promotion candidates (Name, Department, Salary, PerformanceScore), and a one-paragraph executive summary. Return the final answer in exactly four labeled lines: TopPerformanceDept:, PromotionCandidateCount:, PivotSheetCreated:, WordReportCreated:",
       "timeoutSeconds": 780,
       "humanBaselineSteps": 32,
       "screenshotPath": null,
-      "inputFiles": ["uploads/employee_data.xlsx"],
-      "outputFiles": ["outputs/employee_data_pivot.xlsx", "outputs/promotion_report.docx"],
+      "inputFiles": [
+        "uploads/employee_data.xlsx"
+      ],
+      "outputFiles": [
+        "outputs/employee_data_pivot.xlsx",
+        "outputs/promotion_report.docx"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_010/employee_summary.json",
       "scorer": {
         "type": "allOf",
@@ -453,8 +487,7 @@
           ]
         }
       },
-      "llmJudge": true,
-      "setupInstructions": "See eval-file-management-setup.md — Section FM_010 for employee dataset generation script."
+      "llmJudge": true
     }
   ]
 }
