@@ -9,14 +9,14 @@ QMD runs as a persistent HTTP daemon on `localhost:8181`. Use the MCP tools dire
 
 ## Use these MCP tools
 
-| Tool | When to use |
-|------|-------------|
-| `qmd_search` | Fast keyword search — use first |
+| Tool                | When to use                                    |
+| ------------------- | ---------------------------------------------- |
+| `qmd_search`        | Fast keyword search — use first                |
 | `qmd_vector_search` | Semantic search — when keyword returns nothing |
-| `qmd_deep_search` | Best quality — hybrid + reranking |
-| `qmd_get` | Retrieve full document by filepath or `#docid` |
-| `qmd_multi_get` | Retrieve multiple files by glob or list |
-| `qmd_status` | Check index health and collection info |
+| `qmd_deep_search`   | Best quality — hybrid + reranking              |
+| `qmd_get`           | Retrieve full document by filepath or `#docid` |
+| `qmd_multi_get`     | Retrieve multiple files by glob or list        |
+| `qmd_status`        | Check index health and collection info         |
 
 ## Searching Memory
 
@@ -54,6 +54,7 @@ qmd update
 ```
 
 ### File naming conventions
+
 ```
 memory/memory/setup-<tool>.md      # install/config notes
 memory/memory/pitfalls-<area>.md   # bugs, gotchas, fixes
@@ -64,11 +65,13 @@ memory/memory/task-<name>.md       # task outcome summaries
 ## Workflow
 
 1. **Before a task** — search memory for relevant context:
+
    ```sh
    qmd search "topic" -c memory
    ```
 
 2. **After a task** — save what was learned:
+
    ```sh
    # Write the file, then index it
    qmd update
@@ -82,8 +85,8 @@ memory/memory/task-<name>.md       # task outcome summaries
 
 ## Collections
 
-| Name | Contains |
-|------|----------|
-| `memory` | Persistent notes, setup summaries, user prefs |
-| `sessions` | Agent session transcripts |
-| `eval` | Evaluation framework docs |
+| Name       | Contains                                      |
+| ---------- | --------------------------------------------- |
+| `memory`   | Persistent notes, setup summaries, user prefs |
+| `sessions` | Agent session transcripts                     |
+| `eval`     | Evaluation framework docs                     |

@@ -21,11 +21,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 51,
       "elapsedMs": 475677,
@@ -74,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_GH_001",
@@ -95,9 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 13,
       "elapsedMs": 131703,
@@ -146,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_WIKI_001",
@@ -167,9 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 6,
       "elapsedMs": 58141,
@@ -218,9 +206,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_SO_001",
@@ -239,9 +225,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 10,
       "elapsedMs": 135194,
@@ -290,9 +274,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_LNKD_001",
@@ -311,10 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 13,
       "elapsedMs": 104642,
@@ -363,9 +342,7 @@
         "timeoutDetected": true,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     }
   ],
   "analysis": {

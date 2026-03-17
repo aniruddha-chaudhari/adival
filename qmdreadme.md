@@ -83,6 +83,7 @@ Use **local MCP** in `opencode.json`:
 ```
 
 Why this shape:
+
 - `type: local` is accepted and stable in this project
 - `timeout: 60000` avoids model cold-start timeout failures
 
@@ -94,6 +95,7 @@ opencode run "use qmd_search to find 'attack on titan' in memory and tell me wha
 ```
 
 Expected:
+
 - `qmd connected` in MCP list
 - search returns entries from `memory/memory/`
 
@@ -120,21 +122,26 @@ qmd get "memory/memory/task-my-task.md"
 ## Troubleshooting
 
 1. `Invalid input mcp.qmd`
+
 - Cause: wrong config schema for `mcp.qmd`
 - Fix: use `type: local` + `command` array
 
 2. `qmd: command not found` (inside bash)
+
 - Cause: Windows shim is `.cmd`
 - Fix: use PowerShell for CLI; use MCP tools from OpenCode
 
 3. `MCP error -32001: Request timed out`
+
 - Cause: short timeout during first model load
 - Fix: set `timeout: 60000` in `opencode.json`
 
 4. Search returns no results after writing file
+
 - Cause: index not refreshed
 - Fix: run `qmd update`
 
 5. `qmd update` appears to succeed but returns non-zero in some terminals
+
 - Cause: mixed stdout/stderr handling in shell wrappers
 - Fix: trust the summary lines (`All collections updated`) and verify with `qmd status` or `qmd search`

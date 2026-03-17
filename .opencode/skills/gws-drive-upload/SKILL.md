@@ -24,11 +24,11 @@ gws drive +upload <file>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `<file>` | ✓ | — | Path to file to upload |
-| `--parent` | — | — | Parent folder ID |
-| `--name` | — | — | Target filename (defaults to source filename) |
+| Flag       | Required | Default | Description                                   |
+| ---------- | -------- | ------- | --------------------------------------------- |
+| `<file>`   | ✓        | —       | Path to file to upload                        |
+| `--parent` | —        | —       | Parent folder ID                              |
+| `--name`   | —        | —       | Target filename (defaults to source filename) |
 
 ## Examples
 

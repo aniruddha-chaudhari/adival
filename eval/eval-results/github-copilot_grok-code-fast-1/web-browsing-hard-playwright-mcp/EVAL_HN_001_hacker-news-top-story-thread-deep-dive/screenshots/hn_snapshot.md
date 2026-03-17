@@ -943,13 +943,13 @@
                     - link "lr0.org" [ref=e625] [cursor=pointer]:
                       - /url: from?site=lr0.org
                     - text: )
-            - row "107 points by ghd_ 16 hours ago | hide | 164 comments" [ref=e626]:
+            - row "107 points by ghd\_ 16 hours ago | hide | 164 comments" [ref=e626]:
               - cell [ref=e627]
-              - cell "107 points by ghd_ 16 hours ago | hide | 164 comments" [ref=e628]:
+              - cell "107 points by ghd\_ 16 hours ago | hide | 164 comments" [ref=e628]:
                 - generic [ref=e629]:
                   - text: 107 points by
-                  - link "ghd_" [ref=e630] [cursor=pointer]:
-                    - /url: user?id=ghd_
+                  - link "ghd\_" [ref=e630] [cursor=pointer]:
+                    - /url: user?id=ghd\_
                   - generic "2026-03-13T23:14:37 1773443677" [ref=e631]:
                     - link "16 hours ago" [ref=e632] [cursor=pointer]:
                       - /url: item?id=47371275

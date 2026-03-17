@@ -1,27 +1,36 @@
 ## Tool: playwright_browser_run_code (call_98936283)
+
 Status: completed
 code: async (page) => { await page.evaluate(() => document.querySelector('table.bc-table').scrollIntoView(...(truncated)
 Output: ### Error
 Error: page.evaluate: Execution context was destroyed, most likely because of a navigation
 
 ## Tool: playwright_browser_navigate (call_84419781)
+
 Status: completed
 url: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver');
+await page.goto("https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_snapshot (call_92494951)
+
 Status: completed
-filename: 
+filename:
 Output: ### Page
+
 - Page URL: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
 - Page Title: ResizeObserver - Web APIs | MDN
+
 ### Snapshot
-```yaml
+
+````yaml
 ...(truncated)
 
 ## Tool: playwright_browser_take_screenshot (call_53972588)
@@ -63,3 +72,4 @@ ChromeMinVersion:64
 FirefoxMinVersion:69
 SafariMinVersion:13.1
 SafariBorderBoxSize:No
+````

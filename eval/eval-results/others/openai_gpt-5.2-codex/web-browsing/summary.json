@@ -21,12 +21,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps", "redundantCommands"]
       },
       "toolCallCount": 68,
       "elapsedMs": 583315,
@@ -93,10 +88,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "fields": ["completionScore", "observedSteps"]
       },
       "toolCallCount": 9,
       "elapsedMs": 63013,
@@ -163,10 +155,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "unnecessarySteps"]
       },
       "toolCallCount": 12,
       "elapsedMs": 94660,
@@ -233,9 +222,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 10,
       "elapsedMs": 39381,
@@ -302,9 +289,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 14,
       "elapsedMs": 74527,

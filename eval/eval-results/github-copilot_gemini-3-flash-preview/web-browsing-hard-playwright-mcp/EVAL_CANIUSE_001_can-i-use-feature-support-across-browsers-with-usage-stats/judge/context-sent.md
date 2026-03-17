@@ -3,23 +3,31 @@
 I will navigate to the specified URL, extract the required information, and take a screenshot as requested.
 
 ## Tool: playwright_browser_navigate (call_MHxCcUZndzZGZm85elNFTmxnRFM)
+
 Status: completed
 url: https://caniuse.com/css-grid
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://caniuse.com/css-grid');
+await page.goto("https://caniuse.com/css-grid");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_take_screenshot (call_MHw3d0trOHVCU2tkbU5aUGdzTjk)
+
 Status: completed
 filename: eval-caniuse-grid.png
 type: png
 Output: ### Result
+
 - [Screenshot of viewport](eval-caniuse-grid.png)
+
 ### Ran Playwright code
-```js
+
+````js
 // Screenshot viewport and save it as eval-caniuse-grid.png
 ...(truncated)
 
@@ -61,7 +69,7 @@ Output: ### Result
 Status: completed
 function: () => {
   const result = {};
-  
+
   // Usage
   const globalTotal = Array.from(document.querySelectorAl...(truncated)
 Output: ### Result
@@ -110,3 +118,4 @@ GlobalUsage: 97.5%
 ChromeFullSupportVersion: 57
 FirefoxFullSupportVersion: 52
 KnownIssuesCount: 3
+````

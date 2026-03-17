@@ -1,11 +1,15 @@
 ## Tool: playwright_browser_navigate (tooluse_ypt9MfUnPApJzFWuLh5OZV)
+
 Status: completed
 url: https://arxiv.org/abs/1706.03762
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://arxiv.org/abs/1706.03762');
+await page.goto("https://arxiv.org/abs/1706.03762");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Assistant
@@ -13,14 +17,18 @@ await page.goto('https://arxiv.org/abs/1706.03762');
 Now I have all the data I need. Let me take the screenshot and then close the browser.
 
 ## Tool: playwright_browser_take_screenshot (tooluse_z98FfMzFBmALd7bijtrgRN)
+
 Status: completed
 type: png
 filename: eval-arxiv-paper.png
 fullPage: true
 Output: ### Result
+
 - [Screenshot of full page](eval-arxiv-paper.png)
+
 ### Ran Playwright code
-```js
+
+````js
 // Screenshot full page and save it as eval-arxiv-paper.png
 ...(truncated)
 
@@ -53,3 +61,4 @@ AuthorCount: 8
 SubmissionDateV1: 12 Jun 2017
 SubjectCode: cs.CL
 AbstractWordCount: 166
+````

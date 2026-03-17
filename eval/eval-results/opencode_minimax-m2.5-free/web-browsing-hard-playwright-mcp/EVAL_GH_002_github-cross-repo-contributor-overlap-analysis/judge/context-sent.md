@@ -1,14 +1,19 @@
 ## Tool: playwright_browser_navigate (call_function_f6mhhx797qel_1)
+
 Status: completed
 url: https://github.com/facebook/react
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react');
+await page.goto("https://github.com/facebook/react");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_click (call_function_kt105j0572fx_1)
+
 Status: completed
 element: Contributors link
 ref: e957
@@ -16,22 +21,29 @@ Output: ### Error
 Error: Ref e957 not found in the current page snapshot. Try capturing new snapshot.
 
 ## Tool: playwright_browser_navigate (call_function_ww14pfv1n81z_1)
+
 Status: completed
 url: https://github.com/facebook/react/graphs/contributors
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://github.com/facebook/react/graphs/contributors');
+await page.goto("https://github.com/facebook/react/graphs/contributors");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_wait_for (call_function_w204u6afcbjm_1)
+
 Status: completed
 time: 3
 Output: ### Result
 Waited for 3
+
 ### Ran Playwright code
-```js
+
+````js
 await new Promise(f => setTimeout(f, 3 * 1000));
 ...(truncated)
 
@@ -209,17 +221,22 @@ url: https://github.com/facebook/react-native/graphs/contributors
 Output: ### Ran Playwright code
 ```js
 await page.goto('https://github.com/facebook/react-native/graphs/contributors');
-```
+````
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_wait_for (call_function_84ue4q1pwb8w_1)
+
 Status: completed
 time: 4
 Output: ### Result
 Waited for 4
+
 ### Ran Playwright code
-```js
+
+````js
 await new Promise(f => setTimeout(f, 4 * 1000));
 ...(truncated)
 
@@ -249,3 +266,4 @@ TopContributor: sebmarkbage
 ReactCommits: 1939
 InReactNative: No
 ReactNativeRank: N/A
+````

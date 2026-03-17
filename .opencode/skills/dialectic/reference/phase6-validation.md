@@ -2,7 +2,7 @@
 
 The synthesis must be validated by the original monks — not by you, and not just by the user. This is how Hegelian dialectics works: the thesis and antithesis must each recognize themselves as preserved-but-elevated in the Aufhebung.
 
-**Critical ABS insight:** The monks don't *stop believing* after the synthesis. A defeated monk has dropped its belief load — the belief fell on the floor rather than being sublated into something larger. A properly elevated monk *believes more* — it sees its original position as a partial truth within a larger truth, and it now believes the larger truth. The validation checks whether belief was *transformed* or merely *defeated.*
+**Critical ABS insight:** The monks don't _stop believing_ after the synthesis. A defeated monk has dropped its belief load — the belief fell on the floor rather than being sublated into something larger. A properly elevated monk _believes more_ — it sees its original position as a partial truth within a larger truth, and it now believes the larger truth. The validation checks whether belief was _transformed_ or merely _defeated._
 
 Send a **condensed summary** of the determinate negation and sublation to Monk A and Monk B. They need the key moves (what was cancelled, preserved, elevated) and concrete proposals, not the full philosophical argument. If your environment supports session resumption, call back into the **same sessions** for conviction context. If not, include a summary of the agent's original argument in the prompt.
 
@@ -61,11 +61,11 @@ After both agents have responded, ask one additional question — either to the 
 
 This catches syntheses that feel compelling to the orchestrator and to the sympathetic agent but wouldn't survive contact with a genuine advocate for the harder-hit side. In testing, the user caught a synthesis that was intellectually compelling but naive about the actual authority structure through which decisions get made in the relevant institution. This adversarial check would have caught it.
 
-**The ironic failure test (proponent test):** Go further — would the hardest-hit monk say *"you've done exactly the thing I warned against"*? This catches a failure mode the acceptance test misses: analytical capture, where the synthesis enacts the error the dialectic was about. Example: a dialectic about whether wisdom is categorically different from intelligence produced a synthesis that operationalized wisdom as "meta-cognitive method selection" — sophisticated intelligence wearing wisdom's clothes. Schumacher would read that synthesis and say "you've analytically dissolved my Level 4 into Level 3, which is my *entire thesis* about modernity's error." The synthesis didn't just fail to convince the hardest-hit monk — it *proved his point* by demonstrating exactly the reductive move he was warning against. If your synthesis proves the hardest-hit monk's point, return to Phase 5.
+**The ironic failure test (proponent test):** Go further — would the hardest-hit monk say _"you've done exactly the thing I warned against"_? This catches a failure mode the acceptance test misses: analytical capture, where the synthesis enacts the error the dialectic was about. Example: a dialectic about whether wisdom is categorically different from intelligence produced a synthesis that operationalized wisdom as "meta-cognitive method selection" — sophisticated intelligence wearing wisdom's clothes. Schumacher would read that synthesis and say "you've analytically dissolved my Level 4 into Level 3, which is my _entire thesis_ about modernity's error." The synthesis didn't just fail to convince the hardest-hit monk — it _proved his point_ by demonstrating exactly the reductive move he was warning against. If your synthesis proves the hardest-hit monk's point, return to Phase 5.
 
 ## The Hostile Auditor
 
-After monk validation, spawn a **hostile auditor** — a separate agent whose sole mandate is to find what's wrong with the synthesis. This is not another monk with a position. It has no position. Its job is to be *correct,* not fair.
+After monk validation, spawn a **hostile auditor** — a separate agent whose sole mandate is to find what's wrong with the synthesis. This is not another monk with a position. It has no position. Its job is to be _correct,_ not fair.
 
 **Use the strongest available model with extended thinking enabled.** The auditor's value comes from catching things the orchestrator missed while embedded in the process — it needs fresh eyes and maximum reasoning capability. The cost is low (reading three short-to-medium essays plus a synthesis) and the leverage is high.
 
@@ -158,11 +158,13 @@ State findings. Aim for 500-1000 words.
 ```
 
 **When to use the auditor:**
+
 - **Always in Round 2+.** By Round 2 the synthesis has real substance worth auditing, and the auditor's critiques can meaningfully shape the recursion direction.
 - **Optional in Round 1.** The first-round synthesis is calibration — it's the least insightful output and will be superseded. An auditor attack on a Round 1 synthesis often produces generic critiques that the user has to spend energy dismissing. If the Round 1 synthesis feels weak, skip the auditor and go straight to recursion — the next round will be sharper anyway.
 - **Always when the user or orchestrator suspects compromise.** If the synthesis feels too easy, too agreeable, or like it's splitting the difference — deploy the auditor regardless of round.
 
 **How to use the auditor's output:**
+
 - If the auditor proposes a harder contradiction, this often becomes the best direction for Phase 7 recursion — better than what the orchestrator would have found
 - If it catches hidden shared assumptions, same — these are frequently the highest-value recursion targets
 - If it flags compromise-disguised-as-transcendence, return to Phase 5 and push harder
@@ -174,12 +176,13 @@ State findings. Aim for 500-1000 words.
 Sometimes the drive to synthesize is the problem. If the contradiction feels more productive held open than resolved, **say so.** This is a legitimate move — Koestler's third form of bisociation (the aesthetic "Ah") holds two matrices in sustained juxtaposition without fusion, and the juxtaposition itself can reveal features that the rush to resolution obscures.
 
 Signs that sustained juxtaposition may be the right move:
+
 - The synthesis keeps collapsing into compromise no matter how hard you push
 - The auditor's refusal to accept the synthesis is more illuminating than the synthesis itself
-- The contradiction *is* the insight — naming the tension precisely is more valuable than resolving it prematurely
+- The contradiction _is_ the insight — naming the tension precisely is more valuable than resolving it prematurely
 - The user recognizes the tension as genuinely generative rather than something to be eliminated
 
-If you choose sustained juxtaposition, **articulate what the juxtaposition reveals.** Don't just say "both are right" — describe what becomes visible *only* when you hold both positions in view simultaneously without resolving them. This is still productive output, and the juxtaposition itself can serve as input to the next recursive round (it has the closure property — a monk can believe "the tension between X and Y is irreducible and here's what that reveals").
+If you choose sustained juxtaposition, **articulate what the juxtaposition reveals.** Don't just say "both are right" — describe what becomes visible _only_ when you hold both positions in view simultaneously without resolving them. This is still productive output, and the juxtaposition itself can serve as input to the next recursive round (it has the closure property — a monk can believe "the tension between X and Y is irreducible and here's what that reveals").
 
 ## Interpreting the Results
 
@@ -190,7 +193,7 @@ If you choose sustained juxtaposition, **articulate what the juxtaposition revea
 - **Adversarial check fails:** The synthesis may be intellectually right but practically irrelevant to how decisions actually get made. Consider running a third round that engages the authority/power/decision-making structure, not just the intellectual argument.
 - **Hostile auditor proposes a harder contradiction:** This is the auditor's highest-value output. It often becomes the best recursion direction — better than what the orchestrator generated.
 - **Hostile auditor finds shared assumptions:** These are frequently the most valuable recursion targets — assumptions the orchestrator was embedded in and couldn't see.
-- **Hostile auditor flags compromise-as-transcendence:** Return to Phase 5. The synthesis needs to change the *question,* not split the difference.
+- **Hostile auditor flags compromise-as-transcendence:** Return to Phase 5. The synthesis needs to change the _question,_ not split the difference.
 - **Hostile auditor produces generic skepticism:** Discard it. If the critiques could apply to any proposal in any field, they're not engaging this synthesis. Don't waste the user's attention on them.
 
 ## Refine the Synthesis
@@ -205,7 +208,7 @@ After collecting monk validation and auditor feedback, the orchestrator usually 
 
    > **Improvement 1: Sharpen the analogy's limits.** The auditor is right that the biological frame is analogy, not identity. I'd add a paragraph acknowledging that institutional "selection" involves powerful actors with interests — it's not mindless environmental pressure. This makes the ecology frame more honest without abandoning it. Incorporate?
 
-   *[User responds, discussion happens, resolved]*
+   _[User responds, discussion happens, resolved]_
 
    > **Improvement 2: Reframe the fitness/quality distinction as the new contradiction, not the resolution.** All three validators converge here. The synthesis currently presents this as a concept to navigate. It should instead present the structural relationship as the open question the ecology frame reveals but cannot answer. More honest and sets up a sharper next round. Incorporate?
 

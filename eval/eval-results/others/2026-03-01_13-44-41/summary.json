@@ -57,9 +57,7 @@
       },
       "judgeDebug": {
         "parseStrategy": "default",
-        "parseErrors": [
-          "Provider error: Judge agent timed out after 90s"
-        ],
+        "parseErrors": ["Provider error: Judge agent timed out after 90s"],
         "exitCode": null,
         "providerError": "Judge agent timed out after 90s",
         "rawJudgeText": null,

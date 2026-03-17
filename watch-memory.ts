@@ -21,17 +21,17 @@ const watcher = chokidar.watch(`${memoryDir}/**/*.md`, {
 console.log(`Watching ${memoryDir} for .md file changes...`);
 console.log("Press Ctrl+C to stop.");
 
-watcher.on("add", (path) => {
+watcher.on("add", path => {
   console.log(`New file: ${path}`);
   runQmdUpdate();
 });
 
-watcher.on("change", (path) => {
+watcher.on("change", path => {
   console.log(`Changed: ${path}`);
   runQmdUpdate();
 });
 
-watcher.on("unlink", (path) => {
+watcher.on("unlink", path => {
   console.log(`Deleted: ${path}`);
   runQmdUpdate();
 });
@@ -42,7 +42,7 @@ function runQmdUpdate() {
     cwd: process.cwd(),
   });
 
-  proc.on("close", (code) => {
+  proc.on("close", code => {
     if (code === 0) {
       console.log("QMD index updated.");
     } else {
@@ -50,7 +50,7 @@ function runQmdUpdate() {
     }
   });
 
-  proc.on("error", (err) => {
+  proc.on("error", err => {
     console.error(`Failed to run qmd update: ${err.message}`);
   });
 }

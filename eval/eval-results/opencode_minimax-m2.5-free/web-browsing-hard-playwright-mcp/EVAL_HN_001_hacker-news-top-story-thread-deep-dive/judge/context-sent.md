@@ -1,22 +1,30 @@
 ## Tool: playwright_browser_navigate (call_function_xkoz1tuv869g_1)
+
 Status: completed
 url: https://news.ycombinator.com
 Output: ### Ran Playwright code
+
 ```js
-await page.goto('https://news.ycombinator.com');
+await page.goto("https://news.ycombinator.com");
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Tool: playwright_browser_click (call_function_zjrg6kxwkxqg_1)
+
 Status: completed
 element: 51 comments link for rank 1 story
 ref: e51
 Output: ### Ran Playwright code
+
 ```js
-await page.getByRole('link', { name: '51 comments' }).click();
+await page.getByRole("link", { name: "51 comments" }).click();
 ```
+
 ### Page
+
 ...(truncated)
 
 ## Assistant
@@ -24,14 +32,17 @@ await page.getByRole('link', { name: '51 comments' }).click();
 I need to analyze the comment structure to find the top-level comment with the most direct replies. Let me scroll to see more comments and understand the hierarchy better.
 
 ## Tool: playwright_browser_run_code (call_function_p8hp2vuafv0e_1)
+
 Status: completed
 code: async (page) => {
-  // Get all comments and analyze their structure
-  const comments = await page.ev...(truncated)
+// Get all comments and analyze their structure
+const comments = await page.ev...(truncated)
 Output: ### Result
 []
+
 ### Ran Playwright code
-```js
+
+````js
 await (async (page) => {
 ...(truncated)
 
@@ -89,3 +100,4 @@ StoryTitle: XML Is a Cheap DSL
 Points: 91
 TotalComments: 51
 TopCommentAuthor: necovek
+````

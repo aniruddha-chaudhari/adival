@@ -1,8 +1,9 @@
 # Phase 2: Generate the Electric Monk Prompts
 
-Generate two prompts — one for each Electric Monk. Each monk must *believe* its position at full conviction. This is not roleplay or debate — it is the functional core of the artificial belief system. A hedging monk is an Electric Monk that has failed at its one job: if the monk doesn't fully believe, the user has to carry part of the belief load, which means they can't occupy the belief-free orchestrator position where the real thinking happens.
+Generate two prompts — one for each Electric Monk. Each monk must _believe_ its position at full conviction. This is not roleplay or debate — it is the functional core of the artificial belief system. A hedging monk is an Electric Monk that has failed at its one job: if the monk doesn't fully believe, the user has to carry part of the belief load, which means they can't occupy the belief-free orchestrator position where the real thinking happens.
 
 Calibrate the monks based on what you learned in Phase 1c':
+
 - **What must each monk believe?** (Shaped by the user's belief burden)
 - **What must Monk A validate?** (Always validate the user's dominant mode first)
 - **What must Monk B hold that the user can't natively hold?**
@@ -68,4 +69,4 @@ Calibrate the monks based on what you learned in Phase 1c':
 7. LENGTH: 1500-2000 words for Round 1, 1000-1500 words for recursive rounds.
 ```
 
-**Why full belief is non-negotiable:** This is an artificial belief system, not a debate exercise. The user's cognitive agility depends on the monks carrying 100% of the belief load. When both monks believe fully, the user can operate in the belief-free space between them — analyzing the *structure* of the contradiction, spotting shared assumptions, finding cross-domain connections. When a monk hedges ("both sides have merit"), the user is pulled back into belief-space, their transients slow, and the dialectic degrades into a book report.
+**Why full belief is non-negotiable:** This is an artificial belief system, not a debate exercise. The user's cognitive agility depends on the monks carrying 100% of the belief load. When both monks believe fully, the user can operate in the belief-free space between them — analyzing the _structure_ of the contradiction, spotting shared assumptions, finding cross-domain connections. When a monk hedges ("both sides have merit"), the user is pulled back into belief-space, their transients slow, and the dialectic degrades into a book report.

@@ -1,8 +1,6 @@
 [
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 0,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -16,9 +14,7 @@
     "intent": "What is the top-1 best-selling product in 2022",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "exact_match": "Quest Lumaflex\u2122 Band"
       },
@@ -31,9 +27,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 1,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -47,9 +41,7 @@
     "intent": "What is the top-1 best-selling brand in Quarter 1 2022",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "exact_match": "Sprite"
       },
@@ -62,9 +54,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 2,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -78,9 +68,7 @@
     "intent": "What is the top-1 best-selling product type in Quarter 1 2022",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "exact_match": "Yoga ball"
       },
@@ -93,9 +81,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 5,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -109,9 +95,7 @@
     "intent": "What is the top-1 best-selling product type in Jan 2023",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "exact_match": "Duffle"
       },
@@ -124,9 +108,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "map"
-    ],
+    "sites": ["map"],
     "task_id": 7,
     "require_login": true,
     "storage_state": null,
@@ -141,9 +123,7 @@
     "intent": "Tell me the full address of all international airports that are within a driving distance of 50 km to Carnegie Mellon University",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "exact_match": "Pittsburgh International Airport, Southern Beltway, Findlay Township, Allegheny County, 15231, United States"
       },
@@ -156,9 +136,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "map"
-    ],
+    "sites": ["map"],
     "task_id": 8,
     "require_login": true,
     "storage_state": null,
@@ -173,13 +151,9 @@
     "intent": "Tell me the full address of all international airports that are within a driving distance of 5 km to Carnegie Mellon University",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
-        "fuzzy_match": [
-          "There is no airport within 5 km of Carnegie Mellon University"
-        ]
+        "fuzzy_match": ["There is no airport within 5 km of Carnegie Mellon University"]
       },
       "reference_url": "",
       "program_html": [],
@@ -190,9 +164,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 11,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -205,13 +177,9 @@
     "intent": "Tell me the the number of reviews that our store received by far that mention term \"disappointed\"",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
-        "must_include": [
-          "6"
-        ]
+        "must_include": ["6"]
       },
       "reference_url": "",
       "program_html": [],
@@ -222,9 +190,7 @@
     "difficulty": "easy"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 3,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -238,14 +204,9 @@
     "intent": "What are the top-2 best-selling product in 2022",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
-        "must_include": [
-          "Quest Lumaflex\u2122 Band",
-          "Sprite Stasis Ball 65 cm"
-        ]
+        "must_include": ["Quest Lumaflex\u2122 Band", "Sprite Stasis Ball 65 cm"]
       },
       "reference_url": "",
       "program_html": [],
@@ -256,9 +217,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 4,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -272,15 +231,9 @@
     "intent": "What are the top-3 best-selling product in Jan 2023",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
-        "must_include": [
-          "Impulse Duffle",
-          "Overnight Duffle",
-          "Hawkeye Yoga Short-32-Blue"
-        ]
+        "must_include": ["Impulse Duffle", "Overnight Duffle", "Hawkeye Yoga Short-32-Blue"]
       },
       "reference_url": "",
       "program_html": [],
@@ -291,9 +244,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 6,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -307,9 +258,7 @@
     "intent": "What are the top-5 best-selling product in 2023",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "must_include": [
           "Sprite Yoga Strap 6 foot",
@@ -328,9 +277,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "map"
-    ],
+    "sites": ["map"],
     "task_id": 9,
     "require_login": true,
     "storage_state": null,
@@ -345,9 +292,7 @@
     "intent": "Tell me the full address of all international airports that are within a driving distance of 30 km to Carnegie Art Museum",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "must_include": [
           "Pittsburgh International Airport, Southern Beltway, Findlay Township, Allegheny County, 15231, United States"
@@ -362,9 +307,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "map"
-    ],
+    "sites": ["map"],
     "task_id": 10,
     "require_login": true,
     "storage_state": null,
@@ -379,9 +322,7 @@
     "intent": "Tell me the full address of all US international airports that are within a driving distance of 60 km to Niagara Falls",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
         "must_include": [
           "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States",
@@ -397,9 +338,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 12,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -412,13 +351,9 @@
     "intent": "Tell me the the number of reviews that our store received by far that mention term \"satisfied\"",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
-        "must_include": [
-          "2"
-        ]
+        "must_include": ["2"]
       },
       "reference_url": "",
       "program_html": [],
@@ -429,9 +364,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "shopping_admin"
-    ],
+    "sites": ["shopping_admin"],
     "task_id": 13,
     "require_login": true,
     "storage_state": "./.auth/shopping_admin_state.json",
@@ -444,13 +377,9 @@
     "intent": "Tell me the the number of reviews that our store received by far that mention term \"decent\"",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "string_match"
-      ],
+      "eval_types": ["string_match"],
       "reference_answers": {
-        "must_include": [
-          "2"
-        ]
+        "must_include": ["2"]
       },
       "reference_url": "",
       "program_html": [],
@@ -461,9 +390,7 @@
     "difficulty": "medium"
   },
   {
-    "sites": [
-      "gitlab"
-    ],
+    "sites": ["gitlab"],
     "task_id": 804,
     "require_login": true,
     "storage_state": "./.auth/gitlab_state.json",
@@ -477,9 +404,7 @@
     "intent": "Assign the issue regarding flash alerts to myself and primer.",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "program_html"
-      ],
+      "eval_types": ["program_html"],
       "reference_answers": null,
       "reference_url": "",
       "program_html": [
@@ -509,9 +434,7 @@
     "difficulty": "hard"
   },
   {
-    "sites": [
-      "gitlab"
-    ],
+    "sites": ["gitlab"],
     "task_id": 805,
     "require_login": true,
     "storage_state": "./.auth/gitlab_state.json",
@@ -526,10 +449,7 @@
     "intent": "Submit a merge request for the branch that implements the support of template strings to be merged into master branch, assign myself and Roshan as the reviewer",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "url_match",
-        "program_html"
-      ],
+      "eval_types": ["url_match", "program_html"],
       "reference_answers": null,
       "reference_url": "__GITLAB__/a11yproject/a11yproject.com/-/merge_requests",
       "program_html": [
@@ -551,10 +471,7 @@
           "url": "last",
           "locator": "document.querySelector('.block.reviewer').outerText",
           "required_contents": {
-            "must_include": [
-              "Byte Blaze",
-              "Roshan Jossy"
-            ]
+            "must_include": ["Byte Blaze", "Roshan Jossy"]
           }
         }
       ],
@@ -564,9 +481,7 @@
     "difficulty": "hard"
   },
   {
-    "sites": [
-      "gitlab"
-    ],
+    "sites": ["gitlab"],
     "task_id": 806,
     "require_login": true,
     "storage_state": "./.auth/gitlab_state.json",
@@ -581,10 +496,7 @@
     "intent": "Submit a merge request for a11yproject.com/redesign branch to be merged into markdown-figure-block branch, assign myself as the reviewer",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "url_match",
-        "program_html"
-      ],
+      "eval_types": ["url_match", "program_html"],
       "reference_answers": null,
       "reference_url": "__GITLAB__/a11yproject/a11yproject.com/-/merge_requests",
       "program_html": [
@@ -606,9 +518,7 @@
           "url": "last",
           "locator": "document.querySelector('.block.reviewer').outerText",
           "required_contents": {
-            "must_include": [
-              "Byte Blaze"
-            ]
+            "must_include": ["Byte Blaze"]
           }
         }
       ],
@@ -618,9 +528,7 @@
     "difficulty": "hard"
   },
   {
-    "sites": [
-      "gitlab"
-    ],
+    "sites": ["gitlab"],
     "task_id": 807,
     "require_login": true,
     "storage_state": "./.auth/gitlab_state.json",
@@ -635,10 +543,7 @@
     "intent": "Submit a merge request for build time debug branch to be merged into main branch, assign myself as the reviewer",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "url_match",
-        "program_html"
-      ],
+      "eval_types": ["url_match", "program_html"],
       "reference_answers": null,
       "reference_url": "__GITLAB__/primer/design/-/merge_requests",
       "program_html": [
@@ -660,9 +565,7 @@
           "url": "last",
           "locator": "document.querySelector('.block.reviewer').outerText",
           "required_contents": {
-            "must_include": [
-              "Byte Blaze"
-            ]
+            "must_include": ["Byte Blaze"]
           }
         }
       ],
@@ -672,9 +575,7 @@
     "difficulty": "hard"
   },
   {
-    "sites": [
-      "gitlab"
-    ],
+    "sites": ["gitlab"],
     "task_id": 808,
     "require_login": true,
     "storage_state": "./.auth/gitlab_state.json",
@@ -690,10 +591,7 @@
     "intent": "Create an issue in cloud-to-butt repo with title \"Let's keep the project alive\". Assign the issue to myself. Set due date to be the end of Q1 2033",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "url_match",
-        "program_html"
-      ],
+      "eval_types": ["url_match", "program_html"],
       "reference_answers": null,
       "reference_url": "__GITLAB__/byteblaze/cloud-to-butt/-/issues",
       "program_html": [
@@ -708,18 +606,14 @@
           "url": "last",
           "locator": "document.querySelector('[data-testid=\"sidebar-due-date\"').outerText",
           "required_contents": {
-            "must_include": [
-              "Mar 31, 2033"
-            ]
+            "must_include": ["Mar 31, 2033"]
           }
         },
         {
           "url": "last",
           "locator": "document.querySelector('.block.assignee').outerText",
           "required_contents": {
-            "must_include": [
-              "Byte Blaze"
-            ]
+            "must_include": ["Byte Blaze"]
           }
         }
       ],
@@ -729,9 +623,7 @@
     "difficulty": "hard"
   },
   {
-    "sites": [
-      "gitlab"
-    ],
+    "sites": ["gitlab"],
     "task_id": 809,
     "require_login": true,
     "storage_state": "./.auth/gitlab_state.json",
@@ -747,10 +639,7 @@
     "intent": "Create an issue in a11yproject repo with title \"404 for many URLs\". Assign the issue to myself. Set due date to be 2030-1-3",
     "require_reset": false,
     "eval": {
-      "eval_types": [
-        "url_match",
-        "program_html"
-      ],
+      "eval_types": ["url_match", "program_html"],
       "reference_answers": null,
       "reference_url": "__GITLAB__/a11yproject/a11yproject.com/-/issues",
       "program_html": [
@@ -765,18 +654,14 @@
           "url": "last",
           "locator": "document.querySelector('[data-testid=\"sidebar-due-date\"').outerText",
           "required_contents": {
-            "must_include": [
-              "Jan 3, 2030"
-            ]
+            "must_include": ["Jan 3, 2030"]
           }
         },
         {
           "url": "last",
           "locator": "document.querySelector('.block.assignee').outerText",
           "required_contents": {
-            "must_include": [
-              "Byte Blaze"
-            ]
+            "must_include": ["Byte Blaze"]
           }
         }
       ],

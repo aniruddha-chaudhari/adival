@@ -24,11 +24,11 @@ gws sheets +append --spreadsheet <ID>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--spreadsheet` | ✓ | — | Spreadsheet ID |
-| `--values` | — | — | Comma-separated values (simple strings) |
-| `--json-values` | — | — | JSON array of rows, e.g. '[["a","b"],["c","d"]]' |
+| Flag            | Required | Default | Description                                      |
+| --------------- | -------- | ------- | ------------------------------------------------ |
+| `--spreadsheet` | ✓        | —       | Spreadsheet ID                                   |
+| `--values`      | —        | —       | Comma-separated values (simple strings)          |
+| `--json-values` | —        | —       | JSON array of rows, e.g. '[["a","b"],["c","d"]]' |
 
 ## Examples
 

@@ -21,10 +21,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps"
-        ]
+        "fields": ["completionScore", "observedSteps"]
       },
       "toolCallCount": 35,
       "elapsedMs": 176130,
@@ -73,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_LNKD_001",
@@ -94,10 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 8,
       "elapsedMs": 40360,
@@ -146,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_GH_001",
@@ -167,11 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "unnecessarySteps",
-          "redundantCommands"
-        ]
+        "fields": ["observedSteps", "unnecessarySteps", "redundantCommands"]
       },
       "toolCallCount": 13,
       "elapsedMs": 56827,
@@ -220,9 +206,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_WIKI_001",
@@ -241,11 +225,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 7,
       "elapsedMs": 31672,
@@ -294,9 +274,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     },
     {
       "id": "EVAL_SO_001",
@@ -315,11 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore",
-          "observedSteps",
-          "unnecessarySteps"
-        ]
+        "fields": ["completionScore", "observedSteps", "unnecessarySteps"]
       },
       "toolCallCount": 11,
       "elapsedMs": 41021,
@@ -368,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "agent-browser"
-      ]
+      "skills": ["agent-browser"]
     }
   ],
   "analysis": {

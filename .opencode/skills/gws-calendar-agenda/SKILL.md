@@ -24,13 +24,13 @@ gws calendar +agenda
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--today` | — | — | Show today's events |
-| `--tomorrow` | — | — | Show tomorrow's events |
-| `--week` | — | — | Show this week's events |
-| `--days` | — | — | Number of days ahead to show |
-| `--calendar` | — | — | Filter to specific calendar name or ID |
+| Flag         | Required | Default | Description                            |
+| ------------ | -------- | ------- | -------------------------------------- |
+| `--today`    | —        | —       | Show today's events                    |
+| `--tomorrow` | —        | —       | Show tomorrow's events                 |
+| `--week`     | —        | —       | Show this week's events                |
+| `--days`     | —        | —       | Number of days ahead to show           |
+| `--calendar` | —        | —       | Filter to specific calendar name or ID |
 
 ## Examples
 

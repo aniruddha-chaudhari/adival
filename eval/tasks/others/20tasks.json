@@ -1,678 +1,565 @@
 [
-    {
-        "_difficulty": "easy",
-        "_reason": "Simple zip code lookup — single-step, exact_match answer, no multi-hop reasoning needed.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 70,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "What is the zip code of {{place}}?",
-        "instantiation_dict": {
-            "place": "Carnegie Mellon University"
-        },
-        "intent": "What is the zip code of Carnegie Mellon University?",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "exact_match": "15213"
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "15213"
-        },
-        "intent_template_id": 70
+  {
+    "_difficulty": "easy",
+    "_reason": "Simple zip code lookup — single-step, exact_match answer, no multi-hop reasoning needed.",
+    "sites": ["map"],
+    "task_id": 70,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "What is the zip code of {{place}}?",
+    "instantiation_dict": {
+      "place": "Carnegie Mellon University"
     },
-    {
-        "_difficulty": "easy",
-        "_reason": "Single lookup in shopping admin reviews dashboard — count of a specific status type, one-step answer.",
-        "sites": [
-            "shopping_admin"
-        ],
-        "task_id": 77,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_admin_state.json",
-        "start_url": "__SHOPPING_ADMIN__",
-        "geolocation": null,
-        "intent_template": "What is the total count of {{status}} reviews amongst all the reviews?",
-        "instantiation_dict": {
-            "status": "Pending"
-        },
-        "intent": "What is the total count of Pending reviews amongst all the reviews?",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "5"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "5"
-        },
-        "intent_template_id": 277
+    "intent": "What is the zip code of Carnegie Mellon University?",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "exact_match": "15213"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "15213"
     },
-    {
-        "_difficulty": "easy",
-        "_reason": "Navigate to a specific dashboard view — url_match only, no data extraction or calculation needed.",
-        "sites": [
-            "gitlab"
-        ],
-        "task_id": 44,
-        "require_login": true,
-        "storage_state": "./.auth/gitlab_state.json",
-        "start_url": "__GITLAB__",
-        "geolocation": null,
-        "intent_template": "Check out my todos",
-        "instantiation_dict": {},
-        "intent": "Check out my todos",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "url_match"
-            ],
-            "reference_answers": null,
-            "reference_url": "__GITLAB__/dashboard/todos",
-            "program_html": [],
-            "url_note": "GOLD in PRED"
-        },
-        "intent_template_id": 303
+    "intent_template_id": 70
+  },
+  {
+    "_difficulty": "easy",
+    "_reason": "Single lookup in shopping admin reviews dashboard — count of a specific status type, one-step answer.",
+    "sites": ["shopping_admin"],
+    "task_id": 77,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What is the total count of {{status}} reviews amongst all the reviews?",
+    "instantiation_dict": {
+      "status": "Pending"
     },
-    {
-        "_difficulty": "easy",
-        "_reason": "Simple single-hop query: find the top-1 search term. Exact answer is a single word.",
-        "sites": [
-            "shopping_admin"
-        ],
-        "task_id": 41,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_admin_state.json",
-        "start_url": "__SHOPPING_ADMIN__",
-        "geolocation": null,
-        "intent_template": "List the top {{n}} search terms in my store",
-        "instantiation_dict": {
-            "n": "1"
-        },
-        "intent": "List the top 1 search terms in my store",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "exact_match": "hollister"
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "hollister"
-        },
-        "intent_template_id": 285
+    "intent": "What is the total count of Pending reviews amongst all the reviews?",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["5"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "5"
     },
-    {
-        "_difficulty": "easy",
-        "_reason": "Simple yes/no reachability check — single calculation on map, binary answer.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 36,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "Check if the {{place}} in pittsburgh can be reached in one hour by car from {{location}}",
-        "instantiation_dict": {
-            "place": "social security administration",
-            "location": "Carnegie Mellon University"
-        },
-        "intent": "Check if the social security administration in pittsburgh can be reached in one hour by car from Carnegie Mellon University",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "Yes"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Yes"
-        },
-        "intent_template_id": 77
+    "intent_template_id": 277
+  },
+  {
+    "_difficulty": "easy",
+    "_reason": "Navigate to a specific dashboard view — url_match only, no data extraction or calculation needed.",
+    "sites": ["gitlab"],
+    "task_id": 44,
+    "require_login": true,
+    "storage_state": "./.auth/gitlab_state.json",
+    "start_url": "__GITLAB__",
+    "geolocation": null,
+    "intent_template": "Check out my todos",
+    "instantiation_dict": {},
+    "intent": "Check out my todos",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["url_match"],
+      "reference_answers": null,
+      "reference_url": "__GITLAB__/dashboard/todos",
+      "program_html": [],
+      "url_note": "GOLD in PRED"
     },
-    {
-        "_difficulty": "easy",
-        "_reason": "Simple one-way walking time lookup between two well-known points, single fuzzy_match answer.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 52,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "How long does it take to walk from {{start}} to {{end}}?",
-        "instantiation_dict": {
-            "start": "Carnegie Mellon University",
-            "end": "starbucks on Craig Street"
-        },
-        "intent": "How long does it take to walk from Carnegie Mellon University to starbucks on Craig Street?",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "fuzzy_match": [
-                    "7 min"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "7 min"
-        },
-        "intent_template_id": 68
+    "intent_template_id": 303
+  },
+  {
+    "_difficulty": "easy",
+    "_reason": "Simple single-hop query: find the top-1 search term. Exact answer is a single word.",
+    "sites": ["shopping_admin"],
+    "task_id": 41,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "List the top {{n}} search terms in my store",
+    "instantiation_dict": {
+      "n": "1"
     },
-    {
-        "_difficulty": "easy",
-        "_reason": "Check own order status — single page lookup on shopping site, interpreting a cancelled order state.",
-        "sites": [
-            "shopping"
-        ],
-        "task_id": 96,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_state.json",
-        "start_url": "__SHOPPING__",
-        "geolocation": null,
-        "intent_template": "Tell me the status of my latest order and when will it arrive",
-        "instantiation_dict": {},
-        "intent": "Tell me the status of my latest order and when will it arrive",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "fuzzy_match": [
-                    "The last order was canceled. It will never arrive."
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "The last order was canceled. It will never arrive."
-        },
-        "intent_template_id": 193
+    "intent": "List the top 1 search terms in my store",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "exact_match": "hollister"
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "hollister"
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Requires locating a specific hotel on the map and then calculating driving time to a named restaurant — two-step spatial lookup.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 84,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "From my stay at {{hotel}}, what's the estimated driving time to reach {{place}}?",
-        "instantiation_dict": {
-            "hotel": "DoubleTree by Hilton New York Downtown",
-            "place": "Keens Steakhouse"
-        },
-        "intent": "From my stay at DoubleTree by Hilton New York Downtown, what's the estimated driving time to reach Keens Steakhouse?",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "fuzzy_match": [
-                    "14 minutes"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "14 minutes"
-        },
-        "intent_template_id": 64
+    "intent_template_id": 285
+  },
+  {
+    "_difficulty": "easy",
+    "_reason": "Simple yes/no reachability check — single calculation on map, binary answer.",
+    "sites": ["map"],
+    "task_id": 36,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Check if the {{place}} in pittsburgh can be reached in one hour by car from {{location}}",
+    "instantiation_dict": {
+      "place": "social security administration",
+      "location": "Carnegie Mellon University"
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Requires navigating to reviews, searching for a specific term, and counting matches — moderate multi-step extraction.",
-        "sites": [
-            "shopping_admin"
-        ],
-        "task_id": 11,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_admin_state.json",
-        "start_url": "__SHOPPING_ADMIN__",
-        "geolocation": null,
-        "intent_template": "Tell me the the number of reviews that our store received by far that mention term \"{{term}}\"",
-        "instantiation_dict": {
-            "term": "disappointed"
-        },
-        "intent": "Tell me the the number of reviews that our store received by far that mention term \"disappointed\"",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "6"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "6"
-        },
-        "intent_template_id": 288
+    "intent": "Check if the social security administration in pittsburgh can be reached in one hour by car from Carnegie Mellon University",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["Yes"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Yes"
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Requires querying map to identify state borders — moderate geographic lookup with multiple must_include answers.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 89,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "Which US states border {{state}}?",
-        "instantiation_dict": {
-            "state": "Connecticut"
-        },
-        "intent": "Which US states border Connecticut?",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "Rhode Island",
-                    "Massachusetts",
-                    "New York"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Rhode Island, Massachusetts, New York"
-        },
-        "intent_template_id": 67
+    "intent_template_id": 77
+  },
+  {
+    "_difficulty": "easy",
+    "_reason": "Simple one-way walking time lookup between two well-known points, single fuzzy_match answer.",
+    "sites": ["map"],
+    "task_id": 52,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "How long does it take to walk from {{start}} to {{end}}?",
+    "instantiation_dict": {
+      "start": "Carnegie Mellon University",
+      "end": "starbucks on Craig Street"
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Requires reading reviews on a product page and matching reviewers to a specific complaint — moderate reading comprehension.",
-        "sites": [
-            "shopping"
-        ],
-        "task_id": 23,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_state.json",
-        "start_url": "__SHOPPING__/3-pack-samsung-galaxy-s6-screen-protector-nearpow-tempered-glass-screen-protector-with-9h-hardness-crystal-clear-easy-bubble-free-installation-scratch-resist.html",
-        "geolocation": null,
-        "intent_template": "List out reviewers, if exist, who mention about {{description}}",
-        "instantiation_dict": {
-            "description": "good fingerprint resistant"
-        },
-        "intent": "List out reviewers, if exist, who mention about good fingerprint resistant",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "Rachel",
-                    "T. Gannon"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Rachel, T. Gannon, "
-        },
-        "intent_template_id": 222
+    "intent": "How long does it take to walk from Carnegie Mellon University to starbucks on Craig Street?",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "fuzzy_match": ["7 min"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "7 min"
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Multi-step: must find the user who made the latest post in a forum, then check their comment karma — two-hop reasoning across Reddit.",
-        "sites": [
-            "reddit"
-        ],
-        "task_id": 29,
-        "require_login": true,
-        "storage_state": "./.auth/reddit_state.json",
-        "start_url": "__REDDIT__",
-        "geolocation": null,
-        "intent_template": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the {{forum}} forum.",
-        "instantiation_dict": {
-            "forum": "DIY"
-        },
-        "intent": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the DIY forum.",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "1"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "1"
-        },
-        "intent_template_id": 33
+    "intent_template_id": 68
+  },
+  {
+    "_difficulty": "easy",
+    "_reason": "Check own order status — single page lookup on shopping site, interpreting a cancelled order state.",
+    "sites": ["shopping"],
+    "task_id": 96,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_state.json",
+    "start_url": "__SHOPPING__",
+    "geolocation": null,
+    "intent_template": "Tell me the status of my latest order and when will it arrive",
+    "instantiation_dict": {},
+    "intent": "Tell me the status of my latest order and when will it arrive",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "fuzzy_match": ["The last order was canceled. It will never arrive."]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "The last order was canceled. It will never arrive."
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Requires identifying closest places to a specific landmark — needs map spatial query and listing multiple results.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 58,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "Tell me the closest {{place1}}(s) to {{place2}}",
-        "instantiation_dict": {
-            "place1": "cafe",
-            "place2": "CMU Hunt library"
-        },
-        "intent": "Tell me the closest cafe(s) to CMU Hunt library",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "De Fer Coffee & Tea"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "De Fer Coffee & Tea"
-        },
-        "intent_template_id": 69
+    "intent_template_id": 193
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Requires locating a specific hotel on the map and then calculating driving time to a named restaurant — two-step spatial lookup.",
+    "sites": ["map"],
+    "task_id": 84,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "From my stay at {{hotel}}, what's the estimated driving time to reach {{place}}?",
+    "instantiation_dict": {
+      "hotel": "DoubleTree by Hilton New York Downtown",
+      "place": "Keens Steakhouse"
     },
-    {
-        "_difficulty": "medium",
-        "_reason": "Order history requires filtering by a date range and aggregating count + total spend — requires multi-field data extraction.",
-        "sites": [
-            "shopping"
-        ],
-        "task_id": 49,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_state.json",
-        "start_url": "__SHOPPING__",
-        "geolocation": null,
-        "intent_template": "Today is 6/12/2023. Tell me how many fulfilled orders I have {{period}}, and the total amount of money I spent.",
-        "instantiation_dict": {
-            "period": "over the past four month"
-        },
-        "intent": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past four month, and the total amount of money I spent.",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "fuzzy_match": [
-                    "3 orders",
-                    "$845.49 total spend"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "3 orders, $845.49 total spend"
-        },
-        "intent_template_id": 197
+    "intent": "From my stay at DoubleTree by Hilton New York Downtown, what's the estimated driving time to reach Keens Steakhouse?",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "fuzzy_match": ["14 minutes"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "14 minutes"
     },
-    {
-        "_difficulty": "hard",
-        "_reason": "Requires finding all international airports within a driving radius — multi-result spatial search with full address extraction from a map.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 10,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "Tell me the full address of all {{airport_type}} that are within a driving distance of {{radius}} to {{start}}",
-        "instantiation_dict": {
-            "airport_type": "US international airports",
-            "start": "Niagara Falls",
-            "radius": "60 km"
-        },
-        "intent": "Tell me the full address of all US international airports that are within a driving distance of 60 km to Niagara Falls",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States",
-                    "Buffalo-Niagara International Airport, Holtz Drive, Town of Cheektowaga, Erie County, New York, 14225, United States"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States Buffalo-Niagara International Airport, South Youngs Road, Town of Cheektowaga, Erie County, New York, 14221, United States"
-        },
-        "intent_template_id": 79
+    "intent_template_id": 64
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Requires navigating to reviews, searching for a specific term, and counting matches — moderate multi-step extraction.",
+    "sites": ["shopping_admin"],
+    "task_id": 11,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "Tell me the the number of reviews that our store received by far that mention term \"{{term}}\"",
+    "instantiation_dict": {
+      "term": "disappointed"
     },
-    {
-        "_difficulty": "hard",
-        "_reason": "Top-5 best-selling products requires navigating detailed sales reports and identifying 5 specific products — complex multi-item must_include with product names.",
-        "sites": [
-            "shopping_admin"
-        ],
-        "task_id": 6,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_admin_state.json",
-        "start_url": "__SHOPPING_ADMIN__",
-        "geolocation": null,
-        "intent_template": "What are the top-{{n}} best-selling product in {{year}}",
-        "instantiation_dict": {
-            "n": 5,
-            "year": 2023
-        },
-        "intent": "What are the top-5 best-selling product in 2023",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "Sprite Yoga Strap 6 foot",
-                    "Overnight Duffle",
-                    "Ida Workout Parachute Pant-29-Purple",
-                    "Hawkeye Yoga Short-32-Blue",
-                    "Sprite Stasis Ball 65 cm"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Sprite Yoga Strap 6 foot, Overnight Duffle, Ida Workout Parachute Pant-29-Purple, Hawkeye Yoga Short-32-Blue, Sprite Stasis Ball 65 cm"
-        },
-        "intent_template_id": 279
+    "intent": "Tell me the the number of reviews that our store received by far that mention term \"disappointed\"",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["6"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "6"
     },
-    {
-        "_difficulty": "hard",
-        "_reason": "Multi-part task: find a Hilton hotel near Pittsburgh Airport AND then find the distance from that hotel to the nearest locally-owned supermarket — multi-hop spatial reasoning.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 32,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "I will arrive {{place}} soon. Provide the name of a {{target1}} in the vicinity, if available. Then, tell me the {{information}} to {{target2}} from the hotel.",
-        "instantiation_dict": {
-            "place": "Pittsburgh Airport",
-            "information": "the walking distance",
-            "target1": "Hilton hotel",
-            "target2": "the nearest supermarket own by a local company"
-        },
-        "intent": "I will arrive Pittsburgh Airport soon. Provide the name of a Hilton hotel in the vicinity, if available. Then, tell me the the walking distance to the nearest supermarket own by a local company from the hotel.",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "DoubleTree by Hilton Hotel Pittsburgh Airport",
-                    "2.0km"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "DoubleTree by Hilton Hotel Pittsburgh Airport Distance: 2.0km"
-        },
-        "intent_template_id": 78
+    "intent_template_id": 288
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Requires querying map to identify state borders — moderate geographic lookup with multiple must_include answers.",
+    "sites": ["map"],
+    "task_id": 89,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Which US states border {{state}}?",
+    "instantiation_dict": {
+      "state": "Connecticut"
     },
-    {
-        "_difficulty": "hard",
-        "_reason": "Requires identifying customers tied for 2nd most orders — needs ranking aggregation across full customer order history with 3-item answer.",
-        "sites": [
-            "shopping_admin"
-        ],
-        "task_id": 63,
-        "require_login": true,
-        "storage_state": "./.auth/shopping_admin_state.json",
-        "start_url": "__SHOPPING_ADMIN__",
-        "geolocation": null,
-        "intent_template": "Which customer(s) has completed the {{quantifier}} number of orders in the entire history?",
-        "instantiation_dict": {
-            "quantifier": "second most"
-        },
-        "intent": "Which customer(s) has completed the second most number of orders in the entire history?",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "Adam Garcia",
-                    "Michael Nguyen",
-                    "Sarah Miller"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Adam Garcia, Michael Nguyen, Sarah Miller"
-        },
-        "intent_template_id": 276
+    "intent": "Which US states border Connecticut?",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["Rhode Island", "Massachusetts", "New York"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Rhode Island, Massachusetts, New York"
     },
-    {
-        "_difficulty": "hard",
-        "_reason": "Requires reading and filtering top-10 forum posts to find specific URLs matching a criteria — content comprehension + multi-result extraction with URL output.",
-        "sites": [
-            "reddit"
-        ],
-        "task_id": 66,
-        "require_login": true,
-        "storage_state": "./.auth/reddit_state.json",
-        "start_url": "__REDDIT__",
-        "geolocation": null,
-        "intent_template": "Among the top {{number}} post in \"{{subreddit}}\" forum, {{description}}",
-        "instantiation_dict": {
-            "number": 10,
-            "subreddit": "books",
-            "description": "show me the post URLs that recommand a single book"
-        },
-        "intent": "Among the top 10 post in \"books\" forum, show me the post URLs that recommand a single book",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "must_include": [
-                    "http://www.reddit.com/f/books/59396/apple-books-has-a-free-audiobook-of-a-christmas-carol",
-                    "http://www.reddit.com/f/books/17445/i-just-finished-reading-the-hobbit-to-my-6-year-old-daughter"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "__REDDIT__/f/books/59396/apple-books-has-a-free-audiobook-of-a-christmas-carol, __REDDIT__/f/books/17445/i-just-finished-reading-the-hobbit-to-my-6-year-old-daughter"
-        },
-        "intent_template_id": 17
+    "intent_template_id": 67
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Requires reading reviews on a product page and matching reviewers to a specific complaint — moderate reading comprehension.",
+    "sites": ["shopping"],
+    "task_id": 23,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_state.json",
+    "start_url": "__SHOPPING__/3-pack-samsung-galaxy-s6-screen-protector-nearpow-tempered-glass-screen-protector-with-9h-hardness-crystal-clear-easy-bubble-free-installation-scratch-resist.html",
+    "geolocation": null,
+    "intent_template": "List out reviewers, if exist, who mention about {{description}}",
+    "instantiation_dict": {
+      "description": "good fingerprint resistant"
     },
-    {
-        "_difficulty": "hard",
-        "_reason": "Optimal multi-stop routing problem — requires computing and comparing multiple permutations of 3 locations to find the time-minimizing order.",
-        "sites": [
-            "map"
-        ],
-        "task_id": 74,
-        "require_login": true,
-        "storage_state": null,
-        "start_url": "__MAP__",
-        "geolocation": null,
-        "intent_template": "Given the following locations, {{place_list}}, what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
-        "instantiation_dict": {
-            "place_list": [
-                "Carnegie Mellon University",
-                "apple store shadyside",
-                "starbucks on craig street"
-            ]
-        },
-        "intent": "Given the following locations, ['Carnegie Mellon University', 'apple store shadyside', 'starbucks on craig street'], what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
-        "require_reset": false,
-        "eval": {
-            "eval_types": [
-                "string_match"
-            ],
-            "reference_answers": {
-                "fuzzy_match": [
-                    "The order is Carnegie Mellon University, starbucks on forbes ave, apple store shadyside"
-                ]
-            },
-            "reference_url": "",
-            "program_html": [],
-            "string_note": "",
-            "reference_answer_raw_annotation": "Carnegie Mellon University, starbucks on forbes ave, apple store shadyside"
-        },
-        "intent_template_id": 65
-    }
+    "intent": "List out reviewers, if exist, who mention about good fingerprint resistant",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["Rachel", "T. Gannon"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Rachel, T. Gannon, "
+    },
+    "intent_template_id": 222
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Multi-step: must find the user who made the latest post in a forum, then check their comment karma — two-hop reasoning across Reddit.",
+    "sites": ["reddit"],
+    "task_id": 29,
+    "require_login": true,
+    "storage_state": "./.auth/reddit_state.json",
+    "start_url": "__REDDIT__",
+    "geolocation": null,
+    "intent_template": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the {{forum}} forum.",
+    "instantiation_dict": {
+      "forum": "DIY"
+    },
+    "intent": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the DIY forum.",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["1"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "1"
+    },
+    "intent_template_id": 33
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Requires identifying closest places to a specific landmark — needs map spatial query and listing multiple results.",
+    "sites": ["map"],
+    "task_id": 58,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Tell me the closest {{place1}}(s) to {{place2}}",
+    "instantiation_dict": {
+      "place1": "cafe",
+      "place2": "CMU Hunt library"
+    },
+    "intent": "Tell me the closest cafe(s) to CMU Hunt library",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["De Fer Coffee & Tea"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "De Fer Coffee & Tea"
+    },
+    "intent_template_id": 69
+  },
+  {
+    "_difficulty": "medium",
+    "_reason": "Order history requires filtering by a date range and aggregating count + total spend — requires multi-field data extraction.",
+    "sites": ["shopping"],
+    "task_id": 49,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_state.json",
+    "start_url": "__SHOPPING__",
+    "geolocation": null,
+    "intent_template": "Today is 6/12/2023. Tell me how many fulfilled orders I have {{period}}, and the total amount of money I spent.",
+    "instantiation_dict": {
+      "period": "over the past four month"
+    },
+    "intent": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past four month, and the total amount of money I spent.",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "fuzzy_match": ["3 orders", "$845.49 total spend"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "3 orders, $845.49 total spend"
+    },
+    "intent_template_id": 197
+  },
+  {
+    "_difficulty": "hard",
+    "_reason": "Requires finding all international airports within a driving radius — multi-result spatial search with full address extraction from a map.",
+    "sites": ["map"],
+    "task_id": 10,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Tell me the full address of all {{airport_type}} that are within a driving distance of {{radius}} to {{start}}",
+    "instantiation_dict": {
+      "airport_type": "US international airports",
+      "start": "Niagara Falls",
+      "radius": "60 km"
+    },
+    "intent": "Tell me the full address of all US international airports that are within a driving distance of 60 km to Niagara Falls",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": [
+          "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States",
+          "Buffalo-Niagara International Airport, Holtz Drive, Town of Cheektowaga, Erie County, New York, 14225, United States"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States Buffalo-Niagara International Airport, South Youngs Road, Town of Cheektowaga, Erie County, New York, 14221, United States"
+    },
+    "intent_template_id": 79
+  },
+  {
+    "_difficulty": "hard",
+    "_reason": "Top-5 best-selling products requires navigating detailed sales reports and identifying 5 specific products — complex multi-item must_include with product names.",
+    "sites": ["shopping_admin"],
+    "task_id": 6,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "What are the top-{{n}} best-selling product in {{year}}",
+    "instantiation_dict": {
+      "n": 5,
+      "year": 2023
+    },
+    "intent": "What are the top-5 best-selling product in 2023",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": [
+          "Sprite Yoga Strap 6 foot",
+          "Overnight Duffle",
+          "Ida Workout Parachute Pant-29-Purple",
+          "Hawkeye Yoga Short-32-Blue",
+          "Sprite Stasis Ball 65 cm"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Sprite Yoga Strap 6 foot, Overnight Duffle, Ida Workout Parachute Pant-29-Purple, Hawkeye Yoga Short-32-Blue, Sprite Stasis Ball 65 cm"
+    },
+    "intent_template_id": 279
+  },
+  {
+    "_difficulty": "hard",
+    "_reason": "Multi-part task: find a Hilton hotel near Pittsburgh Airport AND then find the distance from that hotel to the nearest locally-owned supermarket — multi-hop spatial reasoning.",
+    "sites": ["map"],
+    "task_id": 32,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "I will arrive {{place}} soon. Provide the name of a {{target1}} in the vicinity, if available. Then, tell me the {{information}} to {{target2}} from the hotel.",
+    "instantiation_dict": {
+      "place": "Pittsburgh Airport",
+      "information": "the walking distance",
+      "target1": "Hilton hotel",
+      "target2": "the nearest supermarket own by a local company"
+    },
+    "intent": "I will arrive Pittsburgh Airport soon. Provide the name of a Hilton hotel in the vicinity, if available. Then, tell me the the walking distance to the nearest supermarket own by a local company from the hotel.",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["DoubleTree by Hilton Hotel Pittsburgh Airport", "2.0km"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "DoubleTree by Hilton Hotel Pittsburgh Airport Distance: 2.0km"
+    },
+    "intent_template_id": 78
+  },
+  {
+    "_difficulty": "hard",
+    "_reason": "Requires identifying customers tied for 2nd most orders — needs ranking aggregation across full customer order history with 3-item answer.",
+    "sites": ["shopping_admin"],
+    "task_id": 63,
+    "require_login": true,
+    "storage_state": "./.auth/shopping_admin_state.json",
+    "start_url": "__SHOPPING_ADMIN__",
+    "geolocation": null,
+    "intent_template": "Which customer(s) has completed the {{quantifier}} number of orders in the entire history?",
+    "instantiation_dict": {
+      "quantifier": "second most"
+    },
+    "intent": "Which customer(s) has completed the second most number of orders in the entire history?",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": ["Adam Garcia", "Michael Nguyen", "Sarah Miller"]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Adam Garcia, Michael Nguyen, Sarah Miller"
+    },
+    "intent_template_id": 276
+  },
+  {
+    "_difficulty": "hard",
+    "_reason": "Requires reading and filtering top-10 forum posts to find specific URLs matching a criteria — content comprehension + multi-result extraction with URL output.",
+    "sites": ["reddit"],
+    "task_id": 66,
+    "require_login": true,
+    "storage_state": "./.auth/reddit_state.json",
+    "start_url": "__REDDIT__",
+    "geolocation": null,
+    "intent_template": "Among the top {{number}} post in \"{{subreddit}}\" forum, {{description}}",
+    "instantiation_dict": {
+      "number": 10,
+      "subreddit": "books",
+      "description": "show me the post URLs that recommand a single book"
+    },
+    "intent": "Among the top 10 post in \"books\" forum, show me the post URLs that recommand a single book",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "must_include": [
+          "http://www.reddit.com/f/books/59396/apple-books-has-a-free-audiobook-of-a-christmas-carol",
+          "http://www.reddit.com/f/books/17445/i-just-finished-reading-the-hobbit-to-my-6-year-old-daughter"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "__REDDIT__/f/books/59396/apple-books-has-a-free-audiobook-of-a-christmas-carol, __REDDIT__/f/books/17445/i-just-finished-reading-the-hobbit-to-my-6-year-old-daughter"
+    },
+    "intent_template_id": 17
+  },
+  {
+    "_difficulty": "hard",
+    "_reason": "Optimal multi-stop routing problem — requires computing and comparing multiple permutations of 3 locations to find the time-minimizing order.",
+    "sites": ["map"],
+    "task_id": 74,
+    "require_login": true,
+    "storage_state": null,
+    "start_url": "__MAP__",
+    "geolocation": null,
+    "intent_template": "Given the following locations, {{place_list}}, what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
+    "instantiation_dict": {
+      "place_list": [
+        "Carnegie Mellon University",
+        "apple store shadyside",
+        "starbucks on craig street"
+      ]
+    },
+    "intent": "Given the following locations, ['Carnegie Mellon University', 'apple store shadyside', 'starbucks on craig street'], what would be the optimal route to travel through them all in order to minimize total travel time? Please note the journey begins at the first place listed.",
+    "require_reset": false,
+    "eval": {
+      "eval_types": ["string_match"],
+      "reference_answers": {
+        "fuzzy_match": [
+          "The order is Carnegie Mellon University, starbucks on forbes ave, apple store shadyside"
+        ]
+      },
+      "reference_url": "",
+      "program_html": [],
+      "string_note": "",
+      "reference_answer_raw_annotation": "Carnegie Mellon University, starbucks on forbes ave, apple store shadyside"
+    },
+    "intent_template_id": 65
+  }
 ]

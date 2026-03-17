@@ -89,10 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps",
-          "redundantCommands"
-        ]
+        "fields": ["observedSteps", "redundantCommands"]
       },
       "toolCallCount": 39,
       "elapsedMs": 166429,
@@ -141,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "docx"
-      ]
+      "skills": ["docx"]
     },
     {
       "id": "EVAL_FM_003",
@@ -162,9 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 17,
       "elapsedMs": 70156,
@@ -213,9 +206,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_FM_004",
@@ -234,9 +225,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 2,
       "elapsedMs": 28402,
@@ -304,9 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 8,
       "elapsedMs": 117164,
@@ -355,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": false
       },
-      "skills": [
-        "pptx"
-      ]
+      "skills": ["pptx"]
     },
     {
       "id": "EVAL_FM_007",
@@ -376,9 +361,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 7,
       "elapsedMs": 48930,

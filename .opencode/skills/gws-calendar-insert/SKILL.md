@@ -24,15 +24,15 @@ gws calendar +insert --summary <TEXT> --start <TIME> --end <TIME>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--calendar` | — | primary | Calendar ID (default: primary) |
-| `--summary` | ✓ | — | Event summary/title |
-| `--start` | ✓ | — | Start time (ISO 8601, e.g., 2024-01-01T10:00:00Z) |
-| `--end` | ✓ | — | End time (ISO 8601) |
-| `--location` | — | — | Event location |
-| `--description` | — | — | Event description/body |
-| `--attendee` | — | — | Attendee email (can be used multiple times) |
+| Flag            | Required | Default | Description                                       |
+| --------------- | -------- | ------- | ------------------------------------------------- |
+| `--calendar`    | —        | primary | Calendar ID (default: primary)                    |
+| `--summary`     | ✓        | —       | Event summary/title                               |
+| `--start`       | ✓        | —       | Start time (ISO 8601, e.g., 2024-01-01T10:00:00Z) |
+| `--end`         | ✓        | —       | End time (ISO 8601)                               |
+| `--location`    | —        | —       | Event location                                    |
+| `--description` | —        | —       | Event description/body                            |
+| `--attendee`    | —        | —       | Attendee email (can be used multiple times)       |
 
 ## Examples
 

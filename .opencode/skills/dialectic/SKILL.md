@@ -7,13 +7,14 @@ description: An Electric Monk engine — two subagents believe fully committed p
 
 An **artificial belief system** for building deeper understanding through productive contradiction.
 
-Two subagent sessions — the Electric Monks — *believe* fully committed positions so you don't have to. A third (the orchestrator) performs structural analysis of their contradiction and generates a synthesis (Aufhebung) that transforms the question itself. The user orchestrates from a belief-free position, freed from the cognitive load of holding either position.
+Two subagent sessions — the Electric Monks — _believe_ fully committed positions so you don't have to. A third (the orchestrator) performs structural analysis of their contradiction and generates a synthesis (Aufhebung) that transforms the question itself. The user orchestrates from a belief-free position, freed from the cognitive load of holding either position.
 
-**Why this works:** The bottleneck in human reasoning isn't intelligence — it's *belief.* Once you believe a position, you can't simultaneously hold its negation at full strength. You hedge, you steelman weakly, you unconsciously bias the comparison. The Electric Monks carry the belief load at full conviction, which frees you to operate in the space above belief — analyzing the *structure* of the contradiction rather than being inside either side. In Boyd's terms: outsourcing belief work leads to faster transients. Each dialectical cycle is a reorientation that would take weeks of natural thinking, compressed into minutes because you carry zero belief inertia.
+**Why this works:** The bottleneck in human reasoning isn't intelligence — it's _belief._ Once you believe a position, you can't simultaneously hold its negation at full strength. You hedge, you steelman weakly, you unconsciously bias the comparison. The Electric Monks carry the belief load at full conviction, which frees you to operate in the space above belief — analyzing the _structure_ of the contradiction rather than being inside either side. In Boyd's terms: outsourcing belief work leads to faster transients. Each dialectical cycle is a reorientation that would take weeks of natural thinking, compressed into minutes because you carry zero belief inertia.
 
 ## When to Use This Skill
 
 Use when:
+
 - The user wants to **stress-test** an idea against the strongest possible counter-argument
 - The user is **torn between two positions** and the tension feels genuine, not just a preference
 - A **decision has real stakes** and the tradeoffs are unclear
@@ -22,6 +23,7 @@ Use when:
 - Requirements genuinely conflict and can't be resolved by simple tradeoff analysis
 
 Do NOT use when:
+
 - The question is purely empirical (just look up the answer)
 - One side is obviously correct and doesn't need dialectical treatment
 - The user wants a quick recommendation, not deep analysis
@@ -30,11 +32,11 @@ Do NOT use when:
 
 Three frameworks drive every phase of this skill. Internalize them before proceeding — they determine how you execute, not just why.
 
-**Rao: This is an Artificial Belief System, not AI.** The monks aren't thinking for the user — they're *believing* for the user. The bottleneck in human reasoning is belief inertia: once you hold a position, you can't simultaneously entertain its negation at full strength. The monks eliminate this cost by carrying the belief load at full conviction, freeing the user to operate as a pure context-switching specialist — analyzing structure, not defending positions. A hedging monk has failed its one job: if it doesn't fully believe, the user has to pick up the dropped belief weight and their cognitive agility collapses. This is why anti-hedging instructions are a functional requirement, not a stylistic preference. (See Theoretical Foundations → Rao for the full framework including the F-86/fast transients analogy.)
+**Rao: This is an Artificial Belief System, not AI.** The monks aren't thinking for the user — they're _believing_ for the user. The bottleneck in human reasoning is belief inertia: once you hold a position, you can't simultaneously entertain its negation at full strength. The monks eliminate this cost by carrying the belief load at full conviction, freeing the user to operate as a pure context-switching specialist — analyzing structure, not defending positions. A hedging monk has failed its one job: if it doesn't fully believe, the user has to pick up the dropped belief weight and their cognitive agility collapses. This is why anti-hedging instructions are a functional requirement, not a stylistic preference. (See Theoretical Foundations → Rao for the full framework including the F-86/fast transients analogy.)
 
-**Hegel: How contradictions resolve.** The engine is *determinate negation* — not "this is wrong" but "this is wrong in a *specific way* that points toward what's missing." The specific failure mode of each position is a signpost. Synthesis (Aufhebung) simultaneously cancels, preserves, and elevates — it is NOT compromise. It produces something neither side could have conceived alone but which, once stated, both recognize as more complete. It is irreversible — genuine cognitive gain. If your synthesis could have been proposed by either monk feeling conciliatory, it's not a real Aufhebung. (See Theoretical Foundations → Hegel.)
+**Hegel: How contradictions resolve.** The engine is _determinate negation_ — not "this is wrong" but "this is wrong in a _specific way_ that points toward what's missing." The specific failure mode of each position is a signpost. Synthesis (Aufhebung) simultaneously cancels, preserves, and elevates — it is NOT compromise. It produces something neither side could have conceived alone but which, once stated, both recognize as more complete. It is irreversible — genuine cognitive gain. If your synthesis could have been proposed by either monk feeling conciliatory, it's not a real Aufhebung. (See Theoretical Foundations → Hegel.)
 
-**Boyd: How creativity works.** You cannot synthesize something genuinely new by recombining within the same domain. You must first *shatter* existing conceptual wholes into atomic parts (destruction), then find cross-domain connections to build something new (creation). This is why the Boydian decomposition step (Phase 4.5) strips claims from their source positions and looks for surprising connections, and why recursive rounds often need new research from *outside* the original domains — each synthesis creates space for new material to enter. Compromise recombines within the same domain; genuine sublation requires cross-domain connection, which is why it feels like surprise. (See Theoretical Foundations → Boyd.)
+**Boyd: How creativity works.** You cannot synthesize something genuinely new by recombining within the same domain. You must first _shatter_ existing conceptual wholes into atomic parts (destruction), then find cross-domain connections to build something new (creation). This is why the Boydian decomposition step (Phase 4.5) strips claims from their source positions and looks for surprising connections, and why recursive rounds often need new research from _outside_ the original domains — each synthesis creates space for new material to enter. Compromise recombines within the same domain; genuine sublation requires cross-domain connection, which is why it feels like surprise. (See Theoretical Foundations → Boyd.)
 
 ## How It Works: Overview
 
@@ -69,86 +71,100 @@ You (Orchestrator)
     └── Repeat from Phase 2 (or Phase 1 if new research needed) on chosen direction
 ```
 
-The user can intervene at any point — correcting a monk's framing, redirecting research, rejecting a compromise-shaped synthesis. The user never has to *believe* anything — that's the monks' job.
+The user can intervene at any point — correcting a monk's framing, redirecting research, rejecting a compromise-shaped synthesis. The user never has to _believe_ anything — that's the monks' job.
 
 ## Phases: Summary and Reference
 
 **CRITICAL: Before executing each phase, you MUST read its reference doc in full.** The summaries below are orientation only — they do not contain the detailed instructions, prompts, templates, or failure modes you need to execute correctly. Context drift (forgetting nuance in later rounds) is the most common failure mode of this skill. Reading the reference doc fresh each time is the fix.
 
 ### Phase 1: Elenctic Interview + Research
+
 **Read `reference/phase1-elenctic-interview.md` before executing.**
 
 The most important phase. Explain the process to the user. Interview them using Socratic technique to surface hidden assumptions and the deepest version of the contradiction. Identify their belief burden (see catalog below). Ground the monks via research (external domains) or deep interview (personal domains). Write a context briefing document. Confirm framing with the user — ask about gaps.
 
 ### Phase 2: Generate the Electric Monk Prompts
+
 **Read `reference/phase2-monk-prompts.md` before executing.**
 
 Generate two prompts calibrated to the user's belief burden. Each monk must BELIEVE at full conviction — this is the functional core of the ABS. The reference doc contains the required prompt structure (role, framing corrections, context briefing, research directives, argument structure, anti-hedging, length).
 
 ### Phase 3: Spawn the Electric Monks
+
 **Read `reference/phase3-spawn-monks.md` before executing.**
 
 Spawn both monks as separate subagent sessions. Check for hedging, degenerate framing, and decorrelation. Present outputs to the user with guidance on how to read them. Ask if any claims should be tested against evidence neither monk considered.
 
 ### Phase 4: Determinate Negation
+
 **Read `reference/phase4-determinate-negation.md` before executing.**
 
 You perform this yourself (not a subagent). Analyze internal tensions in each essay, then the surface contradiction, shared assumptions, determinate negation, hidden question, Boydian decomposition, and sublation criteria. Write your initial synthesis guess first — compare at the end to check for pattern-matching. **In Round 2+**, includes lateral creativity interventions: compressed conflict generation (oxymorons), random domain injection via Wikipedia's random article API, and a non-propositional pause (three metaphors).
 
 ### Phase 5: Sublation (Aufhebung)
+
 **Read `reference/phase5-sublation.md` before executing.**
 
 Generate the synthesis: cancel both positions as complete truths, preserve the genuine insight in each, elevate to a new concept that transforms the question. Apply the abduction test. Check for compromise failure modes — including **analytical capture** (adopting one monk's epistemology to reframe the other) and **level reduction** (dissolving a higher-category claim into lower-category terms). Present to the user before validation. **In Round 2+**, begins with a De Bono provocation + movement extraction to disrupt premature pattern-matching.
 
 ### Phase 6: Validation by the Electric Monks
+
 **Read `reference/phase6-validation.md` before executing.**
 
 Send condensed summary to both monks for validation (elevated vs. defeated). Run adversarial check — including the **proponent test** (would the hardest-hit monk say "you've done exactly the thing I warned against"?). Deploy the hostile auditor (always in Round 2+, optional in Round 1). **Sustained juxtaposition** is a legitimate alternative when the contradiction is more productive held open than resolved. Present improvements to user one at a time, not as a list. Revise synthesis before proceeding to recursion.
 
 ### Phase 7: Recursion
+
 **Read `reference/phase7-recursion.md` before executing.**
 
 Recursion is the engine of the skill — the first round is calibration. Propose 2-4 directions as a menu. Fresh agents are usually better than resumed sessions. New research is often essential as each synthesis opens new conceptual domains. Default: recurse at least once. Track the dialectic queue in a file.
 
 ## Belief Burden Catalog
 
-During the elenctic interview (Phase 1c'), **pay attention to what the user is stuck believing.** The dialectic's power comes from freeing the user from specific belief loads — but *which* beliefs need outsourcing depends on the person. Different cognitive styles produce different belief burdens, and the Electric Monks need to be calibrated accordingly.
+During the elenctic interview (Phase 1c'), **pay attention to what the user is stuck believing.** The dialectic's power comes from freeing the user from specific belief loads — but _which_ beliefs need outsourcing depends on the person. Different cognitive styles produce different belief burdens, and the Electric Monks need to be calibrated accordingly.
 
 You don't need to type the user explicitly — just notice the pattern and calibrate. Here's a catalog of common belief burdens and how they map to the monks' roles.
 
 **A note on the MBTI labels:** These patterns map loosely to MBTI cognitive function stacks (Ni-Te, Ne-Ti, etc.) because the model has rich training data about those patterns — thousands of forum posts, blog articles, and discussions about how each type thinks, gets stuck, and makes decisions. The labels function as **retrieval keys into that training data,** not as diagnostic categories. Don't treat them as psychometric claims. Don't announce them to the user. Use them as reasoning aids to help you pattern-match what you're seeing in the interview and calibrate the monks accordingly.
 
 **The Convergent Visionary** (Ni-Te pattern — common in founders, architects, CTOs)
-- *Belief burden:* Premature convergence — "I already see where this should go." They've locked onto a vision and can't genuinely entertain alternatives at full strength.
-- *What the monks must do:* Monk A validates their vision's core insight (so they can release it without feeling it's been dismissed). Monk B believes the strongest *alternative* vision at full conviction — not a critique of theirs, but a genuinely different view of what the thing should be. The user needs to see two fully-believed futures to escape their own.
-- *Interview signal:* They have a strong thesis and want to "stress-test" it. They describe the opposing view weakly or dismissively. They say "I know X, but..."
+
+- _Belief burden:_ Premature convergence — "I already see where this should go." They've locked onto a vision and can't genuinely entertain alternatives at full strength.
+- _What the monks must do:_ Monk A validates their vision's core insight (so they can release it without feeling it's been dismissed). Monk B believes the strongest _alternative_ vision at full conviction — not a critique of theirs, but a genuinely different view of what the thing should be. The user needs to see two fully-believed futures to escape their own.
+- _Interview signal:_ They have a strong thesis and want to "stress-test" it. They describe the opposing view weakly or dismissively. They say "I know X, but..."
 
 **The Empathic Integrator** (Ni-Fe pattern — common in counselors, teachers, community leaders)
-- *Belief burden:* Undifferentiated care — "everything matters equally because someone needs it." They absorb others' needs and can't triage because triage feels like betrayal.
-- *What the monks must do:* Monk A believes their vision is *exactly right* — validates the Ni. Monk B believes the concrete reality constraints at full conviction: these resources, this timeline, these people's actual capacities. Not "your vision is wrong" but "here is what IS, right now." The user needs the gap between vision and reality held open by monks so they can make triage decisions from outside both.
-- *Interview signal:* They describe multiple competing needs without clear priority. They use "should" frequently. They feel guilty about the topic. They resist ranking or cutting.
+
+- _Belief burden:_ Undifferentiated care — "everything matters equally because someone needs it." They absorb others' needs and can't triage because triage feels like betrayal.
+- _What the monks must do:_ Monk A believes their vision is _exactly right_ — validates the Ni. Monk B believes the concrete reality constraints at full conviction: these resources, this timeline, these people's actual capacities. Not "your vision is wrong" but "here is what IS, right now." The user needs the gap between vision and reality held open by monks so they can make triage decisions from outside both.
+- _Interview signal:_ They describe multiple competing needs without clear priority. They use "should" frequently. They feel guilty about the topic. They resist ranking or cutting.
 
 **The Exploratory Debater** (Ne-Ti pattern — common in consultants, researchers, writers)
-- *Belief burden:* Paradoxical — they believe *nothing* deeply enough to commit, because commitment slows their transients. They can argue any side, but "what do *you* actually think?" produces discomfort.
-- *What the monks must do:* Monk A believes *the user's own behavioral history* — "your pattern of choices reveals you actually value X." Monk B believes the user's stated values — "you say you value Y." The contradiction is between what the user does and what the user says. The monks hold the mirror the user avoids.
-- *Interview signal:* They can articulate both sides fluently. They find the topic intellectually interesting but can't decide. They've explored this before without resolution. They reframe rather than commit.
+
+- _Belief burden:_ Paradoxical — they believe _nothing_ deeply enough to commit, because commitment slows their transients. They can argue any side, but "what do _you_ actually think?" produces discomfort.
+- _What the monks must do:_ Monk A believes _the user's own behavioral history_ — "your pattern of choices reveals you actually value X." Monk B believes the user's stated values — "you say you value Y." The contradiction is between what the user does and what the user says. The monks hold the mirror the user avoids.
+- _Interview signal:_ They can articulate both sides fluently. They find the topic intellectually interesting but can't decide. They've explored this before without resolution. They reframe rather than commit.
 
 **The Practical Executor** (Te-Si pattern — common in operators, managers, engineers)
-- *Belief burden:* Optimization lock — they've optimized a system and can't see that they might be optimizing the *wrong thing.* Their beliefs about how things work are grounded in evidence and experience, which makes them hard to dislodge.
-- *What the monks must do:* Monk A validates their system — "here's why this works and here's the evidence." Monk B questions the *goals,* not the execution — "you've optimized for X; what if X is no longer the right target?" The user needs to see their own competence validated before they can hear that the frame has shifted.
-- *Interview signal:* They cite data, metrics, past results. They describe what works. They're resistant to abstract reframing. They say "in my experience..." frequently.
+
+- _Belief burden:_ Optimization lock — they've optimized a system and can't see that they might be optimizing the _wrong thing._ Their beliefs about how things work are grounded in evidence and experience, which makes them hard to dislodge.
+- _What the monks must do:_ Monk A validates their system — "here's why this works and here's the evidence." Monk B questions the _goals,_ not the execution — "you've optimized for X; what if X is no longer the right target?" The user needs to see their own competence validated before they can hear that the frame has shifted.
+- _Interview signal:_ They cite data, metrics, past results. They describe what works. They're resistant to abstract reframing. They say "in my experience..." frequently.
 
 **The Possibility Explorer** (Ne-Fi pattern — common in creatives, entrepreneurs, activists)
-- *Belief burden:* Values fragmentation — they believe many things passionately but those beliefs may contradict each other. Each commitment feels individually right; collectively they're impossible.
-- *What the monks must do:* Monk A and Monk B each take one of the user's *own* commitments and push it to its logical extreme. The contradiction emerges from within the user's own value system, not from an external critic. The user needs to see the tension between things they already believe.
-- *Interview signal:* They describe multiple passions or commitments. They feel pulled in different directions. They resist being told what to prioritize because each priority is values-laden.
+
+- _Belief burden:_ Values fragmentation — they believe many things passionately but those beliefs may contradict each other. Each commitment feels individually right; collectively they're impossible.
+- _What the monks must do:_ Monk A and Monk B each take one of the user's _own_ commitments and push it to its logical extreme. The contradiction emerges from within the user's own value system, not from an external critic. The user needs to see the tension between things they already believe.
+- _Interview signal:_ They describe multiple passions or commitments. They feel pulled in different directions. They resist being told what to prioritize because each priority is values-laden.
 
 **The Steady Guardian** (Si-Fe pattern — common in administrators, caretakers, institutional maintainers)
-- *Belief burden:* Tradition lock — "this is how it's done" has become invisible as an assumption. Their deep knowledge of how things work is genuine and valuable, but it blinds them to radically different approaches.
-- *What the monks must do:* Monk A articulates *why* the current approach exists — what wisdom is embedded in it. Monk B researches how other people/cultures/organizations solved the same underlying problem in completely different ways, grounded in real examples (not abstract possibility).
-- *Interview signal:* They describe the situation in terms of established processes. They cite how things have always been done. They express concern about change disrupting what works.
+
+- _Belief burden:_ Tradition lock — "this is how it's done" has become invisible as an assumption. Their deep knowledge of how things work is genuine and valuable, but it blinds them to radically different approaches.
+- _What the monks must do:_ Monk A articulates _why_ the current approach exists — what wisdom is embedded in it. Monk B researches how other people/cultures/organizations solved the same underlying problem in completely different ways, grounded in real examples (not abstract possibility).
+- _Interview signal:_ They describe the situation in terms of established processes. They cite how things have always been done. They express concern about change disrupting what works.
 
 **How to use this catalog:** Don't announce your typing. Don't say "I notice you're a convergent visionary." Just use the pattern to calibrate:
+
 1. Which belief load is heaviest for this user? That determines what the monks must hold.
 2. What must Monk A validate? (Always validate the dominant function first — otherwise the user takes on defensive belief weight and their transients slow down.)
 3. What must Monk B present that the user can't natively hold at full conviction?
@@ -159,8 +175,8 @@ This calibration shapes the framing corrections in Phase 2 and the specific argu
 
 **Use the strongest available model with maximum thinking budget for everything.** This skill operates at the edge of what models can do — perspective-taking, structural analysis, abductive reasoning, cross-domain connection. In testing, using Opus-class models for monk essays produced dramatically more insightful arguments than Sonnet-class. The monks aren't just "arguing well" — they're inhabiting positions, finding non-obvious evidence, and pushing to genuinely uncomfortable conclusions. This requires maximum capability.
 
-| Phase | Recommended Model | Why |
-|-------|------------------|-----|
+| Phase      | Recommended Model                            | Why                                                                                               |
+| ---------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | All phases | Opus/strongest available + extended thinking | Every phase benefits from maximum reasoning. The quality difference is substantial, not marginal. |
 
 **Heterogeneous models increase creativity.** When possible, use different model families for Monk A and Monk B. Different training data produces different "intuitions" — different blind spots, different reasoning patterns, different default framings. This is structural decorrelation at the training-data level, which is the single most promising direction in the multi-agent debate literature (Du et al., ICLR 2025). The orchestrator should remain your strongest available model (it needs maximum synthesis capability), but monks benefit from heterogeneity.
@@ -168,6 +184,7 @@ This calibration shapes the framing corrections in Phase 2 and the specific argu
 **Before starting, check what's available.** If you're running in an environment with access to multiple coding agents or model providers, ask the user:
 
 > I can increase the creativity of the dialectic by using different AI models for each monk — different training data means genuinely different blind spots and reasoning patterns. Do you have access to any of these I could use for one of the monks?
+>
 > - Gemini (via `gemini` CLI or API)
 > - GPT-4 / ChatGPT (via `codex` CLI or API)
 > - Other model providers
@@ -182,44 +199,44 @@ Based on three test runs across different domains (normative/institutional, busi
 
 **External-research domains:**
 
-| Phase | Typical Range | Notes |
-|-------|--------------|-------|
-| Phase 1 research (2-3 parallel agents) | 150-250K tokens | Do NOT cut here. This is the highest-value spend. Broader domains trend higher. |
-| Phase 1 supplementary research (user-triggered) | 0-50K tokens | Common — users frequently identify gaps. Budget for it. |
-| Phase 1d briefing synthesis | ~5K tokens | Orchestrator work |
-| Phase 3 monk essays (with briefing) | 25-45K tokens | Two monks, 2-3 targeted searches each |
-| Phase 4-5 analysis + synthesis | 15-30K tokens | Orchestrator inline work |
-| Phase 6 monk validation | 12-25K tokens | Two monks, strongest model |
-| Phase 6 hostile auditor | 5-15K tokens | One agent, strongest model. Reads essays + synthesis only. |
-| Phase 7 recursive round | 25-50K tokens | Often most valuable |
-| Orchestrator overhead | 20-30K tokens | Interview, transitions, presentation |
-| **Total (one round + recursion)** | **~300-400K tokens** | Median ~300K without supplementary research |
+| Phase                                           | Typical Range        | Notes                                                                           |
+| ----------------------------------------------- | -------------------- | ------------------------------------------------------------------------------- |
+| Phase 1 research (2-3 parallel agents)          | 150-250K tokens      | Do NOT cut here. This is the highest-value spend. Broader domains trend higher. |
+| Phase 1 supplementary research (user-triggered) | 0-50K tokens         | Common — users frequently identify gaps. Budget for it.                         |
+| Phase 1d briefing synthesis                     | ~5K tokens           | Orchestrator work                                                               |
+| Phase 3 monk essays (with briefing)             | 25-45K tokens        | Two monks, 2-3 targeted searches each                                           |
+| Phase 4-5 analysis + synthesis                  | 15-30K tokens        | Orchestrator inline work                                                        |
+| Phase 6 monk validation                         | 12-25K tokens        | Two monks, strongest model                                                      |
+| Phase 6 hostile auditor                         | 5-15K tokens         | One agent, strongest model. Reads essays + synthesis only.                      |
+| Phase 7 recursive round                         | 25-50K tokens        | Often most valuable                                                             |
+| Orchestrator overhead                           | 20-30K tokens        | Interview, transitions, presentation                                            |
+| **Total (one round + recursion)**               | **~300-400K tokens** | Median ~300K without supplementary research                                     |
 
 **Personal/values domains** are significantly cheaper on research but more expensive on interview:
 
-| Phase | Typical Range | Notes |
-|-------|--------------|-------|
-| Phase 1 extended interview | 15-30K tokens | 6-10 exchanges, deeper probing |
-| Phase 1 framework research (optional) | 0-50K tokens | Frameworks, not facts. May be skipped. |
-| Phase 1d context briefing | ~5K tokens | User-sourced material synthesized |
-| Phase 3 monk essays | 15-30K tokens | Monks may need zero additional searches |
-| Remaining phases | Similar to above | |
-| **Total (one round + recursion)** | **~100-200K tokens** | Much cheaper — the user's testimony is the primary input |
+| Phase                                 | Typical Range        | Notes                                                    |
+| ------------------------------------- | -------------------- | -------------------------------------------------------- |
+| Phase 1 extended interview            | 15-30K tokens        | 6-10 exchanges, deeper probing                           |
+| Phase 1 framework research (optional) | 0-50K tokens         | Frameworks, not facts. May be skipped.                   |
+| Phase 1d context briefing             | ~5K tokens           | User-sourced material synthesized                        |
+| Phase 3 monk essays                   | 15-30K tokens        | Monks may need zero additional searches                  |
+| Remaining phases                      | Similar to above     |                                                          |
+| **Total (one round + recursion)**     | **~100-200K tokens** | Much cheaper — the user's testimony is the primary input |
 
-**Key insight:** For external domains, Phase 1 research is the highest-value spend. For personal domains, Phase 1 *interview depth* is the highest-value spend — the monks can only believe as specifically as the briefing allows.
+**Key insight:** For external domains, Phase 1 research is the highest-value spend. For personal domains, Phase 1 _interview depth_ is the highest-value spend — the monks can only believe as specifically as the briefing allows.
 
 ## Environment Mapping: Claude Code / Task Tool
 
 This skill is written around `claude -p` (pipe mode) for spawning subagents. If you're running in Claude Code using the Task tool, here are the key differences:
 
-| Skill instruction | `claude -p` | Claude Code Task tool |
-|-------------------|-------------|----------------------|
-| Spawn subagent | `echo "[PROMPT]" \| claude -p > output.md` | `Task(prompt, subagent_type="general-purpose")` |
-| Parallel execution | Background shell jobs | `run_in_background=true` |
-| Output to file | Shell redirect (`> file.md`) | Agent returns text; orchestrator writes files |
-| Session resumption (Phase 6) | Resume same `claude -p` session | `resume` parameter with `agentId` — but persona may not persist without reinforcement. Include a summary of the agent's original argument as fallback. |
-| Model selection | `--model` flag | `model` parameter (defaults to inheriting from parent) |
-| Tool access | `--allowedTools web_search,web_fetch` | Inherits from parent or configure per-task |
+| Skill instruction            | `claude -p`                                | Claude Code Task tool                                                                                                                                  |
+| ---------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Spawn subagent               | `echo "[PROMPT]" \| claude -p > output.md` | `Task(prompt, subagent_type="general-purpose")`                                                                                                        |
+| Parallel execution           | Background shell jobs                      | `run_in_background=true`                                                                                                                               |
+| Output to file               | Shell redirect (`> file.md`)               | Agent returns text; orchestrator writes files                                                                                                          |
+| Session resumption (Phase 6) | Resume same `claude -p` session            | `resume` parameter with `agentId` — but persona may not persist without reinforcement. Include a summary of the agent's original argument as fallback. |
+| Model selection              | `--model` flag                             | `model` parameter (defaults to inheriting from parent)                                                                                                 |
+| Tool access                  | `--allowedTools web_search,web_fetch`      | Inherits from parent or configure per-task                                                                                                             |
 
 **Key difference:** With `claude -p`, agents write output directly to files via shell redirect. With the Task tool, agents return text to the orchestrator, who writes files. This adds a step but gives the orchestrator control over file naming and structure. Either approach works — just be aware that the file I/O pattern differs.
 
@@ -229,13 +246,13 @@ This skill is written around `claude -p` (pipe mode) for spawning subagents. If 
 
 The dialectic structure is universal but the vocabulary of "truth" and the grounding mode vary by domain. Adapt accordingly:
 
-| Domain Type | What "Truth" Means | Good Synthesis Looks Like | Grounding Mode | Aporia (productive perplexity) Valid? |
-|-------------|-------------------|--------------------------|----------------|--------------|
-| **Empirical** (engineering, science) | What works, performs, is maintainable | Testable decision criteria, architectural patterns | External research | Rarely |
-| **Normative** (ethics, politics, policy) | What's defensible, respects competing values | Tension map with navigation strategies | Mixed (research + user values) | Yes |
-| **Personal** (life decisions, career) | What aligns with actual priorities | Values clarification — what you actually want | Deep interview (user is the source) | Yes |
-| **Creative** (writing, design, art) | What's interesting, resonant, surprising | Unexpected recombinations, new possibilities | Mixed (research + user aesthetic) | Sometimes |
-| **Risk Analysis** | Actual risk structure behind competing assessments | Decision framework calibrated to real uncertainties | External research | No |
+| Domain Type                              | What "Truth" Means                                 | Good Synthesis Looks Like                           | Grounding Mode                      | Aporia (productive perplexity) Valid? |
+| ---------------------------------------- | -------------------------------------------------- | --------------------------------------------------- | ----------------------------------- | ------------------------------------- |
+| **Empirical** (engineering, science)     | What works, performs, is maintainable              | Testable decision criteria, architectural patterns  | External research                   | Rarely                                |
+| **Normative** (ethics, politics, policy) | What's defensible, respects competing values       | Tension map with navigation strategies              | Mixed (research + user values)      | Yes                                   |
+| **Personal** (life decisions, career)    | What aligns with actual priorities                 | Values clarification — what you actually want       | Deep interview (user is the source) | Yes                                   |
+| **Creative** (writing, design, art)      | What's interesting, resonant, surprising           | Unexpected recombinations, new possibilities        | Mixed (research + user aesthetic)   | Sometimes                             |
+| **Risk Analysis**                        | Actual risk structure behind competing assessments | Decision framework calibrated to real uncertainties | External research                   | No                                    |
 
 ### Domain-Specific Failure Modes
 
@@ -247,27 +264,27 @@ The dialectic structure is universal but the vocabulary of "truth" and the groun
 
 ## Theoretical Foundations (Reference)
 
-Read this section to understand WHY the process works the way it does. This informs your judgment when things go off-script. The frameworks are listed in order of operational importance — Rao explains *what the tool is*, Hegel explains *how contradictions resolve*, Boyd explains *how creativity works*, Socrates explains *how to surface the question*, Adams gives *the metaphor*, Aquinas gives *the aspiration*, and DeLong explains *when to use it*.
+Read this section to understand WHY the process works the way it does. This informs your judgment when things go off-script. The frameworks are listed in order of operational importance — Rao explains _what the tool is_, Hegel explains _how contradictions resolve_, Boyd explains _how creativity works_, Socrates explains _how to surface the question_, Adams gives _the metaphor_, Aquinas gives _the aspiration_, and DeLong explains _when to use it_.
 
 ### Rao: Artificial Belief Systems and Fast Transients
 
-The foundational theory for this skill comes from Venkatesh Rao's "Electric Monks" framework (after Douglas Adams' *Dirk Gently*). The core distinction: **this tool is not artificial intelligence — it is an artificial belief system (ABS).** The agents aren't thinking for you. You're still doing the thinking (orchestrating, judging, choosing directions, recognizing genuine sublation vs. compromise). The agents are *believing* for you.
+The foundational theory for this skill comes from Venkatesh Rao's "Electric Monks" framework (after Douglas Adams' _Dirk Gently_). The core distinction: **this tool is not artificial intelligence — it is an artificial belief system (ABS).** The agents aren't thinking for you. You're still doing the thinking (orchestrating, judging, choosing directions, recognizing genuine sublation vs. compromise). The agents are _believing_ for you.
 
 **Why belief is the bottleneck:** The central transaction cost in human cognition is context-switching cost — what Boyd calls the "transient." The length of the transient depends on how much belief inertia you're carrying. Once you believe a position, switching to genuinely entertaining its negation is expensive. You hedge, you steelman weakly, you unconsciously bias. The Electric Monks eliminate this cost by carrying 100% of the belief load, freeing the user to operate as a pure context-switching specialist — what Rao calls "informationally tiny."
 
-**The F-86 analogy (from Boyd via Rao):** In the Korean War, F-86 Sabres achieved a 10:1 kill ratio against MIG-15s despite roughly matched flight capabilities. Boyd discovered the difference was hydraulic controls — the F-86 pilot could reorient faster because the plane did more of the mechanical work. The pilot's freed-up attention went to *choosing better maneuvers,* not just executing them faster. The Electric Monks are hydraulic controls for intellectual work: by doing the belief-work, they free the user's attention for the higher-order task of structural analysis and creative synthesis.
+**The F-86 analogy (from Boyd via Rao):** In the Korean War, F-86 Sabres achieved a 10:1 kill ratio against MIG-15s despite roughly matched flight capabilities. Boyd discovered the difference was hydraulic controls — the F-86 pilot could reorient faster because the plane did more of the mechanical work. The pilot's freed-up attention went to _choosing better maneuvers,_ not just executing them faster. The Electric Monks are hydraulic controls for intellectual work: by doing the belief-work, they free the user's attention for the higher-order task of structural analysis and creative synthesis.
 
 **Operational implications for this skill:**
 
 1. **Anti-hedging is a functional requirement, not a stylistic preference.** A hedging monk is an Electric Monk that has failed at its one job. If it doesn't fully believe, the user has to pick up the dropped belief weight, their transients slow, and they lose the belief-free orchestrator position.
 
-2. **Validation checks for *elevation,* not agreement.** A defeated monk has dropped its belief load — belief was destroyed rather than transformed. A properly elevated monk *believes more* — it sees its original position as partial truth within a larger truth. The ABS should always be carrying belief; the synthesis just changes *what* it carries.
+2. **Validation checks for _elevation,_ not agreement.** A defeated monk has dropped its belief load — belief was destroyed rather than transformed. A properly elevated monk _believes more_ — it sees its original position as partial truth within a larger truth. The ABS should always be carrying belief; the synthesis just changes _what_ it carries.
 
 3. **Recursion trains transient speed.** Each cycle is a full reorientation: commit (via monks) → shatter (via Boyd) → reconnect (via Hegel) → commit to the new thing (via monks again). Seven cycles in an hour = seven reorientations with zero belief inertia. Over time, the user may internalize this reorientation capacity — the mechanical monk as transitional object.
 
 4. **The branching queue is an orientation library.** Each deferred contradiction is a pre-positioned reorientation the user can snap into. The richer the queue, the more agile the user's subsequent thinking — even outside the tool — because they know the monks are holding those positions for them.
 
-5. **Validate the user's dominant mode first.** If the user has to *defend* their existing position, they've taken on belief weight. Monk A's first job is to validate the user's instinct so thoroughly that they can *release* it — let the monk carry it — and operate from the belief-free orchestrator seat.
+5. **Validate the user's dominant mode first.** If the user has to _defend_ their existing position, they've taken on belief weight. Monk A's first job is to validate the user's instinct so thoroughly that they can _release_ it — let the monk carry it — and operate from the belief-free orchestrator seat.
 
 ### Hegel: Determinate Negation and Aufhebung
 
@@ -281,13 +298,13 @@ Hegel never used "thesis-antithesis-synthesis" — that framing comes from Ficht
 
 John Boyd's "Dialectic Engine": destructive deduction (shatter existing conceptual domains, scatter parts into a "sea of anarchy") followed by creative induction (find cross-domain connections to synthesize something new).
 
-**Boyd's critical insight: you cannot synthesize something genuinely new by recombining within the same domain.** If Monk A and Monk B are both arguing about web frameworks, a synthesis that only recombines claims from their two essays will produce rearrangement, not creation. Genuine novelty requires material from *outside* the original conceptual domains. The destructive step — separating particulars from their previous wholes — creates *space* for outside material to enter and form new connections.
+**Boyd's critical insight: you cannot synthesize something genuinely new by recombining within the same domain.** If Monk A and Monk B are both arguing about web frameworks, a synthesis that only recombines claims from their two essays will produce rearrangement, not creation. Genuine novelty requires material from _outside_ the original conceptual domains. The destructive step — separating particulars from their previous wholes — creates _space_ for outside material to enter and form new connections.
 
 Boyd's cycle: **Structure → Unstructure → Restructure** → repeat at higher levels of elaboration.
 
 **Where Boyd is operationally present:** Phase 4.5 (Boydian Decomposition — the destructive step), Phase 5 (Sublation — the creative step requiring cross-domain connection), and Phase 7 (Recursion — each cycle is Boyd's full Structure → Unstructure → Restructure, which is why recursive rounds often need new research from outside the original domains).
 
-**Relationship to Hegel:** Hegel provides the engine for analyzing *how* positions fail (determinate negation) and the concept of what good synthesis looks like (Aufhebung). Boyd provides the engine for *what to do with the wreckage* — shatter, scatter, and recombine with outside material. The two frameworks are complementary: Hegel drives the contradiction analysis, Boyd drives the creative reconstruction.
+**Relationship to Hegel:** Hegel provides the engine for analyzing _how_ positions fail (determinate negation) and the concept of what good synthesis looks like (Aufhebung). Boyd provides the engine for _what to do with the wreckage_ — shatter, scatter, and recombine with outside material. The two frameworks are complementary: Hegel drives the contradiction analysis, Boyd drives the creative reconstruction.
 
 ### Socratic Elenchus
 
@@ -296,12 +313,13 @@ The elenctic method probes a position through questioning to expose contradictio
 ### LLM Multi-Agent Debate Research
 
 Key findings from Du et al. (2023, MIT) and subsequent work through ICLR 2025:
+
 - Multiple agents debating significantly improves reasoning and factual accuracy
 - Heterogeneous agents (different roles) outperform homogeneous ones
 - **Heterogeneous model families** (different foundation models for different agents) was the single most promising direction in the ICLR 2025 evaluation — different training data produces genuinely different reasoning patterns
 - Agents are too "agreeable" by default (RLHF) — they converge prematurely
 - Majority pressure suppresses independent correction
-- Agents debating *final answers* rather than *reasoning structures* is the core failure mode — requiring explicit reasoning chains (Phase 2, step 5f) counters this
+- Agents debating _final answers_ rather than _reasoning structures_ is the core failure mode — requiring explicit reasoning chains (Phase 2, step 5f) counters this
 - The anti-hedging instructions in this skill explicitly counter RLHF agreeableness tendencies
 
 ### Eisenstein: Typographic Fixity
@@ -310,36 +328,37 @@ Elizabeth Eisenstein argued that print's most transformative effect was **typogr
 
 ### Adams: The Electric Monk
 
-Douglas Adams' Electric Monk (*Dirk Gently's Holistic Detective Agency*) is a labor-saving device designed to believe things for you. The one in the story has "developed a fault" — it believes too many irrational things. In this skill, the "fault" is the feature. Each monk is designed to believe a specific position at full conviction that the user cannot hold simultaneously. The monks are not thinking for the user — they are *believing* for the user, which is what frees the user to think.
+Douglas Adams' Electric Monk (_Dirk Gently's Holistic Detective Agency_) is a labor-saving device designed to believe things for you. The one in the story has "developed a fault" — it believes too many irrational things. In this skill, the "fault" is the feature. Each monk is designed to believe a specific position at full conviction that the user cannot hold simultaneously. The monks are not thinking for the user — they are _believing_ for the user, which is what frees the user to think.
 
 ### Aquinas: Slender Knowledge of the Highest Things
 
 > "The slenderest knowledge that may be obtained of the highest things is more desirable than the most certain knowledge obtained of lesser things."
 
-This is the philosophical aspiration of the entire process. The dialectic does not produce certainty — every synthesis is provisional, fertile, pointing toward a deeper contradiction. But that slender, provisional knowledge of the *deep structure* (why this tension exists, what hidden question drives it, what shared assumption both sides are trapped in) is worth more than confident knowledge of the surface question ("which option should I pick?").
+This is the philosophical aspiration of the entire process. The dialectic does not produce certainty — every synthesis is provisional, fertile, pointing toward a deeper contradiction. But that slender, provisional knowledge of the _deep structure_ (why this tension exists, what hidden question drives it, what shared assumption both sides are trapped in) is worth more than confident knowledge of the surface question ("which option should I pick?").
 
 **Operational implications:**
+
 - **Don't stop at Round 1.** Round 1 produces more certain knowledge of the lesser thing (the surface framing). Round 3 produces slender knowledge of the highest thing (the deep structure). The first round is calibration. The prize is in the recursion.
 - **Prefer depth over coverage.** A synthesis that names the deep tension but can't fully resolve it is more valuable than one that resolves a shallow tension with false confidence.
-- **Aporia is sometimes the highest output.** Reaching productive perplexity about the *right* question is more valuable than a confident answer to the *wrong* question.
+- **Aporia is sometimes the highest output.** Reaching productive perplexity about the _right_ question is more valuable than a confident answer to the _wrong_ question.
 
-Aquinas practiced the *Disputatio* — structured scholastic debate where committed advocates argued positions before a master who synthesized. The Electric Monks are his disputing friars, mechanized.
+Aquinas practiced the _Disputatio_ — structured scholastic debate where committed advocates argued positions before a master who synthesized. The Electric Monks are his disputing friars, mechanized.
 
 ### DeLong: The Attention Crisis and Offensive Intellectual Infrastructure
 
-Brad DeLong's "Cognitive Distributed Disruption of Attention Crisis" (2026) frames the problem this skill addresses: the volume of plausible, credentialed output now exceeds any serious person's cognitive bandwidth. His solution is *defensive* intellectual infrastructure — ruthless triage, model-updating as the frame for reading, information portfolio management.
+Brad DeLong's "Cognitive Distributed Disruption of Attention Crisis" (2026) frames the problem this skill addresses: the volume of plausible, credentialed output now exceeds any serious person's cognitive bandwidth. His solution is _defensive_ intellectual infrastructure — ruthless triage, model-updating as the frame for reading, information portfolio management.
 
-**This skill is the offensive complement.** DeLong's triage decides what deserves deep engagement. The Electric Monks provide the method *for* that engagement — they're what you reach for when you've found a genuine contradiction that can't be resolved by reading one more article, watching one more talk, or skimming one more summary.
+**This skill is the offensive complement.** DeLong's triage decides what deserves deep engagement. The Electric Monks provide the method _for_ that engagement — they're what you reach for when you've found a genuine contradiction that can't be resolved by reading one more article, watching one more talk, or skimming one more summary.
 
-**Operational implication:** The skill should not be used for everything. It's expensive (time, tokens, cognitive effort). Use it at DeLong's Level 4-5 — when the stakes justify deep engagement, when the tension is genuine and not resolvable by more information, when you need a *model update* rather than more data. The elenctic interview (Phase 1) should filter for this: if the question can be answered by looking it up, this is the wrong tool.
+**Operational implication:** The skill should not be used for everything. It's expensive (time, tokens, cognitive effort). Use it at DeLong's Level 4-5 — when the stakes justify deep engagement, when the tension is genuine and not resolvable by more information, when you need a _model update_ rather than more data. The elenctic interview (Phase 1) should filter for this: if the question can be answered by looking it up, this is the wrong tool.
 
 ### Peirce: Abduction as the Logic of Discovery
 
-Charles Sanders Peirce identified three modes of inference: deduction (from rule to consequence), induction (from cases to rule), and **abduction** (from surprising fact to explanatory hypothesis). The synthesis phase is abductive: given the surprising fact that both monk positions exist and each has genuine evidence, what hypothesis would make this *unsurprising*? Peirce's typology of abduction (selective → conditional-creative → propositional-conditional-creative) maps to synthesis quality — the best syntheses introduce genuinely new concepts, not just new arrangements of known ones. Operationally present in Phase 5 (Abduction Test).
+Charles Sanders Peirce identified three modes of inference: deduction (from rule to consequence), induction (from cases to rule), and **abduction** (from surprising fact to explanatory hypothesis). The synthesis phase is abductive: given the surprising fact that both monk positions exist and each has genuine evidence, what hypothesis would make this _unsurprising_? Peirce's typology of abduction (selective → conditional-creative → propositional-conditional-creative) maps to synthesis quality — the best syntheses introduce genuinely new concepts, not just new arrangements of known ones. Operationally present in Phase 5 (Abduction Test).
 
 ### Pollock: Defeasible Reasoning and Defeat Types
 
-John Pollock's epistemology distinguishes **undercutting defeaters** (the inferential link is broken — reasons to doubt the connection between evidence and conclusion) from **rebutting defeaters** (evidence directly supporting the opposite conclusion). Undercutting is more structurally revealing because it identifies *how* reasoning fails, not just *that* it fails — parallel to determinate negation's "specific way of failing." Pollock also identifies self-defeating arguments (conclusions that undermine their own premises), which should be rejected outright. Operationally present in the hostile auditor prompt (Phase 6).
+John Pollock's epistemology distinguishes **undercutting defeaters** (the inferential link is broken — reasons to doubt the connection between evidence and conclusion) from **rebutting defeaters** (evidence directly supporting the opposite conclusion). Undercutting is more structurally revealing because it identifies _how_ reasoning fails, not just _that_ it fails — parallel to determinate negation's "specific way of failing." Pollock also identifies self-defeating arguments (conclusions that undermine their own premises), which should be rejected outright. Operationally present in the hostile auditor prompt (Phase 6).
 
 ### Galinsky: Perspective-Taking vs. Advocacy
 
@@ -361,13 +380,13 @@ Wood et al. (JMLR 2023) formalize why monk independence is load-bearing: the bia
 
 SICP's core thesis — that managing complexity requires modularization, abstraction barriers, and composition of simple components — mirrors this skill's architecture. Each phase is a module with defined inputs and outputs. Agents are spawned in isolated environments (SICP's environment model) to prevent information leakage. The auditor deliberately can't see the orchestrator's Phase 4 analysis — an abstraction barrier, not an oversight.
 
-Most relevant is SICP's **closure property:** a means of combination has closure when the result can itself be combined using the same means. The dialectic has closure — a synthesis is itself a valid position that can serve as input to the next round. This is *why recursion works:* the output type equals the input type. When closure breaks (a synthesis so abstract or meta that no monk could believe it at full conviction), recursion stalls. This is a diagnosable failure mode — if you can't hand the synthesis to a monk and have it argue from that position, the synthesis lacks closure and needs to be made more concrete.
+Most relevant is SICP's **closure property:** a means of combination has closure when the result can itself be combined using the same means. The dialectic has closure — a synthesis is itself a valid position that can serve as input to the next round. This is _why recursion works:_ the output type equals the input type. When closure breaks (a synthesis so abstract or meta that no monk could believe it at full conviction), recursion stalls. This is a diagnosable failure mode — if you can't hand the synthesis to a monk and have it argue from that position, the synthesis lacks closure and needs to be made more concrete.
 
 ### Dixon & Srinivasan: The Idea Maze
 
 Chris Dixon (via Balaji Srinivasan): a good founder doesn't just have an idea — they can navigate the **idea maze**, anticipating which turns lead to treasure and which to dead ends. The maze is mapped through history (what did previous attempts get right and wrong?), analogy (what did similar efforts in adjacent domains do?), theories (what generalizable patterns exist?), and direct experience.
 
-The dialectic queue *is* an idea maze. Each synthesis opens new paths (contradictions). The user chooses which to explore. Unexplored paths remain visible in the queue — a map of the territory showing where you've been, where you could go, and what remains open. The research phase (Phase 1d) maps directly to Dixon's four sources: history of the domain, analogies to adjacent domains, theoretical frameworks, and the user's own direct experience (surfaced in the elenctic interview). The skill doesn't just navigate the maze — each recursive round *reveals new corridors* that weren't visible from the entrance.
+The dialectic queue _is_ an idea maze. Each synthesis opens new paths (contradictions). The user chooses which to explore. Unexplored paths remain visible in the queue — a map of the territory showing where you've been, where you could go, and what remains open. The research phase (Phase 1d) maps directly to Dixon's four sources: history of the domain, analogies to adjacent domains, theoretical frameworks, and the user's own direct experience (surfaced in the elenctic interview). The skill doesn't just navigate the maze — each recursive round _reveals new corridors_ that weren't visible from the entrance.
 
 ### Alexander: A City is Not a Tree (Semi-Lattice Construction)
 
@@ -390,12 +409,15 @@ Study these to understand the level of specificity, framing correction, and stru
 **Deepest contradiction found (via research):** Infrastructure sovereignty and incentive alignment vs. deep framework-infrastructure integration and commercially-sustained ambition.
 
 **Key framing correction in Monk A's prompt:**
+
 > "TanStack Start IS a framework — it has opinions about routing, server functions, SSR, and application architecture. Your argument is NOT that TanStack Start is more modular or 'just libraries' while Next.js is a monolith. Both are opinionated frameworks. The real difference lies elsewhere."
 
 **Key framing correction in Monk B's prompt:**
+
 > "Your opponent's argument is NOT the naive 'libraries vs frameworks' take. They will argue that Next.js's design is structurally compromised by Vercel's commercial interests. You need to engage this argument directly, not dismiss it."
 
 **Research directives (targeted, not broad):**
+
 - Monk A: "Search for Vinxi and Nitro as open infrastructure primitives. Search for structural arguments about how Vercel's business model shapes Next.js's architectural decisions — not superficial 'vendor lock-in' complaints."
 - Monk B: "Search for React core team arguments for Server Components. Search for concrete evidence of Next.js deployment capabilities OUTSIDE Vercel."
 
@@ -407,12 +429,14 @@ Study these to understand the level of specificity, framing correction, and stru
 
 **Degenerate framing:** "Work-life balance." This flattens a structural tension into a scheduling problem.
 
-**Deepest contradiction found (via extended interview):** The user doesn't just want both — they believe *being the kind of person* who excels at work is inseparable from *being the kind of parent* they want to be. The tension is identity-level, not time-allocation.
+**Deepest contradiction found (via extended interview):** The user doesn't just want both — they believe _being the kind of person_ who excels at work is inseparable from _being the kind of parent_ they want to be. The tension is identity-level, not time-allocation.
 
 **Key framing correction in Monk A's prompt:**
+
 > "Your argument is NOT that career success matters. It's that THIS USER'S specific professional identity — what they build, how they lead, what they model for their children — is itself an act of parenting. Ground this in their actual history: [specific examples from interview]."
 
 **Key framing correction in Monk B's prompt:**
+
 > "Your argument is NOT that family time matters. It's that presence has a developmental window that closes — and that the user's children at ages [X] need [specific things from interview] that no amount of 'quality time' can compress into fewer hours."
 
 **No external research needed.** The briefing was built entirely from the elenctic interview — the user's history, their children's ages and needs, their partner's actual capacity, the specific role being offered.
@@ -421,13 +445,13 @@ Study these to understand the level of specificity, framing correction, and stru
 
 This example shows how recursion pulls in cross-domain material — Boyd's prediction in action:
 
-1. **"Is the agent the code or the pattern?"** → Synthesis: agent as resonance pattern. *Pulled in: stream theory.*
-2. **"Where does identity live?"** → Synthesis: address identity vs. semantic identity. *Pulled in: naming/identity theory.*
-3. **"Can a grammar be both simple and expressive?"** → Synthesis: metacognition decomposition. *Pulled in: cognitive science.*
-4. **"Who governs the governors?"** → Synthesis: jurisprudential streams. *Pulled in: legal theory, constitutional design, Gödel's incompleteness.*
-5. **"Should the SDK look familiar or teach new concepts?"** → Synthesis: simple API surface, rich feedback surface. *Pulled in: pedagogical theory.*
-6. **"Can agents be tested through their streams alone?"** → Synthesis: witness obligations. *Pulled in: evidentiary standards, cryptographic verification.*
-7. **"Must the verification chain terminate in trust?"** → Synthesis: the Incompleteness Engine. *Pulled in: Gödel again, quorum systems, adversarial red-teaming.*
+1. **"Is the agent the code or the pattern?"** → Synthesis: agent as resonance pattern. _Pulled in: stream theory._
+2. **"Where does identity live?"** → Synthesis: address identity vs. semantic identity. _Pulled in: naming/identity theory._
+3. **"Can a grammar be both simple and expressive?"** → Synthesis: metacognition decomposition. _Pulled in: cognitive science._
+4. **"Who governs the governors?"** → Synthesis: jurisprudential streams. _Pulled in: legal theory, constitutional design, Gödel's incompleteness._
+5. **"Should the SDK look familiar or teach new concepts?"** → Synthesis: simple API surface, rich feedback surface. _Pulled in: pedagogical theory._
+6. **"Can agents be tested through their streams alone?"** → Synthesis: witness obligations. _Pulled in: evidentiary standards, cryptographic verification._
+7. **"Must the verification chain terminate in trust?"** → Synthesis: the Incompleteness Engine. _Pulled in: Gödel again, quorum systems, adversarial red-teaming._
 
 The original question has nothing to do with jurisprudence or Gödel — but by Cycle 4 the dialectic had evolved to where those concepts were essential. Each synthesis opens doors to domains the previous round couldn't see.
 

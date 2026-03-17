@@ -21,9 +21,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "observedSteps"
-        ]
+        "fields": ["observedSteps"]
       },
       "toolCallCount": 12,
       "elapsedMs": 111450,
@@ -91,9 +89,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "unnecessarySteps"
-        ]
+        "fields": ["unnecessarySteps"]
       },
       "toolCallCount": 26,
       "elapsedMs": 172529,
@@ -142,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "docx"
-      ]
+      "skills": ["docx"]
     },
     {
       "id": "EVAL_FM_003",
@@ -163,9 +157,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 12,
       "elapsedMs": 66276,
@@ -301,9 +293,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "redundantCommands"
-        ]
+        "fields": ["redundantCommands"]
       },
       "toolCallCount": 32,
       "elapsedMs": 292630,
@@ -352,9 +342,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pptx"
-      ]
+      "skills": ["pptx"]
     },
     {
       "id": "EVAL_FM_007",
@@ -392,9 +380,7 @@
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
         "detected": true,
-        "fields": [
-          "completionScore"
-        ]
+        "fields": ["completionScore"]
       },
       "toolCallCount": 12,
       "elapsedMs": 96885,
@@ -511,9 +497,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "xlsx"
-      ]
+      "skills": ["xlsx"]
     },
     {
       "id": "EVAL_FM_010",
@@ -581,10 +565,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "docx",
-        "xlsx"
-      ]
+      "skills": ["docx", "xlsx"]
     }
   ],
   "analysis": {
