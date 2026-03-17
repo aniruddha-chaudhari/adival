@@ -33,9 +33,9 @@ class TokenEfficiencyVisualizer:
         top_n: int | None = None,
     ):
         subdir = config.SUITE_PNG_SUBDIRS.get(suite, suite)
-        plot_data = self.data[
-            (self.data["domain"] == suite)
-        ].sort_values(metric_col, ascending=True)
+        plot_data = self.data[(self.data["domain"] == suite)].sort_values(
+            metric_col, ascending=True
+        )
 
         if plot_data.empty:
             return
@@ -88,7 +88,8 @@ class TokenEfficiencyVisualizer:
     def plot_input_tokens(self, top_n: int = None, per_suite: bool = False):
         """Create input token efficiency chart"""
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted(self.data["domain"].dropna().unique())
+            for suite in suites:
                 self._plot_one(
                     metric_col="mean_input_tokens",
                     std_col="std_input_tokens",
@@ -111,7 +112,8 @@ class TokenEfficiencyVisualizer:
     def plot_output_tokens(self, top_n: int = None, per_suite: bool = False):
         """Create output token efficiency chart"""
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted(self.data["domain"].dropna().unique())
+            for suite in suites:
                 self._plot_one(
                     metric_col="mean_output_tokens",
                     std_col="std_output_tokens",
@@ -134,7 +136,8 @@ class TokenEfficiencyVisualizer:
     def plot_total_tokens(self, top_n: int = None, per_suite: bool = False):
         """Create total token cost chart"""
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted(self.data["domain"].dropna().unique())
+            for suite in suites:
                 self._plot_one(
                     metric_col="mean_total_tokens",
                     std_col="std_total_tokens",

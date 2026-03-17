@@ -109,7 +109,9 @@ class SuccessRateVisualizer:
         )
         plt.close(fig)
 
-        print(f"[+] Success rate visualization created for suite={suite} ({n_models} models)")
+        print(
+            f"[+] Success rate visualization created for suite={suite} ({n_models} models)"
+        )
 
     def plot(self, top_n: int = None, per_suite: bool = False):
         """Create success rate comparison chart.
@@ -120,7 +122,8 @@ class SuccessRateVisualizer:
                 its own PNG subfolder instead of a single combined chart.
         """
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted(self.data["domain"].dropna().unique())
+            for suite in suites:
                 self._plot_for_suite(suite, top_n=top_n)
             return None
 

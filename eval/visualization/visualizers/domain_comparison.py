@@ -26,7 +26,7 @@ class DomainComparisonVisualizer:
         """
         self.data = aggregated_data.copy()
 
-    def plot_pass_rate_by_domain(self):
+    def plot_pass_rate_by_domain(self, output_subdir: str | None = None):
         """Grouped bar chart of pass rate per domain, one bar per model per domain."""
         if self.data.empty:
             print("[SKIP] Domain pass rate comparison: No data available")
@@ -87,7 +87,12 @@ class DomainComparisonVisualizer:
             fontsize=config.FONT_SIZE_LEGEND,
         )
 
-        save_figure(fig, "08_domain_pass_rate_comparison", tight_layout=True)
+        save_figure(
+            fig,
+            "08_domain_pass_rate_comparison",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print(
@@ -96,7 +101,7 @@ class DomainComparisonVisualizer:
 
         return fig
 
-    def plot_score_heatmap(self):
+    def plot_score_heatmap(self, output_subdir: str | None = None):
         """Heatmap of mean_score: rows = models, columns = domains."""
         domains = self.data["domain"].unique()
         if len(domains) < 2:
@@ -152,7 +157,12 @@ class DomainComparisonVisualizer:
             fontsize=config.FONT_SIZE_TICK,
         )
 
-        save_figure(fig, "09_domain_score_heatmap", tight_layout=True)
+        save_figure(
+            fig,
+            "09_domain_score_heatmap",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print(

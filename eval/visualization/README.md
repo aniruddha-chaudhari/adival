@@ -57,7 +57,7 @@ eval-results/
 # New layout (one folder per model × domain)
 eval-results/
   gpt-4o/
-    wikipedia/
+    web-browsing-hard-agent-browser/
       summary.json
       EVAL_001_wikipedia-python-year/
         agent-output.jsonl
@@ -67,7 +67,7 @@ eval-results/
     forms/
       summary.json
   claude-3-5-sonnet/
-    wikipedia/
+    web-browsing-hard-agent-browser/
       summary.json
 ```
 

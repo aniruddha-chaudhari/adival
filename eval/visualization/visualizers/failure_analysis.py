@@ -114,7 +114,9 @@ class FailureAnalysisVisualizer:
         )
         plt.close(fig)
 
-        print(f"[+] Failure analysis visualization created for suite={suite} ({n_models} models)")
+        print(
+            f"[+] Failure analysis visualization created for suite={suite} ({n_models} models)"
+        )
 
     def plot_failure_breakdown(self, top_n: int = None, per_suite: bool = False):
         """Create stacked bar chart of failure categories.
@@ -122,7 +124,8 @@ class FailureAnalysisVisualizer:
         When per_suite=True, generates one plot per target suite.
         """
         if per_suite:
-            for suite in config.TARGET_SUITES:
+            suites = sorted(self.data["domain"].dropna().unique())
+            for suite in suites:
                 self._plot_for_suite(suite, top_n=top_n)
             return None
 

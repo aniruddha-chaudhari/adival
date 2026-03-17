@@ -24,7 +24,7 @@ class ScoreEfficiencyVisualizer:
         self.data = aggregated_data.copy()
         self.task_results_by_model = task_results_by_model
 
-    def plot_score_per_token(self):
+    def plot_score_per_token(self, output_subdir: str | None = None):
         """Horizontal bar chart of score per 1k tokens, sorted descending."""
         df = self.data.copy()
 
@@ -72,12 +72,17 @@ class ScoreEfficiencyVisualizer:
         ax.tick_params(axis="x", labelsize=config.FONT_SIZE_TICK)
         ax.grid(axis="x", alpha=0.3)
 
-        save_figure(fig, "10_score_per_token", tight_layout=True)
+        save_figure(
+            fig,
+            "10_score_per_token",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print("[+] score_per_token created")
 
-    def plot_speed_vs_score(self):
+    def plot_speed_vs_score(self, output_subdir: str | None = None):
         """Scatter plot: mean time per task (x) vs pass rate (y), colored by model."""
         df = self.data.copy()
 
@@ -119,12 +124,17 @@ class ScoreEfficiencyVisualizer:
             ncol=1,
         )
 
-        save_figure(fig, "11_speed_vs_score", tight_layout=True)
+        save_figure(
+            fig,
+            "11_speed_vs_score",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print("[+] speed_vs_score created")
 
-    def plot_thrash_vs_score(self):
+    def plot_thrash_vs_score(self, output_subdir: str | None = None):
         """Scatter plot: thrash ratio (x) vs pass rate (y), colored by model."""
         df = self.data.copy()
 
@@ -167,7 +177,12 @@ class ScoreEfficiencyVisualizer:
             ncol=1,
         )
 
-        save_figure(fig, "12_thrash_vs_score", tight_layout=True)
+        save_figure(
+            fig,
+            "12_thrash_vs_score",
+            tight_layout=True,
+            subdir=output_subdir,
+        )
         plt.close(fig)
 
         print("[+] thrash_vs_score created")
