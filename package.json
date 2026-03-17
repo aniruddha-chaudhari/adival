@@ -8,10 +8,10 @@
     "watch-memory": "bun run watch-memory.ts",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
+    "format:files": "prettier --write",
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@google/genai": "^1.22.0",
     "@modelcontextprotocol/sdk": "^1.19.1",
     "agent-browser": "^0.15.0",
     "csv-writer": "^1.6.0",

@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { spawnSync } from "child_process";
 import ExcelJS from "exceljs";
 
 const EVAL_DIR = path.resolve(__dirname, "../../eval-results");
@@ -68,7 +69,20 @@ async function generateXlsxReport() {
   console.log(`XLSX report generated at: ${outputPath}`);
 }
 
+function formatSummariesWithPrettier(filePaths: string[]) {
+  if (filePaths.length === 0) return;
+
+  const prettierResult = spawnSync("bun", ["run", "format:files", "--", ...filePaths], {
+    stdio: "inherit",
+  });
+
+  if (prettierResult.error || prettierResult.status !== 0) {
+    console.warn("Prettier failed; summaries may be unformatted.");
+  }
+}
+
 async function updateSkills() {
+  const updatedSummaries: string[] = [];
   for (const model of TARGET_MODELS) {
     const modelPath = path.join(EVAL_DIR, model);
     if (!fs.existsSync(modelPath)) {
@@ -120,10 +134,12 @@ async function updateSkills() {
       }
 
       fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
+      updatedSummaries.push(summaryPath);
       console.log(`Successfully updated ${summaryPath}`);
     }
   }
 
+  formatSummariesWithPrettier(updatedSummaries);
   await generateXlsxReport();
 }
 
