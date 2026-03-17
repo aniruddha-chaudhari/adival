@@ -72,7 +72,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": false
-      }
+      },
+      "skills": [
+        "agent-browser"
+      ]
     },
     {
       "id": "EVAL_LNKD_001",
@@ -142,7 +145,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": [
+        "agent-browser"
+      ]
     },
     {
       "id": "EVAL_GH_001",
@@ -213,7 +219,10 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "agent-browser"
+      ]
     },
     {
       "id": "EVAL_WIKI_001",
@@ -284,7 +293,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": [
+        "agent-browser"
+      ]
     },
     {
       "id": "EVAL_SO_001",
@@ -355,7 +367,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "agent-browser"
+      ]
     }
   ],
   "analysis": {

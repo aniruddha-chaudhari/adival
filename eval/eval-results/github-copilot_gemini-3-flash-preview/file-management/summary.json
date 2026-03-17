@@ -69,7 +69,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_002",
@@ -139,7 +140,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "docx"
+      ]
     },
     {
       "id": "EVAL_FM_003",
@@ -208,7 +212,10 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_FM_004",
@@ -277,7 +284,8 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_005",
@@ -346,7 +354,10 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": [
+        "pptx"
+      ]
     },
     {
       "id": "EVAL_FM_007",
@@ -415,7 +426,8 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_008",
@@ -482,7 +494,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_010",
@@ -549,7 +562,8 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     }
   ],
   "analysis": {

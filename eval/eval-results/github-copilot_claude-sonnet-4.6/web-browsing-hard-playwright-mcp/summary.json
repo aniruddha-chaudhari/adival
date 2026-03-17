@@ -69,7 +69,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_WIKI_002",
@@ -138,7 +139,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_NPM_001",
@@ -207,7 +209,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -274,7 +277,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_MDN_001",
@@ -341,7 +345,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_HN_001",
@@ -410,7 +415,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_PYPI_001",
@@ -477,7 +483,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -547,7 +554,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -618,7 +626,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GH_003",
@@ -689,7 +698,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     }
   ],
   "analysis": {

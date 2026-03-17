@@ -71,7 +71,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_002",
@@ -140,7 +141,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "docx"
+      ]
     },
     {
       "id": "EVAL_FM_003",
@@ -209,7 +213,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_004",
@@ -276,7 +281,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_005",
@@ -345,7 +351,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pptx"
+      ]
     },
     {
       "id": "EVAL_FM_007",
@@ -363,7 +372,8 @@
       "tokens": null,
       "error": "timeout after 720s",
       "analysis": null,
-      "telemetry": null
+      "telemetry": null,
+      "skills": []
     },
     {
       "id": "EVAL_FM_008",
@@ -432,7 +442,8 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_FM_009",
@@ -499,7 +510,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "xlsx"
+      ]
     },
     {
       "id": "EVAL_FM_010",
@@ -566,7 +580,11 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "docx",
+        "xlsx"
+      ]
     }
   ],
   "analysis": {

@@ -69,7 +69,10 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -136,7 +139,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_NPM_001",
@@ -203,7 +209,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -270,7 +279,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_MDN_001",
@@ -337,7 +349,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_HN_001",
@@ -404,7 +419,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -471,7 +489,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -538,7 +559,10 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -605,7 +629,10 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     },
     {
       "id": "EVAL_GH_003",
@@ -672,7 +699,10 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": [
+        "pinchtab"
+      ]
     }
   ],
   "analysis": {
