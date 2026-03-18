@@ -119,19 +119,21 @@ class JudgeAnalysisVisualizer:
             print("[SKIP] Per-task score breakdown: no matching (model, suite) runs")
             return
 
-        # Collect all unique task IDs (sorted)
-        all_task_ids = sorted(
-            {
-                task["id"]
-                for tasks in self.task_results_by_model.values()
-                for task in tasks
-            }
-        )
-        n_tasks = len(all_task_ids)
-
         for suite in sorted(suite_to_keys.keys()):
             keys = suite_to_keys.get(suite, [])
             if not keys:
+                continue
+
+            # Use suite-specific task IDs so each chart only shows that domain's tasks.
+            all_task_ids = sorted(
+                {
+                    task["id"]
+                    for key in keys
+                    for task in self.task_results_by_model.get(key, [])
+                }
+            )
+            n_tasks = len(all_task_ids)
+            if n_tasks == 0:
                 continue
 
             # Build score lookup: key -> task_id -> score
