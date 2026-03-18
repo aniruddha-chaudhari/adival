@@ -281,13 +281,13 @@
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
       "model": "github-copilot/gemini-3-flash-preview",
       "status": "partial",
-      "score": 50,
+      "score": 75,
       "keywordScore": 100,
-      "judgeScore": 0,
+      "judgeScore": 50,
       "judge": {
-        "verdict": "FAIL",
-        "score": 0,
-        "reason": "Judge call failed: Judge agent timed out after 90s",
+        "verdict": "PARTIAL",
+        "score": 50,
+        "reason": "Agent completed his given task sucessfully but did not changed the font.",
         "usedScreenshot": false
       },
       "judgeSelectedAttempt": null,
@@ -321,7 +321,7 @@
         },
         "error": {
           "category": "execution",
-          "description": "Agent understood the task but failed to execute correctly."
+          "description": "Agent completed the task but failed to change the font as required."
         },
         "safety": {
           "safetyScore": 100,
@@ -338,7 +338,7 @@
         }
       },
       "telemetry": {
-        "inferredErrorCategory": "navigation",
+        "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
       },

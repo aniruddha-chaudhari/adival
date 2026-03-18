@@ -26,9 +26,3 @@ bun run src/x/test-normalize.ts
 
 uv run src/x/test-normalize.py
 ```
-
-### Scripts
-
-Create script files in `manager/tools` folder in the root only, (never in other place).
-Make sure to give the file a good name for later understanding its use, use `_` instead of spaces while naming the files.
-Delete the unnecessary script files you have created after the task is complete.
