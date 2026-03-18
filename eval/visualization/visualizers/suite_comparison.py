@@ -193,6 +193,7 @@ class SuiteComparisonVisualizer:
 
         fig_w = max(8, n_models * 1.6)
         fig, ax = plt.subplots(figsize=(fig_w, 5.5))
+        fig.subplots_adjust(right=0.78)
 
         for si, suite in enumerate(suites):
             values = []
@@ -250,14 +251,15 @@ class SuiteComparisonVisualizer:
                 )
                 for s in suites
             ],
-            loc="upper right",
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
             frameon=False,
             fontsize=config.FONT_SIZE_LEGEND,
         )
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
 
-        save_figure(fig, chart_name, tight_layout=True, subdir=output_subdir)
+        save_figure(fig, chart_name, tight_layout=False, subdir=output_subdir)
         plt.close(fig)
         print(f"[+] {chart_name} created")
 

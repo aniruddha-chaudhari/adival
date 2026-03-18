@@ -423,7 +423,6 @@ def generate_combined_visualizations(
     print("\n[10] Judge Analysis (Combined)")
     ja_viz = JudgeAnalysisVisualizer(combined_tasks)
     ja_viz.plot_keyword_vs_judge_concordance(output_subdir=combined_subdir)
-    ja_viz.plot_per_task_scores(output_subdir=combined_subdir)
     ja_viz.plot_error_category_by_domain(output_subdir=combined_subdir)
 
     # 11. Suite Comparison (configured domains)
@@ -440,22 +439,41 @@ def generate_combined_visualizations(
     print("[OK] Combined visualizations generated successfully!\n")
 
 
-def load_combined_config(config_path: Path) -> Tuple[str, List[str]]:
-    """Load combined visualization config."""
+def load_combined_config(config_path: Path) -> List[Tuple[str, List[str]]]:
+    """Load combined visualization config.
+
+    Supported formats:
+    1) {"combined": {"name": "...", "domains": [...]}}
+    2) {"combined": [{"name": "...", "domains": [...]}, ...]}
+    """
     if not config_path.exists():
         raise FileNotFoundError(f"Combined config not found: {config_path}")
 
     data = json.loads(config_path.read_text(encoding="utf-8"))
-    combined = data.get("combined") or {}
-    name = combined.get("name")
-    domains = combined.get("domains")
+    combined = data.get("combined")
+    if combined is None:
+        raise ValueError("Missing 'combined' in visual-config.json")
 
-    if not name or not isinstance(name, str):
-        raise ValueError("combined.name must be a non-empty string")
-    if not isinstance(domains, list) or not all(isinstance(d, str) for d in domains):
-        raise ValueError("combined.domains must be a list of strings")
+    combined_entries = combined if isinstance(combined, list) else [combined]
+    parsed: List[Tuple[str, List[str]]] = []
 
-    return name, domains
+    for i, entry in enumerate(combined_entries, start=1):
+        if not isinstance(entry, dict):
+            raise ValueError(f"combined[{i}] must be an object")
+
+        name = entry.get("name")
+        domains = entry.get("domains")
+
+        if not name or not isinstance(name, str):
+            raise ValueError(f"combined[{i}].name must be a non-empty string")
+        if not isinstance(domains, list) or not all(
+            isinstance(d, str) and d.strip() for d in domains
+        ):
+            raise ValueError(f"combined[{i}].domains must be a list of strings")
+
+        parsed.append((name, domains))
+
+    return parsed
 
 
 def save_summary_table(aggregated_data: pd.DataFrame):
@@ -567,14 +585,14 @@ def main():
     )
 
     # Generate combined visualizations (7-21) from config
-    combined_name, combined_domains = load_combined_config(COMBINED_CONFIG_PATH)
-    generate_combined_visualizations(
-        aggregated_data,
-        task_results_by_model,
-        combined_name=combined_name,
-        combined_domains=combined_domains,
-        top_n_models=args.top_n,
-    )
+    for combined_name, combined_domains in load_combined_config(COMBINED_CONFIG_PATH):
+        generate_combined_visualizations(
+            aggregated_data,
+            task_results_by_model,
+            combined_name=combined_name,
+            combined_domains=combined_domains,
+            top_n_models=args.top_n,
+        )
 
     # Save summary table
     save_summary_table(aggregated_data)

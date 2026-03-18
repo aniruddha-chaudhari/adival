@@ -5,6 +5,7 @@
 | Grok Fast | google-workspace-gws-cli | 8 | 4 | 2 | 2 | 50.0 | 71.2 | 32577 | 15.1 | 126.9 |
 | Sonnet 4.6 | google-workspace-gws-cli | 8 | 3 | 3 | 2 | 37.5 | 64.8 | 99012 | 18.5 | 204.8 |
 | MiniMax | google-workspace-gws-cli | 8 | 4 | 2 | 2 | 50.0 | 70.9 | 50449 | 14.5 | 183.3 |
+| Gemini Flash | file-management-skills | 14 | 7 | 7 | 0 | 50.0 | 80.2 | 48484 | 9.6 | 65.3 |
 | GPT-5.3 | file-management-skills | 14 | 8 | 6 | 0 | 57.1 | 80.1 | 27751 | 7.0 | 109.2 |
 | Grok Fast | file-management-skills | 14 | 9 | 4 | 1 | 64.3 | 76.3 | 28825 | 16.4 | 133.6 |
 | Sonnet 4.6 | file-management-skills | 14 | 10 | 4 | 0 | 71.4 | 86.9 | 38380 | 16.4 | 215.0 |

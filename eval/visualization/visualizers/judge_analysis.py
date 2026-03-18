@@ -146,8 +146,10 @@ class JudgeAnalysisVisualizer:
             palette = get_color_palette(n_keys)
             key_color = {k: palette[i] for i, k in enumerate(keys)}
 
-            width_fig = max(10, n_tasks * 0.9)
+            # Reserve right-side space for an external legend so bars are never occluded.
+            width_fig = max(12.5, n_tasks * 0.9)
             fig, ax = plt.subplots(figsize=(width_fig, 5.5))
+            fig.subplots_adjust(right=0.78)
 
             bar_width = 0.8 / n_keys
             x = np.arange(n_tasks)
@@ -180,6 +182,8 @@ class JudgeAnalysisVisualizer:
             ax.tick_params(axis="y", labelsize=config.FONT_SIZE_TICK)
             ax.set_ylim(0, 105)
             ax.legend(
+                loc="upper left",
+                bbox_to_anchor=(1.01, 1.0),
                 frameon=False,
                 fontsize=config.FONT_SIZE_LEGEND,
                 ncol=1,
@@ -193,7 +197,7 @@ class JudgeAnalysisVisualizer:
             save_figure(
                 fig,
                 "14_per_task_score_breakdown",
-                tight_layout=True,
+                tight_layout=False,
                 subdir=suite_subdir,
             )
             plt.close(fig)
@@ -255,6 +259,7 @@ class JudgeAnalysisVisualizer:
         fig, ax = plt.subplots(
             figsize=(config.FIGURE_WIDTH_DOUBLE, max(4, n_domains * 0.6 + 1))
         )
+        fig.subplots_adjust(right=0.8)
 
         y_pos = np.arange(n_domains)
         left = np.zeros(n_domains)
@@ -284,7 +289,12 @@ class JudgeAnalysisVisualizer:
             pad=15,
         )
         ax.tick_params(axis="x", labelsize=config.FONT_SIZE_TICK)
-        ax.legend(loc="lower right", frameon=False, fontsize=config.FONT_SIZE_LEGEND)
+        ax.legend(
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
+            frameon=False,
+            fontsize=config.FONT_SIZE_LEGEND,
+        )
         ax.grid(axis="x", alpha=0.3)
 
         save_figure(
