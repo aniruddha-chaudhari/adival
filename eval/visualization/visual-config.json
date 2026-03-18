@@ -2,5 +2,9 @@
   "combined": {
     "name": "Browsing",
     "domains": ["agent-browser", "pinchtab", "playwright-mcp"]
+  },
+  "combined": {
+    "name": "File and online services",
+    "domains": ["google-workspace-gws-cli", "file-management-skills"]
   }
 }
