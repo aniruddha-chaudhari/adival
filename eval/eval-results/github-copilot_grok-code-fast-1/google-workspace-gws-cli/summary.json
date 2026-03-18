@@ -69,7 +69,8 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": ["gws-gmail"]
     },
     {
       "id": "EVAL_GWS_002",
@@ -136,7 +137,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": ["gws-gmail"]
     },
     {
       "id": "EVAL_GWS_003",
@@ -203,7 +205,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GWS_004",
@@ -270,7 +273,8 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": ["gws-gmail"]
     },
     {
       "id": "EVAL_GWS_005",
@@ -337,7 +341,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": ["gws-drive", "gws-shared"]
     },
     {
       "id": "EVAL_GWS_006",
@@ -404,7 +409,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GWS_007",
@@ -471,7 +477,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": ["gws-calendar", "gws-calendar-agenda"]
     },
     {
       "id": "EVAL_GWS_008",
@@ -538,7 +545,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": ["gws-gmail", "gws-gmail-send"]
     }
   ],
   "analysis": {

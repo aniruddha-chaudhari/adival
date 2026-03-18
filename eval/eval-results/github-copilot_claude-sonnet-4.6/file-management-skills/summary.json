@@ -293,7 +293,7 @@
       "error": "timeout after 660s",
       "analysis": null,
       "telemetry": null,
-      "skills": []
+      "skills": ["pptx"]
     },
     {
       "id": "EVAL_FM_007",

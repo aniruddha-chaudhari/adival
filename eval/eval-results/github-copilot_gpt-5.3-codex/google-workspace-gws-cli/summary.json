@@ -69,7 +69,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GWS_002",
@@ -136,7 +137,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GWS_003",
@@ -203,7 +205,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GWS_004",
@@ -270,7 +273,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": ["gws-gmail"]
     },
     {
       "id": "EVAL_GWS_005",
@@ -337,7 +341,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": false
-      }
+      },
+      "skills": ["gws-drive"]
     },
     {
       "id": "EVAL_GWS_006",
@@ -404,7 +409,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": []
     },
     {
       "id": "EVAL_GWS_007",
@@ -471,7 +477,8 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
-      }
+      },
+      "skills": ["gws-calendar-agenda"]
     },
     {
       "id": "EVAL_GWS_008",
@@ -538,7 +545,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": []
     }
   ],
   "analysis": {
