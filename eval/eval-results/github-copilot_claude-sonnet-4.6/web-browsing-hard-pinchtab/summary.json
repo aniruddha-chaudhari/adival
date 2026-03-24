@@ -140,7 +140,6 @@
       },
       "skills": ["pinchtab"]
     },
-
     {
       "id": "EVAL_NPM_001",
       "name": "npm: Dependency Chain Depth Analysis",
@@ -206,7 +205,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -341,7 +341,8 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      }
+      },
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_HN_001",
