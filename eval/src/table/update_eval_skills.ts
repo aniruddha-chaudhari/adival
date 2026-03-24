@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import * as readline from "readline";
 import { spawnSync } from "child_process";
 import ExcelJS from "exceljs";
 
@@ -16,6 +17,8 @@ const TARGET_MODELS = [
 
 const TRIGGER_RATE_DOMAINS = ["file-management", "file-management-skills"];
 const TRIGGER_RATE_TASK_IDS = ["EVAL_FM_001", "EVAL_FM_002", "EVAL_FM_005", "EVAL_FM_010"];
+const PINCHTAB_DOMAIN = "web-browsing-hard-pinchtab";
+const GENERATE_PINCHTAB_CLI_USAGE_SHEET = false;
 
 type TriggerRateDomainRow = {
   domain: string;
@@ -25,9 +28,100 @@ type TriggerRateDomainRow = {
   taskSkills: string[];
 };
 
+type PinchtabUsage = {
+  tests: number;
+  cliUsageToolCalls: number;
+  curlUsageToolCalls: number;
+};
+
+function isPinchtabCliCommand(command: string) {
+  const cmd = command.toLowerCase();
+  return (
+    cmd.includes("pinchtab ") ||
+    cmd.includes("pinchtab/scripts/setup.ps1") ||
+    cmd.includes("pinchtab/scripts/stop.ps1") ||
+    cmd.includes("pinchtab\\scripts\\setup.ps1") ||
+    cmd.includes("pinchtab\\scripts\\stop.ps1")
+  );
+}
+
+function isCurlExeCommand(command: string) {
+  return command.toLowerCase().includes("curl.exe");
+}
+
+async function analyzePinchtabAgentOutput(filePath: string) {
+  const usage = {
+    cliUsageToolCalls: 0,
+    curlUsageToolCalls: 0,
+  };
+
+  const stream = fs.createReadStream(filePath, { encoding: "utf8" });
+  const rl = readline.createInterface({
+    input: stream,
+    crlfDelay: Infinity,
+  });
+
+  try {
+    for await (const line of rl) {
+      if (!line.trim()) continue;
+
+      try {
+        const entry = JSON.parse(line);
+        if (entry.type !== "tool_use") continue;
+        if (entry.part?.tool !== "bash") continue;
+
+        const command = entry.part?.state?.input?.command;
+        if (typeof command !== "string") continue;
+
+        if (isPinchtabCliCommand(command)) usage.cliUsageToolCalls += 1;
+        if (isCurlExeCommand(command)) usage.curlUsageToolCalls += 1;
+      } catch (e) {}
+    }
+  } finally {
+    rl.close();
+    stream.close();
+  }
+
+  return usage;
+}
+
+async function collectPinchtabUsage(modelPath: string): Promise<PinchtabUsage> {
+  const domainPath = path.join(modelPath, PINCHTAB_DOMAIN);
+  if (!fs.existsSync(domainPath)) {
+    return {
+      tests: 0,
+      cliUsageToolCalls: 0,
+      curlUsageToolCalls: 0,
+    };
+  }
+
+  const usage: PinchtabUsage = {
+    tests: 0,
+    cliUsageToolCalls: 0,
+    curlUsageToolCalls: 0,
+  };
+
+  const taskDirs = fs.readdirSync(domainPath).sort();
+  for (const taskDir of taskDirs) {
+    const taskPath = path.join(domainPath, taskDir);
+    if (!fs.statSync(taskPath).isDirectory()) continue;
+
+    const agentOutputPath = path.join(taskPath, "agent-output.jsonl");
+    if (!fs.existsSync(agentOutputPath)) continue;
+
+    usage.tests += 1;
+    const taskUsage = await analyzePinchtabAgentOutput(agentOutputPath);
+    usage.cliUsageToolCalls += taskUsage.cliUsageToolCalls;
+    usage.curlUsageToolCalls += taskUsage.curlUsageToolCalls;
+  }
+
+  return usage;
+}
+
 async function generateXlsxReport() {
   const workbook = new ExcelJS.Workbook();
   const triggerRateByModel = new Map<string, Map<string, Map<string, string[]>>>();
+  const pinchtabUsageByModel = new Map<string, PinchtabUsage>();
 
   for (const model of TARGET_MODELS) {
     const modelPath = path.join(EVAL_DIR, model);
@@ -35,6 +129,9 @@ async function generateXlsxReport() {
 
     const modelDomainSkillMap = new Map<string, Map<string, string[]>>();
     triggerRateByModel.set(model, modelDomainSkillMap);
+    if (GENERATE_PINCHTAB_CLI_USAGE_SHEET) {
+      pinchtabUsageByModel.set(model, await collectPinchtabUsage(modelPath));
+    }
 
     const sheetName = model.split("_").pop()?.substring(0, 31) || model;
     const worksheet = workbook.addWorksheet(sheetName);
@@ -137,6 +234,32 @@ async function generateXlsxReport() {
 
   const triggerRateColumn = triggerSheet.getColumn("triggerRate");
   triggerRateColumn.numFmt = "0.00";
+
+  if (GENERATE_PINCHTAB_CLI_USAGE_SHEET) {
+    const pinchtabSheet = workbook.addWorksheet("pinchtab_cli_usage");
+    pinchtabSheet.columns = [
+      { header: "Model", key: "model", width: 44 },
+      { header: "Pinchtab Tests", key: "tests", width: 16 },
+      { header: "CLI Usage Tool Calls", key: "cliUsageToolCalls", width: 22 },
+      { header: "curl.exe Usage Tool Calls", key: "curlUsageToolCalls", width: 26 },
+    ];
+    pinchtabSheet.getRow(1).font = { bold: true };
+
+    for (const model of TARGET_MODELS) {
+      const usage = pinchtabUsageByModel.get(model) || {
+        tests: 0,
+        cliUsageToolCalls: 0,
+        curlUsageToolCalls: 0,
+      };
+
+      pinchtabSheet.addRow({
+        model,
+        tests: usage.tests,
+        cliUsageToolCalls: usage.cliUsageToolCalls,
+        curlUsageToolCalls: usage.curlUsageToolCalls,
+      });
+    }
+  }
 
   if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
