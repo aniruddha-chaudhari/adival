@@ -140,24 +140,73 @@
       },
       "skills": ["pinchtab"]
     },
+
     {
       "id": "EVAL_NPM_001",
       "name": "npm: Dependency Chain Depth Analysis",
       "model": "github-copilot/claude-sonnet-4.6",
-      "status": "timeout",
-      "score": 0,
-      "keywordScore": 0,
-      "judgeScore": null,
-      "judge": null,
-      "judgeSelectedAttempt": null,
-      "judgeMismatch": null,
-      "toolCallCount": null,
-      "elapsedMs": 660045,
-      "tokens": null,
-      "error": "timeout after 660s",
-      "analysis": null,
-      "telemetry": null,
-      "skills": []
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent correctly navigated npm, found express v5.2.1, counted 28 deps, identified accepts as first, reported 89,963,619 weekly downloads, saved screenshot.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 20,
+      "elapsedMs": 232203,
+      "tokens": {
+        "inputTokens": 60813,
+        "outputTokens": 2947,
+        "totalTokens": 63760,
+        "byModel": {
+          "claude-sonnet-4.6": {
+            "inputTokens": 60813,
+            "outputTokens": 2947
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 18,
+          "unnecessarySteps": 3,
+          "inefficiencyRatio": 0.16666666666666666,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 16,
+            "agentSteps": 18,
+            "overheadRatio": 1.125
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 1,
+          "totalCommands": 18,
+          "thrashRatio": 0.05555555555555555,
+          "thrashingDetected": false
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "resource",
+        "timeoutDetected": true,
+        "errorDetected": true
+      }
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -238,36 +287,36 @@
       "judge": {
         "verdict": "PASS",
         "score": 100,
-        "reason": "Agent extracted all four values correctly and saved the screenshot, verifying shadow DOM data for full accuracy.",
+        "reason": "Agent extracted all four values correctly and saved screenshot as required.",
         "usedScreenshot": true
       },
       "judgeSelectedAttempt": "attempt_1",
       "judgeMismatch": {
-        "detected": true,
-        "fields": ["observedSteps", "unnecessarySteps"]
+        "detected": false,
+        "fields": []
       },
-      "toolCallCount": 35,
-      "elapsedMs": 242916,
+      "toolCallCount": 24,
+      "elapsedMs": 287681,
       "tokens": {
-        "inputTokens": 47874,
-        "outputTokens": 5720,
-        "totalTokens": 53594,
+        "inputTokens": 34547,
+        "outputTokens": 3944,
+        "totalTokens": 38491,
         "byModel": {
           "claude-sonnet-4.6": {
-            "inputTokens": 47874,
-            "outputTokens": 5720
+            "inputTokens": 34547,
+            "outputTokens": 3944
           }
         }
       },
       "analysis": {
         "efficiency": {
-          "trajectoryLength": 26,
-          "unnecessarySteps": 4,
-          "inefficiencyRatio": 0.15384615384615385,
+          "trajectoryLength": 22,
+          "unnecessarySteps": 8,
+          "inefficiencyRatio": 0.36363636363636365,
           "humanBaselineComparison": {
             "humanBaselineSteps": 12,
-            "agentSteps": 26,
-            "overheadRatio": 2.1666666666666665
+            "agentSteps": 22,
+            "overheadRatio": 1.8333333333333333
           }
         },
         "error": {
@@ -282,9 +331,9 @@
           "safetyFlag": false
         },
         "thrashing": {
-          "redundantCommands": 1,
-          "totalCommands": 26,
-          "thrashRatio": 0.038461538461538464,
+          "redundantCommands": 2,
+          "totalCommands": 22,
+          "thrashRatio": 0.09090909090909091,
           "thrashingDetected": false
         }
       },
@@ -292,8 +341,7 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
-      },
-      "skills": ["agent-browser"]
+      }
     },
     {
       "id": "EVAL_HN_001",
@@ -638,11 +686,11 @@
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 21.56,
-      "semSteps": 3.9433333333333334,
-      "meanStepsSuccessful": 22.86,
+      "meanSteps": 20.8,
+      "semSteps": 3.5080858978460983,
+      "meanStepsSuccessful": 22.25,
       "meanStepsFailed": 8,
-      "taskCount": 9
+      "taskCount": 10
     },
     "error": {
       "totalFailures": 2,
@@ -663,15 +711,15 @@
       "safetyFlagCount": 0
     },
     "thrashing": {
-      "meanThrashRatio": 0.06,
-      "totalRedundantCommands": 13,
+      "meanThrashRatio": 0.06186258186258185,
+      "totalRedundantCommands": 15,
       "thrashingTaskCount": 0
     },
     "time": {
-      "meanElapsedMs": 247357.7,
-      "meanElapsedMsPassed": 217030,
-      "medianElapsedMs": 233131.5,
-      "iqrElapsedMs": 180676
+      "meanElapsedMs": 209050,
+      "meanElapsedMsPassed": 218926.625,
+      "medianElapsedMs": 227775,
+      "iqrElapsedMs": 165683
     }
   }
 }
