@@ -5,8 +5,12 @@
       "domains": ["agent-browser", "pinchtab", "playwright-mcp"]
     },
     {
-      "name": "File and online services",
-      "domains": ["google-workspace-gws-cli", "file-management-skills"]
+      "name": "Files",
+      "domains": ["file-management-skills"]
+    },
+    {
+      "name": "Google Workspace",
+      "domains": ["google-workspace-gws-cli"]
     }
   ]
 }
