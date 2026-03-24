@@ -6,6 +6,7 @@
  *   bun run-eval.ts --config eval-config-coding.json         # run all tasks from a specific config
  *   bun run-eval.ts --models models.json                     # explicit models file (default: eval/models.json)
  *   bun run-eval.ts --task EVAL_006                          # run a single task by ID
+ *   bun run-eval.ts --tasks EVAL_001,EVAL_006               # run a comma-separated subset of tasks
  *   bun run-eval.ts --list                                   # list available tasks
  *
  * Results are saved to:
@@ -122,16 +123,25 @@ function parseArgs(args: string[]): {
   configFile: string | undefined;
   modelsFile: string | undefined;
   taskId: string | undefined;
+  taskIds: string[];
   list: boolean;
 } {
   const configIdx = args.indexOf("--config");
   const modelsIdx = args.indexOf("--models");
   const taskIdx = args.indexOf("--task");
+  const tasksIdx = args.indexOf("--tasks");
+
+  const rawTasks = tasksIdx !== -1 ? (args[tasksIdx + 1] ?? "") : "";
+  const taskIds = rawTasks
+    .split(",")
+    .map(s => s.trim())
+    .filter(Boolean);
 
   return {
     configFile: configIdx !== -1 ? args[configIdx + 1] : undefined,
     modelsFile: modelsIdx !== -1 ? args[modelsIdx + 1] : undefined,
     taskId: taskIdx !== -1 ? args[taskIdx + 1] : undefined,
+    taskIds,
     list: args.includes("--list") || args.includes("-l"),
   };
 }
@@ -152,7 +162,7 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
 
 (async () => {
   const args = process.argv.slice(2);
-  const { configFile, modelsFile, taskId, list } = parseArgs(args);
+  const { configFile, modelsFile, taskId, taskIds, list } = parseArgs(args);
 
   // Resolve config path: absolute paths used as-is; relative paths are
   // resolved first relative to the eval/ directory (where run-eval.ts lives),
@@ -196,19 +206,24 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
   const { name: domainName, defaultModel } = await loadEvalConfig(configPath);
   const models = await loadModels(modelsFile);
 
-  if (taskId) {
-    // ── Single task mode ────────────────────────────────────────────────────
-    const task = await getTaskById(taskId, configPath);
-    if (!task) {
-      console.error(`Task not found: ${taskId}`);
-      console.error(`Run with --list to see available tasks.`);
-      process.exit(1);
+  const selectedTaskIds = [...new Set([...(taskId ? [taskId] : []), ...taskIds])];
+
+  if (selectedTaskIds.length > 0) {
+    // ── Selected task mode (single or comma-separated subset) ─────────────
+    const selectedTasks = [];
+    for (const selectedId of selectedTaskIds) {
+      const task = await getTaskById(selectedId, configPath);
+      if (!task) {
+        console.error(`Task not found: ${selectedId}`);
+        console.error(`Run with --list to see available tasks.`);
+        process.exit(1);
+      }
+      selectedTasks.push(task);
     }
 
-    // Single task: run against all models sequentially
+    // Selected tasks: run against all models sequentially
     for (const modelId of models) {
       const domainDir = ensureDomainDir(modelId, domainName);
-      makeTaskDir(domainDir, task.id, task.name);
 
       console.log("=".repeat(60));
       console.log("  OpenCode Agent-Browser Eval");
@@ -216,13 +231,28 @@ async function loadModels(modelsFile?: string): Promise<string[]> {
       console.log(`  Model  : ${modelId}`);
       console.log(`  Run dir: ${domainDir}`);
       console.log("=".repeat(60));
-      console.log(`\nRunning: ${task.name} (${task.id})\n`);
 
-      const taskWithModel = { ...task, model: modelId };
-      const result = await runTask(taskWithModel, domainDir);
-      moveOutputsToTaskDir(join(domainDir, taskDirName(task.id, task.name)));
-      printResult(result, true);
-      await saveResults([result], domainDir, modelId, domainName);
+      if (selectedTasks.length === 1) {
+        const task = selectedTasks[0];
+        console.log(`\nRunning: ${task.name} (${task.id})\n`);
+      } else {
+        console.log(`\nRunning ${selectedTasks.length} selected tasks...\n`);
+      }
+
+      const results: TaskRunResult[] = [];
+      for (const task of selectedTasks) {
+        makeTaskDir(domainDir, task.id, task.name);
+        const taskWithModel = { ...task, model: modelId };
+        const result = await runTask(taskWithModel, domainDir);
+        moveOutputsToTaskDir(join(domainDir, taskDirName(task.id, task.name)));
+        results.push(result);
+        printResult(result, selectedTasks.length === 1);
+      }
+
+      await saveResults(results, domainDir, modelId, domainName);
+      if (selectedTasks.length > 1) {
+        printSummary(results, modelId, domainName);
+      }
     }
   } else {
     // ── Full run mode ───────────────────────────────────────────────────────

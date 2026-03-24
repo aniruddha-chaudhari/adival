@@ -1,7 +1,7 @@
 {
   "runAt": "2026-03-24T12:28:06.352Z",
   "model": "github-copilot/gemini-3-flash-preview",
-  "domain": "web-browsing-hard-pinchtab",
+  "domain": "pinchtab",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gemini-3-flash-preview\\web-browsing-hard-pinchtab",
   "results": [
     {
@@ -70,9 +70,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_WIKI_002",
@@ -140,9 +138,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_NPM_001",
@@ -210,9 +206,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_ARXIV_001",
@@ -280,9 +274,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_MDN_001",
@@ -350,9 +342,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_HN_001",
@@ -420,9 +410,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_PYPI_001",
@@ -490,9 +478,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_STACKOVERFLOW_002",
@@ -560,9 +546,7 @@
         "timeoutDetected": true,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_GH_003",
@@ -630,9 +614,7 @@
         "timeoutDetected": false,
         "errorDetected": true
       },
-      "skills": [
-        "pinchtab"
-      ]
+      "skills": ["pinchtab"]
     },
     {
       "id": "EVAL_CANIUSE_001",
@@ -699,7 +681,8 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
-      }
+      },
+      "skills": ["pinchtab"]
     }
   ],
   "analysis": {
