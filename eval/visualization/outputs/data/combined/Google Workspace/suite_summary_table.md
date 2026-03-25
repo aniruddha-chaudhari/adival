@@ -1,7 +1,7 @@
 | Model | Suite | Tasks | Pass | Partial | Fail/Timeout | Pass Rate (%) | Mean Score | Mean Tokens | Mean Tool Calls | Mean Time (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Gemini Flash | google-workspace-gws-cli | 8 | 4 | 2 | 2 | 50.0 | 75.0 | 70972 | 8.1 | 58.5 |
-| GPT-5.3 | google-workspace-gws-cli | 8 | 4 | 2 | 2 | 50.0 | 75.0 | 40810 | 6.1 | 102.0 |
-| Grok Fast | google-workspace-gws-cli | 8 | 4 | 2 | 2 | 50.0 | 71.2 | 32577 | 15.1 | 126.9 |
-| Sonnet 4.6 | google-workspace-gws-cli | 8 | 3 | 3 | 2 | 37.5 | 64.8 | 99012 | 18.5 | 204.8 |
-| MiniMax | google-workspace-gws-cli | 8 | 4 | 2 | 2 | 50.0 | 70.9 | 50449 | 14.5 | 183.3 |
+| Gemini Flash | google-workspace-gws-cli | 6 | 4 | 1 | 1 | 66.7 | 83.3 | 68119 | 6.8 | 45.5 |
+| GPT-5.3 | google-workspace-gws-cli | 6 | 4 | 1 | 1 | 66.7 | 83.3 | 37098 | 6.8 | 113.9 |
+| Grok Fast | google-workspace-gws-cli | 6 | 4 | 1 | 1 | 66.7 | 82.5 | 29554 | 12.5 | 115.8 |
+| Sonnet 4.6 | google-workspace-gws-cli | 6 | 3 | 2 | 1 | 50.0 | 76.5 | 89299 | 17.0 | 179.6 |
+| MiniMax | google-workspace-gws-cli | 6 | 4 | 1 | 1 | 66.7 | 83.3 | 48640 | 15.7 | 196.3 |
