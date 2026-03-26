@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "028c3bad9e7417460e0d2094fc0c1b9d601e56317d38c4f5d124666b06a9405b"
     },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "computedHash": "9757e62a964103e0b5659ccae7aab3ee893957e2c7f2a9a872851773d06efe7e"
+    },
     "dialectic": {
       "source": "KyleAMathews/hegelian-dialectic-skill",
       "sourceType": "github",
