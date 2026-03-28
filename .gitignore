@@ -12,3 +12,5 @@ eval/nul
 manager/*
 workbox/*
 .venv
+.opencode-router/*
+outputs/
