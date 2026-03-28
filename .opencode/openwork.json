@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "workspace": {
+    "name": "mcpserver",
+    "createdAt": 1773980748544,
+    "preset": "starter"
+  },
+  "authorizedRoots": [
+    "F:\\Aniruddha\\code\\college\\mcpserver"
+  ]
+}
