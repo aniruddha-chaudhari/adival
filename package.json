@@ -4,6 +4,8 @@
   "description": "Evaluation framework and apps",
   "scripts": {
     "dev:app": "bun run --cwd apps/vite-react dev",
+    "session-api": "bun run apps/session-api/main.ts",
+    "session-api:client": "bun run apps/session-api/client.ts",
     "eval": "bun run eval/run-eval.ts",
     "watch-memory": "bun run watch-memory.ts",
     "type-check": "tsc --noEmit",
