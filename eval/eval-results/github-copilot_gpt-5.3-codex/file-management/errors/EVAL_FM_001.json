@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_FM_001",
   "taskName": "Excel: Multi-Sheet Formula Audit & Summary Report",
-  "model": "github-copilot/gpt-5.3-codex",
+  "model": "gpt-5.3-codex",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

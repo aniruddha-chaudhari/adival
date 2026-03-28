@@ -1,12 +1,12 @@
 {
   "runAt": "2026-03-07T10:59:22.982Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-07_10-58-00",
   "results": [
     {
       "id": "EVAL_007",
       "name": "Memory: test fs-memory skill",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,

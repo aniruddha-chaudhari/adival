@@ -1,13 +1,13 @@
 {
   "runAt": "2026-03-17T11:02:47.013Z",
-  "model": "github-copilot/gemini-3-flash-preview",
+  "model": "gemini-3-flash-preview",
   "domain": "file-management-skills",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gemini-3-flash-preview\\file-management-skills",
   "results": [
     {
       "id": "EVAL_FM_001",
       "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 97,
       "keywordScore": 94,
@@ -75,7 +75,7 @@
     {
       "id": "EVAL_FM_002",
       "name": "Word: Tracked-Changes Redline Review & Selective Accept",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -143,7 +143,7 @@
     {
       "id": "EVAL_FM_003",
       "name": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -211,7 +211,7 @@
     {
       "id": "EVAL_FM_004",
       "name": "File Search: Deep Directory Traversal with Metadata Filtering",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -279,7 +279,7 @@
     {
       "id": "EVAL_FM_005",
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -347,7 +347,7 @@
     {
       "id": "EVAL_FM_007",
       "name": "Image Organization: EXIF-Based Sort, Dedup & Rename Pipeline",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -415,7 +415,7 @@
     {
       "id": "EVAL_FM_008",
       "name": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,
@@ -483,7 +483,7 @@
     {
       "id": "EVAL_FM_009",
       "name": "Excel: Extract Failed Students from Exam Results",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 40,
       "keywordScore": 80,
@@ -551,7 +551,7 @@
     {
       "id": "EVAL_FM_010",
       "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,
@@ -619,7 +619,7 @@
     {
       "id": "EVAL_FM_011",
       "name": "Office Multi-App: PDF Financial Report → Excel Analysis + Word Summary",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -687,7 +687,7 @@
     {
       "id": "EVAL_FM_012",
       "name": "Excel: Cell-Level Formula — Count Countries per Company with Employee Filter",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 63,
       "keywordScore": 75,
@@ -755,7 +755,7 @@
     {
       "id": "EVAL_FM_013",
       "name": "Excel: Sheet-Level Manipulation — Merge RANGES into LISTS with Sorted Sections and Totals",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "partial",
       "score": 63,
       "keywordScore": 75,
@@ -823,7 +823,7 @@
     {
       "id": "EVAL_FM_014",
       "name": "Image-Excel: Table Recognition from Scientific Paper Image",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,
@@ -891,7 +891,7 @@
     {
       "id": "EVAL_FM_015",
       "name": "PowerPoint: Add Agenda Slide After Title Slide",
-      "model": "github-copilot/gemini-3-flash-preview",
+      "model": "gemini-3-flash-preview",
       "status": "pass",
       "score": 90,
       "keywordScore": 79,

@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_FM_003",
   "taskName": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
-  "model": "github-copilot/gemini-3-flash-preview",
+  "model": "gemini-3-flash-preview",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

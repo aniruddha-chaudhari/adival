@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_FM_008",
   "taskName": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
-  "model": "github-copilot/gemini-3-flash-preview",
+  "model": "gemini-3-flash-preview",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

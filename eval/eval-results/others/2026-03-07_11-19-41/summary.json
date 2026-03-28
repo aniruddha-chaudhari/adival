@@ -1,12 +1,12 @@
 {
   "runAt": "2026-03-07T11:21:13.463Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-07_11-19-41",
   "results": [
     {
       "id": "EVAL_005",
       "name": "Screenshot: example.com",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,

@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_FM_010",
   "taskName": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
-  "model": "github-copilot/gemini-3-flash-preview",
+  "model": "gemini-3-flash-preview",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

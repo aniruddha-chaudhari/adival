@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_PYPI_001",
   "taskName": "PyPI: Package Release History Delta",
-  "model": "github-copilot/claude-sonnet-4.6",
+  "model": "claude-sonnet-4-6",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

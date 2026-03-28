@@ -1,13 +1,13 @@
 {
   "runAt": "2026-03-13T09:42:52.945Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "domain": "web-browsing",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\opencode_minimax-m2.5-free\\web-browsing",
   "results": [
     {
       "id": "EVAL_AMZ_001",
       "name": "Amazon: Filtered Product Intelligence",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 88,
       "keywordScore": 75,
@@ -75,7 +75,7 @@
     {
       "id": "EVAL_GH_001",
       "name": "GitHub: Repository Release Intelligence",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -143,7 +143,7 @@
     {
       "id": "EVAL_WIKI_001",
       "name": "Wikipedia: Multi-Field Infobox Extraction",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -211,7 +211,7 @@
     {
       "id": "EVAL_SO_001",
       "name": "Stack Overflow: Tagged Questions Snapshot",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -279,7 +279,7 @@
     {
       "id": "EVAL_LNKD_001",
       "name": "LinkedIn: Company Page Data Extraction",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,

@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_FM_004",
   "taskName": "File Search: Deep Directory Traversal with Metadata Filtering",
-  "model": "github-copilot/gemini-3-flash-preview",
+  "model": "gemini-3-flash-preview",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

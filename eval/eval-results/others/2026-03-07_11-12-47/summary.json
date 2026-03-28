@@ -1,12 +1,12 @@
 {
   "runAt": "2026-03-07T11:17:47.873Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-07_11-12-47",
   "results": [
     {
       "id": "EVAL_006",
       "name": "YouTube: open a Minecraft video",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "timeout",
       "score": 0,
       "keywordScore": 0,

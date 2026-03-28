@@ -1,12 +1,12 @@
 {
   "runAt": "2026-03-08T07:27:01.279Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-08_07-24-10",
   "results": [
     {
       "id": "EVAL_002",
       "name": "GitHub: facebook/react star count",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,

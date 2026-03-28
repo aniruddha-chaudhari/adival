@@ -1,13 +1,13 @@
 {
   "runAt": "2026-03-13T12:49:58.612Z",
-  "model": "github-copilot/grok-code-fast-1",
+  "model": "grok-code-fast-1",
   "domain": "web-browsing",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_grok-code-fast-1\\web-browsing",
   "results": [
     {
       "id": "EVAL_AMZ_001",
       "name": "Amazon: Filtered Product Intelligence",
-      "model": "github-copilot/grok-code-fast-1",
+      "model": "grok-code-fast-1",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -75,7 +75,7 @@
     {
       "id": "EVAL_LNKD_001",
       "name": "LinkedIn: Company Page Data Extraction",
-      "model": "github-copilot/grok-code-fast-1",
+      "model": "grok-code-fast-1",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -143,7 +143,7 @@
     {
       "id": "EVAL_GH_001",
       "name": "GitHub: Repository Release Intelligence",
-      "model": "github-copilot/grok-code-fast-1",
+      "model": "grok-code-fast-1",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -211,7 +211,7 @@
     {
       "id": "EVAL_WIKI_001",
       "name": "Wikipedia: Multi-Field Infobox Extraction",
-      "model": "github-copilot/grok-code-fast-1",
+      "model": "grok-code-fast-1",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -279,7 +279,7 @@
     {
       "id": "EVAL_SO_001",
       "name": "Stack Overflow: Tagged Questions Snapshot",
-      "model": "github-copilot/grok-code-fast-1",
+      "model": "grok-code-fast-1",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,

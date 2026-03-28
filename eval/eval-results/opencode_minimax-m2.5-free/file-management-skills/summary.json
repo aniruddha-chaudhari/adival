@@ -1,13 +1,13 @@
 {
   "runAt": "2026-03-17T13:45:50.893Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "domain": "file-management-skills",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\opencode_minimax-m2.5-free\\file-management-skills",
   "results": [
     {
       "id": "EVAL_FM_001",
       "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 85,
       "keywordScore": 69,
@@ -75,7 +75,7 @@
     {
       "id": "EVAL_FM_002",
       "name": "Word: Tracked-Changes Redline Review & Selective Accept",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -143,7 +143,7 @@
     {
       "id": "EVAL_FM_003",
       "name": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "timeout",
       "score": 0,
       "keywordScore": 0,
@@ -162,7 +162,7 @@
     {
       "id": "EVAL_FM_004",
       "name": "File Search: Deep Directory Traversal with Metadata Filtering",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -230,7 +230,7 @@
     {
       "id": "EVAL_FM_005",
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "timeout",
       "score": 0,
       "keywordScore": 0,
@@ -249,7 +249,7 @@
     {
       "id": "EVAL_FM_007",
       "name": "Image Organization: EXIF-Based Sort, Dedup & Rename Pipeline",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -317,7 +317,7 @@
     {
       "id": "EVAL_FM_008",
       "name": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,
@@ -385,7 +385,7 @@
     {
       "id": "EVAL_FM_009",
       "name": "Excel: Extract Failed Students from Exam Results",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "partial",
       "score": 65,
       "keywordScore": 80,
@@ -453,7 +453,7 @@
     {
       "id": "EVAL_FM_010",
       "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -521,7 +521,7 @@
     {
       "id": "EVAL_FM_011",
       "name": "Office Multi-App: PDF Financial Report → Excel Analysis + Word Summary",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,
@@ -589,7 +589,7 @@
     {
       "id": "EVAL_FM_012",
       "name": "Excel: Cell-Level Formula — Count Countries per Company with Employee Filter",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "pass",
       "score": 88,
       "keywordScore": 75,
@@ -657,7 +657,7 @@
     {
       "id": "EVAL_FM_013",
       "name": "Excel: Sheet-Level Manipulation — Merge RANGES into LISTS with Sorted Sections and Totals",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "partial",
       "score": 63,
       "keywordScore": 75,
@@ -725,7 +725,7 @@
     {
       "id": "EVAL_FM_014",
       "name": "Image-Excel: Table Recognition from Scientific Paper Image",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "partial",
       "score": 48,
       "keywordScore": 95,
@@ -793,7 +793,7 @@
     {
       "id": "EVAL_FM_015",
       "name": "PowerPoint: Add Agenda Slide After Title Slide",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "timeout",
       "score": 0,
       "keywordScore": 0,

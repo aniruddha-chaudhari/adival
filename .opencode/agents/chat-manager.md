@@ -1,7 +1,7 @@
 ---
 description: "Chat history manager. Searches manager/chats/ for relevant past sessions and can converse with them to retrieve useful context for the main agent."
 mode: subagent
-model: opencode/minimax-m2.5-free
+model: MiniMax-M2.5
 tools:
   write: false
   edit: false

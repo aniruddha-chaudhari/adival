@@ -1,13 +1,13 @@
 {
   "runAt": "2026-03-17T10:30:44.994Z",
-  "model": "github-copilot/gpt-5.3-codex",
+  "model": "gpt-5.3-codex",
   "domain": "google-workspace-gws-cli",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\github-copilot_gpt-5.3-codex\\google-workspace-gws-cli",
   "results": [
     {
       "id": "EVAL_GWS_001",
       "name": "Gmail: Unread Inbox Triage & Sender Domain Breakdown",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -75,7 +75,7 @@
     {
       "id": "EVAL_GWS_002",
       "name": "Gmail: Smart Draft Replies for a Project Thread",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -143,7 +143,7 @@
     {
       "id": "EVAL_GWS_003",
       "name": "Google Calendar: Full Week Audit — Conflicts & Free Time",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "fail",
       "score": 25,
       "keywordScore": 0,
@@ -211,7 +211,7 @@
     {
       "id": "EVAL_GWS_004",
       "name": "Gmail: Thread Summarization & Action Item Extraction",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -279,7 +279,7 @@
     {
       "id": "EVAL_GWS_005",
       "name": "Google Drive: File Hygiene Audit — Stale, Oversized & Public Files",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -347,7 +347,7 @@
     {
       "id": "EVAL_GWS_006",
       "name": "Google Drive: Folder Summary Report Written to a New Google Doc",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "fail",
       "score": 25,
       "keywordScore": 0,
@@ -415,7 +415,7 @@
     {
       "id": "EVAL_GWS_007",
       "name": "Google Calendar: Next 14 Days — Recurring Event Audit",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -483,7 +483,7 @@
     {
       "id": "EVAL_GWS_008",
       "name": "Gmail: Sent Mail Analysis — Response Rate & Top Contacts",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "gpt-5.3-codex",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,

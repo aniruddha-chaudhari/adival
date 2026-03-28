@@ -1,7 +1,7 @@
 {
   "$schema": "./eval-config.schema.json",
   "name": "file-management-skills",
-  "defaultModel": "opencode/minimax-m2.5-free",
+  "defaultModel": "MiniMax-M2.5",
   "tasks": [
     {
       "id": "EVAL_FM_001",

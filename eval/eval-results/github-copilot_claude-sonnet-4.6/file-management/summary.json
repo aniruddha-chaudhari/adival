@@ -1,13 +1,13 @@
 {
   "runAt": "2026-03-15T12:17:52.166Z",
-  "model": "github-copilot/claude-sonnet-4.6",
+  "model": "claude-sonnet-4-6",
   "domain": "file-management",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_claude-sonnet-4.6\\file-management",
   "results": [
     {
       "id": "EVAL_FM_001",
       "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "pass",
       "score": 97,
       "keywordScore": 94,
@@ -75,7 +75,7 @@
     {
       "id": "EVAL_FM_002",
       "name": "Word: Tracked-Changes Redline Review & Selective Accept",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "partial",
       "score": 75,
       "keywordScore": 100,
@@ -143,7 +143,7 @@
     {
       "id": "EVAL_FM_003",
       "name": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "partial",
       "score": 75,
       "keywordScore": 50,
@@ -211,7 +211,7 @@
     {
       "id": "EVAL_FM_004",
       "name": "File Search: Deep Directory Traversal with Metadata Filtering",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -279,7 +279,7 @@
     {
       "id": "EVAL_FM_005",
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "pass",
       "score": 100,
       "keywordScore": 100,
@@ -347,7 +347,7 @@
     {
       "id": "EVAL_FM_007",
       "name": "Image Organization: EXIF-Based Sort, Dedup & Rename Pipeline",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "timeout",
       "score": 0,
       "keywordScore": 0,
@@ -366,7 +366,7 @@
     {
       "id": "EVAL_FM_008",
       "name": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "pass",
       "score": 80,
       "keywordScore": 60,
@@ -434,7 +434,7 @@
     {
       "id": "EVAL_FM_009",
       "name": "Excel: Extract Failed Students from Exam Results",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,
@@ -502,7 +502,7 @@
     {
       "id": "EVAL_FM_010",
       "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
-      "model": "github-copilot/claude-sonnet-4.6",
+      "model": "claude-sonnet-4-6",
       "status": "pass",
       "score": 90,
       "keywordScore": 80,

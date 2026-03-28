@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_FM_007",
   "taskName": "Image Organization: EXIF-Based Sort, Dedup & Rename Pipeline",
-  "model": "github-copilot/gemini-3-flash-preview",
+  "model": "gemini-3-flash-preview",
   "judgeSelectedAttempt": null,
   "attempts": [
     {

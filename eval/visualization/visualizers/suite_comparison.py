@@ -46,21 +46,21 @@ SUITE_COLORS = {
 
 # Short model labels (provider/model → readable)
 _MODEL_LABEL_MAP = {
-    "github-copilot/claude-sonnet-4.6": "Sonnet 4.6",
+    "claude-sonnet-4-6": "Sonnet 4.6",
     "github-copilot/claude-opus-4.6": "Opus 4.6",
-    "github-copilot/gpt-5.3-codex": "GPT-5.3",
-    "github-copilot/grok-code-fast-1": "Grok Fast",
-    "github-copilot/gemini-3-flash-preview": "Gemini Flash",
-    "opencode/minimax-m2.5-free": "MiniMax",
+    "gpt-5.3-codex": "GPT-5.3",
+    "grok-code-fast-1": "Grok Fast",
+    "gemini-3-flash-preview": "Gemini Flash",
+    "MiniMax-M2.5": "MiniMax",
 }
 
 # Preferred display order of models
 _MODEL_ORDER = [
-    "github-copilot/gemini-3-flash-preview",
-    "github-copilot/gpt-5.3-codex",
-    "github-copilot/grok-code-fast-1",
-    "github-copilot/claude-sonnet-4.6",
-    "opencode/minimax-m2.5-free",
+    "gemini-3-flash-preview",
+    "gpt-5.3-codex",
+    "grok-code-fast-1",
+    "claude-sonnet-4-6",
+    "MiniMax-M2.5",
 ]
 
 # Task ID display order (same across all suites)

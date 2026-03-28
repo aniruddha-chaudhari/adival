@@ -14,11 +14,11 @@ DATA_DIR = OUTPUT_DIR / "data"
 # Target models and suites for focused visualizations
 # (used to reduce clutter and match paper figures)
 TARGET_MODELS = [
-    "github-copilot/claude-sonnet-4.6",
-    "github-copilot/gemini-3-flash-preview",
-    "github-copilot/gpt-5.3-codex",
-    "github-copilot/grok-code-fast-1",
-    "opencode/minimax-m2.5-free",
+    "claude-sonnet-4-6",
+    "gemini-3-flash-preview",
+    "gpt-5.3-codex",
+    "grok-code-fast-1",
+    "MiniMax-M2.5",
 ]
 
 # Logical suite/domain identifiers in eval-results

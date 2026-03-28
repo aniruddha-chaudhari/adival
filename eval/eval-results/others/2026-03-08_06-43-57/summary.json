@@ -1,12 +1,12 @@
 {
   "runAt": "2026-03-08T06:45:22.274Z",
-  "model": "opencode/minimax-m2.5-free",
+  "model": "MiniMax-M2.5",
   "runDir": "F:\\Aniruddha\\code\\college\\mcpserver\\eval\\eval-results\\2026-03-08_06-43-57",
   "results": [
     {
       "id": "EVAL_001",
       "name": "Wikipedia: Python release year",
-      "model": "opencode/minimax-m2.5-free",
+      "model": "MiniMax-M2.5",
       "status": "partial",
       "score": 50,
       "keywordScore": 100,

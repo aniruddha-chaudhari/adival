@@ -1,7 +1,7 @@
 {
   "taskId": "EVAL_NPM_001",
   "taskName": "npm: Dependency Chain Depth Analysis",
-  "model": "github-copilot/gpt-5.3-codex",
+  "model": "gpt-5.3-codex",
   "judgeSelectedAttempt": null,
   "attempts": [
     {
