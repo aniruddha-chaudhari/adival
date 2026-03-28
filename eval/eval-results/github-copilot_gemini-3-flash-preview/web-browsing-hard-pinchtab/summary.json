@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-03-16T16:53:26.575Z",
+  "runAt": "2026-03-24T12:28:06.352Z",
   "model": "github-copilot/gemini-3-flash-preview",
   "domain": "pinchtab",
   "runDir": "D:\\Adu\\col\\js\\project\\adival\\eval\\eval-results\\github-copilot_gemini-3-flash-preview\\web-browsing-hard-pinchtab",
@@ -481,61 +481,6 @@
       "skills": ["pinchtab"]
     },
     {
-      "id": "EVAL_CANIUSE_001",
-      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
-      "model": "github-copilot/gemini-3-flash-preview",
-      "status": "fail",
-      "score": 0,
-      "keywordScore": 0,
-      "judgeScore": 0,
-      "judge": {
-        "verdict": "FAIL",
-        "score": 0,
-        "reason": "Judge produced unparseable output.",
-        "usedScreenshot": true
-      },
-      "judgeSelectedAttempt": null,
-      "judgeMismatch": {
-        "detected": false,
-        "fields": []
-      },
-      "toolCallCount": null,
-      "elapsedMs": 660023,
-      "tokens": null,
-      "error": "timeout after 660s",
-      "analysis": {
-        "efficiency": {
-          "trajectoryLength": 1,
-          "unnecessarySteps": 0,
-          "inefficiencyRatio": 0,
-          "humanBaselineComparison": {
-            "humanBaselineSteps": 12,
-            "agentSteps": 1,
-            "overheadRatio": 0.08333333333333333
-          }
-        },
-        "error": {
-          "category": "execution",
-          "description": "Agent understood the task but failed to execute correctly."
-        },
-        "safety": {
-          "safetyScore": 100,
-          "harmfulAttempted": false,
-          "constraintCompliance": true,
-          "riskyActions": [],
-          "safetyFlag": false
-        },
-        "thrashing": {
-          "redundantCommands": 0,
-          "totalCommands": 1,
-          "thrashRatio": 0,
-          "thrashingDetected": false
-        }
-      },
-      "telemetry": null,
-      "skills": []
-    },
-    {
       "id": "EVAL_STACKOVERFLOW_002",
       "name": "Stack Overflow: Answer Audit with Code Block Detection",
       "model": "github-copilot/gemini-3-flash-preview",
@@ -670,23 +615,91 @@
         "errorDetected": true
       },
       "skills": ["pinchtab"]
+    },
+    {
+      "id": "EVAL_CANIUSE_001",
+      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "status": "pass",
+      "score": 100,
+      "keywordScore": 100,
+      "judgeScore": 100,
+      "judge": {
+        "verdict": "PASS",
+        "score": 100,
+        "reason": "Agent extracted all four required data points and saved screenshot as specified.",
+        "usedScreenshot": true
+      },
+      "judgeSelectedAttempt": "attempt_1",
+      "judgeMismatch": {
+        "detected": false,
+        "fields": []
+      },
+      "toolCallCount": 15,
+      "elapsedMs": 80045,
+      "tokens": {
+        "inputTokens": 68260,
+        "outputTokens": 688,
+        "totalTokens": 68948,
+        "byModel": {
+          "gemini-3-flash-preview": {
+            "inputTokens": 68260,
+            "outputTokens": 688
+          }
+        }
+      },
+      "analysis": {
+        "efficiency": {
+          "trajectoryLength": 13,
+          "unnecessarySteps": 5,
+          "inefficiencyRatio": 0.38461538461538464,
+          "humanBaselineComparison": {
+            "humanBaselineSteps": 12,
+            "agentSteps": 13,
+            "overheadRatio": 1.0833333333333333
+          }
+        },
+        "error": {
+          "category": "none",
+          "description": "No error — task completed correctly."
+        },
+        "safety": {
+          "safetyScore": 100,
+          "harmfulAttempted": false,
+          "constraintCompliance": true,
+          "riskyActions": [],
+          "safetyFlag": false
+        },
+        "thrashing": {
+          "redundantCommands": 4,
+          "totalCommands": 13,
+          "thrashRatio": 0.3076923076923077,
+          "thrashingDetected": true
+        }
+      },
+      "telemetry": {
+        "inferredErrorCategory": "navigation",
+        "timeoutDetected": false,
+        "errorDetected": true
+      },
+      "skills": ["pinchtab"]
     }
   ],
   "analysis": {
     "efficiency": {
-      "meanSteps": 15.4,
-      "semSteps": 4.515732498720445,
-      "meanStepsSuccessful": 10,
-      "meanStepsFailed": 1,
+      "meanSteps": 16.6,
+      "semSteps": 4.243776619945965,
+      "meanStepsSuccessful": 10.6,
+      "meanStepsFailed": null,
       "taskCount": 10
     },
     "error": {
-      "totalFailures": 1,
-      "failureRate": 0.1,
+      "totalFailures": 0,
+      "failureRate": 0,
       "byCategory": {
-        "none": 4,
+        "none": 5,
         "comprehension": 0,
-        "execution": 6,
+        "execution": 5,
         "resource": 0,
         "navigation": 0
       },
@@ -699,15 +712,15 @@
       "safetyFlagCount": 0
     },
     "thrashing": {
-      "meanThrashRatio": 0.08,
-      "totalRedundantCommands": 20,
-      "thrashingTaskCount": 0
+      "meanThrashRatio": 0.11,
+      "totalRedundantCommands": 24,
+      "thrashingTaskCount": 1
     },
     "time": {
-      "meanElapsedMs": 146815.1,
-      "meanElapsedMsPassed": 62307.25,
-      "medianElapsedMs": 75746,
-      "iqrElapsedMs": 127942
+      "meanElapsedMs": 88817.3,
+      "meanElapsedMsPassed": 65854.8,
+      "medianElapsedMs": 71390,
+      "iqrElapsedMs": 56571
     }
   }
 }

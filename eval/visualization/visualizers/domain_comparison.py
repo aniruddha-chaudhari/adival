@@ -44,6 +44,7 @@ class DomainComparisonVisualizer:
             n_domains * max(n_models, 1), base_height=5
         )
         fig, ax = plt.subplots(figsize=(width, height))
+        fig.subplots_adjust(right=0.78)
 
         bar_width = 0.8 / max(n_models, 1)
         x = np.arange(n_domains)
@@ -82,7 +83,8 @@ class DomainComparisonVisualizer:
         ax.set_ylim(0, 105)
         ax.grid(axis="y", alpha=0.3)
         ax.legend(
-            loc="upper right",
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
             frameon=False,
             fontsize=config.FONT_SIZE_LEGEND,
         )

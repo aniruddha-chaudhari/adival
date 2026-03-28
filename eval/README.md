@@ -30,6 +30,9 @@ bun run run-eval.ts --config eval-config-coding.json --models models-pro.json
 # Run a single task by ID (against all models in models.json)
 bun run run-eval.ts --task EVAL_001 --config eval-config-coding.json --models models-pro.json
 
+# Run a subset of tasks in one command (comma-separated IDs)
+bun run run-eval.ts --tasks EVAL_001,EVAL_006,EVAL_010 --config eval-config-coding.json --models models-pro.json
+
 # List available tasks
 bun run run-eval.ts --list
 ```

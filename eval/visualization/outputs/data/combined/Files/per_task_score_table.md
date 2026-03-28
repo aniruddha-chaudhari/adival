@@ -1,0 +1,12 @@
+| Task | Gemini Flash (file-management-skills) | GPT-5.3 (file-management-skills) | Grok Fast (file-management-skills) | Sonnet 4.6 (file-management-skills) | MiniMax (file-management-skills) |
+| --- | --- | --- | --- | --- | --- |
+| arXiv | — | — | — | — | — |
+| CanIUse | — | — | — | — | — |
+| GH-Contrib | — | — | — | — | — |
+| GH-Issues | — | — | — | — | — |
+| HN | — | — | — | — | — |
+| MDN | — | — | — | — | — |
+| npm | — | — | — | — | — |
+| PyPI | — | — | — | — | — |
+| StackOvfl | — | — | — | — | — |
+| Wikipedia | — | — | — | — | — |

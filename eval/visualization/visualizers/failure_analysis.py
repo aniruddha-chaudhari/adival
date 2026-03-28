@@ -59,6 +59,7 @@ class FailureAnalysisVisualizer:
         width, height = set_figure_width_by_model_count(n_models, base_height=6)
 
         fig, ax = plt.subplots(figsize=(width, height))
+        fig.subplots_adjust(right=0.8)
 
         # Color map for categories
         category_colors = {
@@ -100,7 +101,8 @@ class FailureAnalysisVisualizer:
             pad=15,
         )
         ax.legend(
-            loc="lower right",
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
             frameon=False,
             fontsize=config.FONT_SIZE_LEGEND - 1,
         )
@@ -160,6 +162,7 @@ class FailureAnalysisVisualizer:
         width, height = set_figure_width_by_model_count(n_models, base_height=6)
 
         fig, ax = plt.subplots(figsize=(width, height))
+        fig.subplots_adjust(right=0.8)
 
         category_colors = {
             "none": "#2ecc71",  # Green - success
@@ -199,7 +202,10 @@ class FailureAnalysisVisualizer:
             pad=15,
         )
         ax.legend(
-            loc="lower right", frameon=False, fontsize=config.FONT_SIZE_LEGEND - 1
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
+            frameon=False,
+            fontsize=config.FONT_SIZE_LEGEND - 1,
         )
         ax.grid(axis="x", alpha=0.3)
 

@@ -69,7 +69,12 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": ["gws-gmail"]
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_002",
@@ -136,7 +141,12 @@
         "inferredErrorCategory": "execution",
         "timeoutDetected": false,
         "errorDetected": true
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": ["gws-gmail"]
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_003",
@@ -203,7 +213,12 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": []
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_004",
@@ -270,7 +285,12 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": ["gws-gmail", "gws-gmail-send"]
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_005",
@@ -337,7 +357,12 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": false
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": ["gws-drive"]
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_006",
@@ -404,7 +429,12 @@
         "inferredErrorCategory": "none",
         "timeoutDetected": false,
         "errorDetected": false
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": []
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_007",
@@ -471,7 +501,12 @@
         "inferredErrorCategory": "resource",
         "timeoutDetected": true,
         "errorDetected": true
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": ["gws-calendar"]
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     },
     {
       "id": "EVAL_GWS_008",
@@ -538,7 +573,12 @@
         "inferredErrorCategory": "navigation",
         "timeoutDetected": false,
         "errorDetected": true
+<<<<<<< HEAD
       }
+=======
+      },
+      "skills": ["gws-gmail"]
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253
     }
   ],
   "analysis": {
@@ -579,4 +619,8 @@
       "iqrElapsedMs": 234446
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 399df7ad5e251e4d101006bf91ab91935811a253

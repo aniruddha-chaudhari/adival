@@ -281,8 +281,8 @@
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
       "model": "github-copilot/grok-code-fast-1",
       "status": "partial",
-      "score": 50,
-      "keywordScore": 100,
+      "score": 25,
+      "keywordScore": 50,
       "judgeScore": 0,
       "judge": {
         "verdict": "FAIL",

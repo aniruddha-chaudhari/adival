@@ -1,6 +1,16 @@
 {
-  "combined": {
-    "name": "Browsing",
-    "domains": ["agent-browser", "pinchtab", "playwright-mcp"]
-  }
+  "combined": [
+    {
+      "name": "Browsing",
+      "domains": ["agent-browser", "pinchtab", "playwright-mcp"]
+    },
+    {
+      "name": "Files",
+      "domains": ["file-management-skills"]
+    },
+    {
+      "name": "Google Workspace",
+      "domains": ["google-workspace-gws-cli"]
+    }
+  ]
 }

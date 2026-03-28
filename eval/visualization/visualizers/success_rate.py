@@ -45,6 +45,7 @@ class SuccessRateVisualizer:
         n_models = len(plot_data)
         width, height = set_figure_width_by_model_count(n_models, base_height=5.5)
         fig, ax = plt.subplots(figsize=(width, height))
+        fig.subplots_adjust(right=0.8)
 
         colors = get_color_palette(n_models)
 
@@ -98,7 +99,12 @@ class SuccessRateVisualizer:
                     color="white",
                 )
 
-        ax.legend(loc="lower right", frameon=False, fontsize=config.FONT_SIZE_LEGEND)
+        ax.legend(
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
+            frameon=False,
+            fontsize=config.FONT_SIZE_LEGEND,
+        )
         ax.grid(axis="x", alpha=0.3)
 
         save_figure(
@@ -135,6 +141,7 @@ class SuccessRateVisualizer:
         n_models = len(plot_data)
         width, height = set_figure_width_by_model_count(n_models, base_height=6)
         fig, ax = plt.subplots(figsize=(width, height))
+        fig.subplots_adjust(right=0.8)
         colors = get_color_palette(n_models)
 
         y_pos = np.arange(n_models)
@@ -185,7 +192,12 @@ class SuccessRateVisualizer:
                     color="white",
                 )
 
-        ax.legend(loc="lower right", frameon=False, fontsize=config.FONT_SIZE_LEGEND)
+        ax.legend(
+            loc="upper left",
+            bbox_to_anchor=(1.01, 1.0),
+            frameon=False,
+            fontsize=config.FONT_SIZE_LEGEND,
+        )
         ax.grid(axis="x", alpha=0.3)
 
         save_figure(fig, "01_success_rate_comparison", tight_layout=True)
