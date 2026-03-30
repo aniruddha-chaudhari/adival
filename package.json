@@ -6,6 +6,8 @@
     "dev:app": "bun run --cwd apps/vite-react dev",
     "session-api": "bun run apps/session-api/main.ts",
     "session-api:client": "bun run apps/session-api/client.ts",
+    "session-api:v2": "bun run apps/session-api-v2/main.ts",
+    "session-api:v2:client": "bun run apps/session-api-v2/client.ts",
     "eval": "bun run eval/run-eval.ts",
     "watch-memory": "bun run watch-memory.ts",
     "type-check": "tsc --noEmit",
