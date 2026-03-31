@@ -1,42 +1,115 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 960px;
+  padding: 1.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d3d6db;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+input {
+  border: 1px solid #b5bbc3;
+  border-radius: 8px;
+  flex: 1;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.75rem;
+}
+
+button {
+  background: #0f5cc0;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.92rem;
+  padding: 0.6rem 0.9rem;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.message {
+  margin: 0;
+}
+
+.muted {
+  color: #69707c;
+  margin: 0;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #dce1e8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.75rem;
+}
+
+.code {
+  color: #37414f;
+  font-size: 0.88rem;
+  word-break: break-word;
+}
+
+.log-item {
+  align-items: flex-start;
+}
+
+.status {
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.55rem;
+}
+
+.status.online {
+  background: #d6f3df;
+  color: #106933;
+}
+
+.status.offline {
+  background: #eff1f4;
+  color: #556170;
+}
+
+@media (max-width: 700px) {
+  li,
+  .row {
+    align-items: stretch;
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
