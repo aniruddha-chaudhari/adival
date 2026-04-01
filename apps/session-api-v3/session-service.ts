@@ -14,7 +14,37 @@ type SessionStartInput = {
 type SessionDetails = {
   id: string;
   title: string;
+  createdAt?: number;
 };
+
+function extractCreatedAt(value: unknown): number | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const root = value as Record<string, unknown>;
+
+  const direct = root.created;
+  if (typeof direct === "number" && Number.isFinite(direct)) return direct;
+
+  const time = root.time;
+  if (time && typeof time === "object") {
+    const created = (time as Record<string, unknown>).created;
+    if (typeof created === "number" && Number.isFinite(created)) return created;
+  }
+
+  const info = root.info;
+  if (info && typeof info === "object") {
+    const createdFromInfo = extractCreatedAt(info);
+    if (typeof createdFromInfo === "number") return createdFromInfo;
+  }
+
+  return undefined;
+}
+
+function isToday(timestamp: number): boolean {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const end = start + 24 * 60 * 60 * 1000;
+  return timestamp >= start && timestamp < end;
+}
 
 function unwrap<T>(result: any): T {
   if (result && typeof result === "object" && "error" in result && result.error) {
@@ -64,7 +94,11 @@ async function getSessionDetails(sessionID: string): Promise<SessionDetails | nu
 
   const parsed = text ? (JSON.parse(text) as SessionDetails) : null;
   if (!parsed?.id) return null;
-  return { id: parsed.id, title: parsed.title || "Untitled" };
+  return {
+    id: parsed.id,
+    title: parsed.title || "Untitled",
+    createdAt: extractCreatedAt(parsed),
+  };
 }
 
 function mapToLifecycle(statusMap: SessionStatusMap, sessionID: string): SessionLifecycle {
@@ -160,11 +194,21 @@ export class SessionService {
       getSessionStatusMap(),
     ]);
 
-    return rawSessions.map(session => ({
-      id: session.id,
-      title: session.title || "Untitled",
-      status: mapToLifecycle(statusMap, session.id),
-    }));
+    const details = await Promise.all(rawSessions.map(session => getSessionDetails(session.id)));
+    const allowedSessionIds = new Set(
+      details
+        .filter((detail): detail is SessionDetails => !!detail)
+        .filter(detail => (typeof detail.createdAt === "number" ? isToday(detail.createdAt) : true))
+        .map(detail => detail.id)
+    );
+
+    return rawSessions
+      .filter(session => allowedSessionIds.has(session.id))
+      .map(session => ({
+        id: session.id,
+        title: session.title || "Untitled",
+        status: mapToLifecycle(statusMap, session.id),
+      }));
   }
 
   async getLocalSessionUpdates(sessionId: string): Promise<
