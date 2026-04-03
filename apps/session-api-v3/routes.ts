@@ -15,10 +15,26 @@ type ElectBody = {
   leaderCode: string;
 };
 
+function parseNumberOfDaysBefore(
+  rawValue: string | undefined
+): { ok: true; value: number } | { ok: false; error: string } {
+  if (rawValue === undefined || rawValue === "") {
+    return { ok: true, value: 0 };
+  }
+
+  const value = Number(rawValue);
+  if (!Number.isInteger(value) || value < 0 || value > 5) {
+    return { ok: false, error: "numberOfDaysBefore must be an integer between 0 and 5" };
+  }
+
+  return { ok: true, value };
+}
+
 export function buildCommandExecutor(service: SessionService) {
   return async (action: string, payload: unknown): Promise<unknown> => {
     if (action === "sessions.list") {
-      const sessions = await service.listLocalSessions();
+      const body = (payload || {}) as { numberOfDaysBefore?: number };
+      const sessions = await service.listLocalSessions(body.numberOfDaysBefore ?? 0);
       return { sessions };
     }
 
@@ -180,7 +196,13 @@ export function buildApp(options: {
 
   app.get("/sessions", async c => {
     try {
-      const yourSessions = await options.service.listLocalSessions();
+      const parsedDays = parseNumberOfDaysBefore(c.req.query("numberOfDaysBefore"));
+      if (!parsedDays.ok) {
+        return c.json({ success: false, error: parsedDays.error }, 400);
+      }
+
+      const numberOfDaysBefore = parsedDays.value;
+      const yourSessions = await options.service.listLocalSessions(numberOfDaysBefore);
       const response: Record<string, SessionSummary[]> = { your: yourSessions };
       const usedKeys = new Set<string>(["your"]);
 
@@ -190,7 +212,7 @@ export function buildApp(options: {
           const data = await options.relayClient.sendCommand<{ sessions: SessionSummary[] }>(
             follower.id,
             "sessions.list",
-            {}
+            { numberOfDaysBefore }
           );
           const followerKey = toFollowerKey(usedKeys, follower);
           response[followerKey] = Array.isArray(data.sessions) ? data.sessions : [];

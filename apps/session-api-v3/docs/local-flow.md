@@ -113,13 +113,16 @@ request body: { prompt, model?, sessionId?, clientId? }
 ### `GET /sessions`
 
 ```text
-list local sessions (today-only)
+read optional query: numberOfDaysBefore (default 0, max 5)
+  |
+  v
+list local sessions in requested day window
   |
   v
 fetch online followers from relay
   |
   v
-for each online follower: relay command "sessions.list"
+for each online follower: relay command "sessions.list" with same numberOfDaysBefore
   |
   v
 merge result map as:
@@ -147,8 +150,10 @@ This endpoint now supports remote follower sessions through relay fallback.
 
 ## 4) Session Filtering Rule
 
-`SessionService.listLocalSessions()` returns sessions created on the current local day.
+`SessionService.listLocalSessions(numberOfDaysBefore)` returns sessions in a local-day window.
 
+- `numberOfDaysBefore=0` means today only
+- max allowed is `5`; larger/invalid values return `400`
 - local timezone boundary is used
 - same logic applies to follower sessions because follower handles `sessions.list`
 

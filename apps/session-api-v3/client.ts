@@ -40,8 +40,11 @@ export async function startSession(
   return res.json();
 }
 
-export async function listSessions(): Promise<Record<string, SessionSummary[]>> {
-  const res = await fetch(`${API_BASE}/sessions`);
+export async function listSessions(
+  numberOfDaysBefore = 0
+): Promise<Record<string, SessionSummary[]>> {
+  const query = `?numberOfDaysBefore=${encodeURIComponent(String(numberOfDaysBefore))}`;
+  const res = await fetch(`${API_BASE}/sessions${query}`);
   return res.json();
 }
 

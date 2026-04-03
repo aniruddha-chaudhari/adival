@@ -39,11 +39,19 @@ function extractCreatedAt(value: unknown): number | undefined {
   return undefined;
 }
 
-function isToday(timestamp: number): boolean {
+function isWithinRecentDays(timestamp: number, numberOfDaysBefore: number): boolean {
   const now = new Date();
   const start = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const rangeStart = start - numberOfDaysBefore * 24 * 60 * 60 * 1000;
   const end = start + 24 * 60 * 60 * 1000;
-  return timestamp >= start && timestamp < end;
+  return timestamp >= rangeStart && timestamp < end;
+}
+
+function normalizeNumberOfDaysBefore(numberOfDaysBefore: number): number {
+  if (!Number.isInteger(numberOfDaysBefore) || numberOfDaysBefore < 0 || numberOfDaysBefore > 5) {
+    throw new Error("numberOfDaysBefore must be an integer between 0 and 5");
+  }
+  return numberOfDaysBefore;
 }
 
 function unwrap<T>(result: any): T {
@@ -218,7 +226,8 @@ export class SessionService {
     };
   }
 
-  async listLocalSessions(): Promise<SessionSummary[]> {
+  async listLocalSessions(numberOfDaysBefore = 0): Promise<SessionSummary[]> {
+    const safeDays = normalizeNumberOfDaysBefore(numberOfDaysBefore);
     const [rawSessions, statusMap] = await Promise.all([
       fetchOpencodeJSON<Array<{ id: string; title?: string }>>("/session"),
       getSessionStatusMap(),
@@ -228,7 +237,11 @@ export class SessionService {
     const allowedSessionIds = new Set(
       details
         .filter((detail): detail is SessionDetails => !!detail)
-        .filter(detail => (typeof detail.createdAt === "number" ? isToday(detail.createdAt) : true))
+        .filter(detail =>
+          typeof detail.createdAt === "number"
+            ? isWithinRecentDays(detail.createdAt, safeDays)
+            : true
+        )
         .map(detail => detail.id)
     );
 
