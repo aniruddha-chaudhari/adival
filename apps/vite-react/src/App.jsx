@@ -5,16 +5,16 @@ const API_BASE = "http://localhost:3458";
 
 function App() {
   const [leaderCode, setLeaderCode] = useState("");
+  const [nodeName, setNodeName] = useState("");
   const [nodes, setNodes] = useState([]);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const sortedNodes = useMemo(() => {
-    return [...nodes].sort((left, right) => {
-      if (left.online === right.online) return left.name.localeCompare(right.name);
-      return left.online ? -1 : 1;
-    });
+  const onlineCandidates = useMemo(() => {
+    return nodes
+      .filter(node => node.online)
+      .sort((left, right) => left.name.localeCompare(right.name));
   }, [nodes]);
 
   async function loadCandidates() {
@@ -26,9 +26,10 @@ function App() {
       if (!res.ok || !data.success) {
         throw new Error(data.error || "Failed to load network nodes");
       }
-      setNodes(Array.isArray(data.nodes) ? data.nodes : []);
-      if (!Array.isArray(data.nodes) || data.nodes.length === 0) {
-        setMessage("No eligible leaders found right now.");
+      const availableNodes = Array.isArray(data.nodes) ? data.nodes : [];
+      setNodes(availableNodes);
+      if (availableNodes.filter(node => node.online).length === 0) {
+        setMessage("No online leaders available right now.");
       }
     } catch (error) {
       setMessage(error instanceof Error ? error.message : String(error));
@@ -58,6 +59,35 @@ function App() {
     }
   }
 
+  async function updateNodeName() {
+    const trimmed = nodeName.trim();
+    if (!trimmed) {
+      setMessage("Name is required.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+    try {
+      const res = await fetch(`${API_BASE}/network/reregister-name`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: trimmed }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to update node name");
+      }
+      setNodeName(data.name || trimmed);
+      setMessage(`Node name updated: ${data.name || trimmed}`);
+      await loadCandidates();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : String(error));
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function loadRelayLogs() {
     setLoading(true);
     setMessage("");
@@ -79,9 +109,24 @@ function App() {
 
   return (
     <div className="page">
-      <h1>Network Leader Election</h1>
+      <header className="hero">
+        <p className="eyebrow">NETWORK CONTROL</p>
+        <h1>Leader Election</h1>
+        <p className="hero-meta">{onlineCandidates.length} online candidates</p>
+      </header>
 
       <div className="panel">
+        <div className="row">
+          <input
+            value={nodeName}
+            onChange={event => setNodeName(event.target.value)}
+            placeholder="Set your node name"
+          />
+          <button disabled={loading || !nodeName.trim()} onClick={updateNodeName}>
+            Save Name
+          </button>
+        </div>
+
         <div className="row">
           <button disabled={loading} onClick={loadCandidates}>
             {loading ? "Loading..." : "Find Leaders"}
@@ -109,18 +154,22 @@ function App() {
           </button>
         </div>
 
-        <h2>Eligible Nodes</h2>
-        {sortedNodes.length === 0 ? (
-          <p className="muted">Run "Find Leaders" to load candidates.</p>
+        <div className="panel-head">
+          <h2>Eligible Nodes</h2>
+          <span className="meta-count">ONLINE ONLY</span>
+        </div>
+
+        {onlineCandidates.length === 0 ? (
+          <p className="muted">No online leaders to elect. Run "Find Leaders" to refresh.</p>
         ) : (
           <ul>
-            {sortedNodes.map(node => (
+            {onlineCandidates.map(node => (
               <li key={node.id}>
                 <div>
-                  <strong>{node.name}</strong>
-                  <span className={`status ${node.online ? "online" : "offline"}`}>
-                    {node.online ? "online" : "offline"}
-                  </span>
+                  <div className="node-title">
+                    <strong className="node-name">{node.name}</strong>
+                    <span className="status online">ONLINE</span>
+                  </div>
                 </div>
                 <div className="code">Code: {node.code}</div>
                 <button disabled={loading} onClick={() => electLeader(node.code)}>
@@ -133,7 +182,10 @@ function App() {
       </div>
 
       <div className="panel">
-        <h2>Relay Request Logs</h2>
+        <div className="panel-head">
+          <h2>Relay Request Logs</h2>
+          <span className="meta-count">LAST 30</span>
+        </div>
         {logs.length === 0 ? (
           <p className="muted">No logs loaded yet.</p>
         ) : (
