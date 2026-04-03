@@ -111,6 +111,10 @@ export default {
 			return forwardToHub(request, env, '/internal/network/command');
 		}
 
+		if (request.method === 'POST' && url.pathname === '/network/session-updates') {
+			return forwardToHub(request, env, '/internal/network/session-updates');
+		}
+
 		if (request.method === 'GET' && url.pathname.startsWith('/network/commands/')) {
 			const nodeId = url.pathname.slice('/network/commands/'.length);
 			return forwardToHub(request, env, `/internal/network/commands/${encodeURIComponent(nodeId)}`);
@@ -188,6 +192,10 @@ export class NetworkHub extends DurableObject<Env> {
 
 		if (request.method === 'POST' && url.pathname === '/internal/network/command') {
 			return this.handleCommand(request);
+		}
+
+		if (request.method === 'POST' && url.pathname === '/internal/network/session-updates') {
+			return this.handleSessionUpdates(request);
 		}
 
 		if (request.method === 'GET' && url.pathname.startsWith('/internal/network/commands/')) {
@@ -372,6 +380,89 @@ export class NetworkHub extends DurableObject<Env> {
 		return json({ success: true, followers });
 	}
 
+	private sendCommandToNode(targetNodeId: string, action: string, payload: unknown, timeoutMs = 30_000): Promise<unknown> {
+		const socket = this.sockets.get(targetNodeId);
+		if (!socket) {
+			throw new Error('target follower is offline');
+		}
+
+		const commandId = crypto.randomUUID();
+		const message: CommandMessage = {
+			type: 'command',
+			id: commandId,
+			action,
+			payload,
+		};
+
+		return new Promise<unknown>((resolve, reject) => {
+			const timer = setTimeout(() => {
+				this.pending.delete(commandId);
+				reject(new Error('command timed out'));
+			}, timeoutMs) as unknown as number;
+
+			this.pending.set(commandId, { resolve, reject, timer });
+
+			try {
+				socket.send(JSON.stringify(message));
+			} catch (error) {
+				clearTimeout(timer);
+				this.pending.delete(commandId);
+				reject(error instanceof Error ? error : new Error(String(error)));
+			}
+		});
+	}
+
+	private async dispatchFollowerCommand(options: {
+		leaderId: string;
+		targetNodeId: string;
+		action: string;
+		payload: unknown;
+		trackCommand?: boolean;
+	}): Promise<unknown> {
+		const { leaderId, targetNodeId, action, payload, trackCommand = true } = options;
+
+		let commandId = '';
+		if (trackCommand) {
+			commandId = crypto.randomUUID();
+			const now = Date.now();
+			this.sql.exec(
+				`INSERT INTO commands (id, leader_id, target_node_id, action, status, payload_json, result_json, created_at, updated_at)
+       VALUES (?, ?, ?, ?, 'dispatched', ?, NULL, ?, ?)`,
+				commandId,
+				leaderId,
+				targetNodeId,
+				action,
+				JSON.stringify(payload ?? null),
+				now,
+				now,
+			);
+		}
+
+		try {
+			const result = await this.sendCommandToNode(targetNodeId, action, payload);
+			if (trackCommand && commandId) {
+				this.sql.exec(
+					`UPDATE commands SET status = 'completed', result_json = ?, updated_at = ? WHERE id = ?`,
+					JSON.stringify(result),
+					Date.now(),
+					commandId,
+				);
+			}
+			return result;
+		} catch (error) {
+			if (trackCommand && commandId) {
+				const messageText = error instanceof Error ? error.message : String(error);
+				this.sql.exec(
+					`UPDATE commands SET status = 'failed', result_json = ?, updated_at = ? WHERE id = ?`,
+					JSON.stringify({ error: messageText }),
+					Date.now(),
+					commandId,
+				);
+			}
+			throw error;
+		}
+	}
+
 	private async handleCommand(request: Request): Promise<Response> {
 		const body = await readJson<{
 			leaderId?: string;
@@ -400,62 +491,71 @@ export class NetworkHub extends DurableObject<Env> {
 			return json({ success: false, error: 'target is not your follower' }, 403);
 		}
 
-		const socket = this.sockets.get(targetNodeId);
-		if (!socket) {
-			return json({ success: false, error: 'target follower is offline' }, 409);
-		}
-
-		const commandId = crypto.randomUUID();
-		const now = Date.now();
-		this.sql.exec(
-			`INSERT INTO commands (id, leader_id, target_node_id, action, status, payload_json, result_json, created_at, updated_at)
-       VALUES (?, ?, ?, ?, 'dispatched', ?, NULL, ?, ?)`,
-			commandId,
-			leaderId,
-			targetNodeId,
-			action,
-			JSON.stringify(body?.payload ?? null),
-			now,
-			now,
-		);
-
-		const message: CommandMessage = {
-			type: 'command',
-			id: commandId,
-			action,
-			payload: body?.payload ?? null,
-		};
-
 		try {
-			const resultPromise = new Promise<unknown>((resolve, reject) => {
-				const timer = setTimeout(() => {
-					this.pending.delete(commandId);
-					reject(new Error('command timed out'));
-				}, 30_000) as unknown as number;
-				this.pending.set(commandId, { resolve, reject, timer });
+			const result = await this.dispatchFollowerCommand({
+				leaderId,
+				targetNodeId,
+				action,
+				payload: body?.payload ?? null,
+				trackCommand: true,
 			});
-
-			socket.send(JSON.stringify(message));
-			const result = await resultPromise;
-
-			this.sql.exec(
-				`UPDATE commands SET status = 'completed', result_json = ?, updated_at = ? WHERE id = ?`,
-				JSON.stringify(result),
-				Date.now(),
-				commandId,
-			);
-
 			return json({ success: true, result });
 		} catch (error) {
 			const messageText = error instanceof Error ? error.message : String(error);
-			this.sql.exec(
-				`UPDATE commands SET status = 'failed', result_json = ?, updated_at = ? WHERE id = ?`,
-				JSON.stringify({ error: messageText }),
-				Date.now(),
-				commandId,
-			);
-			return json({ success: false, error: messageText }, 504);
+			const statusCode = messageText === 'target follower is offline' ? 409 : 504;
+			return json({ success: false, error: messageText }, statusCode);
 		}
+	}
+
+	private async handleSessionUpdates(request: Request): Promise<Response> {
+		const body = await readJson<{ leaderId?: string; sessionId?: string }>(request);
+		const leaderId = String(body?.leaderId || '').trim();
+		const sessionId = String(body?.sessionId || '').trim();
+
+		if (!leaderId || !sessionId) {
+			return json({ success: false, error: 'leaderId and sessionId are required' }, 400);
+		}
+
+		const authedNodeId = await this.authenticate(request, leaderId);
+		if (!authedNodeId) {
+			return json({ success: false, error: 'unauthorized' }, 401);
+		}
+
+		const followers = this.sql
+			.exec<{ id: string }>(`SELECT id FROM nodes WHERE leader_id = ? ORDER BY name ASC`, leaderId)
+			.toArray()
+			.map((row) => row.id)
+			.filter((id) => this.sockets.has(id));
+
+		for (const followerId of followers) {
+			try {
+				const existsResult = (await this.dispatchFollowerCommand({
+					leaderId,
+					targetNodeId: followerId,
+					action: 'session.exists',
+					payload: { sessionId },
+					trackCommand: false,
+				})) as { success?: boolean; exists?: boolean };
+
+				if (!existsResult?.exists) {
+					continue;
+				}
+
+				const updates = await this.dispatchFollowerCommand({
+					leaderId,
+					targetNodeId: followerId,
+					action: 'session.updates',
+					payload: { sessionId },
+					trackCommand: true,
+				});
+
+				return json(updates);
+			} catch {
+				// Try next follower.
+			}
+		}
+
+		return json({ success: false, error: 'Session not found' }, 404);
 	}
 
 	private async handleCommandLogs(request: Request, nodeId: string, searchParams: URLSearchParams): Promise<Response> {
