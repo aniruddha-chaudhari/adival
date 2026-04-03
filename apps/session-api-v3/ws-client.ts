@@ -12,7 +12,7 @@ async function sleep(ms: number): Promise<void> {
 }
 
 export function startRelaySocket(options: {
-  wsUrl: string;
+  getWsUrl: () => string;
   nodeId: string;
   execute: CommandExecutor;
 }): void {
@@ -24,7 +24,7 @@ export function startRelaySocket(options: {
       let heartbeatTimer: ReturnType<typeof setInterval> | null = null;
 
       try {
-        socket = new WebSocket(options.wsUrl);
+        socket = new WebSocket(options.getWsUrl());
 
         await new Promise<void>((resolve, reject) => {
           if (!socket) {

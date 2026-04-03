@@ -27,6 +27,19 @@ export type RelayCommandLog = {
   updatedAt: number;
 };
 
+export type SessionUpdatesResponse =
+  | {
+      success: true;
+      sessionId: string;
+      title: string;
+      status: "running" | "finished";
+      latestContent: string;
+    }
+  | {
+      success: false;
+      error: string;
+    };
+
 async function parseJSON<T>(res: Response): Promise<T> {
   const text = await res.text();
   if (!res.ok) {
@@ -134,6 +147,34 @@ export class RelayClient {
     );
     const parsed = await parseJSON<{ success: true; logs: RelayCommandLog[] }>(res);
     return parsed.logs || [];
+  }
+
+  async reregisterName(name: string): Promise<NodeIdentity> {
+    const nextIdentity = await registerNode({
+      relayBaseUrl: this.relayBaseUrl,
+      name,
+      existingCode: this.identity.code,
+    });
+
+    this.identity.nodeId = nextIdentity.nodeId;
+    this.identity.code = nextIdentity.code;
+    this.identity.relayToken = nextIdentity.relayToken;
+    this.identity.leaderId = nextIdentity.leaderId;
+    this.identity.name = nextIdentity.name;
+
+    return { ...this.identity };
+  }
+
+  async requestSessionUpdates(sessionId: string): Promise<SessionUpdatesResponse> {
+    const res = await fetch(`${this.relayBaseUrl}/network/session-updates`, {
+      method: "POST",
+      headers: authHeaders(this.identity.relayToken),
+      body: JSON.stringify({
+        leaderId: this.identity.nodeId,
+        sessionId,
+      }),
+    });
+    return parseJSON<SessionUpdatesResponse>(res);
   }
 }
 

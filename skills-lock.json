@@ -126,6 +126,12 @@
       "sourceType": "github",
       "computedHash": "4d5fe1dacfebc0c1b3837b061405150ed2e4971c096543afc46c23161c5a4f7a"
     },
+    "nothing-design": {
+      "source": "dominikmartn/nothing-design-skill",
+      "ref": "main",
+      "sourceType": "github",
+      "computedHash": "0e42024ec376cad3f0eaf3c4351a13c71177865bc1cab99776da32b0ccb3bf2c"
+    },
     "pinchtab": {
       "source": "pinchtab/pinchtab",
       "sourceType": "github",

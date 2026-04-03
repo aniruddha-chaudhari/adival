@@ -29,6 +29,7 @@
     "exif-parser": "^0.1.12",
     "exif-reader": "^2.0.3",
     "hono": "^4.12.9",
+    "opencode-ai": "1.3.9",
     "puppeteer-core": "^24.39.1",
     "tesseract.js": "^7.0.0"
   },

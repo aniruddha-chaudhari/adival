@@ -34,6 +34,25 @@ export function buildCommandExecutor(service: SessionService) {
       });
     }
 
+    if (action === "session.exists") {
+      const body = (payload || {}) as { sessionId?: string };
+      const sessionId = body.sessionId?.trim();
+      if (!sessionId) {
+        return { success: false, error: "sessionId is required", exists: false };
+      }
+      const exists = await service.hasLocalSession(sessionId);
+      return { success: true, exists };
+    }
+
+    if (action === "session.updates") {
+      const body = (payload || {}) as { sessionId?: string };
+      const sessionId = body.sessionId?.trim();
+      if (!sessionId) {
+        return { success: false, error: "sessionId is required" };
+      }
+      return service.getLocalSessionUpdates(sessionId);
+    }
+
     throw new Error(`Unsupported action: ${action}`);
   };
 }
@@ -42,9 +61,28 @@ export function buildApp(options: {
   service: SessionService;
   relayClient: RelayClient;
   nodeId: string;
+  onIdentityUpdated: (identity: {
+    nodeId: string;
+    code: string;
+    relayToken: string;
+    leaderId: string | null;
+    name: string;
+  }) => Promise<void>;
 }) {
   const app = new Hono();
   app.use("*", cors());
+
+  const toFollowerKey = (usedKeys: Set<string>, follower: { id: string; name: string }): string => {
+    const base = (follower.name || "Follower").trim() || "Follower";
+    let key = base;
+    let suffix = 2;
+    while (usedKeys.has(key)) {
+      key = `${base}-${suffix}`;
+      suffix += 1;
+    }
+    usedKeys.add(key);
+    return key;
+  };
 
   app.get("/network/list", async c => {
     try {
@@ -77,6 +115,30 @@ export function buildApp(options: {
       const limit = Number.isFinite(rawLimit) ? rawLimit : 20;
       const logs = await options.relayClient.listCommandLogs(limit);
       return c.json({ success: true, logs });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      return c.json({ success: false, error: message }, 500);
+    }
+  });
+
+  app.post("/network/reregister-name", async c => {
+    try {
+      const body = (await c.req.json()) as { name?: string };
+      const name = body.name?.trim();
+      if (!name) {
+        return c.json({ success: false, error: "name is required" }, 400);
+      }
+
+      const identity = await options.relayClient.reregisterName(name);
+      await options.onIdentityUpdated(identity);
+
+      return c.json({
+        success: true,
+        nodeId: identity.nodeId,
+        code: identity.code,
+        name: identity.name,
+        leaderId: identity.leaderId,
+      });
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       return c.json({ success: false, error: message }, 500);
@@ -120,6 +182,7 @@ export function buildApp(options: {
     try {
       const yourSessions = await options.service.listLocalSessions();
       const response: Record<string, SessionSummary[]> = { your: yourSessions };
+      const usedKeys = new Set<string>(["your"]);
 
       const followers = await options.relayClient.listOnlineFollowers(options.nodeId);
       for (const follower of followers) {
@@ -129,7 +192,8 @@ export function buildApp(options: {
             "sessions.list",
             {}
           );
-          response[follower.id] = Array.isArray(data.sessions) ? data.sessions : [];
+          const followerKey = toFollowerKey(usedKeys, follower);
+          response[followerKey] = Array.isArray(data.sessions) ? data.sessions : [];
         } catch {
           // Skip followers that drop offline mid-request.
         }
@@ -145,9 +209,18 @@ export function buildApp(options: {
   app.get("/session/:id/updates", async c => {
     try {
       const sessionId = c.req.param("id");
-      const response = await options.service.getLocalSessionUpdates(sessionId);
-      const status = response.success ? 200 : 404;
-      return c.json(response, status);
+      const localResponse = await options.service.getLocalSessionUpdates(sessionId);
+      if (localResponse.success) {
+        return c.json(localResponse, 200);
+      }
+
+      try {
+        const remoteResponse = await options.relayClient.requestSessionUpdates(sessionId);
+        const status = remoteResponse.success ? 200 : 404;
+        return c.json(remoteResponse, status);
+      } catch {
+        return c.json(localResponse, 404);
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       return c.json({ success: false, error: message }, 500);

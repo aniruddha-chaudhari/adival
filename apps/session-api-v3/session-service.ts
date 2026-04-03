@@ -106,6 +106,36 @@ function mapToLifecycle(statusMap: SessionStatusMap, sessionID: string): Session
   return stateType === "busy" || stateType === "retry" ? "running" : "finished";
 }
 
+function stripToolBlocks(markdown: string): string {
+  if (!markdown) return markdown;
+
+  const lines = markdown.split("\n");
+  const output: string[] = [];
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const current = lines[i] || "";
+    const next = lines[i + 1] || "";
+    const nextNext = lines[i + 2] || "";
+
+    if (
+      current.startsWith("## Tool:") &&
+      next.startsWith("**Description:**") &&
+      nextNext.startsWith("**Status:**")
+    ) {
+      i += 2;
+      continue;
+    }
+
+    output.push(current);
+  }
+
+  const withoutTools = output.join("\n");
+  return withoutTools
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/^\n+/, "")
+    .replace(/\n+$/, "");
+}
+
 async function sendPromptAsyncRequest(options: {
   sessionID: string;
   prompt: string;
@@ -211,6 +241,11 @@ export class SessionService {
       }));
   }
 
+  async hasLocalSession(sessionId: string): Promise<boolean> {
+    const session = await getSessionDetails(sessionId);
+    return !!session;
+  }
+
   async getLocalSessionUpdates(sessionId: string): Promise<
     | {
         success: true;
@@ -229,7 +264,7 @@ export class SessionService {
     const statusMap = await getSessionStatusMap();
     const status = mapToLifecycle(statusMap, session.id);
     await this.exporter.exportSession(session.id, status, session.title);
-    const latestContent = await this.exporter.readLatestTail(session.id, 300);
+    const latestContent = stripToolBlocks(await this.exporter.readLatestTail(session.id, 1200));
 
     return {
       success: true,

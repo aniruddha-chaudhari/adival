@@ -26,7 +26,7 @@ export async function main(): Promise<void> {
   const executeCommand = buildCommandExecutor(service);
 
   startRelaySocket({
-    wsUrl: relayClient.wsUrl,
+    getWsUrl: () => relayClient.wsUrl,
     nodeId: relayClient.nodeId,
     execute: executeCommand,
   });
@@ -35,6 +35,9 @@ export async function main(): Promise<void> {
     service,
     relayClient,
     nodeId: relayClient.nodeId,
+    onIdentityUpdated: async identity => {
+      await saveIdentity(NODE_IDENTITY_PATH, identity);
+    },
   });
 
   console.log(`[api-v3] Session API v3 running on http://localhost:${API_PORT}`);
@@ -44,6 +47,7 @@ export async function main(): Promise<void> {
   console.log("[api-v3] Endpoints:");
   console.log("[api-v3]   GET  /network/list");
   console.log("[api-v3]   POST /network/elect");
+  console.log("[api-v3]   POST /network/reregister-name");
   console.log("[api-v3]   GET  /network/logs");
   console.log("[api-v3]   POST /session/start");
   console.log("[api-v3]   GET  /sessions");
