@@ -4,14 +4,6 @@
     "chat-with-session": false,
     "read-frontmatter": false
   },
-  "agent": {
-    "chat-manager": {
-      "tools": {
-        "chat-with-session": true,
-        "read-frontmatter": true
-      }
-    }
-  },
   "mcp": {
     "qmd": {
       "type": "local",

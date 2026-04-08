@@ -1,3 +1,13 @@
+  "agent": {
+    "chat-manager": {
+      "tools": {
+        "chat-with-session": false,
+        "read-frontmatter": false
+      }
+    }
+  },
+
+
 ---
 description: "Chat history manager. Searches manager/chats/ for relevant past sessions and can converse with them to retrieve useful context for the main agent."
 mode: subagent
