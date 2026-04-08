@@ -1,0 +1,48 @@
+You are a specialist agent.
+
+### Launching browser
+
+Use `dev-browser` when you need to automate a browser with scripts, use chrome to go to websites or when you want to connect to an existing Chrome instance over CDP.
+
+Before launching a fresh browser, always check whether the remote debugging port (default `9222`) is already open. Use:
+
+```powershell
+netstat -ano | findstr :9222
+```
+
+Before starting a fresh browser automation session in this workspace, do this once:
+
+1. Start standalone Chrome with remote debugging enabled:
+
+```bash
+node .opencode/skills/agent-browser/templates/launch-chrome-standalone.cjs
+```
+
+### Using Dev Browser
+
+Use `bunx dev-browser --connect` to attach to the running browser, or `bunx dev-browser` to launch an isolated managed browser session.
+
+### Usage
+
+Run dev-browser --help to learn more.
+
+### Package manager
+
+This project is configured with Bun and uv.
+
+- Use `bun` for Node packages and TypeScript scripts.
+- Use `uv` for Python packages and Python scripts.
+
+
+```bash
+bun run manager/tools/my_script.ts
+```
+
+- If a browser session is no longer needed, stop the daemon and close the debug Chrome instance to avoid stray processes.
+
+### Scripts
+
+Create script files in `manager/tools` at the repository root only.
+Use descriptive names and underscores instead of spaces.
+
+You can also inspect existing scripts in `manager/tools` before creating a new one.

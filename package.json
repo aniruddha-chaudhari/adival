@@ -37,11 +37,15 @@
     "@types/bun": "^1.0.0",
     "@types/node": "^25.5.0",
     "chokidar": "^5.0.0",
+    "dev-browser": "^0.2.6",
     "prettier": "^3.8.1",
     "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@8.0.0"
+  "packageManager": "pnpm@8.0.0",
+  "trustedDependencies": [
+    "dev-browser"
+  ]
 }
