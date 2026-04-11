@@ -50,6 +50,7 @@ export async function main(): Promise<void> {
   console.log("[api-v3]   POST /network/reregister-name");
   console.log("[api-v3]   GET  /network/logs");
   console.log("[api-v3]   POST /session/start");
+  console.log("[api-v3]   POST /capture/snapshot");
   console.log("[api-v3]   GET  /sessions");
   console.log("[api-v3]   GET  /session/:id/updates");
 

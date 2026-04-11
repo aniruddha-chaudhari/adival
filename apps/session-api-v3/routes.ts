@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import type { RelayClient } from "./relay-client.ts";
+import { captureScreenSnapshot, resolveMaxBytes } from "./snapshot.ts";
 import type { SessionService } from "./session-service.ts";
 import type { SessionSummary, StartSessionResponse } from "./types.ts";
 
@@ -13,6 +14,10 @@ type SessionStartBody = {
 
 type ElectBody = {
   leaderCode: string;
+};
+
+type CaptureSnapshotBody = {
+  maxBytes?: number;
 };
 
 function parseNumberOfDaysBefore(
@@ -191,6 +196,20 @@ export function buildApp(options: {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       return c.json({ success: false, error: message }, 500);
+    }
+  });
+
+  app.post("/capture/snapshot", async c => {
+    try {
+      const body = (await c.req.json()) as CaptureSnapshotBody;
+      const maxBytes = resolveMaxBytes(body.maxBytes);
+      const result = await captureScreenSnapshot(maxBytes);
+      return c.json({ success: true, ...result }, 200);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      const status =
+        message.includes("maxBytes") || message.includes("safely") ? 400 : 500;
+      return c.json({ success: false, error: message }, status);
     }
   });
 

@@ -9,6 +9,32 @@ Relevant skills you can use:
 - **pptx**: Create and edit PowerPoint presentations
 - **xlsx**: Create and edit XLSX, XLS, csv etc excel related documents
 
+### Launching browser
+
+Use `dev-browser` when you need to automate a browser with scripts, use chrome to go to websites or when you want to connect to an existing Chrome instance over CDP.
+
+Before launching a fresh browser, always check whether the remote debugging port (default `9222`) is already open. Use:
+
+```powershell
+netstat -ano | findstr :9222
+```
+
+Before starting a fresh browser automation session in this workspace, do this once:
+
+1. Start standalone Chrome with remote debugging enabled:
+
+```bash
+node .opencode/skills/agent-browser/templates/launch-chrome-standalone.cjs
+```
+
+### Using Dev Browser
+
+Use `bunx dev-browser --connect` to attach to the running browser, or `bunx dev-browser` to launch an isolated managed browser session.
+
+### Usage
+
+Run dev-browser --help to learn more.
+
 ### Package manager
 
 this project is configured with bun and uv.
