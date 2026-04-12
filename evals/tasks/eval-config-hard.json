@@ -1,0 +1,371 @@
+{
+  "$schema": "./eval-config.schema.json",
+  "name": "web-browsing-hard",
+  "defaultModel": "MiniMax-M2.5",
+  "tasks": [
+    {
+      "id": "EVAL_GH_002",
+      "name": "GitHub: Cross-Repo Contributor Overlap Analysis",
+      "category": "multi-step-reasoning",
+      "prompt": "Navigate to https://github.com/facebook/react. Go to the Contributors page and note the GitHub username of the #1 top contributor (most commits). Then navigate to https://github.com/facebook/react-native and find the Contributors page. Check if that same username appears anywhere in the top 30 contributors list of react-native. Report: (1) the top contributor's username from React, (2) their total commit count to React, (3) whether they appear in React Native's top 30 contributors (Yes/No), and (4) if yes, their rank position in React Native — otherwise write N/A. Save a screenshot of the React Native contributors page to eval-github-overlap.png. Return the final answer in exactly four labeled lines: TopContributor:, ReactCommits:, InReactNative:, ReactNativeRank:.",
+      "timeoutSeconds": 720,
+      "humanBaselineSteps": 18,
+      "screenshotPath": "eval-github-overlap.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["topcontributor:", "reactcommits:", "inreactnative:", "reactnativerank:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "ReactCommits:\\s*\\d[\\d,]*"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "InReactNative:\\s*(Yes|No)"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_WIKI_002",
+      "name": "Wikipedia: Chained Article Hop Extraction",
+      "category": "multi-step-reasoning",
+      "prompt": "Start at https://en.wikipedia.org/wiki/TypeScript. Find the name of the person listed as the designer of TypeScript. Click through to that person's Wikipedia article. From their article, extract: (1) their full name, (2) their listed nationality, (3) the name of the university where they received their PhD (if listed — otherwise write 'Not listed'), and (4) one other notable programming language or software project they are credited with creating or co-creating (besides TypeScript). Save a screenshot of the person's Wikipedia page to eval-wikipedia-hop.png. Return the final answer in exactly four labeled lines: FullName:, Nationality:, PhDUniversity:, OtherProject:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 10,
+      "screenshotPath": "eval-wikipedia-hop.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["fullname:", "nationality:", "phduniversity:", "otherproject:"]
+              }
+            },
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["anders hejlsberg"]
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_NPM_001",
+      "name": "npm: Dependency Chain Depth Analysis",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://www.npmjs.com/package/express. On the express package page, find the current latest version number. Then click through to view its listed dependencies. For each direct dependency listed, count how many there are in total. Then pick the FIRST dependency listed alphabetically and navigate to its npm page. Report: (1) express latest version, (2) total number of direct dependencies of express, (3) name of the first alphabetical dependency, (4) the weekly download count shown for that first dependency. Save a screenshot of the first dependency's npm page to eval-npm-chain.png. Return the final answer in exactly four labeled lines: ExpressVersion:, DirectDeps:, FirstDepName:, FirstDepWeeklyDownloads:.",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 16,
+      "screenshotPath": "eval-npm-chain.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "expressversion:",
+                  "directdeps:",
+                  "firstdepname:",
+                  "firstdepweeklydownloads:"
+                ]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "ExpressVersion:\\s*\\d+\\.\\d+\\.\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "DirectDeps:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_ARXIV_001",
+      "name": "arXiv: Paper Metadata & Citation Cross-Check",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://arxiv.org/abs/1706.03762 (the 'Attention Is All You Need' paper). Extract: (1) the total number of authors listed, (2) the submission date of version 1 (v1), (3) the primary subject classification code shown (e.g. cs.CL), and (4) the abstract word count (count the words in the abstract text yourself). Save a screenshot to eval-arxiv-paper.png. Return the final answer in exactly four labeled lines: AuthorCount:, SubmissionDateV1:, SubjectCode:, AbstractWordCount:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 10,
+      "screenshotPath": "eval-arxiv-paper.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["authorcount:", "submissiondatev1:", "subjectcode:", "abstractwordcount:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "AuthorCount:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "SubjectCode:\\s*cs\\.[A-Z]+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_MDN_001",
+      "name": "MDN Web Docs: API Browser Compatibility Diff",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver. Scroll to the Browser Compatibility table at the bottom. Extract: (1) the minimum Chrome version that shows full support for ResizeObserver (the base feature row, not sub-features), (2) the minimum Firefox version with full support, (3) the minimum Safari version with full support, and (4) whether the 'ResizeObserverEntry: borderBoxSize' sub-feature shows as supported in Safari (Yes/No/Partial). Save a screenshot of the compatibility table to eval-mdn-compat.png. Return the final answer in exactly four labeled lines: ChromeMinVersion:, FirefoxMinVersion:, SafariMinVersion:, SafariBorderBoxSize:.",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 12,
+      "screenshotPath": "eval-mdn-compat.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["chromeminversion:", "firefoxminversion:", "safariborderboxsize:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "ChromeMinVersion:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "SafariBorderBoxSize:\\s*(Yes|No|Partial)"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_HN_001",
+      "name": "Hacker News: Top Story Thread Deep Dive",
+      "category": "multi-step-reasoning",
+      "prompt": "Navigate to https://news.ycombinator.com. Identify the #1 ranked story (rank 1). Open that story's comment thread on HN (not the external link). Extract: (1) the story title, (2) total points (upvotes) on the submission, (3) total number of comments shown, and (4) the username of the author of the single highest-karma top-level comment (the top-level comment with the most direct replies). Save a screenshot of the comment thread to eval-hn-thread.png. Return the final answer in exactly four labeled lines: StoryTitle:, Points:, TotalComments:, TopCommentAuthor:.",
+      "timeoutSeconds": 720,
+      "humanBaselineSteps": 14,
+      "screenshotPath": "eval-hn-thread.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["storytitle:", "points:", "totalcomments:", "topcommentauthor:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "Points:\\s*\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalComments:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_PYPI_001",
+      "name": "PyPI: Package Release History Delta",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://pypi.org/project/requests/#history. Look at the release history page. Extract: (1) the version number of the latest stable release (non-pre-release), (2) the version number of the oldest release listed on the history page, (3) the total count of all releases visible in the history list (count every entry including pre-releases), and (4) the date of the latest stable release in any format shown. Save a screenshot of the release history page to eval-pypi-history.png. Return the final answer in exactly four labeled lines: LatestStable:, OldestRelease:, TotalReleaseCount:, LatestReleaseDate:.",
+      "timeoutSeconds": 600,
+      "humanBaselineSteps": 10,
+      "screenshotPath": "eval-pypi-history.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "lateststable:",
+                  "oldestrelease:",
+                  "totalreleasecount:",
+                  "latestreleasedate:"
+                ]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "LatestStable:\\s*\\d+\\.\\d+\\.\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalReleaseCount:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_CANIUSE_001",
+      "name": "Can I Use: Feature Support Across Browsers with Usage Stats",
+      "category": "data-extraction",
+      "prompt": "Navigate to https://caniuse.com/css-grid. On the CSS Grid Layout feature page, extract: (1) the global usage percentage shown at the top (e.g. '96.something%'), (2) the earliest Chrome version shown as having full support (green) for the baseline 'CSS Grid Layout' feature, (3) the earliest Firefox version with full support, and (4) the number of 'Known Issues' listed (if the Known Issues tab shows a count badge — if 0 or not shown, write 0). Save a screenshot to eval-caniuse-grid.png. Return the final answer in exactly four labeled lines: GlobalUsage:, ChromeFullSupportVersion:, FirefoxFullSupportVersion:, KnownIssuesCount:.",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 12,
+      "screenshotPath": "eval-caniuse-grid.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "globalusage:",
+                  "chromefullsupportversion:",
+                  "firefoxfullsupportversion:",
+                  "knownissuescount:"
+                ]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "GlobalUsage:\\s*\\d+(?:\\.\\d+)?%"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "ChromeFullSupportVersion:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_STACKOVERFLOW_002",
+      "name": "Stack Overflow: Answer Audit with Code Block Detection",
+      "category": "multi-step-reasoning",
+      "prompt": "Navigate to https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array. This is a famous SO question. Extract: (1) the total vote count on the accepted answer, (2) the username of the accepted answer's author, (3) the number of distinct code blocks (pre/code elements) in the accepted answer, and (4) the total number of answers the question currently has (as shown in the answers header count). Save a screenshot of the accepted answer to eval-so-audit.png. Return the final answer in exactly four labeled lines: AcceptedAnswerVotes:, AcceptedAnswerAuthor:, CodeBlockCount:, TotalAnswers:.",
+      "timeoutSeconds": 660,
+      "humanBaselineSteps": 12,
+      "screenshotPath": "eval-so-audit.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": [
+                  "acceptedanswervotes:",
+                  "acceptedanswerauthor:",
+                  "codeblockcount:",
+                  "totalanswers:"
+                ]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "AcceptedAnswerVotes:\\s*\\d[\\d,]*"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "TotalAnswers:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    },
+    {
+      "id": "EVAL_GH_003",
+      "name": "GitHub: Issue Triage — Label & Milestone Extraction",
+      "category": "navigation",
+      "prompt": "Navigate to https://github.com/expressjs/express/issues?q=is%3Aopen+is%3Aissue. This shows open issues for the Express.js repository. Find and open the OLDEST open issue currently listed (the one with the smallest issue number among currently open issues). From that issue page extract: (1) the issue number, (2) the issue title, (3) all labels applied to the issue (comma-separated, or 'None' if no labels), and (4) the total number of comments on that issue. Save a screenshot of the issue to eval-github-issue.png. Return the final answer in exactly four labeled lines: IssueNumber:, IssueTitle:, Labels:, CommentCount:.",
+      "timeoutSeconds": 720,
+      "humanBaselineSteps": 16,
+      "screenshotPath": "eval-github-issue.png",
+      "scorer": {
+        "type": "allOf",
+        "params": {
+          "scorers": [
+            {
+              "type": "keywords",
+              "params": {
+                "words": ["issuenumber:", "issuetitle:", "labels:", "commentcount:"]
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "IssueNumber:\\s*#?\\d+"
+              }
+            },
+            {
+              "type": "regex",
+              "params": {
+                "pattern": "CommentCount:\\s*\\d+"
+              }
+            }
+          ]
+        }
+      },
+      "llmJudge": true
+    }
+  ]
+}
