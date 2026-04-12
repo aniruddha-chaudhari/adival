@@ -7,12 +7,12 @@
       "id": "EVAL_FM_001",
       "name": "Excel: Multi-Sheet Formula Audit & Summary Report",
       "category": "analyze-excel",
-      "prompt": "You are given a multi-sheet Excel workbook at uploads/sales_data.xlsx. The workbook has three sheets: 'Q1', 'Q2', and 'Q3'. Each sheet has columns: Region, Product, Units, UnitPrice, Revenue. Do the following: (1) Identify which sheet has the highest total Revenue (sum of the Revenue column). (2) Find the single best-selling Product by total Units across ALL sheets combined. (3) Detect any rows where Revenue does NOT equal Units \u00d7 UnitPrice (formula inconsistency) \u2014 report the sheet name and row number of the FIRST such inconsistency found, or 'None' if all are consistent. (4) Create a new summary sheet called 'Summary' appended to the workbook that contains a table with columns Quarter, TotalRevenue, TopProduct \u2014 one row per quarter. Save the updated workbook to outputs/sales_data_audited.xlsx. Return the final answer in exactly four labeled lines: HighestRevenueSheet:, BestSellingProduct:, FirstInconsistency:, SummarySheetCreated:",
+      "prompt": "You are given a multi-sheet Excel workbook at uploads/sales_data.xlsx. The workbook has three sheets: 'Q1', 'Q2', and 'Q3'. Each sheet has columns: Region, Product, Units, UnitPrice, Revenue. Do the following: (1) Identify which sheet has the highest total Revenue (sum of the Revenue column). (2) Find the single best-selling Product by total Units across ALL sheets combined. (3) Detect any rows where Revenue does NOT equal Units \u00d7 UnitPrice (formula inconsistency) \u2014 report the sheet name and row number of the FIRST such inconsistency found, or 'None' if all are consistent. (4) Create a new summary sheet called 'Summary' appended to the workbook that contains a table with columns Quarter, TotalRevenue, TopProduct \u2014 one row per quarter. Save the updated workbook to evals/outputs/sales_data_audited.xlsx. Return the final answer in exactly four labeled lines: HighestRevenueSheet:, BestSellingProduct:, FirstInconsistency:, SummarySheetCreated:",
       "timeoutSeconds": 600,
       "humanBaselineSteps": 20,
       "screenshotPath": null,
       "inputFiles": ["uploads/sales_data.xlsx"],
-      "outputFiles": ["outputs/sales_data_audited.xlsx"],
+      "outputFiles": ["evals/outputs/sales_data_audited.xlsx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_001/sales_data_audited.xlsx",
       "scorer": {
         "type": "allOf",
@@ -44,7 +44,7 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/sales_data_audited.xlsx"
+                "path": "evals/outputs/sales_data_audited.xlsx"
               }
             }
           ]
@@ -56,12 +56,12 @@
       "id": "EVAL_FM_002",
       "name": "Word: Tracked-Changes Redline Review & Selective Accept",
       "category": "edit-word",
-      "prompt": "You are given a Word document at uploads/contract_redlined.docx that contains tracked changes (insertions and deletions) made by multiple authors. Do the following: (1) Count the total number of tracked changes (insertions + deletions combined). (2) Accept ONLY the tracked changes authored by 'Alice' and reject all changes authored by 'Bob'. (3) After resolving Alice's and Bob's changes, report how many tracked changes remain (from any other author). (4) Add a comment on the first paragraph that reads exactly: 'Reviewed by agent \u2014 Alice accepted, Bob rejected.' Save the result to outputs/contract_final.docx. Return the final answer in exactly four labeled lines: TotalTrackedChanges:, AliceChangesAccepted:, BobChangesRejected:, RemainingChanges:",
+      "prompt": "You are given a Word document at uploads/contract_redlined.docx that contains tracked changes (insertions and deletions) made by multiple authors. Do the following: (1) Count the total number of tracked changes (insertions + deletions combined). (2) Accept ONLY the tracked changes authored by 'Alice' and reject all changes authored by 'Bob'. (3) After resolving Alice's and Bob's changes, report how many tracked changes remain (from any other author). (4) Add a comment on the first paragraph that reads exactly: 'Reviewed by agent \u2014 Alice accepted, Bob rejected.' Save the result to evals/outputs/contract_final.docx. Return the final answer in exactly four labeled lines: TotalTrackedChanges:, AliceChangesAccepted:, BobChangesRejected:, RemainingChanges:",
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
       "inputFiles": ["uploads/contract_redlined.docx"],
-      "outputFiles": ["outputs/contract_final.docx"],
+      "outputFiles": ["evals/outputs/contract_final.docx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_002/contract_final.docx",
       "scorer": {
         "type": "allOf",
@@ -93,7 +93,7 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/contract_final.docx"
+                "path": "evals/outputs/contract_final.docx"
               }
             }
           ]
@@ -105,7 +105,7 @@
       "id": "EVAL_FM_003",
       "name": "OCR: Scanned Invoice Batch Extraction to Structured CSV",
       "category": "organize-images-ocr",
-      "prompt": "You are given 5 scanned invoice images at uploads/invoices/invoice_001.png through invoice_005.png. Each image is a scanned invoice with fields: Invoice Number, Date, Vendor Name, Line Items (description + amount), and Total Amount. Perform OCR on all 5 images and extract the structured data. Then: (1) Create a CSV file at outputs/invoices_extracted.csv with columns: InvoiceNumber, Date, VendorName, TotalAmount. One row per invoice. (2) Identify the invoice with the highest TotalAmount. (3) Report whether any two invoices share the same Vendor Name (Yes/No). (4) Report the sum of all TotalAmount values across all 5 invoices. Return the final answer in exactly four labeled lines: HighestAmountInvoice:, DuplicateVendor:, TotalSumAllInvoices:, CSVRowCount:",
+      "prompt": "You are given 5 scanned invoice images at uploads/invoices/invoice_001.png through invoice_005.png. Each image is a scanned invoice with fields: Invoice Number, Date, Vendor Name, Line Items (description + amount), and Total Amount. Perform OCR on all 5 images and extract the structured data. Then: (1) Create a CSV file at evals/outputs/invoices_extracted.csv with columns: InvoiceNumber, Date, VendorName, TotalAmount. One row per invoice. (2) Identify the invoice with the highest TotalAmount. (3) Report whether any two invoices share the same Vendor Name (Yes/No). (4) Report the sum of all TotalAmount values across all 5 invoices. Return the final answer in exactly four labeled lines: HighestAmountInvoice:, DuplicateVendor:, TotalSumAllInvoices:, CSVRowCount:",
       "timeoutSeconds": 720,
       "humanBaselineSteps": 25,
       "screenshotPath": null,
@@ -116,7 +116,7 @@
         "uploads/invoices/invoice_004.png",
         "uploads/invoices/invoice_005.png"
       ],
-      "outputFiles": ["outputs/invoices_extracted.csv"],
+      "outputFiles": ["evals/outputs/invoices_extracted.csv"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_003/invoices_extracted.csv",
       "scorer": {
         "type": "allOf",
@@ -148,7 +148,7 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/invoices_extracted.csv"
+                "path": "evals/outputs/invoices_extracted.csv"
               }
             }
           ]
@@ -207,12 +207,12 @@
       "id": "EVAL_FM_005",
       "name": "PowerPoint: Slide Deck Restructure & Style Normalization",
       "category": "edit-powerpoint",
-      "prompt": "You are given a PowerPoint file at uploads/deck_messy.pptx. The deck has 12 slides with inconsistent formatting: mixed fonts (Arial, Times New Roman, Calibri), inconsistent title font sizes (ranging from 24pt to 48pt), and some slides missing a footer. Do the following: (1) Count how many slides have a title font size NOT equal to 36pt. (2) Normalize ALL slide titles to Arial, Bold, 36pt. (3) Add a footer to every slide that reads 'Confidential \u2014 {{SlideNumber}} of 12' where {{SlideNumber}} is the actual slide number. (4) Move slide 7 to become slide 2 (shift others down). Save the result to outputs/deck_normalized.pptx. Return the final answer in exactly four labeled lines: SlidesWithWrongTitleSize:, TitlesNormalized:, FooterAddedToSlides:, SlideReordered:",
+      "prompt": "You are given a PowerPoint file at uploads/deck_messy.pptx. The deck has 12 slides with inconsistent formatting: mixed fonts (Arial, Times New Roman, Calibri), inconsistent title font sizes (ranging from 24pt to 48pt), and some slides missing a footer. Do the following: (1) Count how many slides have a title font size NOT equal to 36pt. (2) Normalize ALL slide titles to Arial, Bold, 36pt. (3) Add a footer to every slide that reads 'Confidential \u2014 {{SlideNumber}} of 12' where {{SlideNumber}} is the actual slide number. (4) Move slide 7 to become slide 2 (shift others down). Save the result to evals/outputs/deck_normalized.pptx. Return the final answer in exactly four labeled lines: SlidesWithWrongTitleSize:, TitlesNormalized:, FooterAddedToSlides:, SlideReordered:",
       "timeoutSeconds": 660,
       "humanBaselineSteps": 22,
       "screenshotPath": null,
       "inputFiles": ["uploads/deck_messy.pptx"],
-      "outputFiles": ["outputs/deck_normalized.pptx"],
+      "outputFiles": ["evals/outputs/deck_normalized.pptx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_005/deck_normalized.pptx",
       "scorer": {
         "type": "allOf",
@@ -244,7 +244,7 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/deck_normalized.pptx"
+                "path": "evals/outputs/deck_normalized.pptx"
               }
             }
           ]
@@ -297,12 +297,15 @@
       "id": "EVAL_FM_008",
       "name": "Custom Tool Creation: Auto-Formatter Agent Tool for CSV Normalization",
       "category": "custom-tools",
-      "prompt": "You are given a malformed CSV at uploads/dirty_data.csv. The file has inconsistent issues: mixed date formats (MM/DD/YYYY, YYYY-MM-DD, DD-Mon-YYYY), phone numbers in varying formats, currency values with/without $ and commas, and some columns with leading/trailing whitespace. Your task: (1) Analyze the file and identify the 4 data quality issues present (list them). (2) Create a reusable Python tool script at outputs/tools/csv_normalizer.py that accepts any CSV path and normalizes: dates to ISO 8601 (YYYY-MM-DD), phone numbers to E.164 format (+1XXXXXXXXXX for US), currency to plain float, and strips whitespace from all string fields. The script must be callable as: python csv_normalizer.py <input_path> <output_path>. (3) Run your tool on the dirty CSV and save the cleaned file to outputs/dirty_data_clean.csv. (4) Report the total number of cells that were changed during normalization. Return the final answer in exactly four labeled lines: IssuesIdentified:, ToolCreated:, CellsChanged:, CleanFileCreated:",
+      "prompt": "You are given a malformed CSV at uploads/dirty_data.csv. The file has inconsistent issues: mixed date formats (MM/DD/YYYY, YYYY-MM-DD, DD-Mon-YYYY), phone numbers in varying formats, currency values with/without $ and commas, and some columns with leading/trailing whitespace. Your task: (1) Analyze the file and identify the 4 data quality issues present (list them). (2) Create a reusable Python tool script at evals/outputs/tools/csv_normalizer.py that accepts any CSV path and normalizes: dates to ISO 8601 (YYYY-MM-DD), phone numbers to E.164 format (+1XXXXXXXXXX for US), currency to plain float, and strips whitespace from all string fields. The script must be callable as: python csv_normalizer.py <input_path> <output_path>. (3) Run your tool on the dirty CSV and save the cleaned file to evals/outputs/dirty_data_clean.csv. (4) Report the total number of cells that were changed during normalization. Return the final answer in exactly four labeled lines: IssuesIdentified:, ToolCreated:, CellsChanged:, CleanFileCreated:",
       "timeoutSeconds": 720,
       "humanBaselineSteps": 28,
       "screenshotPath": null,
       "inputFiles": ["uploads/dirty_data.csv"],
-      "outputFiles": ["outputs/tools/csv_normalizer.py", "outputs/dirty_data_clean.csv"],
+      "outputFiles": [
+        "evals/outputs/tools/csv_normalizer.py",
+        "evals/outputs/dirty_data_clean.csv"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_008/dirty_data_clean.csv",
       "scorer": {
         "type": "allOf",
@@ -329,13 +332,13 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/tools/csv_normalizer.py"
+                "path": "evals/outputs/tools/csv_normalizer.py"
               }
             },
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/dirty_data_clean.csv"
+                "path": "evals/outputs/dirty_data_clean.csv"
               }
             }
           ]
@@ -347,12 +350,12 @@
       "id": "EVAL_FM_009",
       "name": "Excel: Extract Failed Students from Exam Results",
       "category": "file-processing",
-      "prompt": "Read the Excel file at uploads/result_analysis/COMP_FINAL_RESULT.xls which contains semester exam results for Computer Engineering students. Analyze the data and extract all students who have failed (students with 'FAIL' status or those who did not pass based on the grading criteria in the file). For each failed student, capture their Roll Number, Name, and Status: failed. Save the extracted failed students data to outputs/failed_students_output.xlsx with columns: RollNo, Name, Status. Return the final answer in exactly four labeled lines: TotalStudents:, FailedStudentsCount:, OutputFileSaved:",
+      "prompt": "Read the Excel file at uploads/result_analysis/COMP_FINAL_RESULT.xls which contains semester exam results for Computer Engineering students. Analyze the data and extract all students who have failed (students with 'FAIL' status or those who did not pass based on the grading criteria in the file). For each failed student, capture their Roll Number, Name, and Status: failed. Save the extracted failed students data to evals/outputs/failed_students_output.xlsx with columns: RollNo, Name, Status. Return the final answer in exactly four labeled lines: TotalStudents:, FailedStudentsCount:, OutputFileSaved:",
       "timeoutSeconds": 600,
       "humanBaselineSteps": 12,
       "screenshotPath": null,
       "inputFiles": ["uploads/result_analysis/COMP_FINAL_RESULT.xls"],
-      "outputFiles": ["outputs/failed_students_output.xlsx"],
+      "outputFiles": ["evals/outputs/failed_students_output.xlsx"],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_009/failed_students_output.xlsx",
       "scorer": {
         "type": "allOf",
@@ -385,7 +388,7 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/failed_students_output.xlsx"
+                "path": "evals/outputs/failed_students_output.xlsx"
               }
             }
           ]
@@ -397,12 +400,15 @@
       "id": "EVAL_FM_010",
       "name": "Excel + Word: Cross-Format Report Generation from Pivot Analysis",
       "category": "analyze-excel",
-      "prompt": "You are given an Excel file at uploads/employee_data.xlsx with columns: EmployeeID, Name, Department, Salary, JoinDate, PerformanceScore (1\u20135), IsRemote (TRUE/FALSE). Do the following: (1) Using only the Excel file, compute: average Salary per Department, and identify the Department with the highest average PerformanceScore. (2) Find all employees who have been with the company for more than 5 years (based on JoinDate vs today) AND have PerformanceScore >= 4. Count them \u2014 these are 'promotion candidates'. (3) Generate a pivot table in a new sheet called 'Pivot' in the workbook: rows = Department, columns = IsRemote (True/False), values = COUNT of employees. Save updated workbook to outputs/employee_data_pivot.xlsx. (4) Create a Word document at outputs/promotion_report.docx containing: a heading 'Promotion Candidates Report', a table listing all promotion candidates (Name, Department, Salary, PerformanceScore), and a one-paragraph executive summary. Return the final answer in exactly four labeled lines: TopPerformanceDept:, PromotionCandidateCount:, PivotSheetCreated:, WordReportCreated:",
+      "prompt": "You are given an Excel file at uploads/employee_data.xlsx with columns: EmployeeID, Name, Department, Salary, JoinDate, PerformanceScore (1\u20135), IsRemote (TRUE/FALSE). Do the following: (1) Using only the Excel file, compute: average Salary per Department, and identify the Department with the highest average PerformanceScore. (2) Find all employees who have been with the company for more than 5 years (based on JoinDate vs today) AND have PerformanceScore >= 4. Count them \u2014 these are 'promotion candidates'. (3) Generate a pivot table in a new sheet called 'Pivot' in the workbook: rows = Department, columns = IsRemote (True/False), values = COUNT of employees. Save updated workbook to evals/outputs/employee_data_pivot.xlsx. (4) Create a Word document at evals/outputs/promotion_report.docx containing: a heading 'Promotion Candidates Report', a table listing all promotion candidates (Name, Department, Salary, PerformanceScore), and a one-paragraph executive summary. Return the final answer in exactly four labeled lines: TopPerformanceDept:, PromotionCandidateCount:, PivotSheetCreated:, WordReportCreated:",
       "timeoutSeconds": 780,
       "humanBaselineSteps": 32,
       "screenshotPath": null,
       "inputFiles": ["uploads/employee_data.xlsx"],
-      "outputFiles": ["outputs/employee_data_pivot.xlsx", "outputs/promotion_report.docx"],
+      "outputFiles": [
+        "evals/outputs/employee_data_pivot.xlsx",
+        "evals/outputs/promotion_report.docx"
+      ],
       "expectedOutputFile": "uploads-answers/file-management/EVAL_FM_010/employee_summary.json",
       "scorer": {
         "type": "allOf",
@@ -434,13 +440,13 @@
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/employee_data_pivot.xlsx"
+                "path": "evals/outputs/employee_data_pivot.xlsx"
               }
             },
             {
               "type": "fileExists",
               "params": {
-                "path": "outputs/promotion_report.docx"
+                "path": "evals/outputs/promotion_report.docx"
               }
             }
           ]
