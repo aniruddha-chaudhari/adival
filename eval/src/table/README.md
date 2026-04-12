@@ -1,1 +1,0 @@
-bun \eval\src\table\build_eval_results_excel.ts; bun \eval\src\table\update_eval_skills.ts

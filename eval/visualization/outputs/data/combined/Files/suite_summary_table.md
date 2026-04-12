@@ -1,7 +1,0 @@
-| Model | Suite | Tasks | Pass | Partial | Fail/Timeout | Pass Rate (%) | Mean Score | Mean Tokens | Mean Tool Calls | Mean Time (s) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Gemini Flash | file-management-skills | 14 | 7 | 7 | 0 | 50.0 | 80.2 | 48484 | 9.6 | 65.3 |
-| GPT-5.3 | file-management-skills | 14 | 8 | 6 | 0 | 57.1 | 80.1 | 27751 | 7.0 | 109.2 |
-| Grok Fast | file-management-skills | 14 | 9 | 4 | 1 | 64.3 | 76.3 | 28825 | 16.4 | 133.6 |
-| Sonnet 4.6 | file-management-skills | 14 | 10 | 4 | 0 | 71.4 | 86.9 | 38380 | 16.4 | 215.0 |
-| MiniMax | file-management-skills | 14 | 6 | 5 | 3 | 42.9 | 62.8 | 11646 | 12.5 | 297.9 |
