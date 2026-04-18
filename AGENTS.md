@@ -11,7 +11,7 @@ Relevant skills you can use:
 
 ### Launching browser
 
-Use `dev-browser` when you need to automate a browser with scripts, use chrome to go to websites or when you want to connect to an existing Chrome instance over CDP.
+Use `dev-browser` cli when you need to automate a browser with scripts, use chrome to go to websites or when you want to connect to an existing Chrome instance over CDP. Run dev-browser --help to learn more on how to use it.
 
 Before launching a fresh browser, always check whether the remote debugging port (default `9222`) is already open. Use:
 
@@ -24,7 +24,7 @@ Before starting a fresh browser automation session in this workspace, do this on
 1. Start standalone Chrome with remote debugging enabled:
 
 ```bash
-node .opencode/skills/agent-browser/templates/launch-chrome-standalone.cjs
+node manager/tools/launch-chrome-standalone.cjs
 ```
 
 ### Using Dev Browser
@@ -32,8 +32,6 @@ node .opencode/skills/agent-browser/templates/launch-chrome-standalone.cjs
 Use `bunx dev-browser --connect` to attach to the running browser, or `bunx dev-browser` to launch an isolated managed browser session.
 
 ### Usage
-
-Run dev-browser --help to learn more.
 
 ### Package manager
 
@@ -58,3 +56,4 @@ uv run src/x/test-normalize.py
 Create script files in `manager/tools` folder in the root only, (never in other place).
 Make sure to give the file a good name for later understanding its use, use `_` instead of spaces while naming the files.
 Delete the unnecessary script files you have created after the task is complete.
+keep short timeouts for the commands you execute, so you can see results quickly
