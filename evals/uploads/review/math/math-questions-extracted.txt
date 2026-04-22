@@ -1,0 +1,75 @@
+---PAGE 1---
+SA T Math Hard Practice Quiz
+Numbers and Operations
+1. A bag contains tomatoes that are either green or red.
+The ratio of green tomatoes to red tomatoes in the bag
+is 4 to 3. When ﬁve green tomatoes and ﬁve red tomatoes
+are removed, the ratio becomes 3 to 2. How many red
+tomatoes were originally in the bag?
+(A) 12
+(B) 15
+(C) 18
+(D) 24
+(E) 30
+2. If each digit in an integer is greater than the digit to the
+left, the integer is said to be “monotonic”. For example,
+12 is a monotonic integer since 2 > 1. How many positive
+two-digit monotonic integers are there?
+(A) 28
+(B) 32
+(C) 36
+(D) 40
+(E) 44
+a, 2 a − 1, 3 a − 2, 4 a − 3, . . .
+3. For a particular number a, the ﬁrst term in the sequence
+above is equal to a, and each term thereafter is 7 greater
+than the previous term. What is the value of the 16 th
+term in the sequence?
+4. If p is a prime number, how many factors does p3 have?
+(A) One
+(B) Two
+(C) Three
+(D) Four
+(E) Five
+5. How many integers between 10 and 500 begin and end in
+3 ?
+6. A particular integer N is divisible by two diﬀerent prime
+numbers p and q. Which of the following must be true?
+I. N is not a prime number.
+II. N is divisible by pq.
+III. N is an odd integer.
+(A) I only
+(B) II only
+(C) I and II only
+(D) I and III only
+(E) I, II, and III
+7. A perfect square is an integer that is the square of an
+integer. Suppose that m and n are positive integers such
+that mn > 15. If 15 mn is a perfect square, what is the
+least possible value of mn ?
+8. M is a set of six consecutive even integers. When the
+least three integers of set M are summed, the result is x.
+When the greatest three integers of set M are summed,
+the result is y. Which of the following is true?
+(A) y = x − 18
+(B) y = x + 18
+(C) y = 2x
+(D) y = 2x + 4
+(E) y = 2x + 6
+erikthered.com/tutor pg. 1
+---PAGE 2---
+SA T Math Hard Practice Quiz
+9. A three-digit number, XYZ , is formed of three diﬀerent
+non-zero digits X, Y , and Z. A new number is formed by
+rearranging the same three digits. What is the greatest
+possible diﬀerence between the two numbers? (For ex-
+ample, 345 could be rearranged into 435, for a diﬀerence
+of 435 − 345 = 90.)
+10. An integer is subtracted from its square. The result could
+be which of the following?
+(A) A negative integer.
+(B) An odd integer.
+(C) The product of two consecutive even integers.
+(D) The product of two consecutive odd integers.
+(E) The product of two consecutive integers.
+erikthered.com/tutor pg. 2

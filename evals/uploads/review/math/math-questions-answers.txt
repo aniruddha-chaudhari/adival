@@ -1,0 +1,102 @@
+Question 1
+1) Restate: Green:red ratio is 4:3. After removing 5 of each, ratio becomes 3:2. Find original red count.
+2) Given: G:R=4:3, (G-5):(R-5)=3:2. Required: original R.
+3) Variables: G=4k, R=3k.
+4) Concept: Ratio equations.
+5) Solve: (4k-5)/(3k-5)=3/2 => 2(4k-5)=3(3k-5) => 8k-10=9k-15 => k=5.
+6) Intermediate: R=3k=15.
+7) Verify: Original 20:15=4:3; after removal 15:10=3:2.
+8) Final answer: 15.
+
+Question 2
+1) Restate: Count positive two-digit numbers where ones digit > tens digit.
+2) Given: two-digit monotonic condition. Required: count.
+3) Variables: tens=a (1..9), ones=b (0..9), b>a.
+4) Concept: Combinatorics.
+5) Solve: Choose 2 distinct digits from 1..9; smaller is tens, larger is ones.
+6) Intermediate: C(9,2)=36.
+7) Verify: All valid pairs counted once.
+8) Final answer: 36.
+
+Question 3
+1) Restate: Sequence a, 2a-1, 3a-2, ... has common difference 7. Find 16th term.
+2) Given: consecutive terms differ by 7. Required: T16.
+3) Variables: Tn = na-(n-1).
+4) Concept: Arithmetic-sequence condition via differences.
+5) Solve: T2-T1=(2a-1)-a=a-1=7 => a=8. Then Tn=8n-(n-1)=7n+1.
+6) Intermediate: T16=7*16+1=113.
+7) Verify: First terms 8,15,22,... difference 7.
+8) Final answer: 113.
+
+Question 4
+1) Restate: If p is prime, how many factors does p^3 have?
+2) Given: number p^3. Required: divisor count.
+3) Variables: p^3.
+4) Concept: Divisor formula for prime powers.
+5) Solve: factors are p^0, p^1, p^2, p^3.
+6) Intermediate: 3+1=4 factors.
+7) Verify: Example 2^3=8 has 1,2,4,8.
+8) Final answer: 4.
+
+Question 5
+1) Restate: Count integers from 10 to 500 that begin and end with 3.
+2) Given: range and digit condition. Required: count.
+3) Variables: 2-digit and 3-digit forms.
+4) Concept: Casework.
+5) Solve: Two-digit: 33 (1 number). Three-digit: 3_3 with middle digit 0..9 (10 numbers).
+6) Intermediate: total = 1+10=11.
+7) Verify: All are within range.
+8) Final answer: 11.
+
+Question 6
+1) Restate: N is divisible by distinct primes p and q. Determine which statements must be true.
+2) Given: p|N and q|N, p!=q, p and q prime. Required: truth of I, II, III.
+3) Variables: integer N, primes p,q.
+4) Concept: Divisibility and prime-factor logic.
+5) Solve: I true (N has more than one prime factor, so not prime). II true (distinct primes are coprime, so pq|N). III false (N could be even, e.g., 6).
+6) Intermediate: Counterexample for III: N=6.
+7) Verify: I and II always hold.
+8) Final answer: I and II only (Choice C).
+
+Question 7
+1) Restate: m,n positive integers, mn>15, and 15mn is a perfect square. Find least mn.
+2) Given: k=mn>15 and 15k is square. Required: minimum k.
+3) Variables: k=mn.
+4) Concept: Prime exponent parity for perfect squares.
+5) Solve: 15=3*5. For 15k to be square, k must supply odd powers of 3 and 5 at minimum, so k=15*s^2. Smallest s making k>15 is s=2.
+6) Intermediate: k=15*4=60; 15k=900=30^2.
+7) Verify: k>15 and condition satisfied.
+8) Final answer: 60.
+
+Question 8
+1) Restate: Six consecutive even integers. Sum of least three is x, greatest three is y. Find relation.
+2) Given: consecutive evens. Required: equation between x and y.
+3) Variables: a,a+2,a+4,a+6,a+8,a+10.
+4) Concept: Algebraic sums.
+5) Solve: x=a+(a+2)+(a+4)=3a+6. y=(a+6)+(a+8)+(a+10)=3a+24.
+6) Intermediate: y-x=18.
+7) Verify: y=x+18.
+8) Final answer: y = x + 18 (Choice B).
+
+Question 9
+1) Restate: Three-digit number with distinct non-zero digits; maximize difference between two rearrangements.
+2) Given: digits distinct, non-zero. Required: greatest possible difference.
+3) Variables: a>b>c.
+4) Concept: Max permutation - min permutation.
+5) Solve: Largest=100a+10b+c, smallest=100c+10b+a, difference=99(a-c). Maximize a-c with non-zero distinct digits: a=9, c=1.
+6) Intermediate: difference=99*(9-1)=99*8=792.
+7) Verify: 981-189=792.
+8) Final answer: 792.
+
+Question 10
+1) Restate: For integer n, n^2-n can be which option?
+2) Given: expression n^2-n. Required: matching type.
+3) Variables: n integer.
+4) Concept: Factorization and parity.
+5) Solve: n^2-n=n(n-1), product of two consecutive integers.
+6) Intermediate: Always even, nonnegative; directly matches option E.
+7) Verify: Example n=5 gives 20=5*4.
+8) Final answer: Product of two consecutive integers (Choice E).
+
+Answer Key (final results)
+Q1=15, Q2=36, Q3=113, Q4=4, Q5=11, Q6=C, Q7=60, Q8=B, Q9=792, Q10=E.
