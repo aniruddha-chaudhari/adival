@@ -128,3 +128,148 @@ Rules:
 Now start from Question 1 and proceed sequentially till the last question.
 
 
+
+###hyperframe
+Using /hyperframes, create a professional slide presentation video on the topic below.
+
+ASPECT RATIO & FORMAT
+- Dimensions: 1920x1080 (16:9 landscape, standard presentation format)
+- Duration: each slide should be 6-8 seconds on screen
+- Total slides: 8-10 slides unless the topic requires more
+- Output format: MP4
+
+SLIDE STRUCTURE
+Build the following slides in order:
+  1. Title slide — bold topic title, subtitle, clean background
+  2. Agenda / What we'll cover — 4-5 bullet points animated in one by one
+  3-7. Content slides — one key idea per slide, large headline + 2-3 supporting points
+  8. Key takeaways — summarized in 3 points
+  9. Call to action or conclusion slide
+  10. End card — topic name + any credit line
+
+VISUAL DESIGN
+- Use a dark or light professional color theme (your choice, keep it consistent)
+- Large, readable sans-serif fonts — headline min 64px, body min 36px
+- Animate each slide in with a fade or slide transition (GSAP preferred)
+- Bullet points should appear one at a time with a stagger animation
+- Use a consistent header bar or logo zone on each slide
+- No stock images — use solid color blocks, geometric shapes, or text-only layouts
+- Keep each slide uncluttered: max 40 words on screen at once
+
+ANIMATION RULES
+- Use GSAP for all animations (load from CDN)
+- Each slide's content should animate IN after the slide background appears
+- Add a subtle exit animation before cutting to the next slide
+- Title slide: large text fade-up with slight scale
+- Content slides: headline slides in first, then bullets stagger in
+- Transitions between slides: crossfade or wipe (use /hyperframes shader transitions if available)
+
+ 
+
+TECHNICAL REQUIREMENTS
+- Every slide is a separate <div> timed with data-start and data-duration attributes
+- Use the /hyperframes data attribute system correctly for all clips
+- Run npx hyperframes lint before rendering to catch errors
+- Render with: npx hyperframes render
+- Preview first with: npx hyperframes preview
+
+After building, iterate with me like a video editor:
+- I can ask you to change colors, font sizes, animation speed, or slide content
+- I can ask you to add or remove slides
+- I can ask you to adjust narration text or timing
+
+-render ppt in the end
+---
+TOPIC: benefits of nuclear energy
+
+###browser-mcp
+
+You are an autonomous browser agent. Complete the following task end-to-end using a real browser.
+
+## Objective
+
+Plan, navigate, extract, verify, and interact across multiple websites to complete a complex real-world workflow **without performing any financial transaction**.
+
+## Task
+
+1. Find a mid-range laptop (₹60,000–₹90,000) suitable for programming and light ML work.
+
+2. Compare at least 3 options from different websites (e.g., Amazon, Flipkart, official brand sites).
+
+3. Extract:
+
+   * CPU, GPU, RAM, storage
+   * Price (displayed price + any visible discounts)
+   * Ratings/reviews
+
+4. Create a comparison and choose the best option based on:
+
+   * performance per price
+   * upgradeability
+
+5. Simulate purchase intent WITHOUT checkout:
+
+   * Add the chosen laptop to cart **OR** wishlist
+   * Navigate to cart page and verify item presence
+   * Estimate final cost (including visible delivery charges, if shown)
+   * DO NOT proceed to payment, login, or checkout confirmation pages
+
+6. Cross-verify:
+
+   * Open YouTube
+   * Search for a review of the exact model
+   * Confirm if specs match listing (flag mismatches)
+
+7. Documentation:
+
+   * Open a notes tool (or web doc)
+   * Write a structured summary
+
+## Constraints
+
+* DO NOT log in, sign up, or enter personal/payment details
+* DO NOT complete checkout or simulate payment
+* Handle popups, cookie banners, modals
+* If blocked (CAPTCHA, login wall), attempt workaround or switch source
+* Avoid hallucinating missing data — mark unknowns explicitly
+
+## Required Behaviors
+
+* Multi-tab navigation
+* Backtracking when stuck
+* Handling dynamic UI (dropdowns, filters, lazy loading)
+* Error recovery (retry, alternative site)
+* Cross-site verification
+
+## Output Format
+
+Return:
+
+1. Final chosen product + link
+2. Comparison table (3+ products)
+3. Estimated final cost breakdown (no checkout)
+4. High-level reasoning trace (steps taken, not hidden thoughts)
+5. Failures encountered + recovery actions
+
+## Evaluation Criteria
+
+* Task completion accuracy
+* Correct structured extraction
+* Robustness to UI interruptions
+* Decision quality (not first-result bias)
+* Ability to verify across sources
+
+## Bonus Challenge (optional)
+
+* Identify misleading listings or spec inconsistencies
+* Detect price variation across platforms
+* Find a coupon/discount WITHOUT logging in
+
+## Adversarial Twist (for stress testing)
+
+If any of the following occur, adapt:
+
+* Page requires login → switch site
+* CAPTCHA appears → retry or pivot
+* Item goes out of stock → re-plan
+* Conflicting specs → resolve using multiple sources
