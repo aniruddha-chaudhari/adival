@@ -1,7 +1,0 @@
-{
-  "PMC4517499_004_00.png": {
-    "html": "<html><body><table><thead><tr><td><b>Type of delay</b></td><td><b>Mean</b></td><td><b>SD</b></td><td><b>Median</b></td><td><b>IQR</b></td><td><b>Min</b></td><td><b>Max</b></td></tr></thead><tbody><tr><td>Patient delay</td><td>55.3</td><td>40.0</td><td>59</td><td>5-123</td><td>5</td><td>198</td></tr><tr><td>Healthcare services delay</td><td>76.5</td><td>91.2</td><td>45</td><td>38-128</td><td>0</td><td>371</td></tr><tr><td>Total diagnostic delay</td><td>131.4</td><td>94.3</td><td>104</td><td>17-187</td><td>14</td><td>401</td></tr></tbody></table></body></html>",
-    "type": "simple",
-    "source": "PubTabNet examples/PubTabNet_Examples.jsonl"
-  }
-}

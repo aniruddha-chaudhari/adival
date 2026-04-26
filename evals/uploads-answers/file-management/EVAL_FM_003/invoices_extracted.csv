@@ -1,6 +1,0 @@
-InvoiceNumber,Date,VendorName,TotalAmount
-INV-2024-001,2024-01-15,Acme Corp,1250.00
-INV-2024-002,2024-01-22,TechSupply Inc,3450.75
-INV-2024-003,2024-02-03,Office Depot,890.50
-INV-2024-004,2024-02-10,Acme Corp,2100.00
-INV-2024-005,2024-02-18,CloudServices LLC,5500.00

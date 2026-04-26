@@ -1,2 +1,0 @@
-Text file: report.txt
-Sample content.
