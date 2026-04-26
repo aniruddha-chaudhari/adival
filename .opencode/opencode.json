@@ -6,15 +6,13 @@
       "command": ["npx", "@playwright/mcp@latest"],
       "enabled": false
     },
-    "fast-play": {
-      "type": "local",
-      "command": ["npx", "@tontoko/fast-playwright-mcp"],
-      "enabled": false
-    },
-    "supermemory": {
+    "exa": {
       "type": "remote",
-      "url": "https://mcp.supermemory.ai/mcp",
-      "enabled": false
+      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
+      "enabled": true,
+      "headers": {
+        "x-api-key": "YOUR_EXA_API_KEY"
+      }
     }
   }
 }
