@@ -1,12 +1,13 @@
 ---
 name: gws-gmail-triage
-version: 1.0.0
 description: "Gmail: Show unread inbox summary (sender, subject, date)."
 metadata:
+  version: 0.22.5
   openclaw:
     category: "productivity"
     requires:
-      bins: ["gws"]
+      bins:
+        - gws
     cliHelp: "gws gmail +triage --help"
 ---
 
@@ -24,11 +25,11 @@ gws gmail +triage
 
 ## Flags
 
-| Flag       | Required | Default | Description                             |
-| ---------- | -------- | ------- | --------------------------------------- |
-| `--max`    | —        | 20      | Maximum messages to show (default: 20)  |
-| `--query`  | —        | —       | Gmail search query (default: is:unread) |
-| `--labels` | —        | —       | Include label names in output           |
+| Flag | Required | Default | Description |
+|------|----------|---------|-------------|
+| `--max` | — | 20 | Maximum messages to show (default: 20) |
+| `--query` | — | — | Gmail search query (default: is:unread) |
+| `--labels` | — | — | Include label names in output |
 
 ## Examples
 

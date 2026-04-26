@@ -1,12 +1,13 @@
 ---
 name: gws-docs-write
-version: 1.0.0
 description: "Google Docs: Append text to a document."
 metadata:
+  version: 0.22.5
   openclaw:
     category: "productivity"
     requires:
-      bins: ["gws"]
+      bins:
+        - gws
     cliHelp: "gws docs +write --help"
 ---
 
@@ -24,10 +25,10 @@ gws docs +write --document <ID> --text <TEXT>
 
 ## Flags
 
-| Flag         | Required | Default | Description                 |
-| ------------ | -------- | ------- | --------------------------- |
-| `--document` | ✓        | —       | Document ID                 |
-| `--text`     | ✓        | —       | Text to append (plain text) |
+| Flag | Required | Default | Description |
+|------|----------|---------|-------------|
+| `--document` | ✓ | — | Document ID |
+| `--text` | ✓ | — | Text to append (plain text) |
 
 ## Examples
 

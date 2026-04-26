@@ -1,241 +1,70 @@
 {
   "version": 1,
   "skills": {
-    "12-principles-of-animation": {
-      "source": "raphaelsalaja/userinterface-wiki",
-      "sourceType": "github",
-      "computedHash": "028c3bad9e7417460e0d2094fc0c1b9d601e56317d38c4f5d124666b06a9405b"
-    },
-    "adapt": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "334593237737dd79a883d53e60085fc333d7e73ce74f7d3a45e20f74b7ec6cdc"
-    },
-    "agent-browser": {
-      "source": "vercel-labs/agent-browser",
-      "sourceType": "github",
-      "computedHash": "9757e62a964103e0b5659ccae7aab3ee893957e2c7f2a9a872851773d06efe7e"
-    },
-    "animate": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "ce49a6d69e29292fa500c38b9ae70c0abbfb9e0bb5ad849bdcbbd6e61199e8e5"
-    },
-    "arrange": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "1a4bba315200d4e96f5f4b6da97b4c6ff6b5574aa1d390d2948a699d74d63ad8"
-    },
-    "audit": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "2102505784cb834cf65ec12f900fea772737dc928ce92020c87924def637f58d"
-    },
-    "bolder": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "639f5368be13c18a246661758ab1df4ffae9cd9123f6dd4bd50209f20ebdce16"
-    },
-    "clarify": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "0c23d2701bbe37d5fb558073d187624701b1cd5b45b66616fe07554470ef3e65"
-    },
-    "colorize": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "fef9d58e68fe12bc891a16bd577b7039a150a5876ba101597fe60a6c17ad270e"
-    },
-    "critique": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "5ee54cf0fd97e208c1c34a8031d18c60e5512316ba5b289f9aa739d835e4d754"
-    },
-    "delight": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "e6a2931fbabecb712559b910d963281f6ce9cafad0d965999f78c9000aeff95e"
-    },
-    "dialectic": {
-      "source": "KyleAMathews/hegelian-dialectic-skill",
-      "sourceType": "github",
-      "computedHash": "f14c229c9a23b3c696022045c54035e081bcd831a8b54e8a1eca3feeb9c66ff9"
-    },
-    "distill": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "7530d83ce078667b49d4f57fb9d6d81d222189da83925c6cf660374ec0032747"
-    },
-    "doc-coauthoring": {
-      "source": "anthropics/skills",
-      "sourceType": "github",
-      "computedHash": "62cd7744438ee2aecc986c520bb603988a78ff6aaaf70a471bf4584fe0b78dae"
-    },
     "docx": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "150be87ff7b18f273ad07da303adb1cf2ca21cc3e76db7a2cf0373405178a278"
     },
-    "extract": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "f8767b7fdbd28aca98d62f016c7e8f7096fc737218ba07dde94e49a637f45ea7"
-    },
-    "firecrawl": {
-      "source": "firecrawl/cli",
-      "sourceType": "github",
-      "computedHash": "554067f03657e7755a8d36468dbf7dd9345418369a094638bfa27f8f776e28f1"
-    },
     "frontend-design": {
-      "source": "pbakaus/impeccable",
+      "source": "anthropics/skills",
       "sourceType": "github",
-      "computedHash": "5773994279165697bfce414bc803d5c3f98d71b494f303adb1cec43711bf1547"
-    },
-    "gws-calendar": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "c308861ff2bacc081d4f49a2ef0ae72c2db8b39542c9e82eed672468d2277ae8"
-    },
-    "gws-calendar-agenda": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "414fa0bad4de55d05a6d053f4df5c5ecde3a518667d1c316c9f5b5460f73c9ff"
-    },
-    "gws-calendar-insert": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "9750722d404931bf5cfe25924c9baacd517db2b9d64055c2f1f838f268ace7cc"
-    },
-    "gws-classroom": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "7ab6a191f00982e14744517cf1e41a14835616e63dd5aad735b39a64bdcfc703"
+      "computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
     },
     "gws-docs": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
-      "computedHash": "a13be5337f947f001deb498015c264038282248fce1e2004dddd4c7f0c4ad8db"
+      "computedHash": "3d307f7d0c8aac69ef0f852a665df4312d981e9e56dbbc559327df91f8012b38"
     },
     "gws-docs-write": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
-      "computedHash": "97f9c54cae3fa278db745834154b2abe107f2bd6d4ba6243575747c669cc8ff5"
-    },
-    "gws-drive": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "89f7ee87afd19349bde20024586bdc1b1a2de29309b441539938ecc98c58d91f"
-    },
-    "gws-drive-upload": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "76949dd5079c3160c04ac825a4f7c0082f3a1f17fc59fbb7e3a80c6f2c2ea0df"
+      "computedHash": "a5d9b287951c0758759cb8ce03c5d1b7234da607d774ebc878aa3afadc4b72d9"
     },
     "gws-forms": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
-      "computedHash": "863840abfa7df080b98df9b8615644bf37628070ec806f9fd88114d2f7eb06a3"
+      "computedHash": "06aa0c48af2163b25227f2a6e112e044827470c28dc216fe2c09eb91c4f2a539"
     },
     "gws-gmail": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
-      "computedHash": "77767fbf10c574e5f4834b6523d948ecd5a67469d353d573d15b2cffd52e5c01"
+      "computedHash": "31b12bd4bfa3fe1b5132067c597f85f5d3456060658a904a54ed6cb5b32ab6e4"
     },
     "gws-gmail-send": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
-      "computedHash": "3f45790b7f06ffa6cf17f2026f8ca451e74f5430b7070a1a9729b12b4843d011"
+      "computedHash": "a41a646aac4deb02f018e5a5e29ff58660aa8e4565a5e8b92b33dec89fdceaf6"
     },
     "gws-gmail-triage": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
-      "computedHash": "9786e231ba3c33ffaff78ebe754d52272ac4554c2bcb9d0fd656dc38f887bfbd"
+      "computedHash": "12cae23da45451794098c6d8d93cb5e6163f141135769f3e986d565d4c1a8b45"
     },
-    "gws-meet": {
-      "source": "googleworkspace/cli",
+    "html-ppt": {
+      "source": "lewislulu/html-ppt-skill",
       "sourceType": "github",
-      "computedHash": "092ef32543558456e08baf0c74477e94b678381c4a75487b29e083e3586e6bc9"
-    },
-    "gws-sheets": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "f8cf4693b01f9058646ea6778f986e354a1290e07b3304e3f878329222b6d34c"
-    },
-    "gws-sheets-append": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "80c213ced452cfb5311c5d3bced09c9241ee210e67c13a194d63469aea83467c"
-    },
-    "gws-sheets-read": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "e23477534f0451812519edc128f1d1a0bf1f5af88c97117e6d5abe1b0ae48601"
-    },
-    "gws-slides": {
-      "source": "googleworkspace/cli",
-      "sourceType": "github",
-      "computedHash": "f495873c91fa640cfe185f4887550062f425ba674c4ecfad4563e023055bf5b7"
-    },
-    "interface-design": {
-      "source": "Dammyjay93/interface-design",
-      "sourceType": "github",
-      "computedHash": "4d5fe1dacfebc0c1b3837b061405150ed2e4971c096543afc46c23161c5a4f7a"
-    },
-    "normalize": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "01a3704423d990279e3d94fa9b58297690e8344f84d8caeab1dcd825c7ed8751"
-    },
-    "nothing-design": {
-      "source": "dominikmartn/nothing-design-skill",
-      "ref": "main",
-      "sourceType": "github",
-      "computedHash": "0e42024ec376cad3f0eaf3c4351a13c71177865bc1cab99776da32b0ccb3bf2c"
+      "computedHash": "55b8f19bc7feee6c7a78f35e0a7884057a0c0f1b13db84fa171e4b363079a7ff"
     },
     "overdrive": {
-      "source": "pbakaus/impeccable",
+      "source": "flora131/atomic",
       "sourceType": "github",
-      "computedHash": "9b40a1e4326287d873e5d7b02630d339f5e31cfb38b1a6805828cb0076dcfa1e"
+      "computedHash": "16f80188b3e700f0b7761b08036f69bb463adb42de5cf91576db448c8e85c683"
     },
-    "pinchtab": {
-      "source": "pinchtab/pinchtab",
+    "pdf": {
+      "source": "anthropics/skills",
       "sourceType": "github",
-      "computedHash": "3f5601390e05455ca66c369b4d10ff1d6a18f6b2dad9aea414a95f8360e52ea8"
-    },
-    "polish": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "8c5a862f8eef92a12b5e38a81e10f1c0998adf6559beb5b9b91e7bbbe54e3fef"
+      "computedHash": "37226d4220d844377e6b2a386c51a011df4cd130855ff0b80bcc22f9c28abd57"
     },
     "pptx": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "2275e4d8dba1790d52f6619b3e2fed04edc948beef545a2ad18e4a1be644426d"
     },
-    "quieter": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "aefec3a5171c612cce82fbde0ee9bdb6a667c71b98de6fd5846df2f14dfe32bf"
-    },
-    "radar": {
-      "source": "asteroidai/radar",
-      "sourceType": "github",
-      "computedHash": "d702183f82207606996a5ffaba63ad20427ab8bf2f7578d9ebf23f1a25545220"
-    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
-      "computedHash": "e513e29a52533c4dd0aff72964c80d2d43c6fe9619ecb8766aabcd117e2b1acd"
-    },
-    "teach-impeccable": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "e95d2bb071e0d1877d291a421ce93165e3c75ebc010a46e8070eab53a9f90fd9"
-    },
-    "typeset": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "computedHash": "c6942dc2c2ff4cc6761a43f07a8d8719ec04b702b6b2c1c9793a5595b662a48b"
+      "computedHash": "7e3c9cd74e9e2b4828527a857170e86310f2dab5ea8030a9043df2c7e6c88857"
     },
     "xlsx": {
       "source": "anthropics/skills",
