@@ -12,10 +12,10 @@ gws docs +write --document <ID> --text <TEXT>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--document` | yes | - | Document ID |
-| `--text` | yes | - | Text to append as plain text |
+| Flag         | Required | Default | Description                  |
+| ------------ | -------- | ------- | ---------------------------- |
+| `--document` | yes      | -       | Document ID                  |
+| `--text`     | yes      | -       | Text to append as plain text |
 
 ## Examples
 

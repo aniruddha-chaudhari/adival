@@ -12,18 +12,18 @@ gws gmail +send --to <EMAILS> --subject <SUBJECT> --body <TEXT>
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--to` | yes | - | Recipient email address or comma-separated list |
-| `--subject` | yes | - | Email subject |
-| `--body` | yes | - | Email body, plain text by default |
-| `--from` | no | - | Sender address for send-as aliases |
-| `--attach` | no | - | Attach a file; may be repeated |
-| `--cc` | no | - | CC recipients |
-| `--bcc` | no | - | BCC recipients |
-| `--html` | no | - | Treat the body as HTML |
-| `--dry-run` | no | - | Show the request without executing it |
-| `--draft` | no | - | Save as draft instead of sending |
+| Flag        | Required | Default | Description                                     |
+| ----------- | -------- | ------- | ----------------------------------------------- |
+| `--to`      | yes      | -       | Recipient email address or comma-separated list |
+| `--subject` | yes      | -       | Email subject                                   |
+| `--body`    | yes      | -       | Email body, plain text by default               |
+| `--from`    | no       | -       | Sender address for send-as aliases              |
+| `--attach`  | no       | -       | Attach a file; may be repeated                  |
+| `--cc`      | no       | -       | CC recipients                                   |
+| `--bcc`     | no       | -       | BCC recipients                                  |
+| `--html`    | no       | -       | Treat the body as HTML                          |
+| `--dry-run` | no       | -       | Show the request without executing it           |
+| `--draft`   | no       | -       | Save as draft instead of sending                |
 
 ## Examples
 

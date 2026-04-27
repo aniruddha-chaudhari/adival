@@ -12,11 +12,11 @@ gws gmail +triage
 
 ## Flags
 
-| Flag | Required | Default | Description |
-|------|----------|---------|-------------|
-| `--max` | no | 20 | Maximum messages to show |
-| `--query` | no | `is:unread` | Gmail search query |
-| `--labels` | no | false | Include label names in output |
+| Flag       | Required | Default     | Description                   |
+| ---------- | -------- | ----------- | ----------------------------- |
+| `--max`    | no       | 20          | Maximum messages to show      |
+| `--query`  | no       | `is:unread` | Gmail search query            |
+| `--labels` | no       | false       | Include label names in output |
 
 ## Examples
 
