@@ -51,6 +51,26 @@
       "sourceType": "github",
       "computedHash": "16f80188b3e700f0b7761b08036f69bb463adb42de5cf91576db448c8e85c683"
     },
+    "parallel-data-enrichment": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "74981914fc2a49fad80a6561b0f1b52b2f06e1c77f63db161f518a3f5a37ae8b"
+    },
+    "parallel-deep-research": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "4177348db0e4245c787753f5ec3c2b471b48c24a8f63b870bd02a80ba15ec77e"
+    },
+    "parallel-web-extract": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "f7764434af65aacf546f101fbf069310b97e60e0584a20ae4704f86a8dea8ef1"
+    },
+    "parallel-web-search": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "9d86e0b64af9fe8bc3d5184dec7b8da69c29c4277e00503fcd8516639ec73e82"
+    },
     "pdf": {
       "source": "anthropics/skills",
       "sourceType": "github",
@@ -61,10 +81,25 @@
       "sourceType": "github",
       "computedHash": "2275e4d8dba1790d52f6619b3e2fed04edc948beef545a2ad18e4a1be644426d"
     },
+    "result": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "a74f0e3daa1f30d1180d1524086843d129b29b70b342813d2b228b9a9c88e3bc"
+    },
+    "setup": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "35251a7d5dfdb1e4f024d03a6b95a340506744d7bbd22972930710ef83c92ff2"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "7e3c9cd74e9e2b4828527a857170e86310f2dab5ea8030a9043df2c7e6c88857"
+    },
+    "status": {
+      "source": "parallel-web/parallel-agent-skills",
+      "sourceType": "github",
+      "computedHash": "850c29ffdc011a6d9755ad5b811ae2f3a4ef6400115fad7a85ac46fa42d251ef"
     },
     "xlsx": {
       "source": "anthropics/skills",
