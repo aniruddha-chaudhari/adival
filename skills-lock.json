@@ -101,6 +101,31 @@
       "sourceType": "github",
       "computedHash": "850c29ffdc011a6d9755ad5b811ae2f3a4ef6400115fad7a85ac46fa42d251ef"
     },
+    "tavily-cli": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "computedHash": "524054fc3d04cf2acc47b00f263ccffc82b086fc9eb031c80a54f8f840c46f54"
+    },
+    "tavily-crawl": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "computedHash": "0fb681b713040b33cea5a7accf46e44f8f718e36da1c1d8b2cd7f54f574da8e7"
+    },
+    "tavily-extract": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "computedHash": "c3f85118a29d8adf7f90acb87d28eb2d3526a7c92d4b276df7ec800675114664"
+    },
+    "tavily-map": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "computedHash": "8b059fd854895eecfb6999b4ca7eb268dc324a04d4515d9f81d867a4bfd538ba"
+    },
+    "tavily-research": {
+      "source": "tavily-ai/skills",
+      "sourceType": "github",
+      "computedHash": "8f0d7dc0a3d838fc647c5666f7dd398626d35b8f95bd7f0ae2512df8927d8f29"
+    },
     "xlsx": {
       "source": "anthropics/skills",
       "sourceType": "github",

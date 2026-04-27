@@ -20,7 +20,7 @@ make sure parallel cli is setup for these tools (use setup skill to setup): para
 
 people-research, web-search-advanced-research-paper
 
-use all cli's and research related mcp's to create a deep high quality research
+use all cli's and research related mcp's (tavily, exa, parallel) to create a deep high quality research
 
 ### Package manager
 
